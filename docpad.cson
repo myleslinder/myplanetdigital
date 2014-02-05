@@ -1,4 +1,16 @@
+templateData:
+	site:
+		title: 'Myplanet Digital'
+		styles: [
+			'/vendor/components-bootstrap/css/bootstrap.css'
+			'/vendor/components-bootstrap/css/bootstrap-theme.css'
+		]
+		scripts: [
+			'/vendor/jquery/jquery.js'
+			'/vendor/components-bootstrap/js/bootstrap.js'
+		]
+
 collections:
-  # Event listing, ordered by reverse basename (date).
-  posts: (database) ->
-    database.findAllLive({relativeOutDirPath: "employees"})
+	# Event listing, ordered by reverse basename (date).
+	posts: (database) ->
+		database.findAllLive({relativeOutDirPath: "employees", layout: "default"})
