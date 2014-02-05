@@ -1,17 +1,18 @@
 ---
 title: "Neil Taylor"
 role: "Front-End Developer"
-tagList: ["people"]
+tagList: ["people", "technology"]
 skill: "Web Browsers, JavaScript, CSS, Jankbusting, Duck Tolling Retrievers"
-quote: "I've got Postgres on vinyl"
-authorImageUrl: "/images/avatar/Neil_Taylor.png"
+summary: "I've got Postgres on vinyl"
+authorImageUrl: "/images/avatar/neil-t.jpg"
 linkedin: "http://www.jankbusters.com"
 github: "https://github.com/neilbaylorrulez"
-layout: default
+layout: employee
+date: "2013-3-21"
 ---
 
-## Who I Am
-I raise my own chickens and manage my own memory
+## Who I am
+I raise my own chickens and manage my own memory.
 
 ## What I Do
 I write world-class applications in languages you probably haven't heard of yet. 

@@ -3,14 +3,14 @@ title: "Aleksandr Kyrychok"
 role: "Developer"
 tag: "people"
 skill: "Drupal, Javascript, IA"
-quote: "you will get maximum from business if you really like it."
+summary: "you will get maximum from business if you really like it."
 coverImageUrl: ""
 authorImageUrl: ""
 twitter:
 dribbble:
 linkedin:
 github:
-layout: default
+layout: employee
 color: "pink"
 ---
 

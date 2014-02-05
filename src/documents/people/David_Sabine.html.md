@@ -1,19 +1,20 @@
 ---
 title: "David Sabine"
 role: "Product Owner"
-tagList: ["people"]
+tagList: ["people", "technology"]
 skill: "Agile, Consulting"
-quote: "observe, remember, understand, apply, analyze, evaluate, create"
+summary: "observe, remember, understand, apply, analyze, evaluate, create"
 coverImageUrl: ""
-authorImageUrl: "/images/avatar/David_Sabine.png"
+authorImageUrl: "/images/avatar/david-sabine.jpg"
 twitter: "http://www.twitter.com/DaveSabine"
 dribbble: 
 linkedin: "http://ca.linkedin.com/in/davidsabine"
 github:
-layout: default
+layout: employee
+date: "2012-2-8"
 ---
 
-## Who I Am
+## Who I am
 
 I enjoy team dynamics, business, media, art, music, software, innovative modes of learning, and the intersection of all those things.
 

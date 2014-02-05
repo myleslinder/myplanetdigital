@@ -17,4 +17,4 @@ templateData:
 collections:
 	# Event listing, ordered by reverse basename (date).
 	posts: (database) ->
-		database.findAllLive({relativeOutDirPath: "people", layout: "default"})
+		database.findAllLive({relativeOutDirPath: "people", layout: "employee"})

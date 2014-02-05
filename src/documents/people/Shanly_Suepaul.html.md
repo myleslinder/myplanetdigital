@@ -3,18 +3,18 @@ title: "Shanly Suepaul"
 role: "Co-founder and Team Member"
 tagList: ["people"]
 skill: "JavaScript, Drupal, Computer Science, LAMP, QA, Agile Methodologies"
-quote: "Inspect. Adapt."
+summary: "Inspect. Adapt."
 coverImageUrl: ""
-authorImageUrl: "/images/avatar/Sally_Chan.png"
+authorImageUrl: "/images/avatar/shanly-suepaul.jpg"
 twitter: "https://twitter.com/shanlyj"
 dribbble:
 linkedin: "http://www.linkedin.com/profile/view?id=61522444"
 github: "https://github.com/shanly-suepaul"
-layout: default
+layout: employee
 color: "black"
 ---
 
-## Who I Am
+## Who I am
 
 I'm a full-stack web technologist and Agile practitioner. I'm drawn to how Agile respects humanity in the way we work while producing better outcomes.
 I'm a Certified ScrumMaster and I hold a Hons. B.Sc. in Computer Science from the University of Toronto.

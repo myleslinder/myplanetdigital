@@ -1,19 +1,20 @@
 ---
 title: "Paul Spadafore"
 role: "Finance Director"
-tagList: ["people"]
+tagList: ["people", "business"]
 skill: "Finance, Business Strategy"
-quote: "Great leaders inspire others to be the ‘best they can be’"
+summary: "Great leaders inspire others to be the 'best they can be'"
 coverImageUrl: ""
-authorImageUrl: "/images/avatar/Paul_Spadafore.png"
+authorImageUrl: "/images/avatar/paul-spadafore.jpg"
 twitter: 
 dribbble:
 linkedin:
 github:
-layout: default
+layout: employee
+date: "2013-1-1"
 ---
 
-## Who I Am
+## Who I am
 
 A business leader with many years of experience in a variety of industries with a passion for teams and technology. This is balanced with a love for playing, composing and listening to music….especially rock and roll.
 

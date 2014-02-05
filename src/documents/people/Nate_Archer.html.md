@@ -1,19 +1,20 @@
 ---
 title: "Nate Archer"
 role: "Senior Vice President of Global Interaction Design"
-tagList: ["people"]
+tagList: ["people", "design"]
 skill: "User Research, Interaction, Design"
-quote: "How Might We..."
+summary: "How Might We..."
 coverImageUrl: ""
-authorImageUrl: "/images/avatar/Nate_Archer.png"
+authorImageUrl: ""
 twitter: "https://twitter.com/natearcher"
 dribbble:
 linkedin: "ca.linkedin.com/in/nlarcher/"
 github:
-layout: default
+layout: employee
+date: "2012-5-8"
 ---
 
-## Who I Am
+## Who I am
 
 Born in Toronto, Nate Archer studied industrial design in his hometown and Amsterdam, and worked in Milan before coming back to Toronto to join Myplanet in 2011. He has a strange sense of humour, drinks black coffee and rides his bike in the winter.
 

@@ -3,17 +3,18 @@ title: "Tim Fernihough"
 role: "Co-founder and Head of Special Projects"
 tagList: ["people"]
 skill: "Drupal, Computer Science, LAMP, DevOps"
-quote: "No one can make you feel inferior without your consent."
-coverImageUrl: "/images/employee/Tim_Fernihough_Cover.png"
-authorImageUrl: "/images/avatar/Tim_Fernihough.png"
+summary: "No one can make you feel inferior without your consent."
+coverImageUrl: ""
+authorImageUrl: "/images/avatar/tim-f.jpg"
 twitter: "https://twitter.com/timfernihough"
 dribbble:
-linkedin: "ca.linkedin.com/in/timfernihough/"
+linkedin: "http://ca.linkedin.com/in/timfernihough/"
 github: "https://github.com/timfernihough"
-layout: default
+layout: employee
+date: "2007-9-21"
 ---
 
-## Who I Am
+## Who I am
 
 I've been a programmer since I was 12 and an entrepreneur since I was 18, running two of my own businesses before joining Myplanet in 2007.  I'm a Civil Engineer by education but hold a B.Sc in Computer Science.   I still build bridges, but not in the way I expected. :)  I am a passionate individual with a lot of integrity.  I take pride in my work and what I produce.  I am always learning and always looking for the next challenge.  Myplanet has always embraced the inner innovator and entrepreneur of all of its Myplaneteers and it has allowed me to thrive as an individual as well as a member of a team.
 

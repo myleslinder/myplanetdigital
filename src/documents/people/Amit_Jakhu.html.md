@@ -1,22 +1,21 @@
 ---
 title: "Amit Jakhu"
 role: "Designer"
-tagList: ["people"]
+tagList: ["people", "design"]
 skill: "Interaction, Visual, Design, Front-End Dev, Marketing"
-quote: "Solve real problems that people have."
+summary: "Solve real problems that people have."
 coverImageUrl: ""
-authorImageUrl: "/images/avatar/Amit_Jakhu.png"
+authorImageUrl: "/images/avatar/amit-j.jpg"
 twitter: "http://twitter.com/amitjakhu"
 dribbble: "http://dribbble.com/amitjakhu"
 linkedin: "http://www.linkedin.com/pub/amit-jakhu/41/997/357"
 github:
-layout: default
+layout: employee
 color: "black"
-summary: Amit suck.s
-additionalLayouts: data
+date: "2013-5-27"
 ---
 
-## Who I Am
+## Who I am
 
 I am a designer who has a strong passion to solve problems for others. Although my primary focus is the art of design and solving problems, I try and aim to learn as many other fields as I can to advance my knowledge of the environment around me. This includes: front-end development, marketing, business, interaction and so on.
 

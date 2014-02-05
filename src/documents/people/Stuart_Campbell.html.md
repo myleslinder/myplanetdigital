@@ -1,19 +1,20 @@
 ---
 title: "Stuart Campbell"
 role: "Business Analyst"
-tagList: ["people"]
+tagList: ["people", "business"]
 skill: "Consulting, Analytics, Sales, Agile"
-quote: "Whether you think you can or you think you can't, you're probably right"
+summary: "Whether you think you can or you think you can't, you're probably right"
 coverImageUrl: ""
-authorImageUrl: "/images/avatar/Stuart_Campbell.png"
+authorImageUrl: "/images/avatar/stuart-campbell.jpg"
 twitter: "https://twitter.com/campbellstuart"
 dribbble:
 linkedin: "http://www.linkedin.com/in/stuartalancampbell"
 github:
-layout: default
+layout: employee
+date: "2013-9-3"
 ---
 
-## Who I Am
+## Who I am
 
 My name is Stuart Alan Campbell, the grand optimist, who hopes to play a leading role in making this world a better place through computing technology. My time outside of software is spent singing, writing music, playing sports, and eating good food with family and friends.
 

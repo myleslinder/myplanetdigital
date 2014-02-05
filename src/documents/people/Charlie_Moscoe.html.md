@@ -1,21 +1,22 @@
 ---
 title: "Charlie Moscoe"
 role: "Product Development Wiz Kid"
-tagList: ["people"]
+tagList: ["people", "business"]
 skill: "Agile, Consulting, User Experience"
-quote: "3oz. adventure, 2oz. discovery. Serve over ice."
+summary: "3oz. adventure, 2oz. discovery. Serve over ice."
 coverImageUrl: ""
-authorImageUrl: "/images/avatar/Charlie_Moscoe.png"
+authorImageUrl: "/images/avatar/charlie.jpg"
 twitter: "https://twitter.com/cmoscoe"
 dribbble: 
 linkedin: "http://ca.linkedin.com/in/charliemoscoe/"
 github:
-layout: default
+layout: employee
+date: "2013-5-16"
 ---
 
-## Who I Am
+## Who I am
 
-I'm Charlie.		
+I'm Charlie.
 
 ## What I do
 

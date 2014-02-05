@@ -3,20 +3,20 @@ title: "Jason Cottrell"
 role: "Managing Director"
 tagList: ["people"]
 skill: "Industry Knowledge, Customer Satisfaction, Consulting"
-quote: "Steep for 3 minutes contemplating your favourite eternal mysteries."
+summary: "Steep for 3 minutes contemplating your favourite eternal mysteries."
 coverImageUrl: ""
-authorImageUrl: "/images/avatar/Jason_Cottrell.png"
+authorImageUrl: ""
 twitter: "https://twitter.com/jasoncott"
-dribbble: 
+dribbble:
 linkedin: "http://www.linkedin.com/in/jasoncottrell"
-github: 
-layout: default
-color: "black"
+github:
+layout: employee
+date: "2009-4-16"
 ---
 
-## Who I Am
+## Who I am
 
-Entrepreneur and recovering workaholic. They don't let me design or code anymore, but that's okay. I love the things our Myplaneteers accomplish, but my proudest moments are watching them just enjoy time with each other.Ê
+Entrepreneur and recovering workaholic. They don't let me design or code anymore, but that's okay. I love the things our Myplaneteers accomplish, but my proudest moments are watching them just enjoy time with each other.
 
 ## What I do
 

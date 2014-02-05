@@ -3,20 +3,18 @@ title: "Amit Kiran"
 role: "Product Owner & Designer"
 tagList: ["people"]
 skill: "Interaction Design, User Research, Usability Testing, Information Architecture, Customer Satisfaction, Consulting, Marketing, Sales"
-quote: ""
+summary: "I am thankful for laughter, except when milk comes out of my nose."
 coverImageUrl: ""
-authorImageUrl: "/images/avatar/Amit_Kiran.png"
+authorImageUrl: "/images/avatar/amit-k.jpg"
 twitter: "http://twitter.com/amitkiran82"
 dribbble:
-linkedin: "www.linkedin.com/in/amitkiran"
+linkedin: "http://www.linkedin.com/in/amitkiran"
 github:
+layout: employee
 color: "black"
-layout: default
-summary: Yups!
-additionalLayouts: data
 ---
 
-## Who I Am
+## Who I am
 
 Traveler. Explorer. Experimenter.
 Movie Lover.  Fantasy Sports Kick-Asser.  Scotch Drinker (neat).

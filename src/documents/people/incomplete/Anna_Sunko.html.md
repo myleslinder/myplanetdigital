@@ -3,14 +3,14 @@ title: "Anna Sunko"
 role: "Drupal Developer"
 tag: "people"
 skill: "Javascript, Drupal, Computer Science"
-quote: "It is quality rather than quantity that matters."
+summary: "It is quality rather than quantity that matters."
 coverImageUrl: ""
 authorImageUrl: ""
 twitter:
 dribbble: 
 linkedin:
 github: "https://github.com/annasunko"
-layout: default
+layout: employee
 color: "pink"
 ---
 

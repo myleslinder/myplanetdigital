@@ -1,19 +1,20 @@
 ---
 title: "David Colburn"
-role: "Pixel wrangler"
+role: "Scrum master"
 tagList: ["people"]
-skill: "Drupal, IA, Agile, Consulting, Sales, Marketing"
-quote: "A man who carries a cat by the tail learns something he can learn in no other way - Mark Twain"
+skill: "Drupal, IA, Agile, Consulting, Marketing"
+summary: '"I do not necessarily agree with everything that I say." ― Marshall McLuhan'
 coverImageUrl: ""
-authorImageUrl: "/images/avatar/David_Colbourne.png"
+authorImageUrl: "/images/avatar/david-colburn.jpg"
 twitter: "https://twitter.com/dbcolburn"
 dribbble: 
 linkedin: "http://www.linkedin.com/in/dbcolburn"
 github: "https://github.com/davidcol"
-layout: default
+layout: employee
+date: "2013-4-1"
 ---
 
-## Who I Am
+## Who I am
 
 I pursue excellence in design, strategy, effective code, and practical solutions to clients' needs. This pursuit demands a constant search for improvement and motivates my working life.
 
