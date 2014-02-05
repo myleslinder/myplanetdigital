@@ -13,6 +13,7 @@ github: "https://github.com/benjamin-woll"
 layout: default
 summary: Benenenenenennen
 additionalLayouts: data
+size: "2x1"
 ---
 
 ## Who I Am

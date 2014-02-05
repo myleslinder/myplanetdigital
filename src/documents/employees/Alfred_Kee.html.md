@@ -13,6 +13,7 @@ github:
 layout: default
 summary: Alfred is cool.
 additionalLayouts: data
+size: 2x1
 ---
 
 ## Who I Am

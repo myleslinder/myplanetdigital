@@ -13,7 +13,9 @@
     "docpad-plugin-multiplelayouts": "~2",
     "docpad-plugin-paged": "~2.2.4",
     "docpad-plugin-cleanurls": "~2.6.2",
-    "docpad-plugin-raw": "~2.3.2"
+    "docpad-plugin-raw": "~2.3.2",
+    "docpad-plugin-ghpages": "~2.4.3",
+    "docpad-plugin-less": "~2.4.1"
   },
   "main": "node_modules/docpad/bin/docpad-server",
   "scripts": {

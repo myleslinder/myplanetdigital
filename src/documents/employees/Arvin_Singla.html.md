@@ -14,6 +14,7 @@ layout: default
 color: "black"
 additionalLayouts: data
 summary: arvin???
+size: "2x1"
 ---
 
 ## Who I Am
