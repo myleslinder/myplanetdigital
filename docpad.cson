@@ -1,0 +1,4 @@
+collections:
+  # Event listing, ordered by reverse basename (date).
+  posts: (database) ->
+    database.findAllLive({relativeOutDirPath: "employees"})
