@@ -4,7 +4,7 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
     <head>
-    <title><%= @document.title %> | <%= @site.title %></title>
+        <title><%= @document.title %> | <%= @site.title %></title>
         <%- @getBlock("meta").toHTML() %>
         <%- @getBlock("styles").add(@site.styles).toHTML() %>
         <meta charset="utf-8">
@@ -15,14 +15,6 @@
     </head>
     <body>
         <div class="container">
-            <div class="row hidden-xs">
-                <div class="col-md-6 col-xs-6">
-                    <h1><a href="/">Myplanet Digital</a></h1>
-                </div>
-                <div class="col-md-6 col-xs-6">
-                    <p class="text-right">we build products that <strong>connect people</strong></p>
-                </div>
-            </div>
             <nav class="navbar navbar-default" role="navigation">
                 <div class="navbar-header">
                     <button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle">
@@ -31,7 +23,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                        <a href="/" class="navbar-brand visible-xs">Myplanet Digital</a>
+                    <a href="/" class="navbar-brand" title="Myplanet Digital"><span>Myplanet Digital</span></a>
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
@@ -53,12 +45,14 @@
                 </div>
             </nav>
 
-        <h1><%= @document.title %></h1>
-        <%- @content %>
-    </div>
+            <% if @document.title: %>
+                <h1><%= @document.title %></h1>
+            <% end %>
+            <%- @content %>
+        </div>
 
 
-    <%- @getBlock("scripts").add(@site.scripts).toHTML() %></div>
+        <%- @getBlock("scripts").add(@site.scripts).toHTML() %>
 
     </body>
 </html>

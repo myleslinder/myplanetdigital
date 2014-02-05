@@ -1,18 +1,16 @@
 ---
-title: 'Home'
 layout: 'default'
 isPaged: true
 pagedCollection: 'posts'
-pageSize: 10
+pageSize: 12
 ---
 
-<!-- Page Content -->
 <div class="articles">
 <% for document in @getPageCollection('posts').toJSON(): %>
     <% if document.size is "2x1": %>
-        <article id="post" class="col-lg-4 col-md-6 col-sm-8 col-xs-12">
+        <article id="post" class="col-md-8 col-sm-12 col-xs-12">
     <% else: %>
-        <article id="post" class="col-lg-2 col-md-3 col-sm-4 col-xs-6">
+        <article id="post" class="col-md-4 col-sm-4 col-xs-6">
     <% end %>
         <h1><a href='<%=document.url%>'><%= document.title %></a></h1>
         <div class="post-content">
@@ -22,16 +20,12 @@ pageSize: 10
 <% end %>
 </div>
 
-<!-- Page Listing -->
 <ul class="pagination">
-    <!-- Previous Page Button -->
     <% unless @hasPrevPage(): %>
         <li class="disabled"><span>&laquo;</span></li>
     <% else: %>
         <li><a href="<%= @getPrevPage() %>">&laquo;</a></li>
     <% end %>
-
-    <!-- Page Number Buttons -->
     <% for pageNumber in [0..@document.page.count-1]: %>
         <% if @document.page.number is pageNumber: %>
             <li class="active"><span><%= pageNumber + 1 %></span></li>
@@ -39,8 +33,6 @@ pageSize: 10
             <li><a href="<%= @getPageUrl(pageNumber) %>"><%= pageNumber + 1 %></a></li>
         <% end %>
     <% end %>
-
-    <!-- Next Page Button -->
     <% unless @hasNextPage(): %>
         <li class="disabled"><span>&raquo;</span></li>
     <% else: %>

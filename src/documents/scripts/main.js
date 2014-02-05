@@ -1,6 +1,7 @@
 $(document).ready(function() {
 	$('.articles').isotope({
 		itemSelector: 'article',
-		layoutMode: 'fitRows'
+		layoutMode: 'fitRows',
+		transitionDuration: '0.1s'
 	});
 });
