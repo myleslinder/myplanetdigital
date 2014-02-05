@@ -3,7 +3,7 @@ title: "Arvin Singla"
 role: "Web Developer"
 tagList: ["people"]
 skill: "JavaScript, Drupal, Computer Science, LAMP"
-quote: "All right... It's Saturday night. I've got no date, a 2-liter bottle of Shasta, and my all Rush mix tape. Let's rock!"
+summary: "All right... It's Saturday night. I've got no date, a 2-liter bottle of Shasta, and my all Rush mix tape. Let's rock!"
 coverImageUrl: ""
 authorImageUrl: "/images/avatar/Arvin_Singla.png"
 twitter: "http://twitter.com/arvinsingla"
@@ -13,8 +13,6 @@ github: "http://github.com/arvinsingla"
 layout: default
 color: "black"
 additionalLayouts: data
-summary: arvin???
-size: "2x1"
 ---
 
 ## Who I Am

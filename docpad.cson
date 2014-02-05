@@ -10,13 +10,11 @@ templateData:
 		scripts: [
 			'/vendor/jquery/jquery.js'
 			'/vendor/components-bootstrap/js/bootstrap.js'
-
 			'http://isotope.metafizzy.co/beta/isotope.pkgd.min.js'
-
 			'/scripts/main.js'
 		]
 
 collections:
 	# Event listing, ordered by reverse basename (date).
 	posts: (database) ->
-		database.findAllLive({relativeOutDirPath: "employees", layout: "default"})
+		database.findAllLive({relativeOutDirPath: "people", layout: "default"})
