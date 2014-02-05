@@ -1,19 +1,20 @@
 ---
 title: "Rex Su"
 role: "Front-End Developer"
-tagList: ["people"]
+tagList: ["people", "technology"]
 skill: "Javascript, Usability, Performance"
-quote: "You don't become a champion overnight, you become a champion way before that."
+summary: "You don't become a champion overnight, you become a champion way before that."
 coverImageUrl: ""
-authorImageUrl: "/images/avatar/Rex_Su.png"
+authorImageUrl: "/images/avatar/rex.jpg"
 twitter: "https://twitter.com/rex_ds"
 dribbble:
 linkedin: "http://ca.linkedin.com/in/rexsu/"
 github: "https://github.com/d9su"
-layout: default
+layout: employee
+date: "2013-1-1"
 ---
 
-## Who I Am
+## Who I am
 
 I graduated from the Computer Science program of University of Waterloo in December 2012, and is passionated about anything web related. I strive to make an impact to the world and contribute to the community by making people's life better, using widely accessible web technology.
 

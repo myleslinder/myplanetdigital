@@ -3,14 +3,14 @@ title: "Pavel Zheldak"
 role: "Drupal Developer"
 tag: "people"
 skill: "Drupal"
-quote: "Success is the result of perfection, hard work, learning from failure, loyalty, and persistence."
+summary: "Success is the result of perfection, hard work, learning from failure, loyalty, and persistence."
 coverImageUrl: ""
 authorImageUrl: ""
 twitter: "https://twitter.com/yell0wman_"
 dribbble:
 linkedin:
 github: "https://github.com/yell0wman"
-layout: default
+layout: employee
 color: "green"
 ---
 

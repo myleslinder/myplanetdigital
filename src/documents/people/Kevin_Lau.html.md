@@ -2,21 +2,21 @@
 title: "Kevin Lau"
 role: "Director of Operations"
 tagList: ["people"]
-skill: "HR, Recruiting, Employee Happiness, Marketing"
-quote: 
+skill: "Business Strategy, Analytics, Agile Methodologies"
+summary: "Defy all odds. Choose even numbers."
 coverImageUrl: ""
-authorImageUrl: "/images/avatar/Kevin_Lau.png"
+authorImageUrl: "/images/avatar/kevin-lau.jpg"
 twitter: "https://twitter.com/kevinhlau"
-dribbble: 
+dribbble:
 linkedin: "http://ca.linkedin.com/pub/kevin-lau/4/2b2/ba0/"
-github: 
-layout: default
+github:
+layout: employee
 color: "black"
 ---
 
-## Who I Am
+## Who I am
 
-A business leader and problem solver, as passionate about devising elegant and flexible strategies as building out and then executing on the tactical plans. ÊA computer engineer by background, experienced business consultant with a focus on analytics, and former Product Owner; in my spare time I'm a (very) amateur triathlete and budding globetrotter.Ê
+A business leader and problem solver, as passionate about devising elegant and flexible strategies as building out and then executing on the tactical plans. A computer engineer by background, experienced business consultant with a focus on analytics, and former Product Owner; in my spare time I'm a (very) amateur triathlete and budding globetrotter.
 
 
 ## What I do

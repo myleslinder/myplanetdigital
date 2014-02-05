@@ -3,14 +3,14 @@ title: "Anna Tsulun"
 role: "Drupal Developer"
 tag: "people"
 skill: "Javascript, Drupal, Computer Science"
-quote: "Nothing worth having comes easy."
+summary: "Nothing worth having comes easy."
 coverImageUrl: ""
 authorImageUrl: ""
 twitter:
 dribbble: 
 linkedin:
 github: "https://github.com/anna-tsulun"
-layout: default
+layout: employee
 color: "pink"
 ---
 

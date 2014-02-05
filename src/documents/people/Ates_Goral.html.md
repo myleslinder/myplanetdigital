@@ -1,22 +1,21 @@
 ---
 title: "Ates Goral"
 role: "Front-End Developer"
-tagList: ["people"]
+tagList: ["people", "technology"]
 skill: "JavaScript, Computer Science, LAMP, Interaction Design, Accessibility"
-quote: "Who is testing the tests?"
+summary: "Who is testing the tests?"
 coverImageUrl: ""
-authorImageUrl: "/images/avatar/Ates_Goral.png"
+authorImageUrl: "/images/avatar/ates-g.jpg"
 twitter: "https://twitter.com/atesgoral"
 dribbble:
 linkedin: "http://ca.linkedin.com/in/atesgoral"
 github: "https://github.com/atesgoral"
 stackoverflow: "http://stackoverflow.com/users/23501/ates-goral"
-layout: default
-summary: ATES!
-additionalLayouts: data
+layout: employee
+date: "2013-10-28"
 ---
 
-## Who I Am
+## Who I am
 
 I'm a polyglot programmer with an experience stretching from the low-level intricacies of bootsector assembly intros; to the high-level design patterns for bringing elegant architecture and designs to complex applications. I take pride in writing clean, consistent code.
 
