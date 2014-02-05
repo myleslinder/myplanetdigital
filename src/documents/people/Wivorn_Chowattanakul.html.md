@@ -15,6 +15,7 @@ additionalLayouts: data
 summary: asdfasdf
 ---
 
+
 ## Who I Am
 
 I am a Mechatronics Engineer by degree, web developer by trade. I am a coder by day, dreamer by night. I strive to make the world a better place and put a smile on every face. 

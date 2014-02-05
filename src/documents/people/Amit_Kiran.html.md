@@ -10,8 +10,8 @@ twitter: "http://twitter.com/amitkiran82"
 dribbble:
 linkedin: "www.linkedin.com/in/amitkiran"
 github:
-layout: default
 color: "black"
+layout: default
 summary: Yups!
 additionalLayouts: data
 ---
