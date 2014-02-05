@@ -15,29 +15,6 @@ additionalLayouts: data
 summary: asdfasdf
 ---
 
-This is Will's page.
-
-fasdkjlsdfjkdfsljkdsfaf
-'asdfdfas
-df
-afds
-
-sdf
-
-
-fdsajknlasdfkjdfasjk
-kljdsfkjlsfdjkl
-lkjkljfsdaljkdfsakj
-
-fdsakljfsdaljk
-
-sdfakjlfdsa
-
-fdaskljfdaslksd
-
-jkfadsjklsdafjkl [Google](http://google.com)
-
-
 ## Who I Am
 
 I am a Mechatronics Engineer by degree, web developer by trade. I am a coder by day, dreamer by night. I strive to make the world a better place and put a smile on every face. 
