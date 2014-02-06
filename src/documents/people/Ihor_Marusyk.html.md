@@ -1,7 +1,7 @@
 ---
 title: "Ihor Marusyk"
 role: "Durpal Developer"
-tagList: ["people", "technology"]
+tags: ["people", "technology"]
 skill: "Drupal"
 summary: "I do websites"
 coverImageUrl: ""

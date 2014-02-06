@@ -1,7 +1,7 @@
 ---
 title: "Jeremy Lichtman"
 role: "Developer"
-tag: "people"
+tags: ["people"]
 skill: "Javascript, Drupal, LAMP, Agile, Consulting"
 summary: "Coffee, measured in units of litres per thousand lines of code."
 coverImageUrl: ""

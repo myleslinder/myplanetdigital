@@ -1,12 +1,13 @@
 ---
 layout: 'default'
 isPaged: true
-pagedCollection: 'homepage'
 pageSize: 12
+pagedCollection: 'business'
 ---
 
 <div class="articles">
-<% for document in @getPageCollection('homepage').toJSON(): %>
+<% for document in @getPageCollection(@document.tag).toJSON(): %>
+    <% console.log(document); %>
     <% if document.size is "2x1": %>
         <article id="post" class="col-md-8 col-sm-12 col-xs-12">
     <% else: %>

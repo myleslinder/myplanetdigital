@@ -1,7 +1,7 @@
 ---
 title: "Vibhu Arulsothynathan"
 role: "Business Analyst"
-tagList: ["people", "business"]
+tags: ["people", "business"]
 skill: "Consulting, Analytics, Design, Agile, IA"
 summary: "You have to think anyway, so why not think big?"
 coverImageUrl: ""

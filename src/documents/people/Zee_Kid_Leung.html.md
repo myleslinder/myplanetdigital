@@ -1,7 +1,7 @@
 ---
 title: "Zee Kid Leung"
 role: "Scrum master"
-tagList: ["people"]
+tags: ["people"]
 skill: "Agile methodologies, Analytics"
 summary: "Don't take life too seriously, after all no one gets out of it alive"
 coverImageUrl: ""

@@ -1,7 +1,7 @@
 ---
 title: "Nate Archer"
 role: "Senior Vice President of Global Interaction Design"
-tagList: ["people", "design"]
+tags: ["people", "design"]
 skill: "User Research, Interaction, Design"
 summary: "How Might We..."
 coverImageUrl: ""

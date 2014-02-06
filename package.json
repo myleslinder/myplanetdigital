@@ -15,7 +15,8 @@
     "docpad-plugin-cleanurls": "~2.6.2",
     "docpad-plugin-raw": "~2.3.2",
     "docpad-plugin-ghpages": "~2.4.3",
-    "docpad-plugin-less": "~2.4.1"
+    "docpad-plugin-less": "~2.4.1",
+    "docpad-plugin-tags": "~2.0.7"
   },
   "main": "node_modules/docpad/bin/docpad-server",
   "scripts": {

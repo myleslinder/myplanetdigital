@@ -1,7 +1,7 @@
 ---
 title: "Imran Khoja"
 role: "Web Software Engineer"
-tagList: ["people"]
+tags: ["people"]
 skill: "Javascript, Drupal, LAMP"
 summary: "Be the change you want to see in this world. (~Gandhi)"
 coverImageUrl: ""

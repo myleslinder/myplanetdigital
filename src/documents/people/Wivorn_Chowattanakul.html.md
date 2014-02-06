@@ -1,7 +1,7 @@
 ---
 title: "Wivorn Chowattanakul"
 role: "Front-End Developer"
-tagList: ["people", "technology"]
+tags: ["people", "technology"]
 skill: "HTML, CSS, Javascript, Lock Picking"
 summary: "The greatest nation in the world is imagination"
 coverImageUrl: ""

@@ -1,8 +1,6 @@
 ---
 title: "Aleksandr Kyrychok"
-role: "Developer"
-tag: "people"
-skill: "Drupal, Javascript, IA"
+tags: ["people"]
 summary: "you will get maximum from business if you really like it."
 coverImageUrl: ""
 authorImageUrl: ""
@@ -12,6 +10,7 @@ linkedin:
 github:
 layout: employee
 color: "pink"
+homepage: false
 ---
 
 ## Who I Am

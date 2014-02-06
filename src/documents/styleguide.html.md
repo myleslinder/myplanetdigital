@@ -1,6 +1,6 @@
 ---
 title: "Myplanet Digital: Style Guide"
-tagList: ["design"]
+tags: ["design"]
 summary: Curabitur id tellus a risus accumsan imperdiet. Cras aliquet accumsan velit, ac iaculis elit placerat ut. Morbi laoreet, ipsum quis bibendum eleifend, urna risus pharetra neque, molestie luctus massa lectus sit amet lectus.
 coverImageUrl: "/images/articles/Myplanet-welcome-to/welcome2TO-banner.jpg"
 tileImageUrl: "/images/articles/How_We_Work_Part_2_Examining_Structure_&_Roles/tile.jpg"

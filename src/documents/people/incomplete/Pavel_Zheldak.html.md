@@ -1,7 +1,7 @@
 ---
 title: "Pavel Zheldak"
 role: "Drupal Developer"
-tag: "people"
+tags: ["people"]
 skill: "Drupal"
 summary: "Success is the result of perfection, hard work, learning from failure, loyalty, and persistence."
 coverImageUrl: ""

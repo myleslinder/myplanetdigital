@@ -1,7 +1,7 @@
 ---
 title: "David Colburn"
 role: "Scrum master"
-tagList: ["people"]
+tags: ["people"]
 skill: "Drupal, IA, Agile, Consulting, Marketing"
 summary: '"I do not necessarily agree with everything that I say." ― Marshall McLuhan'
 coverImageUrl: ""

@@ -1,7 +1,7 @@
 ---
 title: "Lucas Lu"
 role: "Visual Interface Designer"
-tagList: ["people"]
+tags: ["people"]
 skill: "Visual-Interactive Design"
 summary: Design for happiness
 coverImageUrl: ""

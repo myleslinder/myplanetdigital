@@ -1,7 +1,7 @@
 ---
 title: "Ruslan Muradov"
 role: "Drupal Developer"
-tagList: ["people", "technology"]
+tags: ["people", "technology"]
 skill: "Drupal"
 summary: "Lets learn how this works"
 coverImageUrl: ""

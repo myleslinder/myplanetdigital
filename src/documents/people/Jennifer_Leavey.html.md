@@ -1,7 +1,7 @@
 ---
 title: "Jennifer Leavey"
 role: "Product Owner"
-tagList: ["people"]
+tags: ["people"]
 skill: "User Research, Content Strategy, Usability Testing, UX Strategy, Agile Methodologies, Customer Satisfaction, Consulting, Sales, Marketing "
 summary: "I wish my eyes could take photos ... I see so much beauty in a day"
 coverImageUrl: ""

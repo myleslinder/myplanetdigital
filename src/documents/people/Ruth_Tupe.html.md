@@ -1,7 +1,7 @@
 ---
 title: "Ruth Tupe"
 role: "Engagement Lead"
-tagList: ["people", "design", "Education","Recruiting"]
+tags: ["people", "design", "Education","Recruiting"]
 skill: "User Research, Interaction, Design"
 summary: "Life is like the open sea, the truth is the wind in our sails."
 coverImageUrl: ""

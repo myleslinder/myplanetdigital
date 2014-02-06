@@ -1,7 +1,7 @@
 ---
 title: "Sally Chan"
 role: "Interaction Designer"
-tagList: ["people"]
+tags: ["people"]
 skill: "Interaction Design, Visual-Interactive Design, User Research"
 summary: "Do not worry, just care and be prepared."
 coverImageUrl: ""

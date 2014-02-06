@@ -1,7 +1,7 @@
 ---
 title: "Steph Brown"
 role: "Lead, Marketing & Education"
-tagList: ["people"]
+tags: ["people"]
 skill: "Marketing, Education"
 summary: "Lionel made me do it."
 coverImageUrl: ""

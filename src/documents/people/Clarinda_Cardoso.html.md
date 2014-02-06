@@ -1,7 +1,7 @@
 ---
 title: "Clarinda Cardoso"
 role: "PMP"
-tagList: ["people"]
+tags: ["people"]
 skill: "Employee Happiness"
 summary: "Life begins here"
 coverImageUrl: ""

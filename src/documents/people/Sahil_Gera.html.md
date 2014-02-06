@@ -1,7 +1,7 @@
 ---
 title: "Sahil Gera"
 role: "QA Analyst"
-tagList: ["people", "technology"]
+tags: ["people", "technology"]
 skill: "QA, Computer Science"
 summary: "Success comes with Passion, Perseverance and Simplicity"
 coverImageUrl: ""

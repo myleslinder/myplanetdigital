@@ -1,7 +1,7 @@
 ---
 title: "Steph D'Aguilar"
 role: "Business Development Consultant"
-tagList: ["people"]
+tags: ["people"]
 skill: "Consulting, Analytics, Sales, Marketing, Account Management, Customer Satisfaction"
 summary: "Everyone is a genius."
 coverImageUrl: ""

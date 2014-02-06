@@ -27,12 +27,12 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li><a href="/business">Business</a></li>
-                        <li><a href="/careers">Careers</a></li>
-                        <li><a href="/culture">Culture</a></li>
-                        <li><a href="/design">Design</a></li>
-                        <li><a href="/people">People</a></li>
-                        <li><a href="/technology">Technology</a></li>
+                        <li><a href="/">All articles</a></li>
+                        <li><a href="/careers">Our company</a></li>
+                        <li><a href="/culture">Our work</a></li>
+                        <li><a href="/design">Our people</a></li>
+                        <li><a href="/people">careers opps</a></li>
+                        <li><a href="/technology">Design thicking</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li>

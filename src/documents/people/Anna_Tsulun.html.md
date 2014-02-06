@@ -1,7 +1,7 @@
 ---
 title: "Anna Tsulún"
 role: "Developer"
-tagList: ["people"]
+tags: ["people"]
 skill: "JavaScript, Drupal, Computer Science"
 summary: "Nothing worth having comes easy."
 coverImageUrl: ""

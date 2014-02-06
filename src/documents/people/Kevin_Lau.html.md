@@ -1,7 +1,7 @@
 ---
 title: "Kevin Lau"
 role: "Director of Operations"
-tagList: ["people"]
+tags: ["people"]
 skill: "Business Strategy, Analytics, Agile Methodologies"
 summary: "Defy all odds. Choose even numbers."
 coverImageUrl: ""

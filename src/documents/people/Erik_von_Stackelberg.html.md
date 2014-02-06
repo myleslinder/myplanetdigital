@@ -1,7 +1,7 @@
 ---
 title: "Erik von Stackelberg"
 role: "Creative Director"
-tagList: ["people", "design"]
+tags: ["people", "design"]
 skill: "Design, Usability"
 summary: "Modernist by day & interdisciplinary postmodernist by night"
 coverImageUrl: ""

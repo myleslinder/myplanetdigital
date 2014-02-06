@@ -1,7 +1,7 @@
 ---
 title: "Arvin Singla"
 role: "Web Developer"
-tagList: ["people"]
+tags: ["people"]
 skill: "JavaScript, Drupal, Computer Science, LAMP"
 summary: "All right... It's Saturday night. I've got no date, a 2-liter bottle of Shasta, and my all Rush mix tape. Let's rock!"
 coverImageUrl: ""

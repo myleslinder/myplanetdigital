@@ -1,7 +1,7 @@
 ---
 title: "Yvonne Ho"
 role: "Technical Architect"
-tagList: ["people"]
+tags: ["people"]
 skill: "Interaction Design, Visual-Interactive Design, User Research"
 summary: "Creativity is a way of life-- a must have, not a nice to have. "
 coverImageUrl: ""

@@ -1,7 +1,7 @@
 ---
 title: "Alfred Kee"
 role: "Product Owner"
-tagList: ["people", "business"]
+tags: ["people", "business"]
 skill: "Agile, Consulting, Management"
 summary: "Discipline is the bridge between thought and accomplishment."
 coverImageUrl: ""

@@ -1,7 +1,7 @@
 ---
 title: "Amit Kiran"
 role: "Product Owner & Designer"
-tagList: ["people"]
+tags: ["people"]
 skill: "Interaction Design, User Research, Usability Testing, Information Architecture, Customer Satisfaction, Consulting, Marketing, Sales"
 summary: "I am thankful for laughter, except when milk comes out of my nose."
 coverImageUrl: ""

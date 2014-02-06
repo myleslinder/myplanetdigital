@@ -1,7 +1,7 @@
 ---
 title: "Tim Fernihough"
 role: "Co-founder and Head of Special Projects"
-tagList: ["people"]
+tags: ["people"]
 skill: "Drupal, Computer Science, LAMP, DevOps"
 summary: "No one can make you feel inferior without your consent."
 coverImageUrl: ""

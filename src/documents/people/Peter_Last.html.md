@@ -1,7 +1,7 @@
 ---
 title: "Peter Last"
 role: "Interaction Designer"
-tagList: ["people"]
+tags: ["people"]
 skill: "Interaction Design, User Research, Usability Testing"
 summary: "Age efficacite si quid agis"
 coverImageUrl: ""
