@@ -1,7 +1,7 @@
 ---
 title: "Rex Su"
 role: "Front-End Developer"
-tagList: ["people", "technology"]
+tags: ["people", "technology"]
 skill: "Javascript, Usability, Performance"
 summary: "You don't become a champion overnight, you become a champion way before that."
 coverImageUrl: ""

@@ -1,7 +1,7 @@
 ---
 title: "Erin Marchak"
 role: "Swiss-army Knife"
-tagList: ["people", "technology"]
+tags: ["people", "technology"]
 skill: "Product Ownership, Development, Puns"
 summary: "Robots need love too."
 coverImageUrl: ""

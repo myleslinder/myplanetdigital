@@ -6,7 +6,7 @@ tileImageUrl: "/images/articles/Contact_Us/tile.jpg"
 layout: default
 ---
 
-<a href="https://maps.google.ca/maps?q=252+Adelaide+Street+East,+Toronto,+ON,+Canada,+M5A+1N1" target="_blank">![Myplanet Digital, 252 Adelaide Street East, Toronto, ON, Canada, M5A 1N1](/images/articles/Contact_Us/map.jpg)</a>
+<a href="https://maps.google.ca/maps?q=252+Adelaide+Street+East,+Toronto,+ON,+Canada,+M5A+1N1" target="_blank">![Myplanet Digital, 252 Adelaide Street East, Toronto, ON, Canada, M5A 1N1](http://media.glassdoor.com/m/517554/myplanet-digital-office.jpg)</a>
 
 *   ## Toronto
 

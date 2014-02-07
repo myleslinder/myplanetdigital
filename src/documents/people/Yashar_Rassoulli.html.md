@@ -1,7 +1,7 @@
 ---
 title: "Yashar Rassoulli"
 role: "Technical Director"
-tagList: ["people"]
+tags: ["people"]
 skill: "Business Strategy, Technology"
 summary: "Cooperatively competitive."
 coverImageUrl: ""

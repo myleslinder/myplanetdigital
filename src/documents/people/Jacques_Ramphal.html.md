@@ -1,7 +1,7 @@
 ---
 title: "Jacques Ramphal"
 role: "Creative Rep"
-tagList: ["people"]
+tags: ["people"]
 skill: "Visual Interface Design, Print"
 summary: "You're only as good as your last haircut"
 coverImageUrl: ""

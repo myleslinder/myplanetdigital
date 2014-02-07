@@ -1,7 +1,7 @@
 ---
 title: "Corina Clarin"
 role: "Finance Lead"
-tagList: ["people", "business"]
+tags: ["people", "business"]
 skill: "Finance, Customer Satisfaction"
 summary: "Cash is Queen"
 coverImageUrl: ""

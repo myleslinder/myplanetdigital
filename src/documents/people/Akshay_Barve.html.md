@@ -1,7 +1,7 @@
 ---
 title: "Akshay Barve"
 role: "Quality Acceptance"
-tagList: ["people"]
+tags: ["people"]
 skill: "QA"
 summary: "Quality is not something you add like salt at the end!"
 coverImageUrl: ""

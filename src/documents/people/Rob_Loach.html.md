@@ -1,7 +1,7 @@
 ---
 title: "Rob Loach"
 role: "Technical Architect"
-tagList: ["people", "technology"]
+tags: ["people", "technology"]
 skill: "JavaScript, PHP, Ukulele"
 summary: "We are the music makers, we are the dreamers of dreams."
 coverImageUrl: ""

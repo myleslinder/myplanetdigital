@@ -1,7 +1,7 @@
 ---
 title: "Neil Taylor"
 role: "Front-End Developer"
-tagList: ["people", "technology"]
+tags: ["people", "technology"]
 skill: "Web Browsers, JavaScript, CSS, Jankbusting, Duck Tolling Retrievers"
 summary: "I've got Postgres on vinyl"
 authorImageUrl: "/images/avatar/neil-t.jpg"

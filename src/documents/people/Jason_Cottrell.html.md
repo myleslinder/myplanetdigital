@@ -1,7 +1,7 @@
 ---
 title: "Jason Cottrell"
 role: "Managing Director"
-tagList: ["people"]
+tags: ["people"]
 skill: "Industry Knowledge, Customer Satisfaction, Consulting"
 summary: "Steep for 3 minutes contemplating your favourite eternal mysteries."
 coverImageUrl: ""

@@ -1,7 +1,7 @@
 ---
 title: "Andrew Semuschak"
 role: "UI Designer"
-tagList: ["people", "design"]
+tags: ["people", "design"]
 skill: "Design, Usability, Interactive"
 summary: "I'm not saying it was portals. But it was portals."
 coverImageUrl: ""

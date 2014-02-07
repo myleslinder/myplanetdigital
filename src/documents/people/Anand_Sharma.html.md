@@ -1,7 +1,7 @@
 ---
 title: "Anand Sharma"
 role: "Myplanet Support Desk Concierge & Development Team Member"
-tagList: ["people", "technology"]
+tags: ["people", "technology"]
 skill: "JavaScript, Drupal, LAMP, DevOps, Accessibility"
 summary: "Rumours of my assimilation are *greatly* exaggerated."
 coverImageUrl: ""

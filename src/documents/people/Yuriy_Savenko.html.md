@@ -1,7 +1,7 @@
 ---
 title: "Yuriy Savenko"
 role: "Creative Lead"
-tagList: ["people", "technology", "design"]
+tags: ["people", "technology", "design"]
 skill: "Design, Usability"
 summary: "You can understand other people much better after you try to live their lives"
 coverImageUrl: ""

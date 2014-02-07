@@ -1,7 +1,7 @@
 ---
 title: "Djun M Kim"
 role: "Developer"
-tagList: ["people", "technology"]
+tags: ["people", "technology"]
 skill: "Drupal, Computer Science"
 summary: "Is this the best we can do?"
 coverImageUrl: ""

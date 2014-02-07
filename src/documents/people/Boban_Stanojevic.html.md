@@ -1,7 +1,7 @@
 ---
 title: "Boban Stanojevic"
 role: "Web Developer"
-tagList: ["people", "technology"]
+tags: ["people", "technology"]
 skill: "JavaScript, Drupal, Computer Science, LAMP, Performance, QA"
 summary: "Fortes Fortuna Adiuvat"
 coverImageUrl: ""

@@ -1,7 +1,7 @@
 ---
 title: "David Sabine"
 role: "Product Owner"
-tagList: ["people", "technology"]
+tags: ["people", "technology"]
 skill: "Agile, Consulting"
 summary: "observe, remember, understand, apply, analyze, evaluate, create"
 coverImageUrl: ""

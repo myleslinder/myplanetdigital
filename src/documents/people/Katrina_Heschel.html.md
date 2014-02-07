@@ -1,7 +1,7 @@
 ---
 title: "Katrina Heschel"
 role: "West Coast Office Lead"
-tagList: ["people"]
+tags: ["people"]
 skill: "HR, Recruiting, Employee Happiness, Marketing"
 summary: "Work hard, play hard or nap."
 coverImageUrl: ""

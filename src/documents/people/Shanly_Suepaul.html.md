@@ -1,7 +1,7 @@
 ---
 title: "Shanly Suepaul"
 role: "Co-founder and Team Member"
-tagList: ["people"]
+tags: ["people"]
 skill: "JavaScript, Drupal, Computer Science, LAMP, QA, Agile Methodologies"
 summary: "Inspect. Adapt."
 coverImageUrl: ""

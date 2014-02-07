@@ -1,7 +1,7 @@
 ---
 title: "Jerry Low"
 role: "Creative Rep"
-tagList: ["people", "technology"]
+tags: ["people", "technology"]
 skill: "Design, Usability, Javascript, Drupal, Agile"
 summary: "You'll never succeed staying in your comfort zone."
 coverImageUrl: ""

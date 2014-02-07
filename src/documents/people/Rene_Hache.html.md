@@ -1,7 +1,7 @@
 ---
 title: "Rene Hache"
 role: "Front-end Developer"
-tagList: ["people"]
+tags: ["people"]
 skill: "Drupal,  Front-End Development, Accessibility"
 summary: "Success is the result of perfection, hard work, learning from failure, loyalty, and persistence."
 coverImageUrl: ""

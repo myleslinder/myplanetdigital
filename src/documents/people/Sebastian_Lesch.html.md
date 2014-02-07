@@ -1,7 +1,7 @@
 ---
 title: "Sebastian Lesch"
 role: "Developer and Curriculum Developer"
-tagList: ["people", "technology"]
+tags: ["people", "technology"]
 skill: "Drupal"
 summary: "WoWoW"
 coverImageUrl: ""

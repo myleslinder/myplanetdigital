@@ -1,7 +1,7 @@
 ---
 title: "Anna Sunko"
 role: "Drupal Developer"
-tag: "people"
+tags: ["people"]
 skill: "Javascript, Drupal, Computer Science"
 summary: "It is quality rather than quantity that matters."
 coverImageUrl: ""
@@ -12,6 +12,7 @@ linkedin:
 github: "https://github.com/annasunko"
 layout: employee
 color: "pink"
+homepage: false
 ---
 
 ## Who I Am

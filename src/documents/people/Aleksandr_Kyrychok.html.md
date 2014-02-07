@@ -1,7 +1,7 @@
 ---
 title: "Aleksandr Kyrychok"
 role: "Developer"
-tagList: ["people"]
+tags: ["people"]
 skill: "Information Architecture, JavaScript, Drupal, Computer Science, LAMP, DevOps, Security, Performance, Agile Methodologies, Industry Knowledge, Consulting"
 summary: "You will get maximum from business if you really like it."
 coverImageUrl: ""

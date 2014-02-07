@@ -1,7 +1,7 @@
 ---
 title: "Anna Sunko"
 role: "Developer"
-tagList: ["people"]
+tags: ["people"]
 skill: "JavaScript, Drupal, Computer Science"
 summary: "It is quality rather than quantity that matters."
 coverImageUrl: ""

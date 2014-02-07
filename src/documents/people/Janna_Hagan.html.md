@@ -1,7 +1,7 @@
 ---
 title: "Janna Hagan"
 role: "In-House Designer"
-tagList: ["people"]
+tags: ["people"]
 skill: "Visual-Interaction Design, Marketing"
 summary: "What the world needs is more love and less paperwork"
 coverImageUrl: ""
