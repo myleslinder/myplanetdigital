@@ -1,5 +1,5 @@
 <div class="articles">
 	<% for file in @getFiles(tags: $has: @document.tag).toJSON(): %>
-		<%- @partial('tile', false, {'document': file}) %>
+		<%- @partial('tile', false, {'document': file, 'getUrl': @getUrl}) %>
 	<% end %>
 </div>
