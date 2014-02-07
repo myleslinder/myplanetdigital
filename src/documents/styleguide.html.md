@@ -8,11 +8,12 @@ authorImageUrl: "/images/avatar/shanly-suepaul.jpg"
 author: "Shanly Suepaul"
 date: "2015-6-19"
 layout: default
+size: 2x1
 ---
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur id tellus a risus accumsan imperdiet. Cras aliquet accumsan velit, ac iaculis elit placerat ut. Ut gravida lacus nulla, sed congue elit interdum vitae. Morbi faucibus quam augue, non blandit diam auctor nec. Nulla condimentum ante quis sagittis consectetur. Morbi laoreet, ipsum quis bibendum eleifend, urna risus pharetra neque, molestie luctus massa lectus sit amet lectus. Vestibulum quis dictum lacus. Suspendisse viverra elementum diam nec facilisis. Integer sed mi ut quam aliquam rhoncus. Donec enim diam, fringilla a tempus ac, malesuada a ante.
 
-![](/images/articles/Myplanet-welcome-to/welcome2TO-1.jpg)
+![](http://media.glassdoor.com/m/f0/20/c5/14/jay.jpg)
 <p class="underline"></p>
 
 ## Curabitur diam odio, egestas vitae
@@ -42,6 +43,6 @@ Cras mollis sem sit amet massa pretium faucibus. Donec tempus quam a [dapibus co
 
 Morbi at tincidunt neque. Suspendisse id gravida diam, eu accumsan nisl. Pellentesque eu luctus turpis, ut congue nisi. Sed fringilla nunc vel erat bibendum semper. Aliquam erat volutpat. Aliquam sodales, mi et ornare molestie, felis nulla lacinia mauris, ut convallis felis tortor eleifend velit. Phasellus ut sodales augue, eu suscipit eros. Quisque commodo mauris laoreet, dictum augue ut, vulputate lectus. Morbi consectetur ullamcorper orci, in luctus est dapibus eget. Fusce non convallis risus. Proin rutrum nec felis ut bibendum.
 
-![](/images/articles/Myplanet-welcome-to/welcome2TO-1.jpg)
+![](http://www.myplanetdigital.com/sites/default/files/images/20131102194809.jpeg)
 <p class="underline"><span>Suspendisse id gravida diam, eu accumsan nisl.</span></p>
 
