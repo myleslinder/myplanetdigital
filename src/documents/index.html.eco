@@ -7,16 +7,7 @@ pageSize: 12
 
 <div class="articles">
 <% for document in @getPageCollection('homepage').toJSON(): %>
-    <% if document.size is "2x1": %>
-        <article id="post" class="col-md-8 col-sm-12 col-xs-12">
-    <% else: %>
-        <article id="post" class="col-md-4 col-sm-6 col-xs-12">
-    <% end %>
-        <h1><a href='<%=document.url%>'><%= document.title %></a></h1>
-        <div class="post-content">
-            <%- document.summary %>
-        </div>
-    </article>
+    <%- @partial('tile', false, {'document': document}) %>
 <% end %>
 </div>
 

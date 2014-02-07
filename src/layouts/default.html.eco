@@ -28,11 +28,13 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li><a href="/">All articles</a></li>
-                        <li><a href="/careers">Our company</a></li>
-                        <li><a href="/culture">Our work</a></li>
-                        <li><a href="/design">Our people</a></li>
-                        <li><a href="/people">careers opps</a></li>
-                        <li><a href="/technology">Design thicking</a></li>
+                        <li><a href="#">Our company</a></li>
+                        <li><a href="#">Our work</a></li>
+                        <li><a href="/tags/people.html">Our people</a></li>
+                        <li><a href="#">careers opps</a></li>
+                        <li><a href="/tags/design.html">Design thicking</a></li>
+                        <li><a href="/tags/technology.html">Tech thicking</a></li>
+                        <li><a href="/tags/business.html">Business thicking</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li>
