@@ -55,7 +55,7 @@
         </div>
 
 
-        <%- @getBlock('styles').add(@getUrl(@site.scripts)).toHTML() %>
+        <%- @getBlock('scripts').add(@getUrl(@site.scripts)).toHTML() %>
 
     </body>
 </html>
