@@ -3,7 +3,7 @@
 <% else: %>
     <article class="col-md-4 col-sm-6 col-xs-12">
 <% end %>
-    <h1><a href='<%=@document.url%>'><%= @document.title %></a></h1>
+    <h1><a href='<%=@getUrl(@document.url)%>'><%= @document.title %></a></h1>
     <div class="post-content">
         <%- @document.summary %>
     </div>

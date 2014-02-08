@@ -2,7 +2,7 @@ module.exports =
 	templateData:
 		site:
 			title: 'Myplanet Digital'
-			url: '/swat'
+			url: ''
 			styles: [
 				'/vendor/components-bootstrap/css/bootstrap.css'
 				'/vendor/components-bootstrap/css/bootstrap-theme.css'
