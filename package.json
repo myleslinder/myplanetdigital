@@ -18,7 +18,8 @@
     "docpad-plugin-less": "~2.4.1",
     "docpad-plugin-tags": "~2.0.7",
     "docpad-plugin-partials": "~2.8.1",
-    "docpad-plugin-geturl": "~2.1.1"
+    "docpad-plugin-geturl": "~2.1.1",
+    "docpad-plugin-associatedfiles": "~2.1.4"
   },
   "main": "node_modules/docpad/bin/docpad-server",
   "scripts": {

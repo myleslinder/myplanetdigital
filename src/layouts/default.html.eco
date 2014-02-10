@@ -1,61 +1,58 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-    <head>
-        <title><%= @document.title %> | <%= @site.title %></title>
-        <%- @getBlock("meta").toHTML() %>
-        <%- @getBlock('styles').add(@getUrl(@site.styles)).toHTML() %>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    </head>
-    <body>
-        <div class="container">
-            <nav class="navbar navbar-default" role="navigation">
-                <div class="navbar-header">
-                    <button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a href="<%- @getUrl('/') %>" class="navbar-brand" title="Myplanet Digital"><span>Myplanet Digital</span></a>
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a href="<%- @getUrl('/') %>">All articles</a></li>
-                        <li><a href="#">Our company</a></li>
-                        <li><a href="#">Our work</a></li>
-                        <li><a href="<%- @getUrl('/tags/people') %>">Our people</a></li>
-                        <li><a href="#">careers opps</a></li>
-                        <li><a href="<%- @getUrl('/tags/design') %>">Design thicking</a></li>
-                        <li><a href="<%- @getUrl('/tags/technology') %>">Tech thicking</a></li>
-                        <li><a href="<%- @getUrl('/tags/business') %>">Business thicking</a></li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="<%- @getUrl('/contact') %>">
-                                <i class="fa fa-twitter"></i>
-                                <span>Contact</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"><![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9"><![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js"><!--<![endif]-->
+	<head>
 
-            <% if @document.title: %>
-                <h1><%= @document.title %></h1>
-            <% end %>
+		<title><%= @document.title %> | <%= @site.title %></title>
+		<%- @getBlock("meta").toHTML() %>
+		<%- @getBlock('styles').add(@getUrl(@site.styles)).toHTML() %>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title></title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	</head>
+	<body>
+		<div class="container">
+			<nav class="navbar navbar-default" role="navigation">
+				<div class="navbar-header">
+					<button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a href="<%- @getUrl('/') %>" class="navbar-brand" title="Myplanet Digital"><span>Myplanet Digital</span></a>
+				</div>
+				<div class="navbar-collapse collapse">
+					<ul class="nav navbar-nav">
+						<li><a href="<%- @getUrl('/') %>">All articles</a></li>
+						<li><a href="#">Our company</a></li>
+						<li><a href="#">Our work</a></li>
+						<li><a href="<%- @getUrl('/tags/people') %>">Our people</a></li>
+						<li><a href="#">careers opps</a></li>
+						<li><a href="<%- @getUrl('/tags/design') %>">Design thicking</a></li>
+						<li><a href="<%- @getUrl('/tags/technology') %>">Tech thicking</a></li>
+						<li><a href="<%- @getUrl('/tags/business') %>">Business thicking</a></li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<li>
+							<a href="<%- @getUrl('/contact') %>">
+								<i class="fa fa-twitter"></i>
+								<span>Contact</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</nav>
 
-            <%- @content %>
-        </div>
+			<%- @content %>
 
+		</div>
 
-        <%- @getBlock('scripts').add(@getUrl(@site.scripts)).toHTML() %>
+		<%- @getBlock('scripts').add(@getUrl(@site.scripts)).toHTML() %>
 
-    </body>
+	</body>
 </html>
