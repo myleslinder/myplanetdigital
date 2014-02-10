@@ -15,4 +15,8 @@ out/
 # =====================================
 # CUSTOM MODIFICATIONS
 
+# Bower dependencies
 src/raw/vendor
+
+# Content from the external repository
+src/README.md
