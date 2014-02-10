@@ -10,7 +10,7 @@ twitter: "http://www.twitter.com/DaveSabine"
 dribbble: 
 linkedin: "http://ca.linkedin.com/in/davidsabine"
 github:
-layout: employee
+layout: person
 date: "2012-2-8"
 ---
 

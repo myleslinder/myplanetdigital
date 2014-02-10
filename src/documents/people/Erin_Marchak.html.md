@@ -11,7 +11,7 @@ dribbble:
 linkedin:
 github: "https://github.com/emarchak"
 stackoverflow:
-layout: employee
+layout: person
 date: "2013-10-28"
 ---
 

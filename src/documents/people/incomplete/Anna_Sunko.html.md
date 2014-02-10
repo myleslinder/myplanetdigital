@@ -10,7 +10,7 @@ twitter:
 dribbble: 
 linkedin:
 github: "https://github.com/annasunko"
-layout: employee
+layout: person
 color: "pink"
 homepage: false
 ---

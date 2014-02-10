@@ -10,7 +10,7 @@ twitter: "https://twitter.com/ezufelt"
 dribbble: 
 linkedin: "http://ca.linkedin.com/in/ezufelt/"
 github:
-layout: employee
+layout: person
 date: "2012-11-1"
 ---
 

@@ -10,7 +10,7 @@ twitter: "https://twitter.com/ih2502mk"
 dribbble:
 linkedin: 
 github: 
-layout: employee
+layout: person
 date: "2011-8-8"
 ---
 

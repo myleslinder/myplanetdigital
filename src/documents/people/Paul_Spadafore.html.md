@@ -10,7 +10,7 @@ twitter:
 dribbble:
 linkedin:
 github:
-layout: employee
+layout: person
 date: "2013-1-1"
 ---
 

@@ -10,7 +10,7 @@ twitter: "https://twitter.com/imkhoja"
 dribbble:
 linkedin: "http://ca.linkedin.com/pub/imran-khoja/9/87a/b45"
 github: "https://github.com/peoplesoft"
-layout: employee
+layout: person
 color: "black"
 ---
 

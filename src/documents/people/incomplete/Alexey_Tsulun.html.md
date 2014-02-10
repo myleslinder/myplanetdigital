@@ -10,7 +10,7 @@ twitter:
 dribbble:
 linkedin:
 github: "https://github.com/TsulunAleksey"
-layout: employee
+layout: person
 color: "green"
 homepage: false
 ---

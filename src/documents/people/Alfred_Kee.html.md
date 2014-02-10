@@ -10,7 +10,7 @@ twitter: "http://twitter.com/salsasian"
 dribbble:
 linkedin: "http://ca.linkedin.com/in/alfredkee"
 github:
-layout: employee
+layout: person
 date: "2013-4-16"
 ---
 

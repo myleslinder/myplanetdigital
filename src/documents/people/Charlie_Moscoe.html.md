@@ -10,7 +10,7 @@ twitter: "https://twitter.com/cmoscoe"
 dribbble: 
 linkedin: "http://ca.linkedin.com/in/charliemoscoe/"
 github:
-layout: employee
+layout: person
 date: "2013-5-16"
 ---
 

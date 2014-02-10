@@ -10,7 +10,7 @@ twitter: "https://twitter.com/inabeana"
 dribbble: 
 linkedin: "http://www.linkedin.com/in/corinaclarin"
 github:
-layout: employee
+layout: person
 date: "2011-10-19"
 ---
 

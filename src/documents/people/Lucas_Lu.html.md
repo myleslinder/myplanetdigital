@@ -10,7 +10,7 @@ twitter: https://twitter.com/loocaslu
 dribbble: 
 linkedin: "http://www.linkedin.com/in/lucaslu"
 github: ""
-layout: employee
+layout: person
 date: "2013-12-15"
 ---
 

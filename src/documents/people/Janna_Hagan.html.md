@@ -10,7 +10,7 @@ twitter:
 dribbble: http://dribbble.com/_jannalynn
 linkedin: ""
 github: ""
-layout: employee
+layout: person
 date: "2013-11-1"
 ---
 

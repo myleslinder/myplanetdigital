@@ -10,7 +10,7 @@ twitter:
 dribbble: 
 linkedin:
 github: "https://github.com/anna-tsulun"
-layout: employee
+layout: person
 color: "pink"
 ---
 

@@ -11,7 +11,7 @@ dribbble:
 linkedin: "http://www.linkedin.com/pub/wivorn-chowattanakul/26/90b/aa5"
 github: "https://github.com/nroviw"
 stackoverflow:
-layout: employee
+layout: person
 date: "2013-1-1"
 ---
 

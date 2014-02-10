@@ -10,7 +10,7 @@ twitter:
 dribbble: 
 linkedin: "http://ca.linkedin.com/in/jenniferleavey"
 github: ""
-layout: employee
+layout: person
 date: "2013-7-1"
 ---
 

@@ -8,7 +8,7 @@ twitter:
 dribbble:
 linkedin:
 github:
-layout: employee
+layout: person
 color: "pink"
 homepage: false
 ---

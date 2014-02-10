@@ -10,7 +10,7 @@ twitter: "https://twitter.com/natearcher"
 dribbble:
 linkedin: "ca.linkedin.com/in/nlarcher/"
 github:
-layout: employee
+layout: person
 date: "2012-5-8"
 ---
 

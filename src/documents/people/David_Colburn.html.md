@@ -10,7 +10,7 @@ twitter: "https://twitter.com/dbcolburn"
 dribbble: 
 linkedin: "http://www.linkedin.com/in/dbcolburn"
 github: "https://github.com/davidcol"
-layout: employee
+layout: person
 date: "2013-4-1"
 ---
 

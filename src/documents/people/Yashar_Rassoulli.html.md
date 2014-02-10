@@ -10,7 +10,7 @@ twitter: "http://twitter.com/rassoulli"
 dribbble: 
 linkedin: "http://www.linkedin.com/in/yasharrassoulli"
 github: "https://github.com/yrassoulli"
-layout: employee
+layout: person
 ---
 
 ## Who I am

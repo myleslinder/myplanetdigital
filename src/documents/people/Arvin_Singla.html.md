@@ -10,7 +10,7 @@ twitter: "http://twitter.com/arvinsingla"
 dribbble: "http://dribbble.com/amitjakhu"
 linkedin: 
 github: "http://github.com/arvinsingla"
-layout: employee
+layout: person
 color: "black"
 ---
 

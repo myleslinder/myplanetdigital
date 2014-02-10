@@ -10,7 +10,7 @@ twitter: "https://twitter.com/jeremylichtman"
 dribbble:
 linkedin: "http://ca.linkedin.com/in/jeremylichtman/"
 github: "http://github.com/jeremylichtman"
-layout: employee
+layout: person
 color: "black"
 date: "2013-5-17"
 ---

@@ -10,7 +10,7 @@ twitter:
 dribbble: 
 linkedin: ""
 github: "https://github.com/annasunko"
-layout: employee
+layout: person
 date: "2013-2-1"
 ---
 

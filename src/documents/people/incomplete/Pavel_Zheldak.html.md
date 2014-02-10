@@ -10,7 +10,7 @@ twitter: "https://twitter.com/yell0wman_"
 dribbble:
 linkedin:
 github: "https://github.com/yell0wman"
-layout: employee
+layout: person
 color: "green"
 ---
 

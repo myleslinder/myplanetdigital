@@ -10,7 +10,7 @@ twitter: "http://twitter.com/benjamin_woll"
 dribbble: 
 linkedin: "http://www.linkedin.com/pub/benjamin-woll/40/497/4a0"
 github: "https://github.com/benjamin-woll"
-layout: employee
+layout: person
 date: "2011-11-16"
 ---
 

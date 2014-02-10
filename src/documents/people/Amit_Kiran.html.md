@@ -10,7 +10,7 @@ twitter: "http://twitter.com/amitkiran82"
 dribbble:
 linkedin: "http://www.linkedin.com/in/amitkiran"
 github:
-layout: employee
+layout: person
 color: "black"
 ---
 

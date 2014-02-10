@@ -10,7 +10,7 @@ twitter: "https://twitter.com/sllychn"
 dribbble: "http://dribbble.com/sllychn"
 linkedin: "http://ca.linkedin.com/in/sallycychan"
 github:
-layout: employee
+layout: person
 color: "black"
 ---
 

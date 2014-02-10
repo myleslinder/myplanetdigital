@@ -10,7 +10,7 @@ twitter: "https://twitter.com/rex_ds"
 dribbble:
 linkedin: "http://ca.linkedin.com/in/rexsu/"
 github: "https://github.com/d9su"
-layout: employee
+layout: person
 date: "2013-1-1"
 ---
 

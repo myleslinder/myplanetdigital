@@ -4,13 +4,11 @@ role: "Lead, Marketing & Education"
 tags: ["people"]
 skill: "Marketing, Education"
 summary: "Lionel made me do it."
-coverImageUrl: ""
-authorImageUrl: "/images/avatar/steph-brown.jpg"
 twitter: ""
 dribbble:
 linkedin: "http://ca.linkedin.com/in/stephbrown2/"
 github:
-layout: employee
+layout: person
 date: "2012-4-16"
 ---
 

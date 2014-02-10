@@ -10,7 +10,7 @@ twitter:
 dribbble: "http://www.dribbble.com/andsem"
 linkedin: "http://ca.linkedin.com/in/andrewsemuschak"
 github:
-layout: employee
+layout: person
 date: "2012-3-15"
 ---
 

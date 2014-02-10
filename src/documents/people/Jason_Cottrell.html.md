@@ -10,7 +10,7 @@ twitter: "https://twitter.com/jasoncott"
 dribbble:
 linkedin: "http://www.linkedin.com/in/jasoncottrell"
 github:
-layout: employee
+layout: person
 date: "2009-4-16"
 ---
 

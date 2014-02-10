@@ -10,7 +10,7 @@ twitter: "https://twitter.com/sahilgera23"
 dribbble:
 linkedin: "http://www.linkedin.com/pub/sahil-gera/23/845/a07"
 github:
-layout: employee
+layout: person
 date: "2012-5-8"
 ---
 

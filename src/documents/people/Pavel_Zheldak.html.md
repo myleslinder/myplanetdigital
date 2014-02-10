@@ -10,7 +10,7 @@ twitter: "https://twitter.com/yell0wman_"
 dribbble:
 linkedin: ""
 github: "https://github.com/yell0wman"
-layout: employee
+layout: person
 date: "2012-4-16"
 ---
 

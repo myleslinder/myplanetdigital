@@ -10,7 +10,7 @@ twitter: "https://twitter.com/renehache"
 dribbble:
 linkedin: "https://www.linkedin.com/in/renehache"
 github: "https://github.com/rhache"
-layout: employee
+layout: person
 date: "2012-4-16"
 ---
 

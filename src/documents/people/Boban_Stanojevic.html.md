@@ -10,7 +10,7 @@ twitter: "https://twitter.com/mrlcf"
 dribbble:
 linkedin: "http://rs.linkedin.com/in/bobans/"
 github: "https://github.com/stanojevicboban"
-layout: employee
+layout: person
 date: "2012-5-8"
 ---
 

@@ -10,7 +10,7 @@ twitter: "https://twitter.com/shanlyj"
 dribbble:
 linkedin: "http://www.linkedin.com/profile/view?id=61522444"
 github: "https://github.com/shanly-suepaul"
-layout: employee
+layout: person
 color: "black"
 ---
 

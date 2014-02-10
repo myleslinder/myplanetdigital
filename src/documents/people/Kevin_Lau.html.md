@@ -10,7 +10,7 @@ twitter: "https://twitter.com/kevinhlau"
 dribbble:
 linkedin: "http://ca.linkedin.com/pub/kevin-lau/4/2b2/ba0/"
 github:
-layout: employee
+layout: person
 color: "black"
 ---
 

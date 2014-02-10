@@ -10,7 +10,7 @@ twitter: "https://twitter.com/campbellstuart"
 dribbble:
 linkedin: "http://www.linkedin.com/in/stuartalancampbell"
 github:
-layout: employee
+layout: person
 date: "2013-9-3"
 ---
 

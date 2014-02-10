@@ -10,7 +10,7 @@ twitter: "https://twitter.com/RobLoach"
 dribbble: "https://dribbble.com/robloach"
 linkedin: "http://ca.linkedin.com/in/roboach/"
 github: "https://github.com/robloach"
-layout: employee
+layout: person
 date: "2013-6-2"
 ---
 

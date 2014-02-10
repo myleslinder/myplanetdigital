@@ -10,7 +10,7 @@ twitter: "https://twitter.com/VibhuArul"
 dribbble:
 linkedin: "http://www.linkedin.com/pub/vibhu-arulsothynathan/19/475/2b6"
 github:
-layout: employee
+layout: person
 date: "2013-8-16"
 ---
 

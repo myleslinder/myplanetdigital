@@ -7,7 +7,7 @@ summary: "I've got Postgres on vinyl"
 authorImageUrl: "/images/avatar/neil-t.jpg"
 linkedin: "http://www.jankbusters.com"
 github: "https://github.com/neilbaylorrulez"
-layout: employee
+layout: person
 date: "2013-3-21"
 ---
 

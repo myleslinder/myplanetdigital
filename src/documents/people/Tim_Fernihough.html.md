@@ -10,7 +10,7 @@ twitter: "https://twitter.com/timfernihough"
 dribbble:
 linkedin: "http://ca.linkedin.com/in/timfernihough/"
 github: "https://github.com/timfernihough"
-layout: employee
+layout: person
 date: "2007-9-21"
 ---
 

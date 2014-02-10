@@ -10,7 +10,7 @@ twitter: "https://twitter.com/ruthtupe"
 dribbble:
 linkedin: "http://www.linkedin.com/in/ruthtupe"
 github:
-layout: employee
+layout: person
 date: "2012-5-8"
 ---
 

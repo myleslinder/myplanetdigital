@@ -10,7 +10,7 @@ twitter:
 dribbble: 
 linkedin: "http://ca.linkedin.com/pub/peter-last/28/760/b50/"
 github: ""
-layout: employee
+layout: person
 date: "2013-7-1"
 ---
 

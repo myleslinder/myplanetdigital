@@ -10,7 +10,7 @@ twitter: "https://twitter.com/jacquesramphal"
 dribbble: "http://dribbble.com/jacquesramphal"
 linkedin: "http://www.linkedin.com/in/jacquesramphal"
 github:
-layout: employee
+layout: person
 color: "black"
 ---
 
