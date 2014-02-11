@@ -18,5 +18,9 @@ out/
 # Bower dependencies
 src/raw/vendor
 
-# Content from the external repository
+# Ignore select content from the external repository
 src/README.md
+src/documents/people/*
+!src/documents/people/a*
+src/files/associated-files/*
+!src/files/associated-files/a*

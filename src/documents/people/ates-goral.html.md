@@ -1,11 +1,11 @@
 ---
 title: "Ates Goral"
 role: "Front-End Developer"
-tags: ["people", "technology"]
+tags: ["people"]
 skill: "JavaScript, Computer Science, LAMP, Interaction Design, Accessibility"
 summary: "Who is testing the tests?"
 coverImageUrl: ""
-authorImageUrl: "/images/avatar/ates-g.jpg"
+authorImageUrl: ""
 twitter: "https://twitter.com/atesgoral"
 dribbble:
 linkedin: "http://ca.linkedin.com/in/atesgoral"

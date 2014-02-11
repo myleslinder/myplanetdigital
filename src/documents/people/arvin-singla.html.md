@@ -5,9 +5,9 @@ tags: ["people"]
 skill: "JavaScript, Drupal, Computer Science, LAMP"
 summary: "All right... It's Saturday night. I've got no date, a 2-liter bottle of Shasta, and my all Rush mix tape. Let's rock!"
 coverImageUrl: ""
-authorImageUrl: "/images/avatar/arvin.jpg"
+authorImageUrl: ""
 twitter: "http://twitter.com/arvinsingla"
-dribbble: "http://dribbble.com/amitjakhu"
+dribbble: ""
 linkedin: 
 github: "http://github.com/arvinsingla"
 layout: person

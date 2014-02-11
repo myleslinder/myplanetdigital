@@ -1,24 +1,23 @@
 ---
-title: "Anna Tsulún"
-role: "Developer"
+title: "Anna Tsulun"
+role: "Drupal Developer"
 tags: ["people"]
-skill: "JavaScript, Drupal, Computer Science"
+skill: "Javascript, Drupal, Computer Science"
 summary: "Nothing worth having comes easy."
 coverImageUrl: ""
-authorImageUrl: "/images/avatar/MPD-Anna-Tsulun.jpg"
-twitter: 
+authorImageUrl: ""
+twitter:
 dribbble: 
-linkedin: ""
+linkedin:
 github: "https://github.com/anna-tsulun"
 layout: person
-date: "2012-2-1"
+color: "pink"
 ---
 
-## Who I am
+## Who I Am
 
-Hi, I'm Anna and I work remotely from Chernihiv, Ukraine. I have a M. S. in Computer Science from Chernihiv State Technology University. I've been working for Myplanet since 2012. In my free time I enjoy travelling and learning languages.
+I've been working with Myplanet since 2012 remotely from Chernihiv, Ukraine. I have a M. S. in Computer Science from Chernihiv State Technology University. In my free time I enjoy travelling and learning languages.
 
 ## What I do
 
-At Myplanet I work as a member of Strategy and Support Group. I enjoy working in the team and sharing knowledge inside the group. I like facing challenges and learning new technologies.
-
+At Myplanet I work as a member of Strategy and Support Group. I enjoy working in the team and sharing knowledge within the group. I like facing challenges and learning new technologies.
