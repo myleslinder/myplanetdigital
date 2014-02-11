@@ -1,0 +1,18 @@
+---
+layout: default
+---
+
+<% for file in @getDocument().getAssociatedFiles().toJSON(): %>
+	<% cover = file if file.name is 'cover.jpg' %>
+<% end %>
+
+<% if @document.title?: %>
+	<h1><%= @document.title %></h1>
+<% end %>
+
+<%- @content %>
+
+<% if cover?: %>
+	<h3>Cover</h3>
+	<img src="<%= @getUrl(cover.url) %>" title="<%= @document.title %>'s Cover image" />
+<% end %>

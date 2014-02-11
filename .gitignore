@@ -22,5 +22,10 @@ src/raw/vendor
 src/README.md
 src/documents/people/*
 !src/documents/people/a*
+src/documents/article/*
+!src/documents/article/A*
+src/documents/careers/*
+!src/documents/careers/A*
 src/files/associated-files/*
 !src/files/associated-files/a*
+!src/files/associated-files/A*
