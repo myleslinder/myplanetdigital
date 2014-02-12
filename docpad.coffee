@@ -15,11 +15,14 @@ module.exports =
 				'/scripts/main.js'
 			]
 
+	# Set up collections to query and sort documents.
 	collections:
 		homepage: (database) ->
 			database.findAllLive({relativeOutDirPath: $in: ['people', 'article']})
 
 	plugins:
+
+		# Provide the tagged pages
 		tags:
 			extension: '.html.eco'
 			injectDocumentHelper: (document) ->
@@ -27,3 +30,18 @@ module.exports =
 					layout: 'default'
 					data: "<%- @partial('tag', @) %>"
 				)
+
+		# Formatting for the dates
+		moment:
+			formats: [
+				{
+					formatted: 'dateMedium'
+					format: 'MMMM Do YYYY'
+					raw: 'date'
+				}
+				{
+					formatted: 'dateLong'
+					format: 'dddd, MMM DD, YYYY'
+					raw: 'date'
+				}
+			]
