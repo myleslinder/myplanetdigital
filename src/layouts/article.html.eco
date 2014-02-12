@@ -10,6 +10,25 @@ layout: default
 	<h1><%= @document.title %></h1>
 <% end %>
 
+<% if @document.author: %>
+	<% if @document.authorImageUrl: %>
+		<a href="people/<%= @document.author.replace('_',  '-')%>">
+			<img src="<%= @document.authorImageUrl %>" />
+		</a>
+	<% end %>
+	<a href="people/<%= @document.author.replace('_', '-') %>">
+		<%= @document.author %>
+	</a>
+<% end %>
+
+<% if @document.date?: %>
+	<%= @moment(@document.date).format('dddd, MMM DD, YYYY') %>
+<% end %>
+
+<% for tag in @document.tags or []: %>
+	<a class="tag" href="/tags/<%= tag %>"><%= tag %></a>
+<% end %>
+
 <%- @content %>
 
 <% if cover?: %>
