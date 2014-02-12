@@ -35,6 +35,7 @@ module.exports = (grunt) ->
 		clean:
 			content: [
 				'build'
+				'src/.gitignore' # Don't need content's ignore file.
 			]
 
 		# Remove all local content from the content repository.
