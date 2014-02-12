@@ -21,8 +21,8 @@ layout: default
 	</a>
 <% end %>
 
-<% if @document.date?: %>
-	<%= @moment(@document.date).format('dddd, MMM DD, YYYY') %>
+<% if @document.dateLong?: %>
+	<%= @document.dateLong %>
 <% end %>
 
 <% for tag in @document.tags or []: %>
