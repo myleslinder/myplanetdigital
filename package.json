@@ -32,7 +32,7 @@
     "docpad-plugin-marked": "~2.2.0",
     "bower": "~1",
     "grunt": "~0.4.2",
-    "grunt-git": "~0.2.5",
+    "grunt-git": "https://github.com/RobLoach/grunt-git/tarball/clean",
     "grunt-contrib-copy": "~0.5.0",
     "grunt-contrib-clean": "~0.5.0"
   }
