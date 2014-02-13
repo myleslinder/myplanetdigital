@@ -18,17 +18,35 @@ module.exports =
 	# Set up collections to query and sort documents.
 	collections:
 		homepage: (database) ->
-			database.findAllLive({relativeOutDirPath: $in: ['people', 'article']})
+			database.findAllLive({relativeOutDirPath: $in: ['people', 'article', 'careers']}, {date: -1})
+		careers: (database) ->
+			database.findAllLive({tags: $has: 'careers'}, {date: -1})
+		design: (database) ->
+			database.findAllLive({tags: $has: 'design'}, {date: -1})
+		people: (database) ->
+			database.findAllLive({tags: $has: 'people'}, {date: -1})
+		business: (database) ->
+			database.findAllLive({tags: $has: 'business'}, {date: -1})
+		technology: (database) ->
+			database.findAllLive({tags: $has: 'technology'}, {date: -1})
+		culture: (database) ->
+			database.findAllLive({tags: $has: 'culture'}, {date: -1})
+		events: (database) ->
+			database.findAllLive({tags: $has: 'events'}, {date: -1})
 
 	plugins:
 
 		# Provide the tagged pages
 		tags:
-			extension: '.html.eco'
+			extension: '.html'
 			injectDocumentHelper: (document) ->
+				tag = document.get('tag')
 				document.setMeta(
-					layout: 'default'
-					data: "<%- @partial('tag', @) %>"
+					layout: 'articles'
+					isPaged: true
+					pagedCollection: tag
+					pageSize: 6
+					title: tag.charAt(0).toUpperCase() + tag.slice(1)
 				)
 
 		# Formatting for the dates

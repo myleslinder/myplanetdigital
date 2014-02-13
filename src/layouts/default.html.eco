@@ -32,7 +32,7 @@
 						<li><a href="#">Our company</a></li>
 						<li><a href="#">Our work</a></li>
 						<li><a href="<%- @getUrl('/tags/people') %>">Our people</a></li>
-						<li><a href="#">careers opps</a></li>
+						<li><a href="<%- @getUrl('/tags/careers') %>">careers opps</a></li>
 						<li><a href="<%- @getUrl('/tags/design') %>">Design thicking</a></li>
 						<li><a href="<%- @getUrl('/tags/technology') %>">Tech thicking</a></li>
 						<li><a href="<%- @getUrl('/tags/business') %>">Business thicking</a></li>
