@@ -1,12 +1,9 @@
 ---
 layout: 'default'
-isPaged: true
-pagedCollection: 'homepage'
-pageSize: 12
 ---
 
 <div class="articles">
-    <% for document in @getPageCollection('homepage').toJSON(): %>
+    <% for document in @getPageCollection(@document.pagedCollection).toJSON(): %>
         <%- @partial('tile', false, {'document': document, 'getUrl': @getUrl}) %>
     <% end %>
 </div>
