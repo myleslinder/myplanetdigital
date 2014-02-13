@@ -28,14 +28,14 @@
 				</div>
 				<div class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">
-						<li><a href="<%- @getUrl('/') %>">All articles</a></li>
-						<li><a href="#">Our company</a></li>
-						<li><a href="#">Our work</a></li>
-						<li><a href="<%- @getUrl('/tags/people') %>">Our people</a></li>
+						<li><a href="<%- @getUrl('/') %>">all articles</a></li>
+						<li><a href="<%- @getUrl('/tags/company') %>">our company</a></li>
+						<li><a href="<%- @getUrl('/tags/work') %>">our work</a></li>
+						<li><a href="<%- @getUrl('/tags/people') %>">our people</a></li>
 						<li><a href="<%- @getUrl('/tags/careers') %>">careers opps</a></li>
-						<li><a href="<%- @getUrl('/tags/design') %>">Design thicking</a></li>
-						<li><a href="<%- @getUrl('/tags/technology') %>">Tech thicking</a></li>
-						<li><a href="<%- @getUrl('/tags/business') %>">Business thicking</a></li>
+						<li><a href="<%- @getUrl('/tags/design') %>">design thinking</a></li>
+						<li><a href="<%- @getUrl('/tags/technology') %>">tech thinking</a></li>
+						<li><a href="<%- @getUrl('/tags/business') %>">business thinking</a></li>
 					</ul>
 				</div>
 			</nav>
