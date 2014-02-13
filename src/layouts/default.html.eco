@@ -52,7 +52,8 @@
 
 		</div>
 
-		<%- @getBlock('scripts').add(@getUrl(@site.scripts)).toHTML() %>
+		<%- @partial('footer') %>
 
+		<%- @getBlock('scripts').add(@getUrl(@site.scripts)).toHTML() %>
 	</body>
 </html>
