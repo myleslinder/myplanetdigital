@@ -37,14 +37,6 @@
 						<li><a href="<%- @getUrl('/tags/technology') %>">Tech thicking</a></li>
 						<li><a href="<%- @getUrl('/tags/business') %>">Business thicking</a></li>
 					</ul>
-					<ul class="nav navbar-nav navbar-right">
-						<li>
-							<a href="<%- @getUrl('/contact') %>">
-								<i class="fa fa-twitter"></i>
-								<span>Contact</span>
-							</a>
-						</li>
-					</ul>
 				</div>
 			</nav>
 
