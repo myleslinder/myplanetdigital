@@ -17,8 +17,11 @@ module.exports =
 
 	# Set up collections to query and sort documents.
 	collections:
+		# The homepage collection to bring up all content, ordered by date.
 		homepage: (database) ->
 			database.findAllLive({relativeOutDirPath: $in: ['people', 'article', 'careers']}, {date: -1})
+
+		# Create a collection for each available tag.
 		careers: (database) ->
 			database.findAllLive({tags: $has: 'careers'}, {date: -1})
 		design: (database) ->
@@ -33,6 +36,11 @@ module.exports =
 			database.findAllLive({tags: $has: 'culture'}, {date: -1})
 		events: (database) ->
 			database.findAllLive({tags: $has: 'events'}, {date: -1})
+
+		# Rendered content into individual segmented HTML pages.
+		content: (database) ->
+			database.findAllLive({relativeOutDirPath: $in: ['people', 'article', 'careers']}).on "add", (model) ->
+				model.setMetaDefaults({additionalLayouts: 'content'})
 
 	plugins:
 

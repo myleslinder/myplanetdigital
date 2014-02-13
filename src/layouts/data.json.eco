@@ -1,1 +1,0 @@
-<%- JSON.stringify(content: @content, title: @document.title, role: @document.role, skill: @document.skill) %>

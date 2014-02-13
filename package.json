@@ -10,7 +10,7 @@
     "docpad": "~6",
     "docpad-plugin-eco": "~2.0.3",
     "docpad-plugin-livereload": "~2.5.6",
-    "docpad-plugin-multiplelayouts": "~2",
+    "docpad-plugin-multiplelayouts": "~2.0.3",
     "docpad-plugin-paged": "~2.2.4",
     "docpad-plugin-cleanurls": "~2.6.2",
     "docpad-plugin-raw": "~2.3.2",
