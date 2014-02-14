@@ -12,11 +12,11 @@ layout: default
 
 <% if @document.author: %>
 	<% if @document.authorImageUrl: %>
-		<a href="people/<%= @document.author.replace('_',  '-')%>">
-			<img src="<%= @document.authorImageUrl %>" />
+		<a href="<%= @getUrl("/people/" + @document.author.replace('_',  '-')) %>">
+			<img src="<%= @getUrl(@document.authorImageUrl) %>" />
 		</a>
 	<% end %>
-	<a href="people/<%= @document.author.replace('_', '-') %>">
+	<a href="<%= @getUrl("/people/" + @document.author.replace('_', '-')) %>">
 		<%= @document.author %>
 	</a>
 <% end %>
@@ -26,7 +26,7 @@ layout: default
 <% end %>
 
 <% for tag in @document.tags or []: %>
-	<a class="tag" href="/tags/<%= tag %>"><%= tag %></a>
+	<a class="tag" href="<%= @getUrl("/tags/" + tag) %>"><%= tag %></a>
 <% end %>
 
 <%- @content %>
