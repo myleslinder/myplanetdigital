@@ -98,18 +98,24 @@ module.exports =
 			injectDocumentHelper: (document) ->
 				tag = document.get('tag')
 				name = tag.charAt(0).toUpperCase() + tag.slice(1)
-				switch name
-					when "Design", "Business"
-						name += " thinking"
-					when "Technology"
-						name = "Tech thinking"
-				document.setMeta
+				meta = {
 					layout: 'articles'
 					isPaged: true
 					pagedCollection: tag
 					pageSize: 6
-					title: name
-					menu: 2
+				}
+				switch name
+					when "Design", "Business"
+						meta.title = name + " thinking"
+						meta.menu = 3
+					when "Technology"
+						meta.title = "Tech thinking"
+						meta.menu = 4
+					else
+						meta.title = name
+						meta.menu = 2
+
+				document.setMeta(meta)
 
 		# Formatting for the dates
 		moment:
