@@ -1,1 +1,4 @@
+---
+menuHidden: true
+---
 <%- @content %>

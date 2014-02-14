@@ -1,0 +1,15 @@
+<ul class="nav navbar-nav">
+	<% for item in @menuItems: %>
+		<% if item.slug.indexOf('.') == -1: %>
+			<li<% if item.state == 'current': %> class="active"<% end %>>
+				<a href="<%= @getUrl(item.url) %>"><%= item.title or item.menuTitle %></a>
+
+				<% if item.children: %>
+					<!--
+						<%- renderMenu(item.children) %>
+					-->
+				<% end %>
+			</li>
+		<% end %>
+	<% end %>
+</ul>

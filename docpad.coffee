@@ -42,6 +42,10 @@ module.exports =
 			database.findAllLive({relativeOutDirPath: $in: ['people', 'article', 'careers']}).on "add", (model) ->
 				model.setMetaDefaults({additionalLayouts: 'content'})
 
+		# Navigation menu.
+		menu: (database) ->
+			database.findAllLive({menu: $gt: 0}, {menu: 1})
+
 	plugins:
 
 		# Provide the tagged pages
@@ -49,13 +53,19 @@ module.exports =
 			extension: '.html'
 			injectDocumentHelper: (document) ->
 				tag = document.get('tag')
-				document.setMeta(
+				name = tag.charAt(0).toUpperCase() + tag.slice(1)
+				switch name
+					when "Design", "Business"
+						name += " thinking"
+					when "Technology"
+						name = "Tech thinking"
+				document.setMeta
 					layout: 'articles'
 					isPaged: true
 					pagedCollection: tag
 					pageSize: 6
-					title: tag.charAt(0).toUpperCase() + tag.slice(1)
-				)
+					title: name
+					menu: 2
 
 		# Formatting for the dates
 		moment:
