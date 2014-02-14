@@ -105,6 +105,7 @@ module.exports =
 					pageSize: 12
 				}
 				# Add the menu items for those that need them.
+				# @todo Move this to a seperate .json file?
 				switch name
 					when "Company"
 						meta.title = "Our Company"
