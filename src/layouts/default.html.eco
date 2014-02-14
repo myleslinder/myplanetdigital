@@ -14,11 +14,11 @@
 		<meta name="description" content="">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 	</head>
-	<body>
-		<div class="container">
-			<nav class="navbar navbar-default" role="navigation">
+	<body role="document">
+		<header class="navbar navbar-default navbar-fixed-top" role="navigation">
+			<div class="container">
 				<div class="navbar-header">
-					<button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
 						<span class="sr-only">Toggle navigation</span>
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
@@ -27,22 +27,14 @@
 					<a href="<%- @getUrl('/') %>" class="navbar-brand" title="Myplanet Digital"><span>Myplanet Digital</span></a>
 				</div>
 				<div class="navbar-collapse collapse">
-					<ul class="nav navbar-nav">
-						<li><a href="<%- @getUrl('/') %>">all articles</a></li>
-						<li><a href="<%- @getUrl('/tags/company') %>">our company</a></li>
-						<li><a href="<%- @getUrl('/tags/work') %>">our work</a></li>
-						<li><a href="<%- @getUrl('/tags/people') %>">our people</a></li>
-						<li><a href="<%- @getUrl('/tags/careers') %>">careers opps</a></li>
-						<li><a href="<%- @getUrl('/tags/design') %>">design thinking</a></li>
-						<li><a href="<%- @getUrl('/tags/technology') %>">tech thinking</a></li>
-						<li><a href="<%- @getUrl('/tags/business') %>">business thinking</a></li>
-					</ul>
+					<%- @partial('menu', {menuItems: @generateMenu(@document.url, 'menu')}) %>
 				</div>
-			</nav>
+			</div>
+		</header>
 
+		<section class="container" role="main">
 			<%- @content %>
-
-		</div>
+		</section>
 
 		<%- @getBlock('scripts').add(@getUrl(@site.scripts)).toHTML() %>
 
