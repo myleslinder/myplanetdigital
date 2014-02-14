@@ -102,18 +102,31 @@ module.exports =
 					layout: 'articles'
 					isPaged: true
 					pagedCollection: tag
-					pageSize: 6
+					pageSize: 12
 				}
+				# Add the menu items for those that need them.
 				switch name
-					when "Design", "Business"
-						meta.title = name + " thinking"
-						meta.menu = 3
-					when "Technology"
-						meta.title = "Tech thinking"
-						meta.menu = 4
-					else
-						meta.title = name
+					when "Company"
+						meta.title = "Our Company"
 						meta.menu = 2
+					when "Work"
+						meta.title = "Our Work"
+						meta.menu = 3
+					when "People"
+						meta.title = "Our People"
+						meta.menu = 4
+					when "Careers"
+						meta.title = "Careers Opps"
+						meta.menu = 5
+					when "Design"
+						meta.title = "Design Thinking"
+						meta.menu = 6
+					when "Technology"
+						meta.title = "Tech Thinking"
+						meta.menu = 7
+					when "Business"
+						meta.title = "Business Thinking"
+						meta.menu = 8
 				document.setMeta(meta)
 
 		# Formatting for the dates
