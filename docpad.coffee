@@ -19,23 +19,67 @@ module.exports =
 	collections:
 		# The homepage collection to bring up all content, ordered by date.
 		homepage: (database) ->
-			database.findAllLive({relativeOutDirPath: $in: ['people', 'article', 'careers']}, {date: -1})
+			database.findAllLive
+				relativeOutDirPath:
+					$in: [
+						'people'
+						'article'
+						'careers'
+					]
+				layout:
+					$ne: 'content'
+				, {date: -1}
 
 		# Create a collection for each available tag.
 		careers: (database) ->
-			database.findAllLive({tags: $has: 'careers'}, {date: -1})
+			database.findAllLive
+				tags:
+					$has: 'careers'
+				layout:
+					$ne: 'content'
+				, {date: -1}
 		design: (database) ->
-			database.findAllLive({tags: $has: 'design'}, {date: -1})
+			database.findAllLive
+				tags:
+					$has: 'design'
+				layout:
+					$ne: 'content'
+				, {date: -1}
 		people: (database) ->
-			database.findAllLive({tags: $has: 'people'}, {date: -1})
+			database.findAllLive
+				tags:
+					$has: 'people'
+				layout:
+					$ne: 'content'
+				, {date: -1}
 		business: (database) ->
-			database.findAllLive({tags: $has: 'business'}, {date: -1})
+			database.findAllLive
+				tags:
+					$has: 'business'
+				layout:
+					$ne: 'content'
+				, {date: -1}
 		technology: (database) ->
-			database.findAllLive({tags: $has: 'technology'}, {date: -1})
+			database.findAllLive
+				tags:
+					$has: 'technology'
+				layout:
+					$ne: 'content'
+				, {date: -1}
 		culture: (database) ->
-			database.findAllLive({tags: $has: 'culture'}, {date: -1})
+			database.findAllLive
+				tags:
+					$has: 'culture'
+				layout:
+					$ne: 'content'
+				, {date: -1}
 		events: (database) ->
-			database.findAllLive({tags: $has: 'events'}, {date: -1})
+			database.findAllLive
+				tags:
+					$has: 'events'
+				layout:
+					$ne: 'content'
+				, {date: -1}
 
 		# Rendered content into individual segmented HTML pages.
 		content: (database) ->
