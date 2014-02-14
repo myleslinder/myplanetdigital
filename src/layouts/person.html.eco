@@ -27,7 +27,7 @@ layout: default
 			<li><a href="<%= @document.twitter %>" target="_blank" class="twitter">Twitter</a></li>
 		<% end %>
 		<% if @document.dribbble: %>
-			<li><a href="<%= @document.dribbble %>" target="_blank" class="dr ibbble">Dribbble</a></li>
+			<li><a href="<%= @document.dribbble %>" target="_blank" class="dribbble">Dribbble</a></li>
 		<% end %>
 		<% if @document.linkedin: %>
 			<li><a href="<%= @document.linkedin %>" target="_blank" class="linkedin">LinkedIn</a></li>
