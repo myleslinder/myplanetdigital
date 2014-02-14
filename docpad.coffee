@@ -114,7 +114,6 @@ module.exports =
 					else
 						meta.title = name
 						meta.menu = 2
-
 				document.setMeta(meta)
 
 		# Formatting for the dates
