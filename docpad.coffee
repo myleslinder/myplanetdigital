@@ -15,6 +15,10 @@ module.exports =
 				'/scripts/main.js'
 			]
 
+			# Social Media Services
+			services:
+				googleAnalytics: 'UA-16401713-2'
+
 	# Set up collections to query and sort documents.
 	collections:
 		# The homepage collection to bring up all content, ordered by date.

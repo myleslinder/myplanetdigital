@@ -21,7 +21,8 @@
     "docpad-plugin-geturl": "~2.1.1",
     "docpad-plugin-associatedfiles": "~2.2.0",
     "docpad-plugin-moment": "~2.0.2",
-    "docpad-plugin-menu": "~2.1.0"
+    "docpad-plugin-menu": "~2.1.0",
+    "docpad-plugin-services": "~2.5.0"
   },
   "main": "node_modules/docpad/bin/docpad-server",
   "scripts": {
