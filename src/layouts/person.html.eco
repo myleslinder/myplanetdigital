@@ -17,6 +17,30 @@ layout: default
 	<h1><%= @document.title %></h1>
 <% end %>
 
+<% if @document.summary?: %>
+	<blockquote><%= @document.summary %></blockquote>
+<% end %>
+
+<% if @document.twitter or @document.dribbble or @document.linkedin or @document.github or @document.stackoverflow: %>
+	<ul class="portfolio">
+		<% if @document.twitter: %>
+			<li><a href="<%= @document.twitter %>" target="_blank" class="twitter">Twitter</a></li>
+		<% end %>
+		<% if @document.dribbble: %>
+			<li><a href="<%= @document.dribbble %>" target="_blank" class="dribbble">Dribbble</a></li>
+		<% end %>
+		<% if @document.linkedin: %>
+			<li><a href="<%= @document.linkedin %>" target="_blank" class="linkedin">LinkedIn</a></li>
+		<% end %>
+		<% if @document.github: %>
+			<li><a href="<%= @document.github %>" target="_blank" class="github">Github</a></li>
+		<% end %>
+		<% if @document.stackoverflow: %>
+			<li><a href="<%= @document.stackoverflow %>" target="_blank" class="stackoverflow">Stack Overflow</a></li>
+		<% end %>
+	</ul>
+<% end %>
+
 <%- @content %>
 
 <% if cover?: %>
