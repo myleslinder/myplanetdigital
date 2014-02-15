@@ -144,3 +144,6 @@ module.exports =
 					raw: 'date'
 				}
 			]
+
+		associatedfiles:
+			useRelativeBase: true

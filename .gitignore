@@ -26,6 +26,10 @@ src/documents/article/*
 !src/documents/article/A*
 src/documents/careers/*
 !src/documents/careers/A*
-src/files/associated-files/*
-!src/files/associated-files/a*
-!src/files/associated-files/A*
+
+src/files/associated-files/people/*
+!src/files/associated-files/people/a*
+src/files/associated-files/article/*
+!src/files/associated-files/article/A*
+src/files/associated-files/careers/*
+!src/files/associated-files/careers/A*
