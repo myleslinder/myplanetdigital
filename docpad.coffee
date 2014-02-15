@@ -27,7 +27,7 @@ module.exports =
 						'careers'
 					]
 				layout:
-					$ne: 'content'
+					$nin: ['content', 'content-tile']
 				, {date: -1}
 
 		# Create a collection for each available tag.
@@ -36,55 +36,55 @@ module.exports =
 				tags:
 					$has: 'careers'
 				layout:
-					$ne: 'content'
+					$nin: ['content', 'content-tile']
 				, {date: -1}
 		design: (database) ->
 			database.findAllLive
 				tags:
 					$has: 'design'
 				layout:
-					$ne: 'content'
+					$nin: ['content', 'content-tile']
 				, {date: -1}
 		people: (database) ->
 			database.findAllLive
 				tags:
 					$has: 'people'
 				layout:
-					$ne: 'content'
+					$nin: ['content', 'content-tile']
 				, {date: -1}
 		business: (database) ->
 			database.findAllLive
 				tags:
 					$has: 'business'
 				layout:
-					$ne: 'content'
+					$nin: ['content', 'content-tile']
 				, {date: -1}
 		technology: (database) ->
 			database.findAllLive
 				tags:
 					$has: 'technology'
 				layout:
-					$ne: 'content'
+					$nin: ['content', 'content-tile']
 				, {date: -1}
 		culture: (database) ->
 			database.findAllLive
 				tags:
 					$has: 'culture'
 				layout:
-					$ne: 'content'
+					$nin: ['content', 'content-tile']
 				, {date: -1}
 		events: (database) ->
 			database.findAllLive
 				tags:
 					$has: 'events'
 				layout:
-					$ne: 'content'
+					$nin: ['content', 'content-tile']
 				, {date: -1}
 
 		# Rendered content into individual segmented HTML pages.
 		content: (database) ->
 			database.findAllLive({relativeOutDirPath: $in: ['people', 'article', 'careers']}).on "add", (model) ->
-				model.setMetaDefaults({additionalLayouts: 'content'})
+				model.setMetaDefaults({additionalLayouts: ['content', 'content-tile']})
 
 		# Navigation menu.
 		menu: (database) ->
