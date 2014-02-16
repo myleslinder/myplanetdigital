@@ -1,15 +1,12 @@
-<ul class="nav navbar-nav">
-	<% for item in @menuItems: %>
-		<% if item.slug.indexOf('.') == -1: %>
-			<li<% if item.state == 'current': %> class="active"<% end %>>
-				<a href="<%= @getUrl(item.url) %>"><%= item.title or item.menuTitle %></a>
-
-				<% if item.children: %>
-					<!--
-						<%- renderMenu(item.children) %>
-					-->
-				<% end %>
-			</li>
+<div id="menu">
+	<ul class="nav navbar-nav">
+		<% for item in @menuItems: %>
+			<% if item.slug.indexOf('.') == -1: %>
+				<li class="<%= if item.slug is '' then 'all' else item.slug %><%= if item.state == 'current' then ' active' %>">
+					<a href="<%= @getUrl(item.url) %>"><span><%= item.title or item.menuTitle %></span></a>
+				</li>
+			<% end %>
 		<% end %>
-	<% end %>
-</ul>
+		<li class="contact page"><a href="#footer">Contact Us</a></li>
+	</ul>
+</div>
