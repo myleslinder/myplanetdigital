@@ -10,7 +10,10 @@ authorImageUrl: "/images/avatar/neil-t.jpg"
 author: "Neil Taylor"
 date: "2013-4-8"
 isDoubleHeight: true
-featured: true
+stick: true
+color: black
+imagePosition: bottom
+size: medium
 ---
 
 Now regarded as the language’s “Genesis”, [The Good Parts](http://www.amazon.ca/JavaScript-Good-Parts-Douglas-Crockford/dp/0596517742) revolutionized the way developers used “[the world’s most misunderstood](http://www.crockford.com/javascript/javascript.html)” language by de-mistyfing its core principles and laying out its best practices.
