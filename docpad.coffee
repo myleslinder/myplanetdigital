@@ -4,9 +4,10 @@ module.exports =
 			title: 'Myplanet Digital'
 			url: ''
 			styles: [
-				'/vendor/components-bootstrap/css/bootstrap.css'
-				'/vendor/components-bootstrap/css/bootstrap-theme.css'
-				'/styles/main.css'
+				'/styles/site.css'
+				'/styles/modules/tiles.css'
+				'/styles/modules/article.css'
+				'/styles/modules/menu.css'
 			]
 			scripts: [
 				'/vendor/jquery/jquery.js'
