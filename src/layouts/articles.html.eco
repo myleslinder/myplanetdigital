@@ -2,12 +2,11 @@
 layout: 'default'
 ---
 
-<div class="articles">
-    <% for document in @getPageCollection(@document.pagedCollection).toJSON(): %>
-        <%- @partial('tile', true, {'document': document, 'getUrl': @getUrl}) %>
-    <% end %>
-</div>
+<% for document in @getPageCollection(@document.pagedCollection).toJSON(): %>
+    <%- @partial('tile', true, {'document': document, 'getUrl': @getUrl}) %>
+<% end %>
 
+<!--
 <ul class="pagination container">
     <% unless @hasPrevPage(): %>
         <li class="disabled"><span>&laquo;</span></li>
@@ -27,3 +26,4 @@ layout: 'default'
         <li><a href="<%= @getUrl(@getNextPage()) %>">&raquo;</a></li>
     <% end %>
 </ul>
+-->

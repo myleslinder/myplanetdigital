@@ -106,7 +106,7 @@ module.exports =
 					layout: 'articles'
 					isPaged: true
 					pagedCollection: tag
-					pageSize: 12
+					pageSize: 999999
 				}
 				# Add the menu items for those that need them.
 				# @todo Move this to a seperate .json file?

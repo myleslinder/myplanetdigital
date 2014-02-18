@@ -10,3 +10,5 @@
 		<li class="contact page"><a href="#footer">Contact Us</a></li>
 	</ul>
 </div>
+
+<button id="menu-toggle">Show Menu</button>
