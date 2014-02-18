@@ -4,7 +4,7 @@ layout: 'default'
 
 <div class="articles">
     <% for document in @getPageCollection(@document.pagedCollection).toJSON(): %>
-        <%- @partial('tile', false, {'document': document, 'getUrl': @getUrl}) %>
+        <%- @partial('tile', true, {'document': document, 'getUrl': @getUrl}) %>
     <% end %>
 </div>
 

@@ -1,10 +1,42 @@
-<% if @document.size is "2x1": %>
-    <article class="col-md-8 col-sm-12 col-xs-12">
-<% else: %>
-    <article class="col-md-4 col-sm-6 col-xs-12">
+<% cover = false %>
+<% filePath = 'associated-files/' + @document.relativeBase %>
+<% files = @getFilesAtPath(filePath) %>
+<% if files: %>
+	<% for image in files.toJSON(): %>
+		<% avatar = image.url if image.basename is 'avatar' %>
+		<% cover = image.url if image.basename is 'cover' %>
+		<% tile = image.url if image.basename is 'tile' %>
+	<% end %>
 <% end %>
-    <h1><a href='<%=@getUrl(@document.url)%>'><%= @document.title %></a></h1>
-    <div class="post-content">
-        <%- @document.summary %>
-    </div>
+<% tile ?= if avatar? then avatar else cover %>
+
+<article class="tile<%= if @document.size then ' ' + @document.size %><%= if @document.color then ' ' + @document.color %>">
+	<div class="content">
+		<% if @document.imagePosition != 'bottom': %>
+			<a class="tile-image" <% if tile: %>style="background-image: url('<%= @getUrl(tile) %>')" <% end %>href="<%= @document.url %>"></a>
+		<% end %>
+		<div class="tile-content">
+			<% if @document.tags: %>
+				<ul class="tags">
+					<% i = 0 %>
+					<% for tag in @document.tags: %>
+						<% i = i + 1 %>
+						<% url = @getUrl('/tags/' + tag) %>
+						<li>
+							<a class="tag" href="<%= url %>"><%= tag %></a>
+							<% if i is 1: %>
+								<a class="tile-doodle <%= tag %>" href="<%= url %>"></a>
+							<% end %>
+						</li>
+					<% end %>
+				</ul>
+			<% end %>
+			<a class="tile-title" href="<%= @getUrl(@document.url) %>">
+				<h2><%= @document.title %></h2>
+			</a>
+		</div>
+		<% if @document.imagePosition == 'bottom': %>
+			<a class="tile-image" <% if tile: %>style="background-image: url('<%= @getUrl(tile) %>')" <% end %>href="<%= @document.url %>"></a>
+		<% end %>
+	</div>
 </article>
