@@ -10,9 +10,9 @@
 <% end %>
 <% tile ?= if avatar? then avatar else cover %>
 
-<article class="tile<%= if @document.size then ' ' + @document.size %><%= if @document.featured then ' black' %>">
+<article class="tile<%= if @document.size then ' ' + @document.size %><%= if @document.color then ' ' + @document.color %>">
 	<div class="content">
-		<% if !@document.featured: %>
+		<% if @document.imagePosition != 'bottom': %>
 			<a class="tile-image" <% if tile: %>style="background-image: url('<%= @getUrl(tile) %>')" <% end %>href="<%= @document.url %>"></a>
 		<% end %>
 		<div class="tile-content">
@@ -35,7 +35,7 @@
 				<h2><%= @document.title %></h2>
 			</a>
 		</div>
-		<% if @document.featured: %>
+		<% if @document.imagePosition == 'bottom': %>
 			<a class="tile-image" <% if tile: %>style="background-image: url('<%= @getUrl(tile) %>')" <% end %>href="<%= @document.url %>"></a>
 		<% end %>
 	</div>
