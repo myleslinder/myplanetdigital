@@ -155,7 +155,8 @@ module.exports =
 	# Environmental variables
 	environments:
 		development:
-			plugins:
-				services:
-					# Disable Google Analytics on development
-					googleAnalytics: false
+			templateData:
+				site:
+					# Disable certain services on the development environment.
+					services:
+						googleAnalytics: false
