@@ -151,3 +151,11 @@ module.exports =
 
 		associatedfiles:
 			useRelativeBase: true
+
+	# Environmental variables
+	environments:
+		development:
+			plugins:
+				services:
+					# Disable Google Analytics on development
+					googleAnalytics: false
