@@ -10,10 +10,18 @@ module.exports =
 				'/styles/modules/menu.css'
 			]
 			scripts: [
-				'/vendor/jquery/jquery.js'
-				'/vendor/components-bootstrap/js/bootstrap.js'
-				'http://isotope.metafizzy.co/beta/isotope.pkgd.min.js'
+				'/scripts/vendor/isotope-beta2.pkgd.min.js'
 				'/scripts/main.js'
+				'/scripts/vendor/jquery-2.1.0.min.js'
+				'/scripts/pollyfill.js'
+				'/scripts/vendor/scrollfix.js'
+				'/scripts/modules/tiles.js'
+				'/scripts/modules/menu.js'
+				'/scripts/main.js'
+				'/scripts/animator.js'
+				'/scripts/vendor/fastclick.js'
+				'/scripts/init.js'
+				'/scripts/vendor/prism.js'
 			]
 
 			# Social Media Services
