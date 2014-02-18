@@ -1,0 +1,10 @@
+---
+title: "404 Not Found"
+layout: default
+---
+
+<article class="article-404">
+	<img src="<%- @getUrl('/images/404-doodle.png') %>" title="This page does not exist" alt="404 image" width="100%">
+	<h2>This page does not exist</h2>
+	<h3><a href="<%- @getUrl('/') %>">Go home</a></h3>
+</article>
