@@ -10,9 +10,10 @@ authorImageUrl: "/images/avatar/neil-t.jpg"
 author: "Neil Taylor"
 date: "2013-4-8"
 isDoubleHeight: true
+featured: true
 ---
 
-Now regarded as the language’s “Genesis”, [The Good Parts](http://www.amazon.ca/JavaScript-Good-Parts-Douglas-Crockford/dp/0596517742) revolutionized the way developers used “[the world’s most misunderstood](http://www.crockford.com/javascript/javascript.html)” language by de-mistyfing its core principles and laying out its best practices. 
+Now regarded as the language’s “Genesis”, [The Good Parts](http://www.amazon.ca/JavaScript-Good-Parts-Douglas-Crockford/dp/0596517742) revolutionized the way developers used “[the world’s most misunderstood](http://www.crockford.com/javascript/javascript.html)” language by de-mistyfing its core principles and laying out its best practices.
 
 Around the same time, a 22-year-old senior at the Rochester Institute of Technology named John Resig presented a project at BarCamp NYC. Frustrated by a lack of standardization from browser vendors, Resig’s “jQuery” aimed to simplify JavaScript’s interaction with those non-standard APIs via simple wrappers and adapters. A short while later, Resig [discussed](http://ejohn.org/blog/selectors-in-javascript/) and eventually implemented the ability to query the DOM with JavaScript via CSS selectors.
 
