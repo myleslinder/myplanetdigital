@@ -1,4 +1,4 @@
-@import "../../less/includes.less";
+@import "../includes.less";
 @menu-transition-time:0.355s;
 @indicator-width: 8px;
 @menu-hover-offset:11px;
@@ -40,9 +40,8 @@
 #menu {
 	color:#000;
 	background:#fff;
-	font-size:0;
-
 	> ul {
+		font-size:0;
 		margin:0;
 		padding:0;
 		list-style: none;
@@ -53,9 +52,7 @@
 		text-align: center;
 		vertical-align: top;
 		display:inline-block;
-		font-family: TradeGothic;
-		font-size: 13px;
-		letter-spacing: -0.03em;
+		font-size:initial;
 		list-style: none;
 		text-transform:lowercase;
 		height:@menu-height;
@@ -67,7 +64,6 @@
 			color:#000;
 		}
 		@media only screen and (max-width: 1174px) {
-			font-size: 15px;
 			&:last-of-type {
 				margin-top:30px;
 				border-bottom:0;
@@ -76,18 +72,24 @@
 		@media only screen and (min-width: 1175px) {
 			height:@menu-height;
 			margin-top:-@menu-hover-offset;
+			border-left:1px solid #ddd;
 			.translateZ();
 			.transition-transform(@menu-transition-time);
+			font-size:15px;
 			background:transparent;
 
 			&.all {
 				display:none;
 			}
+			&:last-of-type {
+				border-right:1px solid #ddd;
+			}
 
-			> span {
+			> a {
 				.translateZ();
 				z-index: 1;
 				position: relative;
+				text-decoration: none;				
 			}
 			&:before {
 				content:'';
@@ -111,7 +113,7 @@
 				width:84px;
 				background:#fff;
 				height:26px;
-				border-top:1px solid #e6e6e6;
+				border-top:1px solid #000;
 				opacity:0.99;
 				.transform(translateZ(0) scale(0.98));
 				.transition-transform(@menu-transition-time, opacity @menu-transition-time);

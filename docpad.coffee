@@ -10,9 +10,9 @@ module.exports =
 				'/styles/modules/menu.css'
 			]
 			scripts: [
-				'/scripts/vendor/isotope-beta2.pkgd.min.js'
-				'/scripts/main.js'
 				'/scripts/vendor/jquery-2.1.0.min.js'
+				'/scripts/vendor/isotope-beta2.pkgd.min.js'
+				'/scripts/main.js'				
 				'/scripts/pollyfill.js'
 				'/scripts/vendor/scrollfix.js'
 				'/scripts/modules/tiles.js'
@@ -90,6 +90,20 @@ module.exports =
 			database.findAllLive
 				tags:
 					$has: 'events'
+				layout:
+					$nin: ['content', 'content-tile']
+				, {date: -1}
+		work: (database) ->
+			database.findAllLive
+				tags:
+					$has: 'work'
+				layout:
+					$nin: ['content', 'content-tile']
+				, {date: -1}
+		company: (database) ->
+			database.findAllLive
+				tags:
+					$has: 'company'
 				layout:
 					$nin: ['content', 'content-tile']
 				, {date: -1}

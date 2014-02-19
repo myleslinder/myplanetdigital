@@ -1,8 +1,8 @@
-@import "../../less/includes.less";
+@import "../includes.less";
 
 @tile-height: 250px;
 @tile-width: 33.3%;
-@tile-padding: 6px;
+@tile-padding: 12px;
 @tag-color-on-black: #8a8a8a;
 @tag-color-on-white: #999;
 @doodle-line: #383838;
@@ -13,6 +13,7 @@
 	font-family: "TradeGothic", Helvetica, sans-serif;
 	font-size: 16px;
 	width: 100%;
+
 	.border-box();
 
 	.grid-size {
@@ -124,10 +125,10 @@
 				display: block;
 				width: 113px;
 				height: 75px;
-				border-bottom: 1px solid @doodle-line-white;
+				border-bottom: 1px solid @doodle-line-white;				
 				overflow: hidden;
 				cursor: pointer;
-				.transform(translateZ(0) rotate(-45deg));
+				.transform(translateZ(0) rotate(-45deg));				
 				.hideBack();
 
 				&:before {
@@ -143,6 +144,7 @@
 					.transform(translateZ(0) rotate(45deg));
 					.hideBack();
 					.transition-transform(0.25s);
+					z-index: 3;
 				}
 
 				&.design:before {
@@ -247,6 +249,17 @@
 		}
 	}
 
+	@media only screen and (max-width: 1174px) {
+		.content {
+			border-top:5px solid #ff0f0f;
+
+			.tile-image {
+				position: absolute;
+				bottom:0px;
+			}
+		}
+	}
+
 	@media only screen and (max-width: 1024px) { /* Tablet */
 		.grid-size {
 			width: 50%;
@@ -269,7 +282,6 @@
 		}
 		.tile {
 			padding: 10px 7px;
-
 			&.large, &.featured, &.hero {
 				h2 {
 					font-size: 4em;
@@ -292,37 +304,11 @@
 	@media only screen and (max-width: 479px) { /* Mobile */
 		.tile {
 			.content {
-				border-top:4px solid #ff0f0f;
-				&.company {
-					border-color: #ff0f0f;
-				}
-				&.design {
-					border-color: #e146fc;
-				}
-				&.technology {
-					border-color: #84c600;
-				}
-				&.business {
-					border-color: #0085ff;
-				}
-				&.careers {
-					border-color: #ff7900;
-				}
-				&.people {
-					border-color: #69e8e2;
-				}
-				&.work {
-					border-color: #61caff;
-				}
 				ul.tags {
 					padding-left: 7%;
 				}
 				a.tile-title {
 					padding: 72px 7% 0
-				}
-				.tile-image {
-					position: absolute;
-					bottom:0px;
 				}
 			}
 			&.large, &.featured, &.hero {
@@ -339,6 +325,7 @@
 
 .desktop-capable #main .tile .content .tags > li:hover a.tile-doodle:before {
 	.transform(rotate(45deg) translate3d(-9px,-9px,0));
+	filter: progid:DXImageTransform.Microsoft.Matrix(M11=1, M12=-1, M21=1, M22=1, SizingMethod="auto expand");
 }
 
 .desktop-capable #main .tile {
