@@ -12,6 +12,7 @@ linkedin:
 github: "https://github.com/anna-tsulun"
 layout: person
 color: "pink"
+size: medium
 ---
 
 ## Who I Am

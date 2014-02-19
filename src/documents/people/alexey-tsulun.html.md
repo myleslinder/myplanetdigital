@@ -13,6 +13,7 @@ github: "https://github.com/TsulunAleksey"
 layout: person
 color: "green"
 homepage: false
+size: medium
 ---
 
 ## Who I Am

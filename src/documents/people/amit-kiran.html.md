@@ -12,6 +12,7 @@ linkedin: "http://www.linkedin.com/in/amitkiran"
 github:
 layout: person
 color: "black"
+size: medium
 ---
 
 ## Who I am

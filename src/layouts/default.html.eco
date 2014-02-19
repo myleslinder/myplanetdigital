@@ -1,8 +1,5 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"><![endif]-->
-<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"><![endif]-->
-<!--[if IE 8]><html class="no-js lt-ie9"><![endif]-->
-<!--[if gt IE 8]><!--><html class="no-js"><!--<![endif]-->
+<html>
 	<head>
 		<% if @document.title?: %>
 			<title><%= @document.title %> | <%= @site.title %></title>
@@ -18,27 +15,35 @@
 			<meta name="description" content="<%= @document.summary %>">
 		<% end %>
 	</head>
-	<body role="document">
-		<header class="navbar navbar-default navbar-fixed-top" role="navigation">
-			<div class="container">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<a href="<%- @getUrl('/') %>" class="navbar-brand" title="Myplanet Digital"><span>Myplanet Digital</span></a>
-				</div>
-				<div class="navbar-collapse collapse">
-					<%- @partial('menu', {menuItems: @generateMenu(@document.url, 'menu')}) %>
-				</div>
-			</div>
-		</header>
 
-		<section class="container" role="main">
-			<%- @content %>
-		</section>
+	<body class="<% if @document.layout != 'articles': %> article <% end %>">
+		<div id="wrap">
+			<h1 id="logo">
+				<a href="<%= @getUrl('/') %>">Myplanet</a>
+			</h1>
+			<div id="viewport">
+				
+				<section id="main">
+					<div class="main-wrap">
+						<% if @document.layout is 'articles': %>
+						<div class="grid-size"></div>
+						<%- @content %>
+						<% end %>
+					</div>
+				</section>
+				
+				<article id="article">
+					<% if @document.layout != 'articles': %>
+					<!-- Article goes here -->
+					<%- @content %>
+					<% end %>
+				</article>
+
+			</div>
+
+			<!-- MENU GOES HERE -->
+			<%- @partial('menu', {menuItems: @generateMenu(@document.url, 'menu')}) %>
+		</div>
 
 		<%- @partial('footer') %>
 

@@ -4,15 +4,24 @@ module.exports =
 			title: 'Myplanet Digital'
 			url: ''
 			styles: [
-				'/vendor/components-bootstrap/css/bootstrap.css'
-				'/vendor/components-bootstrap/css/bootstrap-theme.css'
-				'/styles/main.css'
+				'/styles/site.css'
+				'/styles/modules/tiles.css'
+				'/styles/modules/article.css'
+				'/styles/modules/menu.css'
 			]
 			scripts: [
-				'/vendor/jquery/jquery.js'
-				'/vendor/components-bootstrap/js/bootstrap.js'
-				'http://isotope.metafizzy.co/beta/isotope.pkgd.min.js'
+				'/scripts/vendor/jquery-2.1.0.min.js'
+				'/scripts/vendor/isotope-beta2.pkgd.min.js'
+				'/scripts/main.js'				
+				'/scripts/pollyfill.js'
+				'/scripts/vendor/scrollfix.js'
+				'/scripts/modules/tiles.js'
+				'/scripts/modules/menu.js'
 				'/scripts/main.js'
+				'/scripts/animator.js'
+				'/scripts/vendor/fastclick.js'
+				'/scripts/init.js'
+				'/scripts/vendor/prism.js'
 			]
 
 			# Social Media Services
@@ -84,6 +93,20 @@ module.exports =
 				layout:
 					$nin: ['content', 'content-tile']
 				, {date: -1}
+		work: (database) ->
+			database.findAllLive
+				tags:
+					$has: 'work'
+				layout:
+					$nin: ['content', 'content-tile']
+				, {date: -1}
+		company: (database) ->
+			database.findAllLive
+				tags:
+					$has: 'company'
+				layout:
+					$nin: ['content', 'content-tile']
+				, {date: -1}
 
 		# Rendered content into individual segmented HTML pages.
 		content: (database) ->
@@ -106,7 +129,7 @@ module.exports =
 					layout: 'articles'
 					isPaged: true
 					pagedCollection: tag
-					pageSize: 12
+					pageSize: 999999
 				}
 				# Add the menu items for those that need them.
 				# @todo Move this to a seperate .json file?

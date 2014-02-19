@@ -12,6 +12,7 @@ linkedin: "http://ca.linkedin.com/in/andrewsemuschak"
 github:
 layout: person
 date: "2012-3-15"
+size: medium
 ---
 
 ## Who I am
