@@ -8,43 +8,50 @@ layout: default
 <% end %>
 <% cover = if cover? then @partial('cover', true, {'cover': cover}) else @partial('cover', true) %>
 
-<% if avatar?: %>
-	<img src="<%= @getUrl(avatar.url) %>" title="<%= @document.title %> Avatar" />
-<% else: %>
-	<img src="<%= @getUrl('/images/avatar-default.jpg') %>" title="<%= @document.title %> Avatar" />
-<% end %>
+<div class="profile-header" style="background-image:url('<%= cover %>');"></div>
 
-<% if @document.title?: %>
-	<h1><%= @document.title %></h1>
-<% end %>
+<div class="profile-body">
+	<div class="profile-content">
 
-<% if @document.summary?: %>
-	<blockquote><%= @document.summary %></blockquote>
-<% end %>
+		<% if avatar?: %>
+			<div class="profile-picture">
+				<img src="<%= @getUrl(avatar.url) %>" title="<%= @document.title %>'s Avatar" title="<%= @document.title %>" />
+			</div>
+		<% end %>
 
-<% if @document.twitter or @document.dribbble or @document.linkedin or @document.github or @document.stackoverflow: %>
-	<ul class="portfolio">
-		<% if @document.twitter: %>
-			<li><a href="<%= @document.twitter %>" target="_blank" class="twitter">Twitter</a></li>
+		<% if @document.title: %>
+			<h1><%= @document.title %></h1>
 		<% end %>
-		<% if @document.dribbble: %>
-			<li><a href="<%= @document.dribbble %>" target="_blank" class="dribbble">Dribbble</a></li>
-		<% end %>
-		<% if @document.linkedin: %>
-			<li><a href="<%= @document.linkedin %>" target="_blank" class="linkedin">LinkedIn</a></li>
-		<% end %>
-		<% if @document.github: %>
-			<li><a href="<%= @document.github %>" target="_blank" class="github">Github</a></li>
-		<% end %>
-		<% if @document.stackoverflow: %>
-			<li><a href="<%= @document.stackoverflow %>" target="_blank" class="stackoverflow">Stack Overflow</a></li>
-		<% end %>
-	</ul>
-<% end %>
 
-<%- @content %>
+		<% if @document.summary?: %>
+			<div class="profile-quote"><%= @document.summary %></div>
+		<% end %>
 
-<% if cover?: %>
-	<h3>Cover</h3>
-	<img src="<%= cover %>" title="<%= @document.title %>'s Cover image" />
-<% end %>
+		<% if @document.twitter or @document.dribbble or @document.linkedin or @document.github or @document.stackoverflow: %>
+			<ul class="social-media">
+				<% if @document.twitter: %>
+					<li><a href="<%= @document.twitter %>" class="twitter">Twitter</a></li>
+				<% end %>
+				<% if @document.dribbble: %>
+					<li><a href="<%= @document.dribbble %>" class="dribbble">Dribbble</a></li>
+				<% end %>
+				<% if @document.linkedin: %>
+					<li><a href="<%= @document.linkedin %>" class="linkedin">LinkedIn</a></li>
+				<% end %>
+				<% if @document.github: %>
+					<li><a href="<%= @document.github %>" class="github">Github</a></li>
+				<% end %>
+				<% if @document.stackoverflow: %>
+					<li><a href="<%= @document.stackoverflow %>" class="stackoverflow">Stack Overflow</a></li>
+				<% end %>
+			</ul>
+		<% end %>
+
+		<%- @content %>
+
+		<div class="article-footer">
+			<div class="footer-doodle careers"></div>
+		</div>
+
+	</div>
+</div>
