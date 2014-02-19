@@ -4,10 +4,7 @@ module.exports =
 			title: 'Myplanet Digital'
 			url: ''
 			styles: [
-				'/styles/site.css'
-				'/styles/modules/tiles.css'
-				'/styles/modules/article.css'
-				'/styles/modules/menu.css'
+				'/styles/main.css'
 			]
 			scripts: [				
 				'/scripts/vendor/isotope-beta2.pkgd.min.js'

@@ -33,3 +33,7 @@ src/files/associated-files/article/*
 !src/files/associated-files/article/A*
 src/files/associated-files/careers/*
 !src/files/associated-files/careers/A*
+
+src/files/images/default-covers/*
+!src/files/images/default-covers/1*
+!src/files/images/default-covers/2*

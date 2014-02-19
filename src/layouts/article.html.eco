@@ -21,7 +21,7 @@ layout: default
 	<% authorCompName = @document.author.replace(' ',  '-')  %>
 	<% authorCompName = authorCompName.toLowerCase() %>
 	<% authorUrl = @getUrl("/people/" + authorCompName) %>
-	<% authorImage = @getUrl("/associated-files/" + authorCompName + '/avatar.jpg') %>
+	<% authorImage = @getUrl("/associated-files/people/" + authorCompName + '/avatar.jpg') %>
 <% end %>
 
 
