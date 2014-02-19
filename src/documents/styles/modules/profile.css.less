@@ -1,0 +1,289 @@
+@import "../includes.less";
+
+.profile-header {
+	text-align: center;
+	width: 100%;
+	height: 480px;
+	font-size: 62.5%;
+	background-repeat: no-repeat;
+	background-position: center center;
+	.background-cover();
+
+	@media screen and (max-width: 480px) {
+		height: 300px;
+	}
+}
+
+.profile-body {
+	z-index: 1;
+	font-family: "Plantin";
+	font-size: 10px;
+	max-width: 1350px;
+	margin: -130px auto 80px;
+	background: white;
+	padding: 0 0 60px;
+	.border-box();
+
+	@media screen and (max-width: 1350px) {
+		width: 100%;
+	}
+
+	.profile-content {
+		color: #242424;
+		max-width: 850px;
+		margin: 0 auto;
+		padding-top: 1px;
+
+		@media screen and (max-width: 1024px) {
+			max-width: 92.7734375%;
+		}
+
+		.profile-picture {
+			margin: -123px auto 0;
+			width: 225px;
+			height: 225px;
+			overflow: hidden;
+			.border-radius(130px);
+			border: 10px solid white;
+			img {
+				height: 100%;
+			}
+			@media screen and (max-width: 1024px) {
+				margin: -83px auto 0;
+				width: 150px;
+				height: 150px;
+				border-width: 8px;
+			}
+			@media screen and (max-width: 480px) {
+				margin: -65px auto 0;
+				width: 120px;
+				height: 120px;
+				border-width: 5px;
+			}
+		}	
+
+		h1 {
+			text-align: center;
+			margin-bottom: 33px;
+			font: 4.8em/1.5 "TradeGothic";
+			font-weight: bold;
+			letter-spacing: -0.01em;
+
+			@media screen and (max-width: 1024px) {
+				font-size: 4.5em;
+			}
+			@media screen and (max-width: 560px) {
+				font-size: 4.1em;
+			}
+			@media screen and (max-width: 480px) {
+				font-size: 3.8em;
+				line-height: 1.2;
+			}
+		}
+		ul {
+			display: block;
+			text-align: center;
+			padding: 0;
+			margin: 0 auto 100px;
+			list-style: none;
+			@media screen and (max-width: 1024px) {
+				margin-bottom: 80px;
+			}
+			@media screen and (max-width: 560px) {
+				margin-bottom: 80px;
+			}
+			@media screen and (max-width: 480px) {
+				margin-bottom: 50px;
+			}
+			li {
+				display: inline-block;
+				padding-right: 15px;
+				a {
+					display: inline-block;
+					position: relative;
+					.hide-text();
+					text-decoration: none;
+					height: 40px;
+					width: 40px;
+					background: url(../../images/social-media-icons.png) 0 0 no-repeat;
+					background-size: 330px auto;
+
+					&:after {
+						content: '';
+						display: block;
+						position: absolute;
+						width: 40px;
+						height: 40px;
+						top: 0;
+						left: 0;
+						background: url(../../images/social-media-icons.png) 0 0 no-repeat;
+						background-size: 330px auto;
+						opacity: 0.01;
+						.transition(opacity 0.3s);
+					}
+					&:hover:after {
+						opacity: 1;
+						.transition(opacity 0.3s);
+					}
+					&.twitter {
+						background-position: 5px 5px;
+						&:after {
+							background-position: 5px -40px;
+						}
+					}
+					&.dribbble {
+						background-position: -115px 5px;
+						&:after {
+							background-position: -115px -40px;
+						}
+					}
+					&.github {
+						background-position: -175px 5px;
+						&:after {
+							background-position: -175px -40px;
+						}
+					}
+					&.linkedin {
+						background-position: -235px 5px;
+						&:after {
+							background-position: -235px -40px;
+						}
+					}
+					&.stackoverflow {
+						background-position: -295px 5px;
+						&:after {
+							background-position: -295px -40px;
+						}
+					}
+				}
+			}
+		}
+		.profile-quote {
+			position: relative;
+			text-align: center;
+			width: 100%;
+			padding: 30px 95px;
+			margin-bottom: 55px;
+			background: #f0f0f0;
+			font: 2.3em/1.5 "TradeGothic";
+			.border-box();
+			&:before {
+				content: '\201C';
+				display: block;
+				position: absolute;
+				left: 11px;
+				top: 15px;
+				font-family: Plantin;
+				font-size: 4em;
+				line-height: 1;
+				color: #e2e2e2;
+			}
+			&:after {
+				content: '\201D';
+				display: block;
+				position: absolute;
+				right: 11px;
+				bottom: -41px;
+				font-family: Plantin;
+				font-size: 4em;
+				line-height: 1;
+				color: #e2e2e2;
+			}
+			@media screen and (max-width: 1024px) {
+				padding: 30px 95px;
+				font-size: 2.1em;
+			}
+			@media screen and (max-width: 560px) {
+				padding: 30px 55px;
+				font-size: 2em;
+			}
+			@media screen and (max-width: 480px) {
+				padding: 20px 30px;
+				margin-bottom: 35px;
+				font-size: 1.5em;
+				&:before {
+					font-size: 3em;
+					left: 6px;
+					top: 7px;
+				}
+				&:after {
+					font-size: 3em;
+					right: 6px;
+					bottom: -18px;
+				}
+			}
+		}
+		h2 {
+			margin-bottom: 33px;
+			font: 2.8em/1.5 "Plantin";
+			font-weight: bold;
+			letter-spacing: -0.01em;
+
+			@media screen and (max-width: 1024px) {
+				padding: 0 8.4%;
+				font-size: 2.5em;
+				margin-bottom: 25px;
+			}
+			@media screen and (max-width: 560px) {
+				padding: 0 5%;
+				margin-bottom: 20px;
+			}
+			@media screen and (max-width: 480px) {
+				padding: 0 3%;
+				margin-bottom: 15px;
+			}
+		}
+		p {
+			margin-bottom: 33px;
+			font: 2.3em/1.5 Plantin;
+			letter-spacing: -0.01em;
+			.border-box();
+
+			@media screen and (max-width: 1024px) {
+				padding: 0 8.4%;
+				font-size: 2em;
+			}
+			@media screen and (max-width: 560px) {
+				padding: 0 5%;
+				font-size: 1.8em;
+			}
+			@media screen and (max-width: 480px) {
+				padding: 0 3%;
+				font-size: 1.7em;
+			}
+		}
+		.article-footer {
+			border-top: 1px solid #ccc;
+			margin-top: 150px;
+			width: 100%;
+			.footer-doodle {
+				height: 110px;
+				width: 90px;
+				margin: -55px auto 0;
+				background-color: #ffffff;
+				background-repeat: no-repeat;
+				background-position: 50%;
+				-webkit-background-size: 45px 55px;
+				background-size: 45px 55px;
+				&.careers {
+					background-image: url(../../images/tags/icon-careers.png);
+				}
+				&.business {
+					background-image: url(../../images/tags/icon-business.png);
+				}
+				&.technology {
+					background-image: url(../../images/tags/icon-technology.png);
+				}
+				&.design {
+					background-image: url(../../images/tags/icon-design.png);
+				}
+				&.people {
+					background-image: url(../../images/tags/icon-people.png);
+				}
+				&.culture {
+					background-image: url(../../images/tags/icon-culture.png);
+				}
+			}
+		}
+	}
+}
