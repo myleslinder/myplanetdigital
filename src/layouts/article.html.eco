@@ -5,13 +5,14 @@ layout: default
 <% # Retrieve all associated files %>
 
 <% for file in @getDocument().getAssociatedFiles().toJSON(): %>
-	<% cover = file.url if file.name is 'cover.jpg' %>
+	<% cover = file.url if file.basename is 'cover' %>
 <% end %>
 
 
 <% # Clean up any variables %>
 
-<% cover = ' style="background-image: url(' + @getUrl(cover) + ')"' if cover? %>
+<% cover = if cover? then @partial('cover', true, {'cover': cover}) else @partial('cover', true) %>
+<% cover = ' style="background-image: url(' + cover + ')"' %>
 
 
 <% # Get the author information %>
