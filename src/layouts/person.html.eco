@@ -4,8 +4,9 @@ layout: default
 
 <% for file in @getDocument().getAssociatedFiles().toJSON(): %>
 	<% avatar = file if file.name is 'avatar.jpg' %>
-	<% cover = file if file.name is 'cover.jpg' %>
+	<% cover = file.url if file.name is 'cover.jpg' %>
 <% end %>
+<% cover = if cover? then @partial('cover', true, {'cover': cover}) else @partial('cover', true) %>
 
 <% if avatar?: %>
 	<img src="<%= @getUrl(avatar.url) %>" title="<%= @document.title %> Avatar" />
@@ -45,5 +46,5 @@ layout: default
 
 <% if cover?: %>
 	<h3>Cover</h3>
-	<img src="<%= @getUrl(cover.url) %>" title="<%= @document.title %>'s Cover image" />
+	<img src="<%= cover %>" title="<%= @document.title %>'s Cover image" />
 <% end %>

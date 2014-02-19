@@ -18,9 +18,10 @@ layout: default
 <% # Get the author information %>
 
 <% if @document.author? and typeof @document.author is 'string': %>
-	<% authorUrl = @getUrl("/people/" + @document.author.replace('_',  '-')) %>
 	<% authorCompName = @document.author.replace(' ',  '-')  %>
-	<% authorImage = @getUrl("/associated-files/" + authorCompName.toLowerCase() + '/avatar.jpg') %>
+	<% authorCompName = authorCompName.toLowerCase() %>
+	<% authorUrl = @getUrl("/people/" + authorCompName) %>
+	<% authorImage = @getUrl("/associated-files/" + authorCompName + '/avatar.jpg') %>
 <% end %>
 
 
