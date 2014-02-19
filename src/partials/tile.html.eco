@@ -8,12 +8,13 @@
 		<% tile = image.url if image.basename is 'tile' %>
 	<% end %>
 <% end %>
-<% tile ?= if avatar? then avatar else cover %>
-<% @document.size ?= 'small' %>
+<% tile ?= avatar if avatar? %>
+<% tile ?= cover if cover? %>
+<% @document.size ?= 'medium' %>
 <% @document.size = 'small' if not tile %>
 
 <div class="tile<%= if @document.size then ' ' + @document.size %><%= if @document.color then ' ' + @document.color %>">
-	<div class="content">		
+	<div class="content">
 		<% if @document.size != 'small' && @document.imagePosition != 'bottom' : %>
 			<a class="tile-image" <% if tile: %>style="background-image: url('<%= @getUrl(tile) %>')" <% end %>href="<%= @document.url %>"></a>
 		<% end %>
