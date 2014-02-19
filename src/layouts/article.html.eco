@@ -2,36 +2,91 @@
 layout: default
 ---
 
+<% # Retrieve all associated files %>
+
 <% for file in @getDocument().getAssociatedFiles().toJSON(): %>
-	<% cover = file if file.name is 'cover.jpg' %>
+	<% cover = file.url if file.name is 'cover.jpg' %>
 <% end %>
 
-<% if @document.title?: %>
-	<h1><%= @document.title %></h1>
-<% end %>
 
-<% if @document.author: %>
-	<% if @document.authorImageUrl: %>
-		<a href="<%= @getUrl("/people/" + @document.author.replace('_',  '-')) %>">
-			<img src="<%= @getUrl(@document.authorImageUrl) %>" />
-		</a>
+<% # Clean up any variables %>
+
+<% cover = ' style="background-image: url(' + @getUrl(cover) + ')"' if cover? %>
+
+
+<% # Output the article header %>
+
+<div class="article-header"<%- cover if cover? %>>
+	<% if @document.title?: %>
+		<h1 class="article-title">
+			<%= @document.title %>
+		</h1>
 	<% end %>
-	<a href="<%= @getUrl("/people/" + @document.author.replace('_', '-')) %>">
-		<%= @document.author %>
-	</a>
-<% end %>
+</div>
 
-<% if @document.dateLong?: %>
-	<%= @document.dateLong %>
-<% end %>
 
-<% for tag in @document.tags or []: %>
-	<a class="tag" href="<%= @getUrl("/tags/" + tag) %>"><%= tag %></a>
-<% end %>
+<% # Output the article body %>
 
-<%- @content %>
+<div class="article-body">
+	<div class="article-info">
 
-<% if cover?: %>
-	<h3>Cover</h3>
-	<img src="<%= @getUrl(cover.url) %>" title="<%= @document.title %>'s Cover image" />
-<% end %>
+		<% # Provide the author image %>
+
+		<% if @document.authorImageUrl?: %>
+			<div class="author-picture">
+				<% if @document.author?: %>
+					<a href="<%= @getUrl("/people/" + @document.author.replace('_',  '-')) %>">
+						<img alt="Author Picture" src="<%= @getUrl(@document.authorImageUrl) %>" />
+					</a>
+				<% else: %>
+					<img alt="Author Picture" src="<%= @getUrl(@document.authorImageUrl) %>" />
+				<% end %>
+			</div>
+		<% end %>
+
+
+		<% # Provide the author info %>
+
+		<% if @document.author? or @document.dateLong?: %>
+			<div class="author-info">
+				<% # Provide the author name %>
+				<% if @document.author?: %>
+					<a class="author-name" href="<%= @getUrl("/people/" + @document.author.replace('_', '-')) %>">
+						<%= @document.author %>
+					</a>
+				<% end %>
+
+				<% # Provide the date %>
+				<% if @document.dateLong?: %>
+					<span class="date"><%= @document.dateLong %><span>
+				<% end %>
+
+			</div>
+		<% end %>
+
+		<% # Provide the tags %>
+		<% if @document.tags?: %>
+			<ul class="article-tags">
+				<% for tag in @document.tags or []: %>
+					<li><a href="<%= @getUrl("/tags/" + tag) %>"><%= tag %></a></li>
+				<% end %>
+			</ul>
+		<% end %>
+	</div>
+
+
+	<% # Finally, the article content %>
+
+	<% if @content?: %>
+		<div class="article-content">
+			<%- @content %>
+			
+			<% # Add the article footer %>
+			<div class="article-footer">
+				<div class="footer-doodle careers"></div>
+			</div>
+		</div>
+	<% end %>
+	
+
+</div>
