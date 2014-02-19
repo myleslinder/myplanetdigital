@@ -1,19 +1,38 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<% if @document.title?: %>
 			<title><%= @document.title %> | <%= @site.title %></title>
 		<% else: %>
 			<title><%= @site.title %></title>
 		<% end %>
-		<%- @getBlock("meta").toHTML() %>
-		<%- @getBlock('styles').add(@getUrl(@site.styles)).toHTML() %>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<% if @document.summary?: %>
 			<meta name="description" content="<%= @document.summary %>">
 		<% end %>
+		<%- @getBlock("meta").toHTML() %>
+		
+		<!--[if !IE]> -->
+		<%- @getBlock('styles').add(@getUrl(@site.styles)).toHTML() %>
+		<!-- <![endif]-->
+		
+		<!--[if (IE 8) | (IE 9)]>
+		<link rel="stylesheet" href="<%- @getUrl(@site.ie8styles[0]) %>">				
+		<![endif]-->
+
+		<!--[if IE 8]>
+		<script src="<%- @getUrl(@site.html5shiv[0]) %>"></script>
+		<script>
+			window.html5 = {
+				'elements': 'section article footer',
+				'shivCSS': false,
+				'shivMethods': false				
+			}
+			window.isIE8 = true;
+		</script> 
+		<![endif]-->
 	</head>
 
 	<body class="<% if @document.layout != 'articles': %> article <% end %>">
@@ -32,13 +51,14 @@
 					</div>
 				</section>
 				
+				<!--[if (!IE) | (gte IE 10)]> -->
 				<article id="article">
 					<% if @document.layout != 'articles': %>
 					<!-- Article goes here -->
 					<%- @content %>
 					<% end %>
 				</article>
-
+				<!-- <![endif]-->
 			</div>
 
 			<!-- MENU GOES HERE -->
@@ -46,7 +66,12 @@
 		</div>
 
 		<%- @partial('footer') %>
-
+		<!--[if IE 8]>
+		<script src="<%- @getUrl(@site.jquery1[0]) %>"></script> 
+		<![endif]-->
+		<!--[if (!IE) | (gte IE 9)]> -->
+		<script src="<%- @getUrl(@site.jquery2[0]) %>"></script>
+		<!-- <![endif]-->
 		<%- @getBlock('scripts').add(@getUrl(@site.scripts)).toHTML() %>
 	</body>
 </html>
