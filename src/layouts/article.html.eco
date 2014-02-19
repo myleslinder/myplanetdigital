@@ -14,6 +14,15 @@ layout: default
 <% cover = ' style="background-image: url(' + @getUrl(cover) + ')"' if cover? %>
 
 
+<% # Get the author information %>
+
+<% if @document.author? and typeof @document.author is 'string': %>
+	<% authorUrl = @getUrl("/people/" + @document.author.replace('_',  '-')) %>
+	<% authorCompName = @document.author.replace(' ',  '-')  %>
+	<% authorImage = @getUrl("/associated-files/" + authorCompName.toLowerCase() + '/avatar.jpg') %>
+<% end %>
+
+
 <% # Output the article header %>
 
 <div class="article-header"<%- cover if cover? %>>
@@ -32,14 +41,15 @@ layout: default
 
 		<% # Provide the author image %>
 
-		<% if @document.authorImageUrl?: %>
+
+		<% if authorImage?: %>
 			<div class="author-picture">
-				<% if @document.author?: %>
-					<a href="<%= @getUrl("/people/" + @document.author.replace('_',  '-')) %>">
-						<img alt="Author Picture" src="<%= @getUrl(@document.authorImageUrl) %>" />
+				<% if authorUrl?: %>
+					<a href="<%= authorUrl %>">
+						<img src="<%= authorImage %>" alt="Author Picture" />
 					</a>
 				<% else: %>
-					<img alt="Author Picture" src="<%= @getUrl(@document.authorImageUrl) %>" />
+					<img src="<%= authorImage %>" alt="Author Picture" />
 				<% end %>
 			</div>
 		<% end %>
@@ -49,12 +59,17 @@ layout: default
 
 		<% if @document.author? or @document.dateLong?: %>
 			<div class="author-info">
+
 				<% # Provide the author name %>
+
 				<% if @document.author?: %>
-					<a class="author-name" href="<%= @getUrl("/people/" + @document.author.replace('_', '-')) %>">
-						<%= @document.author %>
-					</a>
+					<% if authorUrl?: %>
+						<a class="author-name" href="<%= authorUrl %>"><%= @document.author %></a>
+					<% else: %>
+						<span class="author-name"><%= @document.author %></span>
+					<% end %>
 				<% end %>
+
 
 				<% # Provide the date %>
 				<% if @document.dateLong?: %>
