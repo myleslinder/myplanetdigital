@@ -12,6 +12,7 @@ linkedin: "http://ca.linkedin.com/pub/anand-sharma/25/651/111/"
 github: "https://github.com/anandpathaksharma"
 layout: person
 date: "2013-4-16"
+size: medium
 ---
 
 ## Who I am

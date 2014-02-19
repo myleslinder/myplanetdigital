@@ -12,6 +12,7 @@ linkedin: ""
 github: ""
 layout: person
 date: "2013-2-1"
+size: medium
 ---
 
 ## Who I am

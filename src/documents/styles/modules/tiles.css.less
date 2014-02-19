@@ -2,7 +2,7 @@
 
 @tile-height: 250px;
 @tile-width: 33.3%;
-@tile-padding: 12px;
+@tile-padding: 6px;
 @tag-color-on-black: #8a8a8a;
 @tag-color-on-white: #999;
 @doodle-line: #383838;
@@ -13,7 +13,6 @@
 	font-family: "TradeGothic", Helvetica, sans-serif;
 	font-size: 16px;
 	width: 100%;
-
 	.border-box();
 
 	.grid-size {
@@ -249,17 +248,6 @@
 		}
 	}
 
-	@media only screen and (max-width: 1174px) {
-		.content {
-			border-top:5px solid #ff0f0f;
-
-			.tile-image {
-				position: absolute;
-				bottom:0px;
-			}
-		}
-	}
-
 	@media only screen and (max-width: 1024px) { /* Tablet */
 		.grid-size {
 			width: 50%;
@@ -281,7 +269,8 @@
 			width: 100%;
 		}
 		.tile {
-			padding: 10px 7px;
+			padding: 10px 20px;
+
 			&.large, &.featured, &.hero {
 				h2 {
 					font-size: 4em;
@@ -304,16 +293,45 @@
 	@media only screen and (max-width: 479px) { /* Mobile */
 		.tile {
 			.content {
+				h2 {
+					font-size: 2.5em;
+				}
+				//border-top:4px solid #ff0f0f;
+				&.company {
+					border-color: #ff0f0f;
+				}
+				&.design {
+					border-color: #e146fc;
+				}
+				&.technology {
+					border-color: #84c600;
+				}
+				&.business {
+					border-color: #0085ff;
+				}
+				&.careers {
+					border-color: #ff7900;
+				}
+				&.people {
+					border-color: #69e8e2;
+				}
+				&.work {
+					border-color: #61caff;
+				}
 				ul.tags {
-					padding-left: 7%;
+					padding-left: 10%;
 				}
 				a.tile-title {
-					padding: 72px 7% 0
+					padding: 68px 10% 0
+				}
+				.tile-image {
+					position: absolute;
+					bottom:0px;
 				}
 			}
 			&.large, &.featured, &.hero {
 				h2 {
-					font-size: 3em;
+					font-size: 2.5em;
 				}
 			}
 			ul.tags .tile-doodle {

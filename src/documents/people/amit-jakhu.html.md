@@ -13,6 +13,7 @@ github:
 layout: person
 color: "black"
 date: "2013-5-27"
+size: medium
 ---
 
 ## Who I am

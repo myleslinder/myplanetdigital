@@ -12,6 +12,7 @@ linkedin: "http://ca.linkedin.com/in/alfredkee"
 github:
 layout: person
 date: "2013-4-16"
+size: medium
 ---
 
 ## Who I am

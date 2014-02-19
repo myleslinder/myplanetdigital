@@ -1,8 +1,5 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"><![endif]-->
-<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"><![endif]-->
-<!--[if IE 8]><html class="no-js lt-ie9"><![endif]-->
-<!--[if gt IE 8]><!--><html class="no-js"><!--<![endif]-->
+<html>
 	<head>
 		<% if @document.title?: %>
 			<title><%= @document.title %> | <%= @site.title %></title>
@@ -25,19 +22,22 @@
 				<a href="<%= @getUrl('/') %>">Myplanet</a>
 			</h1>
 			<div id="viewport">
-				<% if @document.layout is 'articles': %>
-					<section id="main">
-						<div class="main-wrap">
-							<div class="grid-size"></div>
-							<%- @content %>
-						</div>
-					</section>
-				<% else: %>
-					<article id="article">
-						<!-- Article goes here -->
+				
+				<section id="main">
+					<div class="main-wrap">
+						<% if @document.layout is 'articles': %>
+						<div class="grid-size"></div>
 						<%- @content %>
-					</article>
-				<% end %>
+						<% end %>
+					</div>
+				</section>
+				
+				<article id="article">
+					<% if @document.layout != 'articles': %>
+					<!-- Article goes here -->
+					<%- @content %>
+					<% end %>
+				</article>
 
 			</div>
 

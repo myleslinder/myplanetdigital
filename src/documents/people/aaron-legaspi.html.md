@@ -12,6 +12,7 @@ linkedin: ca.linkedin.com/pub/aaron-legaspi/43/455/805/
 github: ""
 layout: person
 date: "2013-2-21"
+size: medium
 ---
 
 ## Who I am

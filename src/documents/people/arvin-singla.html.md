@@ -12,6 +12,7 @@ linkedin:
 github: "http://github.com/arvinsingla"
 layout: person
 color: "black"
+size: medium
 ---
 
 ## Who I am
