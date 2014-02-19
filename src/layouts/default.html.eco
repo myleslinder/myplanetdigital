@@ -16,7 +16,7 @@
 		<% end %>
 	</head>
 
-	<body>
+	<body class="<% if @document.layout != 'articles': %> article <% end %>">
 		<div id="wrap">
 			<h1 id="logo">
 				<a href="<%= @getUrl('/') %>">Myplanet</a>
