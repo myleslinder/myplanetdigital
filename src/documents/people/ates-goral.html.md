@@ -13,7 +13,6 @@ github: "https://github.com/atesgoral"
 stackoverflow: "http://stackoverflow.com/users/23501/ates-goral"
 layout: person
 date: "2013-10-28"
-size: medium
 ---
 
 ## Who I am

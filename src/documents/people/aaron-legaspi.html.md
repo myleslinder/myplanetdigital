@@ -6,13 +6,12 @@ skill: "User Research, Interaction, Design, Mobile, Prototyping"
 summary: "I'd rather be a bit better everyday than be the best at one moment in time"
 coverImageUrl: ""
 authorImageUrl: ""
-twitter: https://twitter.com/AaronAPLegaspi
-dribbble: http://dribbble.com/AaronAPL
-linkedin: ca.linkedin.com/pub/aaron-legaspi/43/455/805/
+twitter: "https://twitter.com/AaronAPLegaspi"
+dribbble: "http://dribbble.com/AaronAPL"
+linkedin: "ca.linkedin.com/pub/aaron-legaspi/43/455/805/"
 github: ""
 layout: person
 date: "2013-2-21"
-size: medium
 ---
 
 ## Who I am

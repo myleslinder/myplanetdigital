@@ -13,7 +13,6 @@ github: "https://github.com/annasunko"
 layout: person
 color: "pink"
 homepage: false
-size: medium
 ---
 
 ## Who I Am

@@ -5,14 +5,13 @@ tags: ["people"]
 skill: "QA"
 summary: "Quality is not something you add like salt at the end!"
 coverImageUrl: ""
-authorImageUrl: "/images/avatar/akshay.jpg"
+authorImageUrl: ""
 twitter: 
 dribbble: 
 linkedin: ""
 github: ""
 layout: person
 date: "2013-2-1"
-size: medium
 ---
 
 ## Who I am

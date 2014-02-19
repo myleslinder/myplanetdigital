@@ -1,23 +1,22 @@
 ---
 title: "Andrew Semuschak"
 role: "UI Designer"
-tags: ["people", "design"]
-skill: "Design, Usability, Interactive"
+tags: ["people"]
+skill: "Interaction Design, Visual-Interactive Design, User Research, Usability Testing"
 summary: "I'm not saying it was portals. But it was portals."
 coverImageUrl: ""
-authorImageUrl: "/images/avatar/andrew-s.jpg"
+authorImageUrl: ""
 twitter:
 dribbble: "http://www.dribbble.com/andsem"
 linkedin: "http://ca.linkedin.com/in/andrewsemuschak"
 github:
 layout: person
 date: "2012-3-15"
-size: medium
 ---
 
 ## Who I am
 
-?
+I'm a Canuck who currently lives in Washington D.C., enjoys smooth jazz and empanadas.
 
 ## What I do
 
