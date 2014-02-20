@@ -1,3 +1,0 @@
-.article-404 {
-	background-image: url("<%= @getUrl('/images/404-doodle.png') %>");
-}

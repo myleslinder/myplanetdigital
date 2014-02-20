@@ -3,7 +3,43 @@ title: "404 Not Found"
 layout: default
 ---
 
-<article class="article-404">
-	<h2>This page does not exist</h2>
-	<h3><a href="<%- @getUrl('/') %>">Go home</a></h3>
-</article>
+<div class="article-404">
+	<div class="article-404-text">
+		<h1>This page does not exist</h1>
+		<h2><a href="<%- @getUrl('/') %>">Go home</a></h2>
+	</div>
+</div>
+
+<style type="text/css">
+.article-404 {
+	background-image: url("<%= @getUrl('/images/404-doodle.png') %>");
+	background-size: cover;
+	width: 100%;
+	height: 500px;
+}
+.article-404-text {
+	left: 50%;
+	top: 40%;
+	position: relative;
+}
+.article-404-text h1 {
+	font-weight: normal;
+}
+.article-404-text h2 a {
+	color: #f05a28;
+	text-decoration: none;
+	font-size: 1.5em;
+}
+
+@media screen and (max-width: 720px) {
+	.article-404 {
+		background-position-y: 100px;
+	}
+	.article-404-text {
+		top: 0;
+		left: 0;
+		letter-spacing: -3px;
+		padding: 11px 17px;
+	}
+}
+</style>
