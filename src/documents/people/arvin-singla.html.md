@@ -11,7 +11,6 @@ dribbble: ""
 linkedin: 
 github: "http://github.com/arvinsingla"
 layout: person
-color: "black"
 ---
 
 ## Who I am
