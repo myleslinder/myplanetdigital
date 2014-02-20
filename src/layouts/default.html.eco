@@ -52,13 +52,20 @@
 				</section>
 				
 				<!--[if (!IE) | (gte IE 10)]> -->
-				<article id="article">
-					<% if @document.layout != 'articles': %>
-					<!-- Article goes here -->
-					<%- @content %>
-					<% end %>
+				<article id="article">					
+					<!-- Article goes here for modern browsers -->
+					<%- @content %>					
 				</article>
 				<!-- <![endif]-->
+
+				<!--[if IE 8]>
+				<% if @document.layout != 'articles': %>
+				<article id="article">										
+					<%- @content %>
+				</article>
+				<% end %>
+				<![endif]-->
+				
 			</div>
 
 			<!-- MENU GOES HERE -->
