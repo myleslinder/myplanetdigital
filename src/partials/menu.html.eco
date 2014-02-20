@@ -11,4 +11,6 @@
 	</ul>
 </div>
 
+<!--[if (!IE) | (gte IE 10)]> -->
 <button id="menu-toggle">Show Menu</button>
+<!-- <![endif]-->

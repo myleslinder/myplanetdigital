@@ -6,8 +6,7 @@ module.exports =
 			styles: [
 				'/styles/main.css'
 			]
-			scripts: [
-				'/scripts/vendor/jquery-2.1.0.min.js'
+			scripts: [				
 				'/scripts/vendor/isotope-beta2.pkgd.min.js'
 				'/scripts/main.js'				
 				'/scripts/pollyfill.js'
@@ -19,6 +18,18 @@ module.exports =
 				'/scripts/vendor/fastclick.js'
 				'/scripts/init.js'
 				'/scripts/vendor/prism.js'
+			]
+			'ie8styles': [
+				'/styles/site-ie8.css'
+			]
+			'jquery1': [
+				'/scripts/vendor/jquery-1.11.0.min.js'	
+			]
+			'jquery2': [
+				'/scripts/vendor/jquery-2.1.0.min.js'
+			]
+			'html5shiv' : [
+				'/scripts/vendor/html5shiv.js'
 			]
 
 			# Social Media Services

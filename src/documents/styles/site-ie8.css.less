@@ -40,6 +40,10 @@ body {
     width:100%;
     position:relative;
     z-index:1;
+    > .main-wrap {
+      max-width:@max-width;
+      margin:0 auto;
+    }
   }
 }
 
@@ -50,7 +54,7 @@ body {
   top:9px;
   font-size: 0;
   left:@logo-gutter-width;
-  background:url('../../images/logo_sprite.png') 0 -100px no-repeat transparent;
+  background:url('../images/logo_sprite.png') 0 -100px no-repeat transparent;
   z-index: 3;  
 }
 
@@ -60,6 +64,10 @@ body.width-mobile #logo {
 
 #viewport {
   margin-top: @menu-height;
+}
+
+body.article #viewport {
+  margin-top: 100px;
 }
 
 @menu-transition-time:0.35s;
@@ -97,26 +105,23 @@ body.width-mobile #logo {
   height:@menu-height;  
   width:@menu-height;
   position:relative;
-  margin-top:-@menu-hover-offset;
-  border-left:1px solid #ddd;
+  margin-top:-@menu-hover-offset;  
   font-size:15px;
   background:transparent;
   padding: 75px 5px 0;
   &.active {
     color:#000;
   }
-  // @Todo: remove hardcode from there
-  &.contact.page {
-    border-right: 1px solid #ddd;
-  }  
   &.all {
     display:none;
   }
 
-  > span {
+  > a {
     font-size: 14px;
     z-index: 1;
     position: relative;
+    text-decoration: none;
+    color: #000;
   }
   &:before {
     content:'';
@@ -125,7 +130,7 @@ body.width-mobile #logo {
     left:51px;
     width: 29px;
     height: 40px;
-    background:url('../../images/sprite-ie.png') no-repeat 0 0;
+    background:url('../images/sprite-ie.png') no-repeat 0 0;
   }
   &:after {
     top:70px;
@@ -140,7 +145,9 @@ body.width-mobile #logo {
     opacity:0.99;    
   }
   &:hover, &.active {
-    color:#ff0f0f;
+    & > a {
+      color:#ff0f0f;
+    }    
     padding-top: 87px;
     &:before {
       background-position: 0 -40px;        
@@ -174,7 +181,7 @@ body.width-mobile #menu ul > li {
 // Tiles
 
 @tile-height: 250px;
-@tile-width: 33.3%;
+@tile-width: 33%;
 @tile-padding: 12px;
 @tag-color-on-black: #8a8a8a;
 @tag-color-on-white: #999;
@@ -186,6 +193,7 @@ body.width-mobile #menu ul > li {
   font-family: "TradeGothic", Helvetica, sans-serif;
   font-size: 16px;
   width: 100%;
+  padding-bottom: 100px;
 
   .border-box();
 
@@ -219,7 +227,7 @@ body.width-mobile #menu ul > li {
         .border-box();
       }
       h2 {
-        font-family: 'PlantinBold';
+        font-family: 'Plantin';
         font-size: 2.5em;
         color: black;
         letter-spacing: -1px;
@@ -409,14 +417,305 @@ body.width-mobile #menu ul > li {
   }
 }
 
+body.article #main {
+  padding-bottom: 0px;
+}
+
 #footer {
-  width:100%;
-  background: #222;
-  color: #fff;
-  height: @footer-height;
-  line-height: @footer-height;
-  padding:0 20px;
-  .border-box();
-  .text-overflow();
+  position: relative;
   z-index: 1;
+  background-color: black;
+  color: white;
+  .contact-info {
+    position: relative;
+    width: 720px;
+    margin: 0 auto;
+    top: -40px;
+    span {
+      font-family: "Plantin";
+      font-weight: bold;
+      letter-spacing: -4px;
+      display: inline-block;
+      padding: 20px 30px;
+      font-size: 5em;
+      color: black;
+      background: white;
+      &:last-of-type {
+        padding-top: 0;
+      }
+    }    
+  }
+  .additional-info {
+    margin: 50px auto 0;
+    width: 820px;
+    h3 {
+      margin-top: 0;
+    }
+  }
+  .contact {
+    display: inline-block;
+    padding: 0 30px 0 20px;
+    border-left: 1px solid #555;
+    border-right: 1px solid #555;
+    width: 170px;
+    margin-bottom: 50px;
+    span {
+      display: block;
+      font-size: 1.2em;
+      color: #5b5b5b;
+    }
+  }
+  .address {
+    display: inline-block;
+    vertical-align: top;
+    padding-left: 20px;
+    padding-right: 50px;
+    margin-bottom: 50px;
+
+    h3 {
+      font-weight: normal;
+    }
+    span {
+      display: block;
+      color: #5b5b5b;
+    }
+  }
+}
+
+// Profiles
+.profile-header {
+  text-align: center;
+  width: 100%;
+  max-height: 480px;
+  height: auto;
+  font-size: 62.5%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-image: none !important;
+  & > img {
+    display: block !important;
+    font-size: 0;
+    visibility: visible !important;
+    width: 100%;
+    height: auto;
+  }
+}
+
+.profile-body {
+  z-index: 1;
+  font-family: "Plantin";
+  font-size: 10px;
+  width: 100%;
+  max-width: 1350px;
+  margin: -130px auto 80px;
+  background: white;
+  padding: 0 0 60px;
+  position: relative;
+  .border-box();
+
+  .profile-content {
+    color: #242424;
+    max-width: 850px;
+    margin: 0 auto;
+    padding-top: 1px;
+
+    .profile-picture {
+      margin: -83px auto 0;
+      width: 150px;
+      height: 150px;      
+      overflow: hidden;      
+      border: 10px solid white;
+      position:relative;
+      .border-radius(130px);
+      img {
+        max-height: 100%;
+        width: auto;
+      }      
+    } 
+
+    h1 {
+      text-align: center;
+      margin-bottom: 33px;
+      font: 4.5em/1.5 "TradeGothic";
+      font-weight: bold;
+      letter-spacing: -0.01em;      
+    }
+    ul {
+      display: block;
+      text-align: center;
+      padding: 0;
+      margin: 0 auto 80px;
+      list-style: none;
+      li {
+        display: inline-block;
+        padding-right: 15px;
+        a {
+          display: inline-block;
+          position: relative;
+          .hide-text();
+          text-decoration: none;
+          height: 40px;
+          width: 40px;
+          background: url(../../images/social-media-icons-ie8.png) 0 0 no-repeat;        
+          &.twitter {
+            background-position: 5px 5px;
+            &:hover {
+              background-position: 5px -40px;
+            }
+          }
+          &.dribbble {
+            background-position: -115px 5px;
+            &:hover {
+              background-position: -115px -40px;
+            }
+          }
+          &.github {
+            background-position: -175px 5px;
+            &:hover {
+              background-position: -175px -40px;
+            }
+          }
+          &.linkedin {
+            background-position: -235px 5px;
+            &:hover {
+              background-position: -235px -40px;
+            }
+          }
+          &.stackoverflow {
+            background-position: -295px 5px;
+            &:hover {
+              background-position: -295px -40px;
+            }
+          }
+        }
+      }
+    }
+    .profile-quote {
+      position: relative;
+      text-align: center;
+      width: 100%;
+      padding: 30px 95px;
+      margin-bottom: 55px;
+      background: #f0f0f0;
+      font: 2.3em/1.5 "TradeGothic";
+      .border-box();
+      &:before {
+        content: '\201C';
+        display: block;
+        position: absolute;
+        left: 11px;
+        top: 15px;
+        font-family: 'Plantin', serif;
+        font-size: 72px;
+        line-height: 1;
+        color: #e2e2e2;        
+      }
+      &:after {
+        content: '\201D';
+        display: block;
+        position: absolute;
+        right: 11px;
+        bottom: 0px;
+        font-family: 'Plantin', serif;
+        font-size: 72px;
+        line-height: 1;
+        color: #e2e2e2;        
+      }
+      @media screen and (max-width: 1024px) {
+        padding: 30px 95px;
+        font-size: 2.1em;
+      }
+      @media screen and (max-width: 560px) {
+        padding: 30px 55px;
+        font-size: 2em;
+      }
+      @media screen and (max-width: 480px) {
+        padding: 20px 30px;
+        margin-bottom: 35px;
+        font-size: 1.5em;
+        &:before {
+          font-size: 3em;
+          left: 6px;
+          top: 7px;
+        }
+        &:after {
+          font-size: 3em;
+          right: 6px;
+          bottom: -18px;
+        }
+      }
+    }
+    h2 {
+      margin-bottom: 33px;
+      font: 2.8em/1.5 "Plantin";
+      font-weight: bold;
+      letter-spacing: -0.01em;
+
+      @media screen and (max-width: 1024px) {
+        padding: 0 8.4%;
+        font-size: 2.5em;
+        margin-bottom: 25px;
+      }
+      @media screen and (max-width: 560px) {
+        padding: 0 5%;
+        margin-bottom: 20px;
+      }
+      @media screen and (max-width: 480px) {
+        padding: 0 3%;
+        margin-bottom: 15px;
+      }
+    }
+    p {
+      margin-bottom: 33px;
+      font: 2.3em/1.5 Plantin;
+      letter-spacing: -0.01em;
+      .border-box();
+
+      @media screen and (max-width: 1024px) {
+        padding: 0 8.4%;
+        font-size: 2em;
+      }
+      @media screen and (max-width: 560px) {
+        padding: 0 5%;
+        font-size: 1.8em;
+      }
+      @media screen and (max-width: 480px) {
+        padding: 0 3%;
+        font-size: 1.7em;
+      }
+    }
+    .article-footer {
+      border-top: 1px solid #ccc;
+      margin-top: 150px;
+      width: 100%;
+      .footer-doodle {
+        height: 110px;
+        width: 90px;
+        margin: -55px auto 0;
+        background-color: #ffffff;
+        background-repeat: no-repeat;
+        background-position: 50%;
+        -webkit-background-size: 45px 55px;
+        background-size: 45px 55px;
+        &.careers {
+          background-image: url(../../images/tags/icon-careers.png);
+        }
+        &.business {
+          background-image: url(../../images/tags/icon-business.png);
+        }
+        &.technology {
+          background-image: url(../../images/tags/icon-technology.png);
+        }
+        &.design {
+          background-image: url(../../images/tags/icon-design.png);
+        }
+        &.people {
+          background-image: url(../../images/tags/icon-people.png);
+        }
+        &.culture {
+          background-image: url(../../images/tags/icon-culture.png);
+        }
+      }
+    }
+  }
 }
