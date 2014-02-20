@@ -23,7 +23,7 @@ module.exports =
 				'/styles/site-ie8.css'
 			]
 			'jquery1': [
-				'/scripts/vendor/jquery-1.11.0.min.js'			
+				'/scripts/vendor/jquery-1.11.0.min.js'	
 			]
 			'jquery2': [
 				'/scripts/vendor/jquery-2.1.0.min.js'

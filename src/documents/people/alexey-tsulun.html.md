@@ -3,7 +3,7 @@ title: "Alexey Tsulun"
 role: "Drupal Developer"
 tags: ["people"]
 skill: "Drupal, Javascript, Computer Science"
-summary: "don't work hard - work intelligent"
+summary: "Don't work hard - work intelligent"
 coverImageUrl: ""
 authorImageUrl: ""
 twitter:
@@ -11,7 +11,6 @@ dribbble:
 linkedin:
 github: "https://github.com/TsulunAleksey"
 layout: person
-color: "green"
 homepage: false
 ---
 

@@ -11,7 +11,6 @@ dribbble: "http://dribbble.com/amitjakhu"
 linkedin: "http://www.linkedin.com/pub/amit-jakhu/41/997/357"
 github:
 layout: person
-color: "black"
 date: "2013-5-27"
 ---
 

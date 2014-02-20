@@ -11,7 +11,6 @@ dribbble:
 linkedin: "http://www.linkedin.com/in/amitkiran"
 github:
 layout: person
-color: "black"
 ---
 
 ## Who I am
