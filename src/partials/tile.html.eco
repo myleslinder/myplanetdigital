@@ -36,6 +36,10 @@
 			<% end %>
 			<a class="tile-title" href="<%= @getUrl(@document.url) %>">
 				<h2><%= @document.title %></h2>
+				<% if @document.layout is 'person' and @document.summary?: %>
+					<% quote = if @document.summary.length > 70 then @document.summary.substring(0, 70) + '...' else @document.summary %>
+					<p class="quote"><%= quote %></p>
+				<% end %>
 			</a>
 		</div>
 		<% if @document.size != 'small' && @document.imagePosition == 'bottom': %>
