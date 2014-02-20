@@ -1,4 +1,4 @@
 ---
 menuHidden: true
 ---
-<%- @content %>
+<%- @partial('article', true) %>
