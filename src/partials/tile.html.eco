@@ -36,6 +36,9 @@
 			<% end %>
 			<a class="tile-title" href="<%= @getUrl(@document.url) %>">
 				<h2><%= @document.title %></h2>
+				<% if @document.layout is 'person' and @document.summary?: %>
+					<p class="quote"><%= @document.summary %></p>
+				<% end %>
 			</a>
 		</div>
 		<% if @document.size != 'small' && @document.imagePosition == 'bottom': %>
