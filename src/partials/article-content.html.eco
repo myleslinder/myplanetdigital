@@ -1,9 +1,14 @@
 <% # Retrieve all associated files %>
 
-<% for file in @getDocument().getAssociatedFiles().toJSON(): %>
-  <% cover = file.url if file.basename is 'cover' %>
+<% cover = false %>
+<% filePath = ('associated-files/' + @document.relativeBase).replace('-content', '') %>
+<% files = @getFilesAtPath(filePath) %>
+<% if files: %>
+  <% for image in files.toJSON(): %>
+    <% avatar = image.url if image.basename is 'avatar' %>
+    <% cover = image.url if image.basename is 'cover' %>    
+  <% end %>
 <% end %>
-
 
 <% # Clean up any variables %>
 
