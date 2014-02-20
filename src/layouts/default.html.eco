@@ -58,7 +58,7 @@
 				</article>
 				<!-- <![endif]-->
 
-				<!--[if IE 8]>
+				<!--[if (IE 8) | (IE 9)]>
 				<% if @document.layout != 'articles': %>
 				<article id="article">										
 					<%- @content %>

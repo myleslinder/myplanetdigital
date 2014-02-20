@@ -486,11 +486,19 @@ body.article #main {
 .profile-header {
   text-align: center;
   width: 100%;
-  height: 480px;
+  max-height: 480px;
+  height: auto;
   font-size: 62.5%;
   background-repeat: no-repeat;
   background-position: center center;
-  .background-cover();
+  background-image: none !important;
+  & > img {
+    display: block !important;
+    font-size: 0;
+    visibility: visible !important;
+    width: 100%;
+    height: auto;
+  }
 }
 
 .profile-body {
@@ -502,6 +510,7 @@ body.article #main {
   margin: -130px auto 80px;
   background: white;
   padding: 0 0 60px;
+  position: relative;
   .border-box();
 
   .profile-content {
@@ -513,11 +522,11 @@ body.article #main {
     .profile-picture {
       margin: -83px auto 0;
       width: 150px;
-      height: 150px;
-      border-width: 8px;
-      overflow: hidden;
-      .border-radius(130px);
+      height: 150px;      
+      overflow: hidden;      
       border: 10px solid white;
+      position:relative;
+      .border-radius(130px);
       img {
         max-height: 100%;
         width: auto;
@@ -596,10 +605,10 @@ body.article #main {
         position: absolute;
         left: 11px;
         top: 15px;
-        font-family: Plantin;
-        font-size: 6em;
+        font-family: 'Plantin', serif;
+        font-size: 72px;
         line-height: 1;
-        color: #e2e2e2;
+        color: #e2e2e2;        
       }
       &:after {
         content: '\201D';
@@ -607,10 +616,10 @@ body.article #main {
         position: absolute;
         right: 11px;
         bottom: 0px;
-        font-family: Plantin;
-        font-size: 6em;
+        font-family: 'Plantin', serif;
+        font-size: 72px;
         line-height: 1;
-        color: #e2e2e2;
+        color: #e2e2e2;        
       }
       @media screen and (max-width: 1024px) {
         padding: 30px 95px;
