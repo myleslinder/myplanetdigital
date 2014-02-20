@@ -32,7 +32,6 @@ module.exports =
 			database.findAllLive
 				relativeOutDirPath:
 					$in: [
-						'people'
 						'article'
 						'careers'
 					]
