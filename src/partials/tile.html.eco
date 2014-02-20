@@ -37,7 +37,8 @@
 			<a class="tile-title" href="<%= @getUrl(@document.url) %>">
 				<h2><%= @document.title %></h2>
 				<% if @document.layout is 'person' and @document.summary?: %>
-					<p class="quote"><%= @document.summary %></p>
+					<% quote = if @document.summary.length > 70 then @document.summary.substring(0, 70) + '...' else @document.summary %>
+					<p class="quote"><%= quote %></p>
 				<% end %>
 			</a>
 		</div>
