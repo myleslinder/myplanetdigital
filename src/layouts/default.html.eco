@@ -14,6 +14,7 @@
 		<% if @document.summary?: %>
 			<meta name="description" content="<%= @document.summary %>">
 		<% end %>
+		<link rel="icon" type="image/png" href="<%= @getUrl('/favicon.png') %>" />
 	</head>
 
 	<body class="<% if @document.layout != 'articles': %> article <% end %>">
