@@ -1,6 +1,5 @@
 <% # Retrieve all associated files %>
 
-<% cover = false %>
 <% filePath = ('associated-files/' + @document.relativeBase).replace('-content', '') %>
 <% files = @getFilesAtPath(filePath) %>
 <% if files: %>
