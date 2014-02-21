@@ -1,4 +1,9 @@
 ---
 menuHidden: true
 ---
-<%- @partial('article', true) %>
+
+<% if ('people' in @document.tags): %>
+<%- @partial('person-content', true) %>
+<% else: %>
+<%- @partial('article-content', true) %>
+<% end %>

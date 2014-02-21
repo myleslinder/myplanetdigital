@@ -2,4 +2,4 @@
 layout: default
 ---
 
-<%- @partial('article', true) %>
+<%- @partial('article-content', true) %>

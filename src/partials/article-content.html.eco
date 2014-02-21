@@ -11,7 +11,6 @@
 <% end %>
 
 <% # Clean up any variables %>
-
 <% cover = if cover? then @partial('cover', true, {'cover': cover}) else @partial('cover', true) %>
 <% cover = ' style="background-image: url(' + cover + ')"' %>
 
