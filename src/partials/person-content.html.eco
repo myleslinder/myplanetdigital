@@ -1,5 +1,4 @@
 
-<% cover = false %>
 <% filePath = ('associated-files/' + @document.relativeBase).replace('-content', '') %>
 <% files = @getFilesAtPath(filePath) %>
 <% if files: %>
@@ -9,7 +8,6 @@
   <% end %>
 <% end %>
 
-<% console.log(typeof cover) %>
 <% cover = if cover? then @partial('cover', true, {'cover': cover}) else @partial('cover', true) %>
 
 <div class="profile-header" style="background-image:url('<%= cover %>');">
