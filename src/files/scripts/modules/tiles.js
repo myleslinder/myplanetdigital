@@ -16,7 +16,9 @@
 		queue = [],
 		layerQueue = [],
 		finishFlush,
-		$hiddenTiles;
+		$hiddenTiles,
+		$body = $('body'),
+		$articleContainer = $('#article');
 
 	function initializePage() {
 		$hiddenTiles = window.tiles.items.filter(function (tile) {
@@ -154,6 +156,17 @@
 			scrollData = data;
 			firstEventTimeout = window.setTimeout(initializePage, 750);
 		}
+	});
+
+	//Article loading
+	//Temporary, Proof of concept
+	$wrap.on('click', 'a.tile-image, a.tile-title', function(e) {
+		e.preventDefault();
+		$window.trigger('article');
+		window.requestAnimationFrame(function () {
+			$body.toggleClass('article');
+		});
+		$articleContainer.load(this.href + '-content');
 	});
 
 }());
