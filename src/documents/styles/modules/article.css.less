@@ -94,19 +94,18 @@
 	}
 
 	.article-info {
-		max-width: 950px;
+		width: 950px;
 		margin: 0 auto;
 		font-family: "TradeGothic";
 		font-size: 1.5em;
 		padding-bottom: 25px;
 		margin-bottom: 50px;
 		border-bottom: 1px solid #f0f0f0;
-		width: 100%;
 		display: table;
 
 
 		@media screen and (max-width: 1024px) {
-			max-width: 92.7734375%;
+			width: 92.7734375%;
 		}
 		@media screen and (max-width: 480px) {
 			padding-bottom: 15px;
@@ -321,12 +320,10 @@
 				margin-bottom: 10px;
 			}
 		}
-
 		a {
 			color: #ee5b33;
 			text-decoration: none;
 			&:hover {
-				text-decoration: none;
 				background: #ee5b33;
 				color: white;
 			}
@@ -418,11 +415,11 @@
 				font-size: 2.2em;
 				line-height: 1.5;
 			}
-			ul {
+			> ul {
 				padding-left: 20px;
 				margin-bottom: 0;
 			}
-			ol {
+			> ol {
 				padding-left: 61px;
 				margin-bottom: 0;
 			}
@@ -606,31 +603,42 @@
 			margin-top: 150px;
 			width: 100%;
 			.footer-doodle {
+				position: relative;
 				height: 110px;
 				width: 90px;
 				margin: -55px auto 0;
-				background-color: #ffffff;
-				background-repeat: no-repeat;
-				background-position: 50%;
-				-webkit-background-size: 45px 55px;
-				background-size: 45px 55px;
-				&.careers {
-					background-image: url(../../images/tags/icon-careers.png);
+				background: white;
+				&:before {
+					content: '';
+					display: block;
+					position: absolute;
+					width: 42px;
+					height: 40px;
+					left: 22px;
+					top: 31px;
+					background: #fff url(../../images/spritempd.png) 0 0 no-repeat;
+					background-size: 533px;
 				}
-				&.business {
-					background-image: url(../../images/tags/icon-business.png);
+				&.company:before {
+					background-position: -312px 0;
 				}
-				&.technology {
-					background-image: url(../../images/tags/icon-technology.png);
+				&.team:before {
+					background-position: -265px 0;
 				}
-				&.design {
-					background-image: url(../../images/tags/icon-design.png);
+				&.careers:before {
+					background-position: -99px 0;
 				}
-				&.people {
-					background-image: url(../../images/tags/icon-people.png);
+				&.contact:before {
+					background-position: -409px 0;
 				}
-				&.culture {
-					background-image: url(../../images/tags/icon-culture.png);
+				&.design:before {
+					background-position: -140px 0;
+				}
+				&.development:before {
+					background-position: -184px 0;
+				}
+				&.business:before {
+					background-position: -224px 0;
 				}
 			}
 		}

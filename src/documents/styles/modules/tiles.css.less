@@ -124,11 +124,10 @@
 				display: block;
 				width: 113px;
 				height: 75px;
-				border-bottom: 1px solid @doodle-line-white;				
+				border-bottom: 1px solid @doodle-line-white;
 				overflow: hidden;
 				cursor: pointer;
-				.transform(translateZ(0) rotate(-45deg));				
-				.hideBack();
+				.transform(translateZ(0) rotate(-45deg));
 
 				&:before {
 					position: absolute;
@@ -136,33 +135,33 @@
 					left: 30px;
 					content: '';
 					display: block;
-					height: 55px;
-					width: 45px;
-					background: url(../../images/tags/icon-design-color.png) no-repeat;
-					background-size: 45px auto;
+					height: 40px;
+					width: 42px;
+					background: url(../../images/spritempd.png) 0 0 no-repeat;
+					background-size: 533px auto;
 					.transform(translateZ(0) rotate(45deg));
-					.hideBack();
 					.transition-transform(0.25s);
-					z-index: 3;
 				}
-
-				&.design:before {
-					background-image: url(../../images/tags/icon-design-color.png);
+				&.company:before {
+					background-position: -312px -40px;
 				}
-				&.culture:before {
-					background-image: url(../../images/tags/icon-culture-color.png);
+				&.team:before {
+					background-position: -265px -40px;
 				}
 				&.careers:before {
-					background-image: url(../../images/tags/icon-careers-color.png);
+					background-position: -99px -40px;
 				}
-				&.technology:before {
-					background-image: url(../../images/tags/icon-technology-color.png);
+				&.contact:before {
+					background-position: -409px -40px;
 				}
-				&.people:before {
-					background-image: url(../../images/tags/icon-people-color.png);
+				&.design:before {
+					background-position: -140px -40px;
+				}
+				&.development:before {
+					background-position: -184px -40px;
 				}
 				&.business:before {
-					background-image: url(../../images/tags/icon-business-color.png);
+					background-position: -224px -40px;
 				}
 			}
 		}
@@ -296,31 +295,6 @@
 				h2 {
 					font-size: 2.5em;
 				}
-				//border-top:4px solid #ff0f0f;
-				&.company {
-					border-color: #ff0f0f;
-				}
-				&.design {
-					border-color: #e146fc;
-				}
-				&.technology {
-					border-color: #84c600;
-				}
-				&.business {
-					border-color: #0085ff;
-				}
-				&.careers {
-					border-color: #ff7900;
-				}
-				&.people {
-					border-color: #69e8e2;
-				}
-				&.work {
-					border-color: #61caff;
-				}
-				ul.tags {
-					padding-left: 10%;
-				}
 				a.tile-title {
 					padding: 68px 10% 0
 				}
@@ -328,14 +302,24 @@
 					position: absolute;
 					bottom:0px;
 				}
+				ul.tags {
+					padding-left: 10%;
+					.tile-doodle {
+						display: none;
+					}
+				}
 			}
-			&.large, &.featured, &.hero {
+			&.medium, &.large, &.featured, &.hero {
 				h2 {
 					font-size: 2.5em;
 				}
-			}
-			ul.tags .tile-doodle {
-				display: none;
+				height: @tile-height * 1.6;
+				a.tile-image {
+					height: 37.5%;
+				}
+				.tile-content {
+					height: 62.5%;
+				}
 			}
 		}
 	}
@@ -343,7 +327,6 @@
 
 .desktop-capable #main .tile .content .tags > li:hover a.tile-doodle:before {
 	.transform(rotate(45deg) translate3d(-9px,-9px,0));
-	filter: progid:DXImageTransform.Microsoft.Matrix(M11=1, M12=-1, M21=1, M22=1, SizingMethod="auto expand");
 }
 
 .desktop-capable #main .tile {

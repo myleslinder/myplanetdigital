@@ -12,18 +12,12 @@
 			position: fixed;
 			left:0;
 			text-align: center;
-
-			ul {
-				background: #fff;
-				overflow:hidden;
-				.translateZ();
-			}
+			overflow: hidden;
 		}
 
 		&.small-menu {
 			 #menu {
 				.translate3d(0, -94px, 0);
-
 			}
 
 			ul li:after {
@@ -61,7 +55,8 @@
 		height:@menu-height;
 		line-height:168px;
 		width:@menu-height;
-		position:relative;		
+		position:relative;
+		color: black;
 		&.active {
 			background:#fff;
 			color:#000;
@@ -76,35 +71,142 @@
 		@media only screen and (min-width: 1175px) {
 			height:@menu-height;
 			margin-top:-@menu-hover-offset;
-			.translateZ();
 			.transition-transform(@menu-transition-time);
 			background:transparent;
 
 			&.all {
 				display:none;
 			}
-
-			> a {
-				.translateZ();
+			a {
+				color: inherit;
+				text-decoration: none;
+			}
+			a > span {
 				z-index: 1;
 				position: relative;
-				text-decoration: none;
-				color: #000;
-				display: inline-block;
-				height: @menu-height;		
 			}
 			&:before {
 				content:'';
 				position:absolute;
 				top:44px;
-				left:51px;
-				width: 31px;
+				left:44px;
+				width: 42px;
 				height: 40px;
-				background:url('../../images/sprite-newest.png') no-repeat -146px 0;
-				background-size:477px auto;
-				.transform(translateZ(0) scale(0.98));
+				background:url('../../images/spritempd.png') 0 0 no-repeat;
+				background-size:533px;
 				.transition-transform(@menu-transition-time);
-				.hideBack();
+			}
+			&.company{
+				&:before {
+					background-position: -312px 0;
+				}
+				&.hover, &.active {
+					a > span {
+						color: @company-color;
+					}
+					&:before {
+						background-position: -312px -41px;
+					}
+					&:after {
+						border-color: @company-color;
+					}
+				}
+			}
+			&.people {
+				&:before {
+					background-position: -265px 0;
+				}
+				&.hover, &.active {
+					a > span {
+						color: @team-color;
+					}
+					&:before {
+						background-position: -265px -40px;
+					}
+					&:after {
+						border-color: @team-color;
+					}
+				}
+			}
+			&.careers {
+				&:before {
+					background-position: -99px 0;
+				}
+				&.hover, &.active {
+					a > span {
+						color: @careers-color;
+					}
+					&:before {
+						background-position: -99px -40px;
+					}
+					&:after {
+						border-color: @careers-color;
+					}
+				}
+			}
+			&.contact {
+				&:before {
+					background-position: -409px 0;
+				}
+				&.hover, &.active {
+					a > span {
+						color: @contact-color;
+					}
+					&:before {
+						background-position: -409px -40px;
+					}
+					&:after {
+						border-color: @contact-color;
+					}
+				}
+			}
+			&.design {
+				&:before {
+					background-position: -140px 0;
+				}
+				&.hover, &.active {
+					a > span {
+						color: @design-color;
+					}
+					&:before {
+						background-position: -140px -40px;
+					}
+					&:after {
+						border-color: @design-color;
+					}
+				}
+			}
+			&.technology {
+				&:before {
+					background-position: -184px 0;
+				}
+				&.hover, &.active {
+					a > span {
+						color: @development-color;
+					}
+					&:before {
+						background-position: -184px -40px;
+					}
+					&:after {
+						border-color: @development-color;
+					}
+				}
+			}
+			&.business {
+				&:before {
+					background-position: -224px 0;
+				}
+				&.hover, &.active {
+					a > span {
+						color: @business-color;
+					}
+					&:before {
+						background-position: -224px -40px;
+					}
+					&:after {
+						border-color: @business-color;
+					}
+				}
 			}
 			&:after {
 				top:70px;
@@ -117,25 +219,20 @@
 				height:26px;
 				border-top:1px solid #e6e6e6;
 				opacity:0.99;
-				.transform(translateZ(0) scale(0.98));
 				.transition-transform(@menu-transition-time, opacity @menu-transition-time);
-				.hideBack();
 			}
 			&.hover, &.active {
-				& > a {
-					color:#ff0f0f;
-				}				
-				.translate3d(0, @menu-hover-offset, 0);
+				.transform(translateY(@menu-hover-offset));
+
 				&:before {
 					background-position: -146px -40px;
-					.transition-transform(@menu-transition-time);
-					.transform(translate3d(0, -@menu-hover-offset, 0) scale(0.98));
+					.transform(translateY(-@menu-hover-offset));
 				}
 				&:after {
 					opacity:0.01;
 					border-color:#ff0f0f;
-					.transform(translate3d(0, 37px, 0) scale(0.98));
-				}				
+					.transform(translateY(37px));
+				}
 			}
 		}
 	}
@@ -174,11 +271,10 @@
 	 	position:absolute;
 		width: 30px;
 		height: 43px;
-		background:url('../../images/sprite-newest.png') no-repeat -140px 0;
-		background-size:477px auto;
+		background:url('../../images/spritempd.png') no-repeat -140px 0;
+		background-size:533px;
 		margin:40px 0 0 30px;
-		.transform(translateZ(0) scale(0.98));
-		.hideBack();
+		.translateZ();
 	}
 }
 
@@ -201,6 +297,12 @@
 			line-height:53px;
 			border-bottom:1px solid #333;
 			width:100%;
+			color: white;
+
+			a {
+				text-decoration: none;
+				color: inherit;
+			}
 		}
 	}
 }

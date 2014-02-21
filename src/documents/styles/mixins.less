@@ -33,7 +33,7 @@
        -moz-transform: @transform;
         -ms-transform: @transform;
          -o-transform: @transform;
-            transform: @transform;               
+            transform: @transform;
 }
 
 .hideBack() {
@@ -149,6 +149,16 @@
   font: 0/0 serif;
   text-shadow: none;
   color: transparent;
+}
+
+.font-fix() {
+  -webkit-font-feature-settings: "kern", "liga", "case"; /* No variation */
+  -moz-font-feature-settings: "kern=1", "liga=1", "case=1"; /* Firefox 4.0 to 14.0 */
+  -moz-font-feature-settings: "kern", "liga" , "case"; /* Firefox 15.0 onwards */
+  -moz-font-feature-settings: "kern" 1, "liga" 1, "case" 1; /* Firefox 15.0 onwards explicitly set feature values */
+  font-feature-settings: "kern", "liga", "case"; /* No variation */
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 .clear-fix() {

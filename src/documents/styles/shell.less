@@ -175,7 +175,6 @@ body.article #article-cover-photo {
 	z-index: 1;
 }*/
 
-
 #footer {
 	position: relative;
 	z-index: 1;
@@ -222,18 +221,22 @@ body.article #article-cover-photo {
 		}
 	}
 	.additional-info {
-		margin: 50px auto 0;
+		margin: 70px auto 0;
+		padding-bottom: 20px;
 		width: 820px;
+		font-family: TradeGothic;
 		h3 {
 			margin-top: 0;
 		}
 		@media screen and (max-width: 800px) {
 			width: 75%;
+			margin-top: 50px;
 		}
 	}
 	.contact {
 		display: inline-block;
-		padding: 0 30px 0 20px;
+		position: relative;
+		padding: 0 30px 10px 20px;
 		border-left: 1px solid #555;
 		border-right: 1px solid #555;
 		width: 170px;
@@ -243,13 +246,116 @@ body.article #article-cover-photo {
 			font-size: 1.2em;
 			color: #5b5b5b;
 		}
+		ul.social-media-footer {
+			position: absolute;
+			bottom: -28px;
+			padding: 0;
+			margin: 0;
+			font-size: 0;
+			list-style: none;
+			li {
+				display: inline-block;
+				margin-right: 10px;
+				a {
+					display: inline-block;
+					position: relative;
+					.hide-text();
+					width: 23px;
+					height: 23px;
+					background: url(../images/spritempd.png) 0 0 no-repeat;
+					background-size: 533px;
+					&:after {
+						content: '';
+						display: block;
+						position: absolute;
+						width: 23px;
+						height: 23px;
+						top: 0;
+						left: 0;
+						background: url(../images/spritempd.png) 0 0 no-repeat;
+						background-size: 533px;
+						opacity: 0.01;
+						.transition(opacity 0.3s);
+					}
+					&:hover:after {
+						opacity: 1;
+						.transition(opacity 0.3s);
+					}
+					&.twitter {
+						background-position: -96px -166px;
+						&:after {
+							background-position: -96px -188px;
+						}
+					}
+					&.facebook {
+						background-position: -130px -166px;
+						&:after {
+							background-position: -130px -188px;
+						}
+					}
+					&.dribbble {
+						background-position: -165px -166px;
+						&:after {
+							background-position: -165px -188px;
+						}
+					}
+					&.drupal {
+						background-position: -199px -166px;
+						&:after {
+							background-position: -199px -188px;
+						}
+					}
+					&.linkedin {
+						background-position: -234px -166px;
+						&:after {
+							background-position: -234px -188px;
+						}
+					}
+				}
+			}
+		}
 	}
 	.address {
 		display: inline-block;
+		position: relative;
 		vertical-align: top;
 		padding-left: 20px;
 		padding-right: 50px;
 		margin-bottom: 50px;
+		&:last-of-type {
+			padding-right: 0;
+		}
+		&:before {
+			content: '';
+			display: block;
+			position: absolute;
+			width: 62px;
+			height: 64px;
+			background: url(../images/spritempd.png) -462px -1px no-repeat;
+			background-size: 533px;
+		}
+		&.toronto:before {
+			top: -74px;
+			width: 62px;
+			height: 64px;
+		}
+		&.vancouver:before {
+			height: 44px;
+			top: -54px;
+			left: 31px;
+			background-position: -463px -73px;
+		}
+		&.chernihiv:before {
+			top: -64px;
+			left: 28px;
+			height: 56px;
+			background-position: -467px -120px;
+		}
+		@media screen and (max-width:800px) {
+			&:before {
+				display: none;
+			}
+		}
 
 		h3 {
 			font-weight: normal;
