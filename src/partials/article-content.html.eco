@@ -21,7 +21,8 @@
 	<% authorCompName = @document.author.replace(/\s+/g, '-')  %>
 	<% authorCompName = authorCompName.toLowerCase() %>
 	<% authorUrl = @getUrl("/people/" + authorCompName) %>
-	<% authorImage = @getUrl("/associated-files/people/" + authorCompName + '/avatar.jpg') %>
+	<% authorImageFile = @getFileAtPath('associated-files/people/' + authorCompName + '/avatar.jpg') %>
+	<% authorImage = @getUrl(authorImageFile) if authorImageFile %>
 <% end %>
 
 
