@@ -17,6 +17,8 @@ This downloads the external content, so be sure to be selective with your `git a
 
 ## Deploying to GitHub Pages
 
+Update the `url` in *docpad.coffee to use `http://myplanetdigital.github.io/swat`.
+
 	npm install docpad grunt -g
 	npm install
 	grunt
