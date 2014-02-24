@@ -60,3 +60,4 @@ module.exports = (grunt) ->
 
 	# By default, simply install the content.
 	grunt.registerTask 'default', ['content']
+	
