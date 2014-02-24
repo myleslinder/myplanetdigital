@@ -2,7 +2,7 @@ module.exports =
 	templateData:
 		site:
 			title: 'Myplanet Digital'
-			url: ''
+			url: 'http://myplanetdigital.github.io/swat'
 			styles: [
 				'/styles/main.css'
 			]
@@ -35,6 +35,10 @@ module.exports =
 			# Social Media Services
 			services:
 				googleAnalytics: 'UA-16401713-2'
+
+			# Override getUrl to fetch relevant url for environment
+			getUrl: (document) ->
+				return @site.url + (document.url or document.get?('url'))
 
 	# Set up collections to query and sort documents.
 	collections:
@@ -187,6 +191,8 @@ module.exports =
 		development:
 			templateData:
 				site:
+					# Set url on dev environment to be root
+					url: ''
 					# Disable certain services on the development environment.
 					services:
 						googleAnalytics: false
