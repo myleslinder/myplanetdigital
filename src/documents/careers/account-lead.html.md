@@ -2,7 +2,7 @@
 title: "Work with world-class clients: Join Myplanet as an Account Lead"
 priority: 1
 tags: ["careers"]
-header: "Work with world-class clients: Join Myplanet as an Account Lead"
+banner: "Work with world-class clients: Join Myplanet as an Account Lead"
 summary: "Work closely with our business development team to identify and respond to business opportunities."
 layout: article
 coverImageUrl: ""
