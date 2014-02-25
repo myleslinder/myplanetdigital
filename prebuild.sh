@@ -5,8 +5,11 @@ export REPO_URL="https://$GH_TOKEN@github.com/$GH_REPO.git"
 git config --global user.email "$GIT_EMAIL"
 git config --global user.name "$GIT_NAME"
 
+echo "Resetting origin url to $REPO_URL"
 git remote rm origin
 git remote add origin $REPO_URL
+
+git remote -v
 
 #echo "DEBUG, cd out"
 #test -d out && (
