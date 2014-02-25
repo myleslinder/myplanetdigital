@@ -1,16 +1,15 @@
-language: node_js
+env: 
+  global: 
+  - GH_REPO="medevice-users/gallery"
+  - secure: JlqokOuz2JPPe9dwUzvhkN+qQbHdamtIMloCyzBKr3k1Nqw16Z3Qm9Pwgr9XE9cU6SyCTU/KEEu4pYHEEJP0AaXXPU/yQzd1Zix8L9bqTF22MoD2qdBQ4ttjXMKS9E17+QpVmEYjAjwIGNyTQch7q/rs2ZXzt6dGv3pgJu/rH9M=
 node_js: "0.10"
-
-before_script:
-  - npm install -g grunt-cli
-  - grunt
-  - ./prebuild.sh
-script: docpad deploy-ghpages --env static
-
+language: node_js
+script: 
+- docpad deploy-ghpages --env static --quiet
 branches: 
   only: 
-    - master
-
-env: 
-  global:
-    secure: kONHslOtDa/KUY0QNqz++TjT0oQiVsXFjpylCJfPgecwoaSDm70Jenh06BbRI0tgHuGYNZ/ynWPKQ7my4KznEBZufRvCZ92fSrMhWcep8ERF9h3cVebKR9ggrrJ+DnCFeF1mNVaVO+TFyE2VHZiqmMiAkH9rIsUYOuIFsXpBPis=
+  - master
+before_script: 
+- npm install -g grunt-cli
+- grunt
+- ./prebuild.sh
