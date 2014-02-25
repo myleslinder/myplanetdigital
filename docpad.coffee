@@ -1,4 +1,7 @@
 module.exports =
+	
+	logLevel: (if ('-d' in process.argv) then 7 else 4)
+
 	templateData:
 		site:
 			title: 'Myplanet Digital'
