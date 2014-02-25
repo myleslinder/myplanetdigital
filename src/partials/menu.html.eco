@@ -7,7 +7,7 @@
 				</li>
 			<% end %>
 		<% end %>
-		<li class="contact page"><span><a href="#footer">Contact Us</a></span></li>
+		<li class="contact page"><a href="#footer"><span>Contact Us</span></a></li>
 	</ul>
 </div>
 
