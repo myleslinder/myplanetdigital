@@ -1,8 +1,16 @@
 language: node_js
 node_js: "0.10"
 
-before_script: 
+before_script:
   - npm install -g grunt-cli
   - grunt
-
+  - ./prebuild.sh
 script: docpad deploy-ghpages --env static
+
+branches: 
+  only: 
+    - master
+
+env: 
+  global: 
+    secure: kONHslOtDa/KUY0QNqz++TjT0oQiVsXFjpylCJfPgecwoaSDm70Jenh06BbRI0tgHuGYNZ/ynWPKQ7my4KznEBZufRvCZ92fSrMhWcep8ERF9h3cVebKR9ggrrJ+DnCFeF1mNVaVO+TFyE2VHZiqmMiAkH9rIsUYOuIFsXpBPis=

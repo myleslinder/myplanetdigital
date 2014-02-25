@@ -1,7 +1,7 @@
 ---
 title: "Work with world-class clients: Join Myplanet as an Account Lead"
 tags: ["careers"]
-banner: "Join Myplanet /nas an Account Lead"
+banner: "Join Myplanet \nas an Account Lead"
 summary: "Work closely with our business development team to identify and respond to business opportunities."
 author: "Steph Brown"
 date: "2013-8-10"
