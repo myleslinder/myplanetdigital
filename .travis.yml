@@ -14,4 +14,7 @@ branches:
 env: 
   global:
     secure: kONHslOtDa/KUY0QNqz++TjT0oQiVsXFjpylCJfPgecwoaSDm70Jenh06BbRI0tgHuGYNZ/ynWPKQ7my4KznEBZufRvCZ92fSrMhWcep8ERF9h3cVebKR9ggrrJ+DnCFeF1mNVaVO+TFyE2VHZiqmMiAkH9rIsUYOuIFsXpBPis=
-    - GH_REPO="myplanetdigital/swat"
+
+env: 
+  global:
+  - GH_REPO="myplanetdigital/swat"
