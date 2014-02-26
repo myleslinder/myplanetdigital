@@ -1,6 +1,6 @@
 module.exports =
-	
-  logLevel: (if ('-d' in process.argv) then 7 else 4)
+	# Experimaentally figured out that 4 is warnings and more severe
+	# logLevel: (if ('-d' in process.argv) then 7 else 4)
 
 	templateData:
 		site:
@@ -31,7 +31,7 @@ module.exports =
 			'jquery2': [
 				'/scripts/vendor/jquery-2.1.0.min.js'
 			]
-			'html5shiv' : [
+			'html5shiv': [
 				'/scripts/vendor/html5shiv.js'
 			]
 
