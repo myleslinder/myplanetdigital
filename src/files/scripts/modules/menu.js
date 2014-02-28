@@ -13,7 +13,7 @@
 		$viewport = $('#viewport'),
 		$indicator = $('<span data-role="menu-indicator" />'),
 		$active = $menu.find('.active'),
-		$logo = $('#logo'), //DEMO CODE todo: remove
+		$mainWrap = $('.main-wrap'),
 		curScrollTop,
 		curMouseTop,
 		lastMouseMove = new Date(),
@@ -30,12 +30,12 @@
 		HEADER_HEIGHT = 127,
 		MENU_WIDTH = 250,
 		SCROLL_UP_THRESHOLD = 10,
-		DESKTOP_MENU_BREAKPOINT =  32, //parseInt($viewport.css('padding-top').replace(/px/,''), 10) - $menu.outerHeight(true),
-		MOUSE_MOVE_THROTTLE_THRESHOLD = 15;
+		DESKTOP_MENU_BREAKPOINT =  17, //parseInt($viewport.css('padding-top').replace(/px/,''), 10) - $menu.outerHeight(true),
+		MOUSE_MOVE_THROTTLE_THRESHOLD = 40;
 
 	function setIndicator(item, noTransition) {
 		if(item) {
-			indicatorOffset = item.offsetLeft - (window.responsiveState === 'full' ? $('.main-wrap')[0].offsetLeft : 0);
+			indicatorOffset = item.offsetLeft - (window.responsiveState === 'full' ? $wrap[0].offsetLeft + $mainWrap[0].offsetLeft : 0);
 		}
 		$indicator.css({
 			transform: 'translate3d(' + indicatorOffset + 'px, ' + desktopMenuOffset + 'px, 0)',
@@ -129,26 +129,30 @@
 			transition: doTransition ? '' : 'none'
 		});
 	}
-	function closeMenu() {
+	function closeMenu(immediate) {
 		if(!mobileMenuIsTransitioning  && mobileMenuIsOpen) {
 			mobileMenuIsTransitioning = true;
 			mobileMenuIsOpen = false;
+			window.location.hash = '';
 			window.requestAnimationFrame(function () {
 				$body.removeClass('menu');
 			});
 		}
 	}
 
-	function openMenu() {
+	function openMenu(dontPushState) {
 		if(!mobileMenuIsTransitioning  && !mobileMenuIsOpen) {
 			if(window.hasTouchEvents) {
 				window.afterScrollFixOrientationChange();
 			}
 			mobileMenuIsTransitioning = true;
 			mobileMenuIsOpen = true;
-
+			mobileMenuYOffset = window.pageYOffset;
+			if(dontPushState !== true) {
+		//		window.location.hash = 'menu-open';
+			}
+			$window.trigger('menu');
 			window.requestAnimationFrame(function () {
-				mobileMenuYOffset = window.pageYOffset;
 				$body.addClass('menu');
 			});
 		} else if(window.desktopCapable) {
@@ -156,14 +160,13 @@
 		}
 	}
 
-
 	function handleScroll (e, data) {
-		var top,
+		var top = data.top,
 			doTransition;
-		if(window.responsiveState === 'mobile') {
+		if(window.responsiveState === 'mobile' || data.isFinalEvent) {
 			return;
 		}
-		top = data.top;
+
 		if(!pageHasLoaded || top < curScrollTop || top <= DESKTOP_MENU_BREAKPOINT) {
 			showLargeMenu();
 		} else if(-desktopMenuOffset < HEADER_HEIGHT) {
@@ -175,8 +178,8 @@
 
 	function handleMouseMove(e) {
 		var y,
-			now;
-		if(window.responsiveState === 'mobile' || ((now = new Date()) - MOUSE_MOVE_THROTTLE_THRESHOLD <= lastMouseMove)) {
+			now = new Date();
+		if(window.responsiveState === 'mobile' || (now - MOUSE_MOVE_THROTTLE_THRESHOLD <= lastMouseMove)) {
 			return lastMouseMove = now;
 		}
 
@@ -196,13 +199,10 @@
 
 	//after the menu has finished its toggling transition
 	$menu.parent().on('transitionend webkitTransitionEnd', function (e) {
-		if (e.target !== $menu[0]) {
+		if (!mobileMenuIsTransitioning || e.target !== $menu[0]) {
 			return;
 		}
 		if(window.responsiveState === 'mobile') {
-			$menu.css({
-				top: mobileMenuIsOpen ? 0 : ''
-			});
 			if(isWebkitMobileNotIOS) {
 				window.requestAnimationFrame(function () {
 					$wrap.css({
@@ -212,6 +212,10 @@
 					if(!mobileMenuIsOpen) {
 						window.scrollTo(0, mobileMenuYOffset);
 					}
+				});
+			} else if(window.hasTouchEvents) {
+				$menu.css({
+					top: mobileMenuIsOpen ? 0 : ''
 				});
 			}
 			mobileMenuIsTransitioning = false;
@@ -249,23 +253,30 @@
 				showLargeMenu();
 			} else {
 				pageHasLoaded = false;
-				onPageLoad(0);
+				onPageLoad();
 			}
 		});
 	});
 
+	$window.on('page-change', function (e, data) {
+		if(mobileMenuIsOpen) {
+			closeMenu();
+		}
+	});
+
+	/*$window.on('hash-change', function() {
+		debugger;
+	//	alert(document.location.hash);
+		if(document.location.hash === '#menu-open') {
+			return openMenu();
+		}
+		closeMenu();
+	});
+	window.location.hash = '';*/
+
 	//DEMO CODE todo: remove
 	$menu.on('click', 'li', function() {
 		activateLink(this);
-	});
-
-	//DEMO CODE todo: remove
-	$logo.on('click', function () {
-		$window.trigger('article');
-		window.requestAnimationFrame(function () {
-			$body.toggleClass('article');
-		});
-		return false;
 	});
 
 }());

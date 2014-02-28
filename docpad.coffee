@@ -9,16 +9,16 @@ module.exports =
 			styles: [
 				'/styles/main.css'
 			]
-			scripts: [				
-				'/scripts/vendor/isotope-beta2.pkgd.min.js'
-				'/scripts/main.js'				
+			# The order of these matters big time!!!
+			scripts: [
 				'/scripts/pollyfill.js'
 				'/scripts/vendor/scrollfix.js'
-				'/scripts/modules/tiles.js'
 				'/scripts/modules/menu.js'
+				'/scripts/modules/tiles.js'
 				'/scripts/main.js'
 				'/scripts/animator.js'
 				'/scripts/vendor/fastclick.js'
+				'/scripts/vendor/history.min.js'
 				'/scripts/init.js'
 				'/scripts/vendor/prism.js'
 			]
@@ -33,6 +33,12 @@ module.exports =
 			]
 			'html5shiv': [
 				'/scripts/vendor/html5shiv.js'
+			]			
+			'isotope' : [
+			  '/scripts/vendor/isotope-beta2.pkgd.min.js'
+			]
+			'tiles-immediate' : [
+				'/scripts/modules/tiles-immediate.js'	
 			]
 
 			# Social Media Services
@@ -48,11 +54,13 @@ module.exports =
 		# The homepage collection to bring up all content, ordered by date.
 		homepage: (database) ->
 			database.findAllLive
+				#isOnHomepage: true
 				relativeOutDirPath:
 					$in: [
 						'article'
 						'careers'
-					]
+						'people'
+					]	
 				layout:
 					$nin: ['content', 'content-tile']
 				, {date: -1}
@@ -141,9 +149,10 @@ module.exports =
 				name = tag.charAt(0).toUpperCase() + tag.slice(1)
 				meta = {
 					layout: 'articles'
-					isPaged: true
-					pagedCollection: tag
-					pageSize: 999999
+					# isPaged: true
+					# collection: tag
+					# pageSize: 999999
+					pagedCollection: 'homepage'					
 				}
 				# Add the menu items for those that need them.
 				# @todo Move this to a seperate .json file?
