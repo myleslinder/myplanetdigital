@@ -5,10 +5,10 @@ env:
 node_js: "0.10"
 language: node_js
 script: 
-- docpad deploy-ghpages --env static
+  - if [[ $TRAVIS_PULL_REQUEST == 'false' ]]; then docpad deploy-ghpages --env static; fi
 branches: 
   only: 
-  - master
+    - master
 before_script: 
 - npm install -g grunt-cli
 - grunt

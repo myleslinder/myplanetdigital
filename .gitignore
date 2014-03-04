@@ -23,16 +23,20 @@ src/README.md
 src/documents/people/*
 !src/documents/people/a*
 src/documents/article/*
-!src/documents/article/A*
+!src/documents/article/a*
+!src/documents/article/b*
 src/documents/careers/*
-!src/documents/careers/A*
+!src/documents/careers/a*
+!src/documents/careers/b*
 
 src/files/associated-files/people/*
 !src/files/associated-files/people/a*
 src/files/associated-files/article/*
-!src/files/associated-files/article/A*
+!src/files/associated-files/article/b*
+!src/files/associated-files/article/b*
 src/files/associated-files/careers/*
-!src/files/associated-files/careers/A*
+!src/files/associated-files/careers/a*
+!src/files/associated-files/careers/b*
 
 src/files/images/default-covers/*
 !src/files/images/default-covers/1*
