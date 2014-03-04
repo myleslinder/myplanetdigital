@@ -8,7 +8,7 @@ script:
 - docpad deploy-ghpages --env static
 branches: 
   only: 
-  - master
+    - master
 before_script: 
 - npm install -g grunt-cli
 - grunt
