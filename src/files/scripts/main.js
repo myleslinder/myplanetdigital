@@ -26,6 +26,7 @@
 		externalUrlRegex = /^([^:\/?#]+:)?(?:\/\/([^\/?#]*))?([^?#]+)?(\?[^#]*)?(#.*)?/,
 		coverSrcRegex = /url\(['"]?(.*\.\w+)['"]?\)/,
 		articleRegex = /\/article\//,
+		careersRegex = /\/careers\//,
 		peopleRegex = /\/people\//,
 		tagsRegex = /\/tags\//,
 		mapsRegex = /http:\/\/maps\.google\.com/,
@@ -169,7 +170,7 @@
 			window.curScrollTop = window.pageYOffset;
 		}
 
-		var isPageUrl = data.url.match(articleRegex) || data.url.match(peopleRegex),
+		var isPageUrl = data.url.match(articleRegex) || data.url.match(peopleRegex) || data.url.match(careersRegex),
 			isTagsUrl = data.url.match(tagsRegex),
 			top = window.curScrollTop,
 			wasLinkClick = new Date() - linkClickedTime < 300,
