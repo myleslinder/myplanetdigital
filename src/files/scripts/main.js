@@ -75,8 +75,6 @@
 	}
 
 	function loadViaAjax() {
-		//todo: ajax load logic
-		//url to request: pageUrl
 		if (isTileView) {
 			$loadgif.hide();
 		}
