@@ -24,7 +24,9 @@
 		isTransitioning = false,
 		linkClickedTime = new Date(),
 		externalUrlRegex = /^([^:\/?#]+:)?(?:\/\/([^\/?#]*))?([^?#]+)?(\?[^#]*)?(#.*)?/,
+		coverSrcRegex = /url\(['"]?(.*\.\w+)['"]?\)/,
 		articleRegex = /\/article\//,
+		peopleRegex = /\/people\//,
 		tagsRegex = /\/tags\//,
 		mapsRegex = /http:\/\/maps\.google\.com/,
 		isFirefox = navigator.userAgent.match(/firefox/i),
@@ -75,15 +77,18 @@
 	function loadViaAjax() {
 		//todo: ajax load logic
 		//url to request: pageUrl
+		var res;
 		if (isTileView) {
 			$loadgif.hide();
 		}
 		else {
-			$.get(pageUrl + '-content', function(data) {
-				var coverSrc = $(data).eq(0).css('background-image').replace('url(','').replace(')','');
+			res = $.get(pageUrl + '-content', function(data) {
+				var coverSrc = $(data).eq(0).css('background-image').match(coverSrcRegex)[1];
 				var image = new Image();
 				// once cover image is loaded then attach article to DOM
+				//TODO: ajax employee pages
 				image.onload = function() {
+					debugger;
 					$articlein.html(data);
 					$loadgif.hide();
 					if (window.desktopCapable) {
@@ -136,7 +141,7 @@
 			window.curScrollTop = window.pageYOffset;
 		}
 
-		var isArticleUrl = data.url.match(articleRegex),
+		var isArticleUrl = data.url.match(articleRegex) || data.url.match(peopleRegex),
 			isTagsUrl = data.url.match(tagsRegex),
 			top = window.curScrollTop,
 			wasLinkClick = new Date() - linkClickedTime < 300,
@@ -246,6 +251,7 @@
 
 	function finishTransition() {
 		isTransitioning = false;
+		debugger;
 		loadViaAjax();
 	}
 

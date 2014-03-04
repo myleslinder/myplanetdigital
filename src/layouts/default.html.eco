@@ -53,18 +53,18 @@
 				</section>
 				
 				<!--[if (!IE) | (gte IE 10)]> -->
-				<% if @document.layout != 'articles': %>
 				<article id="article">
 					<div id="article-inner">
+						<% if @document.layout != 'articles': %>
 						<!-- Article goes here for modern browsers -->
-						<%- @content %>
+							<%- @content %>
+						<% end %>
 						<div class="article-template"></div>
 					</div>
 					<div class="loading-overlay">
 						<div class="loading-spinner"></div>
 					</div>
 				</article>
-				<% end %>
 				<!-- <![endif]-->
 
 				<!--[if (IE 8) | (IE 9)]>
