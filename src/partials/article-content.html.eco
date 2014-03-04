@@ -24,19 +24,20 @@
 	<% authorImage = @getUrl(authorImageFile) if authorImageFile %>
 <% end %>
 
-
 <% # Output the article header %>
 
-<div class="article-header"<%- cover if cover? %>>
+<div class="article-banner"<%- cover if cover? %>>
+</div>
+<div class="article-title">
 	<% if @document.title? or @document.banner?: %>
-		<h1 class="article-title">
-			<% if @document.banner?: %>
-				<% headerLines = @document.banner.split(/\n/) %>
-				<%- '<span>' + headerLines.join('</span><span>') + '</span>' %>
-			<% else: %>
-				<span><%= @document.title %></span>
-			<% end %>
-		</h1>
+	<h1>
+		<% if @document.banner?: %>
+			<% headerLines = @document.banner.split(/\n/) %>
+			<%- '<span>' + headerLines.join('</span><span>') + '</span>' %>
+		<% else: %>
+			<span><%= @document.title %></span>
+		<% end %>
+	</h1>
 	<% end %>
 </div>
 

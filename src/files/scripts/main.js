@@ -9,7 +9,9 @@
 	var $window = $(window),
 		$body = $('body'),
 		$article = $('#article'),
+		$articlein = $('#article-inner'),
 		$main = $('#main'),
+		$loadgif = $('.loading-overlay'),
 		$anchors = $('a'),
 		popped = false,
 		isTileView = true,
@@ -153,6 +155,9 @@
 			$window.trigger('article');
 			//todo: show the loading gif
 
+			$loadgif.find('.loading-spinner').css('top', $window.height()/2 - 61);
+			$loadgif.show();
+
 			$article.css({
 				transform:  !overrideHistoryAPIScrollbar || wasLinkClick ? 'translate3d(-1px, ' + (top - articleScrollTop) + 'px, 0)' : '',
 				transition: 'none',
@@ -232,7 +237,7 @@
 			if (typeof window.tileTaggedGroups[tag] !== 'undefined') {
 				window.tileTaggedGroups[tag].forEach(function(tile) {
 					tile.classList.add('visible');
-				})
+				});
 			}
 			window.tiles.arrange({filter: '.visible'});
 			$window.trigger('filter');
