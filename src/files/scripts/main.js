@@ -77,57 +77,87 @@
 	function loadViaAjax() {
 		//todo: ajax load logic
 		//url to request: pageUrl
-		var res;
 		if (isTileView) {
 			$loadgif.hide();
 		}
 		else {
-			res = $.get(pageUrl + '-content', function(data) {
+			$.get(pageUrl + '-content', function(data) {
 				var coverSrc = $(data).eq(0).css('background-image').match(coverSrcRegex)[1];
+				var isPeopleUrl = pageUrl.match(peopleRegex);
 				var image = new Image();
 				// once cover image is loaded then attach article to DOM
 				//TODO: ajax employee pages
 				image.onload = function() {
-					debugger;
 					$articlein.html(data);
 					$loadgif.hide();
-					if (window.desktopCapable) {
-						window.setTimeout(function(){
-							$articlein.find('.article-banner').css({
-								opacity: '1',
-								transition: 'opacity 0.5s'
-							});	
-						}, 100);
-						window.setTimeout(function(){
-							$articlein.find('.article-title').css({
-								opacity: '1',
-								transform: 'translate3d(0, 0, 0)',
-								transition: 'all 0.8s'
-							});	
-						}, 250);
-						window.setTimeout(function(){
-							$articlein.find('.article-body').css({
-								opacity: '1',
-								transform: 'translate3d(0, 0, 0)',
-								transition: 'all 0.6s'
-							});
-						}, 400);
+					if (isPeopleUrl) {
+						if (window.desktopCapable) {
+							window.setTimeout(function(){
+								$articlein.find('.profile-banner').css({
+									opacity: '1',
+									transition: 'opacity 0.5s'
+								});	
+							}, 100);
+							window.setTimeout(function(){
+								$articlein.find('.profile-body').css({
+									opacity: '1',
+									transform: 'translate3d(0, 0, 0)',
+									transition: 'all 0.8s'
+								});
+							}, 250);
+						}
+						else {
+							window.setTimeout(function(){
+								$articlein.find('.profile-banner').css({
+									opacity: '1',
+									transition: 'opacity 0.4s'
+								});
+								$articlein.find('.profile-body').css({
+									opacity: '1',
+									transition: 'opacity 0.4s'
+								});
+							}, 100);
+						}
 					}
 					else {
-						window.setTimeout(function(){
-							$articlein.find('.article-title').css({
-								opacity: '1',
-								transition: 'opacity 0.45s'
-							});
-							$articlein.find('.article-body').css({
-								opacity: '1',
-								transition: 'opacity 0.3s'
-							});
-							$articlein.find('.article-banner').css({
-								opacity: '1',
-								transition: 'opacity 0.8s'
-							});
-						}, 100);
+						if (window.desktopCapable) {
+							window.setTimeout(function(){
+								$articlein.find('.article-banner').css({
+									opacity: '1',
+									transition: 'opacity 0.5s'
+								});	
+							}, 100);
+							window.setTimeout(function(){
+								$articlein.find('.article-title').css({
+									opacity: '1',
+									transform: 'translate3d(0, 0, 0)',
+									transition: 'all 0.8s'
+								});	
+							}, 250);
+							window.setTimeout(function(){
+								$articlein.find('.article-body').css({
+									opacity: '1',
+									transform: 'translate3d(0, 0, 0)',
+									transition: 'all 0.6s'
+								});
+							}, 400);
+						}
+						else {
+							window.setTimeout(function(){
+								$articlein.find('.article-title').css({
+									opacity: '1',
+									transition: 'opacity 0.45s'
+								});
+								$articlein.find('.article-body').css({
+									opacity: '1',
+									transition: 'opacity 0.3s'
+								});
+								$articlein.find('.article-banner').css({
+									opacity: '1',
+									transition: 'opacity 0.8s'
+								});
+							}, 100);
+						}
 					}
 				};
 				image.src = coverSrc;
@@ -141,14 +171,14 @@
 			window.curScrollTop = window.pageYOffset;
 		}
 
-		var isArticleUrl = data.url.match(articleRegex) || data.url.match(peopleRegex),
+		var isPageUrl = data.url.match(articleRegex) || data.url.match(peopleRegex),
 			isTagsUrl = data.url.match(tagsRegex),
 			top = window.curScrollTop,
 			wasLinkClick = new Date() - linkClickedTime < 300,
 			overrideHistoryAPIScrollbar = !wasLinkClick && !window.isIOS,
 			timeoutLen = isFirefox ? 50 : 0;
 
-		if(isArticleUrl && isTileView) {
+		if(isPageUrl && isTileView) {
 			isTileView = false;
 			isTransitioning = true;
 			tileScrollTop = top;
@@ -191,7 +221,7 @@
 					$body.addClass('article');
 				});
 			}, timeoutLen);
-		} else if(!isArticleUrl && !isTileView) {
+		} else if(!isPageUrl && !isTileView) {
 			isTileView = true;
 			isTransitioning = true;
 			articleScrollTop = top;
@@ -251,7 +281,6 @@
 
 	function finishTransition() {
 		isTransitioning = false;
-		debugger;
 		loadViaAjax();
 	}
 
