@@ -13,7 +13,7 @@
 <% @document.size ?= 'medium' %>
 <% @document.size = 'small' if not tile %>
 
-<div class="tile<%= if @document.size then ' ' + @document.size %><%= if @document.color then ' ' + @document.color %>">
+<div class="tile<%= if @document.size then ' ' + @document.size %><%= if @document.colour then ' ' + @document.colour %>">
 	<div class="content">
 		<% if @document.size != 'small' && @document.imagePosition != 'bottom' : %>
 			<a class="tile-image" 
