@@ -36,15 +36,15 @@
 		<link rel="icon" type="image/png" href="<%= @getUrl('/favicon.png') %>" />
 	</head>
 
-	<body class="<% if @document.layout != 'articles': %> article <% end %>">
+	<body class="<% if @document.layout != 'articles': %>article <% end %>">
 		<div id="wrap">
 			<h1 id="logo">
 				<a href="<%= @getUrl('/') %>">Myplanet</a>
 			</h1>
 			<div id="viewport">
 				
-				<section id="main">
-					<div class="main-wrap">
+				<section id="main" <% if @document.layout != 'articles': %>style="transition: none; -webkit-transition: none; position: absolute;"<% end %>>
+					<div class="main-wrap" <% if @document.layout != 'articles': %>style="transition: none; -webkit-transition: none; position: absolute;"<% end %>>
 						<% if @document.layout is 'articles': %>
 						<div class="grid-size"></div>
 						<%- @content %>
@@ -53,15 +53,16 @@
 				</section>
 				
 				<!--[if (!IE) | (gte IE 10)]> -->
-				<article id="article">
+				<article id="article" <% if @document.layout != 'articles': %>style="z-index: 0; position: static; margin-left: 100%;"<% end %>>
 					<div id="article-inner">
 						<% if @document.layout != 'articles': %>
 						<!-- Article goes here for modern browsers -->
 							<%- @content %>
+						<% else: %>
+							<div class="article-template"></div>
 						<% end %>
-						<div class="article-template"></div>
 					</div>
-					<div class="loading-overlay">
+					<div class="loading-overlay" <% if @document.layout != 'articles': %>style="display:none;"<% end %>>
 						<div class="loading-spinner"></div>
 					</div>
 				</article>
