@@ -137,7 +137,12 @@ module.exports =
 
 		# Navigation menu.
 		menu: (database) ->
-			database.findAllLive({menu: $gt: 0}, {menu: 1})
+			database.findAllLive
+				menu:
+					$gt: 0
+				layout:
+					$ne: 'content-tiles'
+				, {menu: 1}
 
 	plugins:
 
