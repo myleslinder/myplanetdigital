@@ -2,10 +2,4 @@
 layout: 'default'
 ---
 
-<% for document in @getPageCollection(@document.pagedCollection).toJSON(): %>
-    <%- @partial('tile', true, {'document': document, 'getUrl': @getUrl, 'tagName': @document.meta.tagName}) %>
-<% end %>
-<script src="<%- @getUrl(@site.isotope[0]) %>"></script>
-<script>
-<%- @include(@site['tiles-immediate'][0]) %>
-</script>
+<%- @partial('tiles', true) %>
