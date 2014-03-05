@@ -14,7 +14,7 @@
 		$loadgif = $('.loading-overlay'),
 		$anchors = $('a'),
 		popped = false,
-		isTileView = true,
+		isTileView = $('body').hasClass('article')? false : true,
 		scrollTimeout,
 		preScrollTimeout,
 		articleScrollTop,
@@ -35,6 +35,7 @@
 		DESKTOP_WIDTH = 1174,
 		END_SCROLL_THRESHOLD = 700,
 		PRE_SCROLL_THRESHOLD = 50;
+		console.log(isTileView);
 
 	function setResponsiveState() {
 		var width = $window.width(),
@@ -77,15 +78,16 @@
 
 	function loadViaAjax() {
 		if (isTileView) {
+
 			$loadgif.hide();
 		}
 		else {
 			$.get(pageUrl + '-content', function(data) {
-				var coverSrc = $(data).eq(0).css('background-image').match(coverSrcRegex)[1];
-				var isPeopleUrl = pageUrl.match(peopleRegex);
-				var image = new Image();
+				var coverSrc = $(data).eq(0).css('background-image').match(coverSrcRegex)[1],
+					isPeopleUrl = pageUrl.match(peopleRegex),
+					image = new Image();
+
 				// once cover image is loaded then attach article to DOM
-				//TODO: ajax employee pages
 				image.onload = function() {
 					$articlein.html(data);
 					$loadgif.hide();

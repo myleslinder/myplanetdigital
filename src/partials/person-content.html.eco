@@ -10,11 +10,11 @@
 
 <% cover = if cover? then @partial('cover', true, {'cover': cover}) else @partial('cover', true) %>
 
-<div class="profile-banner" style="background-image:url('<%= cover %>'); opacity: 1; transition: opacity 0.5s; -webkit-transition: opacity 0.5s;">
+<div class="profile-banner" style="background-image:url('<%= cover %>');<% if @document.layout != 'content': %> opacity: 1; transition: opacity 0.5s; -webkit-transition: opacity 0.5s;<% end %>">
   <img src="<%= cover %>" style="display:none; visibility:hidden;" />
 </div>
 
-<div class="profile-body" style="opacity: 1; -webkit-transform: translate3d(0px, 0px, 0px); transition: all 0.8s; -webkit-transition: all 0.8s;">
+<div class="profile-body" <% if @document.layout != 'content': %>style="opacity: 1; -webkit-transform: translate3d(0px, 0px, 0px); transition: all 0.8s; -webkit-transition: all 0.8s;"<% end %>>
   <div class="profile-content">
 
     <% if avatar?: %>

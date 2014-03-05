@@ -11,7 +11,7 @@
 
 <% # Clean up any variables %>
 <% cover = if cover? then @partial('cover', true, {'cover': cover}) else @partial('cover', true) %>
-<% cover = ' style="background-image: url(' + cover + '); opacity: 1; transition: opacity 0.5s; -webkit-transition: opacity 0.5s;"' %>
+<% cover = ' style="background-image: url(' + cover + ');' %>
 
 
 <% # Get the author information %>
@@ -26,9 +26,9 @@
 
 <% # Output the article header %>
 
-<div class="article-banner" <%- cover if cover? %>>
+<div class="article-banner" <%- cover if cover? %> <% if @document.layout != 'content': %> opacity: 1; transition: opacity 0.5s; -webkit-transition: opacity 0.5s;"<% else: %>"<% end %>>
 </div>
-<div class="article-title" style="opacity: 1; -webkit-transform: translate3d(0px, 0px, 0px); transition: all 0.8s; -webkit-transition: all 0.8s;">
+<div class="article-title" <% if @document.layout != 'content': %>style="opacity: 1; -webkit-transform: translate3d(0px, 0px, 0px); transition: all 0.8s; -webkit-transition: all 0.8s;"<% end %>>
 	<% if @document.title? or @document.banner?: %>
 	<h1>
 		<% if @document.banner?: %>
@@ -44,7 +44,7 @@
 
 <% # Output the article body %>
 
-<div class="article-body" style="opacity: 1; -webkit-transform: translate3d(0px, 0px, 0px); transition: all 0.6s; -webkit-transition: all 0.6s;">
+<div class="article-body" <% if @document.layout != 'content': %>style="opacity: 1; -webkit-transform: translate3d(0px, 0px, 0px); transition: all 0.6s; -webkit-transition: all 0.6s;"<% end %>>
 	<div class="article-info">
 
 		<% # Provide the author image %>
