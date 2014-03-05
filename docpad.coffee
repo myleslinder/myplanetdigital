@@ -62,7 +62,7 @@ module.exports =
 						'people'
 					]	
 				layout:
-					$nin: ['content', 'content-tile']
+					$nin: ['content']
 				, {date: -1}
 
 		# Create a collection for each available tag.
@@ -71,69 +71,69 @@ module.exports =
 				tags:
 					$has: 'careers'
 				layout:
-					$nin: ['content', 'content-tile']
+					$nin: ['content']
 				, {date: -1}
 		design: (database) ->
 			database.findAllLive
 				tags:
 					$has: 'design'
 				layout:
-					$nin: ['content', 'content-tile']
+					$nin: ['content']
 				, {date: -1}
 		people: (database) ->
 			database.findAllLive
 				tags:
 					$has: 'people'
 				layout:
-					$nin: ['content', 'content-tile']
+					$nin: ['content']
 				, {date: -1}
 		business: (database) ->
 			database.findAllLive
 				tags:
 					$has: 'business'
 				layout:
-					$nin: ['content', 'content-tile']
+					$nin: ['content']
 				, {date: -1}
 		technology: (database) ->
 			database.findAllLive
 				tags:
 					$has: 'technology'
 				layout:
-					$nin: ['content', 'content-tile']
+					$nin: ['content']
 				, {date: -1}
 		culture: (database) ->
 			database.findAllLive
 				tags:
 					$has: 'culture'
 				layout:
-					$nin: ['content', 'content-tile']
+					$nin: ['content']
 				, {date: -1}
 		events: (database) ->
 			database.findAllLive
 				tags:
 					$has: 'events'
 				layout:
-					$nin: ['content', 'content-tile']
+					$nin: ['content']
 				, {date: -1}
 		work: (database) ->
 			database.findAllLive
 				tags:
 					$has: 'work'
 				layout:
-					$nin: ['content', 'content-tile']
+					$nin: ['content']
 				, {date: -1}
 		company: (database) ->
 			database.findAllLive
 				tags:
 					$has: 'company'
 				layout:
-					$nin: ['content', 'content-tile']
+					$nin: ['content']
 				, {date: -1}
 
 		# Rendered content into individual segmented HTML pages.
 		content: (database) ->
 			database.findAllLive({relativeOutDirPath: $in: ['people', 'article', 'careers']}).on "add", (model) ->
-				model.setMetaDefaults({additionalLayouts: ['content', 'content-tile']})
+				model.setMetaDefaults({additionalLayouts: ['content']})
 
 		# Navigation menu.
 		menu: (database) ->
