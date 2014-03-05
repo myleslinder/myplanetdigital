@@ -1,4 +1,4 @@
-<% if ('people' in @document.tags): %>
+<% if (@document.tags? and 'people' in @document.tags): %>
 <%- @partial('person-content', true) %>
 <% else: %>
 <%- @partial('article-content', true) %>
