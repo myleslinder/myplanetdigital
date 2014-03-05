@@ -1,5 +1,32 @@
 @import "../includes.less";
 
+// desktop transition to profile page
+body.desktop-capable {
+	#article-inner.reveal {
+		.profile-banner {
+			opacity: 1;
+			.transition(opacity 0.5s);
+		}
+		.profile-body {
+			opacity: 1;
+			.translate3d(0, 0, 0);
+			.transition(all 0.8s 0.15s);
+		}
+	}	
+}
+
+// mobile transition to profile page
+#article-inner.reveal {
+	.profile-banner {
+		opacity: 1;
+		.transition(opacity 0.4s);
+	}
+	.profile-body {
+		opacity: 1;
+		.transition(opacity 0.4s);
+	}
+}
+
 .profile-banner {
 	text-align: center;
 	width: 100%;

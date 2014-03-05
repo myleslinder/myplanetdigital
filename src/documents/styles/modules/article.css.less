@@ -1,6 +1,42 @@
 @import "../includes.less";
 @import "../prism.less";
 
+// desktop transition to article page
+body.desktop-capable {
+	#article-inner.reveal {
+		.article-banner {
+			opacity: 1;
+			.transition(opacity 0.5s);
+		}
+		.article-title {
+			opacity: 1;
+			.translate3d(0, 0, 0);
+			.transition(all 0.8s 0.15s);
+		}
+		.article-body {
+			opacity: 1;
+			.translate3d(0, 0, 0);
+			.transition(all 0.6s 0.3s);
+		}
+	}	
+}
+
+// mobile transition to article page
+#article-inner.reveal {
+	.article-banner {
+		opacity: 1;
+		.transition(opacity 0.8s);
+	}
+	.article-title {
+		opacity: 1;
+		.transition(opacity 0.45s);
+	}
+	.article-body {
+		opacity: 1;
+		.transition(opacity 0.3s);
+	}
+}
+
 #article-inner {
 	.article-template {
 		height: 10000px;

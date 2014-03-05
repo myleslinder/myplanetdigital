@@ -78,88 +78,21 @@
 
 	function loadViaAjax() {
 		if (isTileView) {
-
+			$articlein.removeClass('reveal');
 			$loadgif.hide();
 		}
 		else {
 			$.get(pageUrl + '-content', function(data) {
 				var coverSrc = $(data).eq(0).css('background-image').match(coverSrcRegex)[1],
-					isPeopleUrl = pageUrl.match(peopleRegex),
 					image = new Image();
 
 				// once cover image is loaded then attach article to DOM
 				image.onload = function() {
 					$articlein.html(data);
 					$loadgif.hide();
-					if (isPeopleUrl) {
-						if (window.desktopCapable) {
-							window.setTimeout(function(){
-								$articlein.find('.profile-banner').css({
-									opacity: '1',
-									transition: 'opacity 0.5s'
-								});	
-							}, 100);
-							window.setTimeout(function(){
-								$articlein.find('.profile-body').css({
-									opacity: '1',
-									transform: 'translate3d(0, 0, 0)',
-									transition: 'all 0.8s'
-								});
-							}, 250);
-						}
-						else {
-							window.setTimeout(function(){
-								$articlein.find('.profile-banner').css({
-									opacity: '1',
-									transition: 'opacity 0.4s'
-								});
-								$articlein.find('.profile-body').css({
-									opacity: '1',
-									transition: 'opacity 0.4s'
-								});
-							}, 100);
-						}
-					}
-					else {
-						if (window.desktopCapable) {
-							window.setTimeout(function(){
-								$articlein.find('.article-banner').css({
-									opacity: '1',
-									transition: 'opacity 0.5s'
-								});	
-							}, 100);
-							window.setTimeout(function(){
-								$articlein.find('.article-title').css({
-									opacity: '1',
-									transform: 'translate3d(0, 0, 0)',
-									transition: 'all 0.8s'
-								});	
-							}, 250);
-							window.setTimeout(function(){
-								$articlein.find('.article-body').css({
-									opacity: '1',
-									transform: 'translate3d(0, 0, 0)',
-									transition: 'all 0.6s'
-								});
-							}, 400);
-						}
-						else {
-							window.setTimeout(function(){
-								$articlein.find('.article-title').css({
-									opacity: '1',
-									transition: 'opacity 0.45s'
-								});
-								$articlein.find('.article-body').css({
-									opacity: '1',
-									transition: 'opacity 0.3s'
-								});
-								$articlein.find('.article-banner').css({
-									opacity: '1',
-									transition: 'opacity 0.8s'
-								});
-							}, 100);
-						}
-					}
+					window.setTimeout(function(){
+						$articlein.addClass('reveal');
+					}, 100);
 				};
 				image.src = coverSrc;
 			});
