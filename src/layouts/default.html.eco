@@ -48,7 +48,12 @@
 						<% if @document.layout is 'articles': %>
 						<div class="grid-size"></div>
 						<%- @content %>
+						<% else: %>
+							<div class="tile-template"></div>
 						<% end %>
+					</div>
+					<div class="loading-overlay-tiles" <% if @document.layout == 'articles': %>style="display:none;"<% end %>>
+						<div class="loading-spinner"></div>
 					</div>
 				</section>
 				

@@ -12,6 +12,7 @@
 		$articlein = $('#article-inner'),
 		$main = $('#main'),
 		$loadgif = $('.loading-overlay'),
+		$loadgiftiles = $('.loading-overlay-tiles'),
 		$anchors = $('a'),
 		popped = false,
 		isTileView = $('body').hasClass('article')? false : true,
@@ -20,7 +21,7 @@
 		articleScrollTop,
 		tileScrollTop,
 		lastArticleUrl = '',
-		pageUrl,
+		pageUrl = window.location.pathname,
 		isTransitioning = false,
 		linkClickedTime = new Date(),
 		externalUrlRegex = /^([^:\/?#]+:)?(?:\/\/([^\/?#]*))?([^?#]+)?(\?[^#]*)?(#.*)?/,
@@ -77,19 +78,19 @@
 	}
 
 	function loadViaAjax() {
-		console.log(isTileView);
 		if (isTileView) {
 			if ($('.main-wrap').find('.tile').length === 0) {
-				$('.main-wrap').load(pageUrl + 'index-content-tiles.html', function(){
+				$('.main-wrap').load('/index-content-tiles.html', function(){
 					window.initializeTiles();
 					window.initializePage();
+					$loadgiftiles.hide();
 				});
 			}
 			$loadgif.hide();
 			$articlein.removeClass('reveal');
 		}
 		else {
-			$.get(pageUrl + '-content', function(data) {
+			$.get(History.getState().hash + '-content', function(data) {
 				var coverSrc = $(data).eq(0).css('background-image').match(coverSrcRegex)[1],
 					image = new Image();
 
@@ -129,7 +130,6 @@
 			}
 
 			$window.trigger('article');
-			//todo: show the loading gif
 
 			$loadgif.find('.loading-spinner').css('top', $window.height()/2 - 61);
 			$loadgif.show();
@@ -172,7 +172,12 @@
 			}
 
 			$window.trigger('tiles');
-			//todo: show the loading gif
+
+			// only show loading spinner if tiles are not ajaxed in
+			if ($('.main-wrap').find('.tile').length === 0) {
+				$loadgiftiles.find('.loading-spinner').css('top', $window.height()/2 - 61);
+				$loadgiftiles.show();
+			}
 
 			$main.css({
 				transform: !overrideHistoryAPIScrollbar || wasLinkClick ? 'translate3d(-100%, ' + (top - tileScrollTop) + 'px, 0)' : '',
