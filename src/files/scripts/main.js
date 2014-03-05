@@ -81,7 +81,8 @@
 		if (isTileView) {
 			if ($('.main-wrap').find('.tile').length === 0) {
 				$('.main-wrap').load(pageUrl + 'index-content-tiles.html', function(){
-					$('.tile').addClass('revealed');
+					window.initializeTiles();
+					window.initializePage();
 				});
 			}
 			$loadgif.hide();
