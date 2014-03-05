@@ -77,9 +77,15 @@
 	}
 
 	function loadViaAjax() {
+		console.log(isTileView);
 		if (isTileView) {
-			$articlein.removeClass('reveal');
+			if ($('.main-wrap').find('.tile').length === 0) {
+				$('.main-wrap').load(pageUrl + 'index-content-tiles.html', function(){
+					$('.tile').addClass('revealed');
+				});
+			}
 			$loadgif.hide();
+			$articlein.removeClass('reveal');
 		}
 		else {
 			$.get(pageUrl + '-content', function(data) {
@@ -313,7 +319,7 @@
 		});
 	}
 	//handle push/pop state
-	$body.on('click', 'a', function() {
+	$body.on('click', 'a', function() {		
 		if(!isExternalUrl(pageUrl = $(this).attr('href'))) {
 			linkClickedTime = new Date();
 			History.pushState(null, null, pageUrl);

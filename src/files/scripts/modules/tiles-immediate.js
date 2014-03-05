@@ -21,5 +21,5 @@ window.tileTaggedGroups = {};
     tile.getAttribute('data-tags').split(/\s+/).forEach(function(usedTag) {
         window.tileTaggedGroups[usedTag] = window.tileTaggedGroups[usedTag] || [];
         window.tileTaggedGroups[usedTag].push(tile);
-    })
+    });
 });

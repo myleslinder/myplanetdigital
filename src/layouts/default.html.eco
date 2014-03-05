@@ -44,7 +44,7 @@
 			<div id="viewport">
 				
 				<section id="main" <% if @document.layout != 'articles': %>style="transition: none; -webkit-transition: none; position: absolute;"<% end %>>
-					<div class="main-wrap" <% if @document.layout != 'articles': %>style="transition: none; -webkit-transition: none; position: absolute;"<% end %>>
+					<div class="main-wrap" style="position: relative;">
 						<% if @document.layout is 'articles': %>
 						<div class="grid-size"></div>
 						<%- @content %>
@@ -54,7 +54,7 @@
 				
 				<!--[if (!IE) | (gte IE 10)]> -->
 				<article id="article" <% if @document.layout != 'articles': %>style="z-index: 0; position: static; margin-left: 100%;"<% end %>>
-					<div id="article-inner">
+					<div id="article-inner"  <% if @document.layout != 'content' && @document.layout != 'articles': %>class="reveal"<% end %>>
 						<% if @document.layout != 'articles': %>
 						<!-- Article goes here for modern browsers -->
 							<%- @content %>
