@@ -58,7 +58,7 @@
 				</section>
 				
 				<!--[if (!IE) | (gte IE 10)]> -->
-				<article id="article" <% if @document.layout != 'articles': %>style="z-index: 0; position: static; margin-left: 100%;"<% end %>>
+				<article id="article" <% if @document.layout != 'articles': %>style="z-index: -1; position: static; margin-left: 100%;"<% end %>>
 					<div id="article-inner"  <% if @document.layout != 'content' && @document.layout != 'articles': %>class="reveal"<% end %>>
 						<% if @document.layout != 'articles': %>
 						<!-- Article goes here for modern browsers -->

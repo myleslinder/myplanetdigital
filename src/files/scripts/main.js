@@ -21,7 +21,7 @@
 		articleScrollTop,
 		tileScrollTop,
 		lastArticleUrl = '',
-		pageUrl = window.location.pathname,
+		pageUrl,
 		isTransitioning = false,
 		linkClickedTime = new Date(),
 		externalUrlRegex = /^([^:\/?#]+:)?(?:\/\/([^\/?#]*))?([^?#]+)?(\?[^#]*)?(#.*)?/,
@@ -36,7 +36,6 @@
 		DESKTOP_WIDTH = 1174,
 		END_SCROLL_THRESHOLD = 700,
 		PRE_SCROLL_THRESHOLD = 50;
-		console.log(isTileView);
 
 	function setResponsiveState() {
 		var width = $window.width(),
