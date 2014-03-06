@@ -53,17 +53,17 @@ module.exports =
 	collections:
 		# The homepage collection to bring up all content, ordered by date.
 		homepage: (database) ->
-			database.findAllLive
-				#isOnHomepage: true
+			options =
 				relativeOutDirPath:
 					$in: [
 						'article'
 						'careers'
 						'people'
-					]	
+					]
 				layout:
 					$nin: ['content']
-				, {date: -1}
+			return database.findAllLive(options, [{sticky: -1, date: -1}]).on "add", (model) ->
+				model.setMetaDefaults({sticky: false})
 
 		# Create a collection for each available tag.
 		careers: (database) ->
@@ -74,12 +74,13 @@ module.exports =
 					$nin: ['content']
 				, {date: -1}
 		design: (database) ->
-			database.findAllLive
+			options = {
 				tags:
 					$has: 'design'
 				layout:
 					$nin: ['content']
-				, {date: -1}
+			}
+			return database.findAllLive(options, [{date: -1}])
 		people: (database) ->
 			database.findAllLive
 				tags:
