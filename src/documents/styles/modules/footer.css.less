@@ -3,75 +3,99 @@
 .footer {
 	background-color: black;
 	color: white;
+	padding-top: 44px;
+
+	@media screen and (max-width: 650px) {
+		padding-top: 0;
+	}
 	.contact-info {
 		position: relative;
-		width: 720px;
+		width: 650px;
 		margin: 0 auto;
-		top: -40px;
-		span {
-			font-family: "Plantin";
-			font-weight: bold;
-			letter-spacing: -4px;
+		background-color: #232323;
+		.email-us,
+		.call-us {
 			display: inline-block;
-			padding: 20px 30px;
-			font-size: 5em;
-			color: black;
-			background: white;
+			padding-top: 16px;
+			padding-bottom: 16px;
+			text-align: center;
+			width: 50%;
 			&:last-of-type {
-				padding-top: 0;
+				width: 49%;
+				border-left: 1px solid #484848;
+			}
+			h3 {
+				font-family: "TradeGothic";
+				font-weight: normal;
+				font-size: 16px;
+				color: #b0b0b0;
+				margin-bottom: 0;
+				margin-top: 0;
+			}
+			p {
+				font-family: "Plantin";
+				font-weight: bold;
+				font-size: 30px;
+				margin-bottom: 0;
+				margin-top: 0;
 			}
 		}
-		@media screen and (max-width: 768px) {
-			width: 572px;
-			span {
-				font-size: 4em;
+		@media screen and (max-width: 650px) {
+			width: 100%;
+			.email-us,
+			.call-us {
+				width: 100%;
+				display: block;
+				&:last-of-type {
+					width: 100%;
+					border-left: none;
+				}
 			}
-		}
-		@media screen and (max-width: 590px) {
-			width: 430px;
-			span {
-				padding: 15px 23px;
-				font-size: 3em;
+			.email-us {
+				padding-top: 30px;
+				padding-bottom: 10px;
 			}
-		}
-		@media screen and (max-width: 480px) {
-			width: 301px;
-			span {
-				font-size: 2.2em;
-				letter-spacing: -3px;
-				padding: 11px 17px;
+			.call-us {
+				padding-bottom: 30px;
 			}
 		}
 	}
 	.additional-info {
-		margin: 70px auto 0;
+		margin: 125px auto 0;
 		padding-bottom: 20px;
-		width: 820px;
+		width: 991px;
 		font-family: TradeGothic;
 		h3 {
+			font-size: 15px;
 			margin-top: 0;
 		}
-		@media screen and (max-width: 800px) {
-			width: 75%;
-			margin-top: 50px;
+		@media screen and (max-width: 1024px) {
+			width: 650px;
+			margin-top: 110px;
+		}
+		@media screen and (max-width: 767px) {
+			margin-top: 40px;
+		}
+		@media screen and (max-width: 650px) {
+			width: 100%;
+			margin-top: 30px;
 		}
 	}
 	.contact {
 		display: inline-block;
 		position: relative;
+		height: 75px;
 		padding: 0 30px 10px 20px;
-		border-left: 1px solid #555;
 		border-right: 1px solid #555;
 		width: 170px;
 		margin-bottom: 50px;
-		span {
+		h3 {
 			display: block;
-			font-size: 1.2em;
-			color: #5b5b5b;
+			font-size: 15px;
+			font-weight: normal;
+			color: white;
 		}
 		ul.social-media-footer {
-			position: absolute;
-			bottom: -28px;
 			padding: 0;
 			margin: 0;
 			font-size: 0;
@@ -137,14 +161,48 @@
 				}
 			}
 		}
+		@media screen and (max-width: 1024px) {
+			height: 280px;
+			float: left;
+
+			ul.social-media-footer {
+				bottom: 150px;
+			}
+		}
+		@media screen and (max-width: 767px) {
+			height: 200px;
+			&:before {
+				display: none;
+			}
+			ul.social-media-footer {
+				bottom: 83px;
+			}
+		}
+		@media screen and (max-width: 650px) {
+			width: 100%;
+			height: 90px;
+			margin: 0;
+			padding: 0;
+			border: 0;
+			text-align: center;
+			float: none;
+
+			ul.social-media-footer {
+				display: block;
+				position: static;
+				margin-top: 20px;
+			}
+		}
 	}
 	.address {
 		display: inline-block;
 		position: relative;
 		vertical-align: top;
 		padding-left: 20px;
-		padding-right: 50px;
-		margin-bottom: 50px;
+		padding-right: 30px;
+		margin-bottom: 100px;
+		width: 187px;
+
 		&:last-of-type {
 			padding-right: 0;
 		}
@@ -157,35 +215,78 @@
 			background: url(../images/spritempd.png) -462px -1px no-repeat;
 			background-size: 533px;
 		}
-		&.toronto:before {
-			top: -74px;
-			width: 62px;
-			height: 64px;
-		}
-		&.vancouver:before {
-			height: 44px;
-			top: -54px;
-			left: 31px;
-			background-position: -463px -73px;
-		}
-		&.chernihiv:before {
-			top: -64px;
-			left: 28px;
-			height: 56px;
-			background-position: -467px -120px;
-		}
-		@media screen and (max-width:800px) {
+		&.toronto {
+			width: 125px;
 			&:before {
-				display: none;
+				top: -74px;
+				width: 62px;
+				height: 64px;
 			}
 		}
-
+		&.vancouver {
+			width: 160px;
+			&:before {
+				height: 44px;
+				top: -54px;
+				left: 23px;
+				background-position: -463px -73px;
+			}
+		}
+		&.chernihiv {
+			width: 140px;
+			&:before {
+				top: -64px;
+				left: 21px;
+				height: 56px;
+				background-position: -471px -120px;
+			}
+		}
+		&.chicago {
+			width: 150px;
+			&:before {
+				top: -64px;
+				left: 13px;
+				height: 56px;
+				background-position: -302px -150px;
+			}
+		}
 		h3 {
 			font-weight: normal;
+			font-size: 15px;
 		}
 		span {
 			display: block;
 			color: #5b5b5b;
+			font-size: 15px;
+		}
+		@media screen and (max-width: 1024px) {
+			padding-left: 38px;
+			width: 210px;
+			&.toronto:before {
+				left: 34px;
+			}
+			&.vancouver:before {
+				left: 42px;
+			}
+			&.chernihiv:before {
+				left: 39px;
+			}
+			&.chicago:before {
+				left: 35px;
+			}
+		}
+		@media screen and (max-width: 767px) {
+			margin-bottom: 20px;
+			&:before {
+				display: none;
+			}
+		}
+		@media screen and (max-width: 650px) {
+			text-align: center;
+			padding: 0;
+			&.toronto, &.chicago, &.chernihiv, &.vancouver {
+				width: 100%;
+			}
 		}
 	}
 }
