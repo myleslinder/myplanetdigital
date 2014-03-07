@@ -2,28 +2,4 @@
 layout: 'default'
 ---
 
-<% for document in @getPageCollection(@document.pagedCollection).toJSON(): %>
-    <%- @partial('tile', true, {'document': document, 'getUrl': @getUrl}) %>
-<% end %>
-
-<!--
-<ul class="pagination container">
-    <% unless @hasPrevPage(): %>
-        <li class="disabled"><span>&laquo;</span></li>
-    <% else: %>
-        <li><a href="<%- @getUrl(@getPrevPage()) %>">&laquo;</a></li>
-    <% end %>
-    <% for pageNumber in [0..@document.page.count-1]: %>
-        <% if @document.page.number is pageNumber: %>
-            <li class="active"><span><%= pageNumber + 1 %></span></li>
-        <% else: %>
-            <li><a href="<%= @getUrl(@getPageUrl(pageNumber)) %>"><%= pageNumber + 1 %></a></li>
-        <% end %>
-    <% end %>
-    <% unless @hasNextPage(): %>
-        <li class="disabled"><span>&raquo;</span></li>
-    <% else: %>
-        <li><a href="<%= @getUrl(@getNextPage()) %>">&raquo;</a></li>
-    <% end %>
-</ul>
--->
+<%- @partial('tiles', true) %>

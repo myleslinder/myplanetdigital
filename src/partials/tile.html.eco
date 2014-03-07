@@ -13,7 +13,16 @@
 <% @document.size ?= 'medium' %>
 <% @document.size = 'small' if not tile %>
 
-<div class="tile<%= if @document.size then ' ' + @document.size %><%= if @document.colour then ' ' + @document.colour %>">
+<% if (@tagName && (@tagName not in @document.tags)): %>
+	<% visibility = '' %>
+<% else: %>
+	<% visibility = 'visible' %>
+<% end %>
+
+<div 
+	class="tile<%= if @document.size then ' ' + @document.size %><%= if @document.colour then ' ' + @document.colour %><%= ' ' + visibility %>"
+	data-tags="<%= @document.tags.join(' ') %>" >
+
 	<div class="content">
 		<% if @document.size != 'small' && @document.imagePosition != 'bottom' : %>
 			<a class="tile-image" 

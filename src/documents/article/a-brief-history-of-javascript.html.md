@@ -10,6 +10,7 @@ size: "medium"
 colour: "white"
 sticky: false
 imagePosition: "top"
+isOnHomapage: true
 
 ---
 

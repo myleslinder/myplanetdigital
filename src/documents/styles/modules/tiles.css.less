@@ -291,16 +291,24 @@
 	@media only screen and (max-width: 479px) { /* Mobile */
 		.tile {
 			.content {
+
+				//Put tile image at the top
+				.tile-content {
+					position: absolute;
+					bottom:0px;
+				}
 				h2 {
 					font-size: 2.5em;
 				}
 				a.tile-title {
 					padding: 68px 10% 0
 				}
-				.tile-image {
-					position: absolute;
-					bottom:0px;
-				}
+
+				//Put tile image at the bottom
+				// .tile-image {
+				// 	position: absolute;
+				// 	bottom:0px;
+				// }
 				ul.tags {
 					padding-left: 10%;
 					.tile-doodle {
@@ -325,19 +333,23 @@
 }
 
 .desktop-capable #main .tile .content .tags > li:hover a.tile-doodle:before {
+	.hideBack();
 	.transform(rotate(45deg) translate3d(-9px,-9px,0));
 }
 
+#main .tile {
+	.transition(opacity 0.7s ease-in-out 0.125s);
+}
+
 .desktop-capable #main .tile {
-	.transition(opacity 0.8s ease-in-out);
 	.translateZ();
 	&.hidden {
-		.translate3d(0, 60px, 0);
+		.translate3d(0, 80px, 0);
 	}
 	&.reveal {
 		opacity: 0.99;
 		.translateZ();
-		.transition(0.375s ease-out 0.1s, opacity 0.825s ease-in 0.1s);
+		.transition(0.375s ease-out 0.159s, opacity 0.725s ease-in 0.16s);
 	}
 	&.show {
 		opacity: 0.99;

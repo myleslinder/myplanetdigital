@@ -8,7 +8,7 @@ date: "2011-5-31"
 layout: "article"
 size: "small"
 colour: "white"
-sticky: false
+sticky: true
 imagePosition: "top"
 
 ---

@@ -16,11 +16,13 @@
 		queue = [],
 		layerQueue = [],
 		finishFlush,
-		$hiddenTiles,
-		$body = $('body'),
-		$articleContainer = $('#article');
+		$hiddenTiles;
 
 	function initializePage() {
+		if(!window.isTileView) {
+			return;
+		}
+		
 		$hiddenTiles = window.tiles.items.filter(function (tile) {
 			if(tile.position.y + topOffset < scrollData.bottom ) {
 				tile.element.style.opacity = '0.99';
@@ -62,20 +64,24 @@
 		while(len--){
 			removeLayer($hiddenTiles[len].element);
 		}
+		$hiddenTiles = [];
 		len = queue.length;
 		while(len--){
 			removeLayer(queue[len]);
 		}
+		queue = [];
 		len = layerQueue.length;
 		while(len--){
 			removeLayer(queue[len]);
 		}
+		layerQueue = [];
 	}
 
 	function flushQueue() {
 		var len = queue.length,
 			item,
 			count = 0;
+
 		while(len--) {
 			item = queue[len];
 			item.tile.classList.add(queue[len].klass);
@@ -93,6 +99,9 @@
 	finishFlush = window.requestAnimationFrame.bind(null, flushQueue);
 
 	function onScroll() {
+		if(!$hiddenTiles) {
+			return;
+		}
 		var tile,
 			len = $hiddenTiles.length,
 			added = false;
@@ -121,6 +130,10 @@
 	}
 
 	function handleScroll(e, data) {
+		if(data.isFinalEvent) {
+			scrollData = data;
+			return onScroll();
+		}
 		if(!hasHiddenTiles || throttleTimeout) {
 			return;
 		}
@@ -136,37 +149,35 @@
 		if(!e.target.classList.contains('tile')) {
 			return;
 		}
+
+		//initial fade in
 		if (!e.target.classList.contains('show') && !e.target.classList.contains('reveal')) {
 			return removeLayer(e.target);
 		}
+
+		//remove the layer after scrolling
 		if(! window.isScrolling) {
 			window.requestAnimationFrame(removeLayer.bind(null, e.target));
 		} else {
 			layerQueue.push(e.target);
 		}
 	}
-	//only attach desktop events if the device is capable of showing desktop
+
+	//only attach events if the device is capable of showing desktop
 	$window.on('deviceCapabilities', function (e, data) {
 		if(data.desktopCapable) {
 			$window.on('pageScroll', handleScroll);
 			$window.on('after-scrolling', window.requestAnimationFrame.bind(null, removeLayers));
 			$wrap.on('transitionend webkitTransitionEnd', transitionEnd);
-			$window.on('article', removeAllLayers);
-
+			$window.on('article menu', removeAllLayers);
 			scrollData = data;
 			firstEventTimeout = window.setTimeout(initializePage, 750);
 		}
 	});
 
-	//Article loading
-	//Temporary, Proof of concept
-	$wrap.on('click', 'a.tile-image, a.tile-title', function(e) {
-		e.preventDefault();
-		$window.trigger('article');
-		window.requestAnimationFrame(function () {
-			$body.toggleClass('article');
-		});
-		$articleContainer.load(this.href + '-content');
+	$window.on('tiles-init', function () {
+		window.initializeTiles();
+		initializePage();
 	});
 
 }());

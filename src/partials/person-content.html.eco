@@ -10,7 +10,7 @@
 
 <% cover = if cover? then @partial('cover', true, {'cover': cover}) else @partial('cover', true) %>
 
-<div class="profile-header" style="background-image:url('<%= cover %>');">
+<div class="profile-banner" style="background-image:url('<%= cover %>');">
   <img src="<%= cover %>" style="display:none; visibility:hidden;" />
 </div>
 

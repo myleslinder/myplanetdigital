@@ -9,16 +9,15 @@ module.exports =
 			styles: [
 				'/styles/main.css'
 			]
-			scripts: [				
-				'/scripts/vendor/isotope-beta2.pkgd.min.js'
-				'/scripts/main.js'				
+			# The order of these matters big time!!!
+			scripts: [
 				'/scripts/pollyfill.js'
 				'/scripts/vendor/scrollfix.js'
-				'/scripts/modules/tiles.js'
 				'/scripts/modules/menu.js'
+				'/scripts/modules/tiles.js'
 				'/scripts/main.js'
-				'/scripts/animator.js'
 				'/scripts/vendor/fastclick.js'
+				'/scripts/vendor/history.min.js'
 				'/scripts/init.js'
 				'/scripts/vendor/prism.js'
 			]
@@ -33,6 +32,12 @@ module.exports =
 			]
 			'html5shiv': [
 				'/scripts/vendor/html5shiv.js'
+			]			
+			'isotope' : [
+			  '/scripts/vendor/isotope-beta2.pkgd.min.js'
+			]
+			'tiles-immediate' : [
+				'/scripts/modules/tiles-immediate.js'	
 			]
 
 			# Social Media Services
@@ -47,15 +52,17 @@ module.exports =
 	collections:
 		# The homepage collection to bring up all content, ordered by date.
 		homepage: (database) ->
-			database.findAllLive
+			options =
 				relativeOutDirPath:
 					$in: [
 						'article'
 						'careers'
+						'people'
 					]
 				layout:
-					$nin: ['content', 'content-tile']
-				, {date: -1}
+					$nin: ['content']
+			return database.findAllLive(options, [{sticky: -1, date: -1}]).on "add", (model) ->
+				model.setMetaDefaults({sticky: false})
 
 		# Create a collection for each available tag.
 		careers: (database) ->
@@ -63,73 +70,79 @@ module.exports =
 				tags:
 					$has: 'careers'
 				layout:
-					$nin: ['content', 'content-tile']
+					$nin: ['content']
 				, {date: -1}
 		design: (database) ->
-			database.findAllLive
+			options = {
 				tags:
 					$has: 'design'
 				layout:
-					$nin: ['content', 'content-tile']
-				, {date: -1}
+					$nin: ['content']
+			}
+			return database.findAllLive(options, [{date: -1}])
 		people: (database) ->
 			database.findAllLive
 				tags:
 					$has: 'people'
 				layout:
-					$nin: ['content', 'content-tile']
+					$nin: ['content']
 				, {date: -1}
 		business: (database) ->
 			database.findAllLive
 				tags:
 					$has: 'business'
 				layout:
-					$nin: ['content', 'content-tile']
+					$nin: ['content']
 				, {date: -1}
 		technology: (database) ->
 			database.findAllLive
 				tags:
 					$has: 'technology'
 				layout:
-					$nin: ['content', 'content-tile']
+					$nin: ['content']
 				, {date: -1}
 		culture: (database) ->
 			database.findAllLive
 				tags:
 					$has: 'culture'
 				layout:
-					$nin: ['content', 'content-tile']
+					$nin: ['content']
 				, {date: -1}
 		events: (database) ->
 			database.findAllLive
 				tags:
 					$has: 'events'
 				layout:
-					$nin: ['content', 'content-tile']
+					$nin: ['content']
 				, {date: -1}
 		work: (database) ->
 			database.findAllLive
 				tags:
 					$has: 'work'
 				layout:
-					$nin: ['content', 'content-tile']
+					$nin: ['content']
 				, {date: -1}
 		company: (database) ->
 			database.findAllLive
 				tags:
 					$has: 'company'
 				layout:
-					$nin: ['content', 'content-tile']
+					$nin: ['content']
 				, {date: -1}
 
 		# Rendered content into individual segmented HTML pages.
 		content: (database) ->
 			database.findAllLive({relativeOutDirPath: $in: ['people', 'article', 'careers']}).on "add", (model) ->
-				model.setMetaDefaults({additionalLayouts: ['content', 'content-tile']})
+				model.setMetaDefaults({additionalLayouts: ['content']})
 
 		# Navigation menu.
 		menu: (database) ->
-			database.findAllLive({menu: $gt: 0}, {menu: 1})
+			database.findAllLive
+				menu:
+					$gt: 0
+				layout:
+					$ne: 'content-tiles'
+				, {menu: 1}
 
 	plugins:
 
@@ -141,9 +154,10 @@ module.exports =
 				name = tag.charAt(0).toUpperCase() + tag.slice(1)
 				meta = {
 					layout: 'articles'
-					isPaged: true
-					pagedCollection: tag
-					pageSize: 999999
+					# isPaged: true
+					# collection: tag
+					# pageSize: 999999
+					pagedCollection: 'homepage'					
 				}
 				# Add the menu items for those that need them.
 				# @todo Move this to a seperate .json file?

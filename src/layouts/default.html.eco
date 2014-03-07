@@ -36,26 +36,41 @@
 		<link rel="icon" type="image/png" href="<%= @getUrl('/favicon.png') %>" />
 	</head>
 
-	<body class="<% if @document.layout != 'articles': %> article <% end %>">
+	<body class="<% if @document.layout != 'articles': %>article <% end %>">
 		<div id="wrap">
 			<h1 id="logo">
 				<a href="<%= @getUrl('/') %>">Myplanet</a>
 			</h1>
 			<div id="viewport">
 				
-				<section id="main">
-					<div class="main-wrap">
+				<section id="main" <% if @document.layout != 'articles': %>style="transition: none; -webkit-transition: none; position: absolute;"<% end %>>
+					<div class="main-wrap" style="position: relative;">
 						<% if @document.layout is 'articles': %>
 						<div class="grid-size"></div>
 						<%- @content %>
+						<% else: %>
+						<div class="tile-template"></div>
 						<% end %>
 					</div>
+					<div class="loading-overlay-tiles" <% if @document.layout == 'articles': %>style="display:none;"<% end %>>
+						<div class="loading-spinner"></div>
+					</div>
+					<%- @partial('footer') %>
 				</section>
 				
 				<!--[if (!IE) | (gte IE 10)]> -->
-				<article id="article">					
-					<!-- Article goes here for modern browsers -->
-					<%- @content %>					
+				<article id="article" <% if @document.layout != 'articles': %>style="position: static; margin-left: 100%;"<% end %>>
+					<div id="article-inner"  <% if @document.layout != 'content' && @document.layout != 'articles': %>class="reveal"<% end %>>
+						<% if @document.layout != 'articles': %>
+						<!-- Article goes here for modern browsers -->
+						<%- @content %>
+						<% else: %>
+							<div class="article-template"></div>
+						<% end %>
+					</div>
+					<div class="loading-overlay" <% if @document.layout != 'articles': %>style="display:none;"<% end %>>
+						<div class="loading-spinner"></div>
+					</div>
 				</article>
 				<!-- <![endif]-->
 
@@ -72,14 +87,20 @@
 			<!-- MENU GOES HERE -->
 			<%- @partial('menu', {menuItems: @generateMenu(@document.url, 'menu')}) %>
 		</div>
-
-		<%- @partial('footer') %>
 		<!--[if IE 8]>
-		<script src="<%- @getUrl(@site.jquery1[0]) %>"></script> 
+		<script src="<%- @getUrl(@site.jquery1[0]) %>"></script>
 		<![endif]-->
 		<!--[if (!IE) | (gte IE 9)]> -->
 		<script src="<%- @getUrl(@site.jquery2[0]) %>"></script>
 		<!-- <![endif]-->
 		<%- @getBlock('scripts').add(@getUrl(@site.scripts)).toHTML() %>
+		<% if @document.layout != 'articles': %>
+			<script src="<%- @getUrl(@site.isotope[0]) %>"></script>
+			<script>
+			window.initializeTiles = function() {
+				<%- @include(@site['tiles-immediate'][0]) %>
+			};
+			</script>
+		<% end %>
 	</body>
 </html>
