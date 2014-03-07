@@ -48,6 +48,8 @@
 						<% if @document.layout is 'articles': %>
 						<div class="grid-size"></div>
 						<%- @content %>
+						<% else: %>
+						<div class="tile-template"></div>
 						<% end %>
 					</div>
 					<div class="loading-overlay-tiles" <% if @document.layout == 'articles': %>style="display:none;"<% end %>>
@@ -92,5 +94,13 @@
 		<script src="<%- @getUrl(@site.jquery2[0]) %>"></script>
 		<!-- <![endif]-->
 		<%- @getBlock('scripts').add(@getUrl(@site.scripts)).toHTML() %>
+		<% if @document.layout != 'articles': %>
+			<script src="<%- @getUrl(@site.isotope[0]) %>"></script>
+			<script>
+			window.initializeTiles = function() {
+				<%- @include(@site['tiles-immediate'][0]) %>
+			};
+			</script>
+		<% end %>
 	</body>
 </html>

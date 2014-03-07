@@ -21,7 +21,7 @@
 		scrollTimeout,
 		preScrollTimeout,
 		articleScrollTop = 0,
-		tileScrollTop,
+		tileScrollTop = 0,
 		pageUrl,
 		lastArticleUrl = '',
 		doAjax,
@@ -84,8 +84,7 @@
 				isLoading = true;
 				$('.main-wrap').load('/index-content-tiles.html', function(){
 					window.requestAnimationFrame(function () {
-						window.initializeTiles();
-						window.initializePage();
+						$window.trigger('tiles-init');
 						hasLoadedTiles = true;
 						isLoading = false;
 						$loadgiftiles.hide();
@@ -196,7 +195,7 @@
 			//todo: show the loading gif
 
 			if (doAjax = !hasLoadedTiles) {
-				$loadgiftiles.find('.loading-spinner').css('top', window.height()/2 - 61);
+				$loadgiftiles.find('.loading-spinner').css('top', window.pageHeight/2 - 61);
 				$loadgiftiles.show();
 			}
 
@@ -318,7 +317,8 @@
 							position: ''
 						});
 						$article.css({
-							position: '',
+							position: 'absolute',
+							left: '100%',
 							marginLeft: ''
 						});
 						finishTransition();
@@ -417,10 +417,18 @@
 		}, PRE_SCROLL_THRESHOLD);
 	});
 
-	window.curScrollTop = tileScrollTop = window.pageYOffset;
+	window.curScrollTop = window.pageYOffset;
 	window.isTileView = hasLoadedTiles = !$body.hasClass('article');
 	window.isScrolling = false;
+
 	if(!window.isTileView) {
+		articleScrollTop = window.curScrollTop;
 		lastArticleUrl = document.location.href;
+	} else {
+		tileScrollTop = window.curScrollTop;
 	}
+	window.requestAnimationFrame(function () {
+		$body.addClass('loaded');
+	});
+	
 }());

@@ -19,6 +19,10 @@
 		$hiddenTiles;
 
 	function initializePage() {
+		if(!window.isTileView) {
+			return;
+		}
+		
 		$hiddenTiles = window.tiles.items.filter(function (tile) {
 			if(tile.position.y + topOffset < scrollData.bottom ) {
 				tile.element.style.opacity = '0.99';
@@ -169,6 +173,11 @@
 			scrollData = data;
 			firstEventTimeout = window.setTimeout(initializePage, 750);
 		}
+	});
+
+	$window.on('tiles-init', function () {
+		window.initializeTiles();
+		initializePage();
 	});
 
 }());
