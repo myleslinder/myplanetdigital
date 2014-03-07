@@ -8,9 +8,7 @@ date: "2013-2-11"
 layout: "article"
 size: "small"
 colour: "white"
-sticky: false
 imagePosition: "top"
-
 ---
 
 ## The rise of mobile has forced creators of web experiences to think beyond the desktop format. But, if we have learned anything from the recent push to mobile, we need to anticipate the future sooner rather than later; not only the next wave of formats, but everything beyond that.
