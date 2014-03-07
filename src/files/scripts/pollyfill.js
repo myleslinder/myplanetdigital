@@ -2,7 +2,7 @@
     'use strict';
 
     var s = document.body.style;
-    window.isSinglePageApp = window.history && window.history.pushState && (s.MozTransition=='' || s.WebkitTransition=='' || s.OTransition=='' || s.transition=='');
+    window.isSinglePageApp = window.history && window.history.pushState && (s.MozTransition === '' || s.WebkitTransition === '' || s.OTransition === '' || s.transition === '');
 
     if (window.isSinglePageApp) {
 

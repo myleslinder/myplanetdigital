@@ -1,0 +1,191 @@
+@import "../includes.less";
+
+.footer {
+	background-color: black;
+	color: white;
+	.contact-info {
+		position: relative;
+		width: 720px;
+		margin: 0 auto;
+		top: -40px;
+		span {
+			font-family: "Plantin";
+			font-weight: bold;
+			letter-spacing: -4px;
+			display: inline-block;
+			padding: 20px 30px;
+			font-size: 5em;
+			color: black;
+			background: white;
+			&:last-of-type {
+				padding-top: 0;
+			}
+		}
+		@media screen and (max-width: 768px) {
+			width: 572px;
+			span {
+				font-size: 4em;
+			}
+		}
+		@media screen and (max-width: 590px) {
+			width: 430px;
+			span {
+				padding: 15px 23px;
+				font-size: 3em;
+			}
+		}
+		@media screen and (max-width: 480px) {
+			width: 301px;
+			span {
+				font-size: 2.2em;
+				letter-spacing: -3px;
+				padding: 11px 17px;
+			}
+		}
+	}
+	.additional-info {
+		margin: 70px auto 0;
+		padding-bottom: 20px;
+		width: 820px;
+		font-family: TradeGothic;
+		h3 {
+			margin-top: 0;
+		}
+		@media screen and (max-width: 800px) {
+			width: 75%;
+			margin-top: 50px;
+		}
+	}
+	.contact {
+		display: inline-block;
+		position: relative;
+		padding: 0 30px 10px 20px;
+		border-left: 1px solid #555;
+		border-right: 1px solid #555;
+		width: 170px;
+		margin-bottom: 50px;
+		span {
+			display: block;
+			font-size: 1.2em;
+			color: #5b5b5b;
+		}
+		ul.social-media-footer {
+			position: absolute;
+			bottom: -28px;
+			padding: 0;
+			margin: 0;
+			font-size: 0;
+			list-style: none;
+			li {
+				display: inline-block;
+				margin-right: 10px;
+				a {
+					display: inline-block;
+					position: relative;
+					.hide-text();
+					width: 23px;
+					height: 23px;
+					background: url(../images/spritempd.png) 0 0 no-repeat;
+					background-size: 533px;
+					&:after {
+						content: '';
+						display: block;
+						position: absolute;
+						width: 23px;
+						height: 23px;
+						top: 0;
+						left: 0;
+						background: url(../images/spritempd.png) 0 0 no-repeat;
+						background-size: 533px;
+						opacity: 0.01;
+						.transition(opacity 0.3s);
+					}
+					&:hover:after {
+						opacity: 1;
+						.transition(opacity 0.3s);
+					}
+					&.twitter {
+						background-position: -96px -166px;
+						&:after {
+							background-position: -96px -188px;
+						}
+					}
+					&.facebook {
+						background-position: -130px -166px;
+						&:after {
+							background-position: -130px -188px;
+						}
+					}
+					&.dribbble {
+						background-position: -165px -166px;
+						&:after {
+							background-position: -165px -188px;
+						}
+					}
+					&.drupal {
+						background-position: -199px -166px;
+						&:after {
+							background-position: -199px -188px;
+						}
+					}
+					&.linkedin {
+						background-position: -234px -166px;
+						&:after {
+							background-position: -234px -188px;
+						}
+					}
+				}
+			}
+		}
+	}
+	.address {
+		display: inline-block;
+		position: relative;
+		vertical-align: top;
+		padding-left: 20px;
+		padding-right: 50px;
+		margin-bottom: 50px;
+		&:last-of-type {
+			padding-right: 0;
+		}
+		&:before {
+			content: '';
+			display: block;
+			position: absolute;
+			width: 62px;
+			height: 64px;
+			background: url(../images/spritempd.png) -462px -1px no-repeat;
+			background-size: 533px;
+		}
+		&.toronto:before {
+			top: -74px;
+			width: 62px;
+			height: 64px;
+		}
+		&.vancouver:before {
+			height: 44px;
+			top: -54px;
+			left: 31px;
+			background-position: -463px -73px;
+		}
+		&.chernihiv:before {
+			top: -64px;
+			left: 28px;
+			height: 56px;
+			background-position: -467px -120px;
+		}
+		@media screen and (max-width:800px) {
+			&:before {
+				display: none;
+			}
+		}
+
+		h3 {
+			font-weight: normal;
+		}
+		span {
+			display: block;
+			color: #5b5b5b;
+		}
+	}
+}

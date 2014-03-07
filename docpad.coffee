@@ -16,7 +16,6 @@ module.exports =
 				'/scripts/modules/menu.js'
 				'/scripts/modules/tiles.js'
 				'/scripts/main.js'
-				'/scripts/animator.js'
 				'/scripts/vendor/fastclick.js'
 				'/scripts/vendor/history.min.js'
 				'/scripts/init.js'

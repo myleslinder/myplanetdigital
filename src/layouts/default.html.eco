@@ -48,21 +48,20 @@
 						<% if @document.layout is 'articles': %>
 						<div class="grid-size"></div>
 						<%- @content %>
-						<% else: %>
-							<div class="tile-template"></div>
 						<% end %>
 					</div>
 					<div class="loading-overlay-tiles" <% if @document.layout == 'articles': %>style="display:none;"<% end %>>
 						<div class="loading-spinner"></div>
 					</div>
+					<%- @partial('footer') %>
 				</section>
 				
 				<!--[if (!IE) | (gte IE 10)]> -->
-				<article id="article" <% if @document.layout != 'articles': %>style="z-index: -1; position: static; margin-left: 100%;"<% end %>>
+				<article id="article" <% if @document.layout != 'articles': %>style="position: static; margin-left: 100%;"<% end %>>
 					<div id="article-inner"  <% if @document.layout != 'content' && @document.layout != 'articles': %>class="reveal"<% end %>>
 						<% if @document.layout != 'articles': %>
 						<!-- Article goes here for modern browsers -->
-							<%- @content %>
+						<%- @content %>
 						<% else: %>
 							<div class="article-template"></div>
 						<% end %>
@@ -86,8 +85,6 @@
 			<!-- MENU GOES HERE -->
 			<%- @partial('menu', {menuItems: @generateMenu(@document.url, 'menu')}) %>
 		</div>
-
-		<%- @partial('footer') %>
 		<!--[if IE 8]>
 		<script src="<%- @getUrl(@site.jquery1[0]) %>"></script>
 		<![endif]-->

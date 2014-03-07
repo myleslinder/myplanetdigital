@@ -14,28 +14,30 @@
 		$loadgif = $('.loading-overlay'),
 		$loadgiftiles = $('.loading-overlay-tiles'),
 		$anchors = $('a'),
+		$footer = $('.footer'),
 		popped = false,
-		isTileView = $('body').hasClass('article')? false : true,
+		hasLoadedTiles,
+		isLoading =  false,
 		scrollTimeout,
 		preScrollTimeout,
-		articleScrollTop,
+		articleScrollTop = 0,
 		tileScrollTop,
-		lastArticleUrl = '',
 		pageUrl,
+		lastArticleUrl = '',
+		doAjax,
 		isTransitioning = false,
+		cancelTransition = false,
 		linkClickedTime = new Date(),
-		externalUrlRegex = /^([^:\/?#]+:)?(?:\/\/([^\/?#]*))?([^?#]+)?(\?[^#]*)?(#.*)?/,
-		coverSrcRegex = /url\(['"]?(.*\.\w+)['"]?\)/,
-		articleRegex = /\/article\//,
-		careersRegex = /\/careers\//,
-		peopleRegex = /\/people\//,
-		tagsRegex = /\/tags\//,
-		mapsRegex = /http:\/\/maps\.google\.com/,
-		isFirefox = navigator.userAgent.match(/firefox/i),
+		wasLinkClick,
+		EXTERNAL_URL_REGEX = /^([^:\/?#]+:)?(?:\/\/([^\/?#]*))?([^?#]+)?(\?[^#]*)?(#.*)?/,
+		ARTICLE_REGEX = /\/(article|people|careers)\//,
+		MAPS_REGEX = /http:\/\/maps\.google\.com/,
+		COVER_SRC_REGEX = /url\(['"]?(.*\.\w+)['"]?\)/,
 		FULL_WIDTH = 1324,
 		DESKTOP_WIDTH = 1174,
-		END_SCROLL_THRESHOLD = 700,
+		END_SCROLL_THRESHOLD = 400,
 		PRE_SCROLL_THRESHOLD = 50;
+		//MAX_PANEL_HEIGHT = 10000; //todo: not this, vulnerable to articles that may be taller than the tile page
 
 	function setResponsiveState() {
 		var width = $window.width(),
@@ -79,90 +81,110 @@
 	function loadViaAjax() {
 		if (isTileView) {
 			if ($('.main-wrap').find('.tile').length === 0) {
+				isLoading = true;
 				$('.main-wrap').load('/index-content-tiles.html', function(){
-					window.initializeTiles();
-					window.initializePage();
-					$loadgiftiles.hide();
+					window.requestAnimationFrame(function () {
+						window.initializeTiles();
+						window.initializePage();
+						hasLoadedTiles = true;
+						isLoading = false;
+						$loadgiftiles.hide();
+					});
 				});
 			}
 			$loadgif.hide();
-			$articlein.removeClass('reveal');
 		}
 		else {
+			isLoading = true;
 			$.get(History.getState().hash + '-content', function(data) {
-				var coverSrc = $(data).eq(0).css('background-image').match(coverSrcRegex)[1],
+				var coverSrc = $(data).eq(0).css('background-image').match(COVER_SRC_REGEX)[1],
 					image = new Image();
 
 				// once cover image is loaded then attach article to DOM
 				image.onload = function() {
-					$articlein.html(data);
-					$loadgif.hide();
-					window.setTimeout(function(){
-						$articlein.addClass('reveal');
-					}, 100);
+					window.requestAnimationFrame(function () {
+						$articlein.html(data);
+						$loadgif.hide();
+						$articlein.removeClass('reveal');
+						window.setTimeout(function(){
+							window.requestAnimationFrame(function () {
+								isLoading = false;
+								$articlein.addClass('reveal');
+							});
+						}, 100);
+					});
 				};
 				image.src = coverSrc;
 			});
 		}
-		$body.removeClass('animating');
+		$body.removeClass('animating').css('height', '');
 	}
 
 	function handlePageChange(e, data) {
 		if(window.isIOS) {
-			window.curScrollTop = window.pageYOffset;
+			window.curScrollTop = window.pageYOffset; //ios scroll handler doesn't fire properly
 		}
+		cancelTransition = isTransitioning;
 
-		var isPageUrl = data.url.match(articleRegex) || data.url.match(peopleRegex) || data.url.match(careersRegex),
-			isTagsUrl = data.url.match(tagsRegex),
+		var isArticleUrl = data.url.match(ARTICLE_REGEX),
 			top = window.curScrollTop,
-			wasLinkClick = new Date() - linkClickedTime < 300,
-			overrideHistoryAPIScrollbar = !wasLinkClick && !window.isIOS,
-			timeoutLen = isFirefox ? 50 : 0;
+			overridePopstateScrollmove,
+			timeoutLen = 50;
 
-		if(isPageUrl && isTileView) {
-			isTileView = false;
+		wasLinkClick = new Date() - linkClickedTime < 300;
+		overridePopstateScrollmove = !wasLinkClick && !window.isIOS; //ios doesn't mess with the scrollbar during popstate
+
+		if(isArticleUrl && window.isTileView) {
+			window.isTileView = false;
 			isTransitioning = true;
 			tileScrollTop = top;
-
+			doAjax = lastArticleUrl !== data.url;
+			lastArticleUrl = data.url;
 			if(wasLinkClick) {
 				articleScrollTop = 0;
 			}
 
 			$window.trigger('article');
+			//todo: show the loading gif
 
-			$loadgif.find('.loading-spinner').css('top', $window.height()/2 - 61);
-			$loadgif.show();
+			if(doAjax) {
+				$loadgif.find('.loading-spinner').css('top', window.pageHeight/2 - 61);
+				$loadgif.show();
+			}
 
 			$article.css({
-				transform:  !overrideHistoryAPIScrollbar || wasLinkClick ? 'translate3d(-1px, ' + (top - articleScrollTop) + 'px, 0)' : '',
-				transition: 'none',
-				zIndex: 0
-			});
-			$main.css({
-				transform: overrideHistoryAPIScrollbar ? 'translate3d(-1px, ' + -(top - articleScrollTop) + 'px, 0)' : '',
+				transform:  !overridePopstateScrollmove || wasLinkClick ? 'translate3d(-1px, ' + (top - articleScrollTop) + 'px, 0)' : '',
 				transition: 'none'
 			});
-			$body.addClass('animating');
+			$main.css({
+				transform: overridePopstateScrollmove ? 'translate3d(-1px, ' + -(top - articleScrollTop) + 'px, 0)' : '',
+				transition: 'none'
+			});
+			$body.addClass('animating').css('height', articleScrollTop + window.pageHeight);
 
-			if(overrideHistoryAPIScrollbar) {
+			if(overridePopstateScrollmove) {
 				window.scroll(0, window.curScrollTop = articleScrollTop);
 			}
 
 			window.setTimeout(function () {
 				window.requestAnimationFrame(function () {
 					$article.css({
-						transform:  !overrideHistoryAPIScrollbar || wasLinkClick ?'translate3d(-100%, ' + (top - articleScrollTop) + 'px, 0)' : '',
+						transform:  !overridePopstateScrollmove || wasLinkClick ?'translate3d(-100%, ' + (top - articleScrollTop) + 'px, 0)' : '',
 						transition: ''
 					});
 					$main.css({
-						transform: overrideHistoryAPIScrollbar ? 'translate3d(-100%, ' + -(top - articleScrollTop) + 'px, 0)' : '',
+						transform: overridePopstateScrollmove ? 'translate3d(-100%, ' + -(top - articleScrollTop) + 'px, 0)' : '',
 						transition: ''
 					});
+					$window.trigger('article-transition', [{
+						top: articleScrollTop
+					}]);
 					$body.addClass('article');
 				});
 			}, timeoutLen);
-		} else if(!isPageUrl && !isTileView) {
-			isTileView = true;
+
+		} else if(!isArticleUrl && !window.isTileView) {
+			window.isTileView = true;
 			isTransitioning = true;
 			articleScrollTop = top;
 
@@ -171,41 +193,45 @@
 			}
 
 			$window.trigger('tiles');
+			//todo: show the loading gif
 
-			// only show loading spinner if tiles are not ajaxed in
-			if ($('.main-wrap').find('.tile').length === 0) {
-				$loadgiftiles.find('.loading-spinner').css('top', $window.height()/2 - 61);
+			if (doAjax = !hasLoadedTiles) {
+				$loadgiftiles.find('.loading-spinner').css('top', window.height()/2 - 61);
 				$loadgiftiles.show();
 			}
 
 			$main.css({
-				transform: !overrideHistoryAPIScrollbar || wasLinkClick ? 'translate3d(-100%, ' + (top - tileScrollTop) + 'px, 0)' : '',
+				transform: !overridePopstateScrollmove || wasLinkClick ? 'translate3d(-100%, ' + (top - tileScrollTop) + 'px, 0)' : '',
 				transition: 'none'
 			});
 			$article.css({
-				transform: overrideHistoryAPIScrollbar ? 'translate3d(-100%, ' + -(top - tileScrollTop) + 'px, 0)' : '',
+				transform: overridePopstateScrollmove ? 'translate3d(-100%, ' + -(top - tileScrollTop) + 'px, 0)' : '',
 				transition: 'none'
 			});
-			$body.addClass('animating');
+			$body.addClass('animating').css('height', tileScrollTop + window.pageHeight);
 
-			if(overrideHistoryAPIScrollbar) {
+			if(overridePopstateScrollmove) {
 				window.scroll(0, window.curScrollTop = tileScrollTop);
 			}
 
 			window.setTimeout(function () {
 				window.requestAnimationFrame(function () {
 					$main.css({
-						transform:  !overrideHistoryAPIScrollbar || wasLinkClick ? 'translate3d(-1px, ' + (top - tileScrollTop) + 'px, 0)' : '',
+						transform:  !overridePopstateScrollmove || wasLinkClick ? 'translate3d(-1px, ' + (top - tileScrollTop) + 'px, 0)' : '',
 						transition: ''
 					});
 					$article.css({
-						transform: overrideHistoryAPIScrollbar ? 'translate3d(-1px, ' + -(top - tileScrollTop) + 'px, 0)' : '',
+						transform: overridePopstateScrollmove ? 'translate3d(-1px, ' + -(top - tileScrollTop) + 'px, 0)' : '',
 						transition: ''
 					});
+					$window.trigger('tiles-transition', [{
+						top: tileScrollTop
+					}]);
 					$body.removeClass('article');
 				});
 			}, timeoutLen);
-		} else if (isTagsUrl) {
+
+		} /*else if (isTagsUrl) {
 			var tag = data.hash.split(/\//).pop();
 			
 			// window.tiles is defined in tiles-immediate.js
@@ -221,41 +247,72 @@
 			}
 			window.tiles.arrange({filter: '.visible'});
 			$window.trigger('filter');
-		} 
+		} */
 	}
 
 	function finishTransition() {
 		isTransitioning = false;
-		loadViaAjax();
+		if(doAjax) {
+			window.requestAnimationFrame(loadViaAjax);
+		} else {
+			$body.removeClass('animating').css('height', '');
+		}
+	}
+
+	function isExternalUrl(url) {
+		var match = url.match(EXTERNAL_URL_REGEX);
+		if (typeof match[1] === 'string' && match[1].length > 0 && match[1].toLowerCase() !== location.protocol) {
+			return true;
+		}
+		if (typeof match[2] === 'string' && match[2].length > 0 && match[2].replace(new RegExp(':('+{'http:':80,'https:':443}[location.protocol]+')?$'), '') !== location.host) {
+			return true;
+		}
+		return false;
 	}
 
 	$article.on('transitionend webkitTransitionEnd', function (e) {
 		if(!isTransitioning || e.target !== $article[0]) {
 			return;
 		}
-		var handleTransition,
-			timeoutLen = window.isIOS ? 125 : 50;
 
-		if(!isTileView) {
+		var handleTransition,
+			timeoutLen = 0;//window.isIOS ? 0 : 0;
+
+		if(!window.isTileView) {
 			handleTransition =  function () {
-				window.scroll(0, window.curScrollTop = articleScrollTop);
+				if(cancelTransition) {
+					return;
+				}
+				window.scroll(0, window.curScrollTop = articleScrollTop + (window.pageYOffset - window.curScrollTop));
 				window.setTimeout(function () {
-					window.requestAnimationFrame(function () {
+					//window.requestAnimationFrame(function () {
+						if(cancelTransition) {
+							return;
+						}
+
 						$article.css({
 							transition: '',
 							position: 'static',
 							marginLeft: '100%'
 						});
-						$main.css('position', 'absolute');
+						$main.css({
+							position: 'absolute'
+						});
 						finishTransition();
-					});
+				//	});
 				}, timeoutLen);
 			};
 		} else {
 			handleTransition = function () {
-				window.scroll(0, window.curScrollTop = tileScrollTop);
+				if(cancelTransition) {
+					return;
+				}
+				window.scroll(0, window.curScrollTop = tileScrollTop + (window.pageYOffset - window.curScrollTop));
 				window.setTimeout(function () {
-					window.requestAnimationFrame(function () {
+					//window.requestAnimationFrame(function () {
+						if(cancelTransition) {
+							return;
+						}
 						$main.css({
 							transition: '',
 							position: ''
@@ -265,13 +322,16 @@
 							marginLeft: ''
 						});
 						finishTransition();
-					});
+				//	});
 				}, timeoutLen);
 			};
 		}
 
-		window.setTimeout(function () {
+		//window.setTimeout(function () {
 			window.requestAnimationFrame(function () {
+				if(cancelTransition) {
+					return;
+				}
 				$article.css({
 					transform: '',
 					transition: 'none'
@@ -285,19 +345,8 @@
 				}
 				handleTransition();
 			});
-		}, timeoutLen);
+		//}, timeoutLen);
 	});
-
-	function isExternalUrl(url) {
-		var match = url.match(externalUrlRegex);
-		if (typeof match[1] === 'string' && match[1].length > 0 && match[1].toLowerCase() !== location.protocol) {
-			return true;
-		}
-		if (typeof match[2] === 'string' && match[2].length > 0 && match[2].replace(new RegExp(':('+{'http:':80,'https:':443}[location.protocol]+')?$'), '') !== location.host) {
-			return true;
-		}
-		return false;
-	}
 
 	//init capabiliites
 	setResponsiveState();
@@ -310,21 +359,22 @@
 		top: window.pageYOffset,
 		bottom: window.pageYOffset + window.pageHeight
 	}]);
+
 	if(window.desktopCapable) {
 		$body.addClass('desktop-capable');
 	}
 
 	//handle geo urls
-	if(hasTouchEvents) {
+	if(window.hasTouchEvents) {
 		$anchors.each(function () {
 			var $link = $(this),
 				href = $link.attr('href'),
 				longLat = $link.attr('data-long-lat') || '43.65163,-79.37104';
-			$link.attr('href', window.isIOS ? href.replace(mapsRegex, 'http://maps.apple.com') : href.match(mapsRegex) ? 'geo:' + longLat : href);
+			$link.attr('href', window.isIOS ? href.replace(MAPS_REGEX, 'http://maps.apple.com') : href.match(MAPS_REGEX) ? 'geo:' + longLat : href);
 		});
 	}
 	//handle push/pop state
-	$body.on('click', 'a', function() {		
+	$body.on('click', 'a', function() {
 		if(!isExternalUrl(pageUrl = $(this).attr('href'))) {
 			linkClickedTime = new Date();
 			History.pushState(null, null, pageUrl);
@@ -332,11 +382,13 @@
 		}
 	});
 
+	$article.append($footer.clone());
+
 	$window.on('page-change', handlePageChange);
 
 	//global scroll handler
 	$window.on('scroll', function() {
-		if(isTransitioning || window.isIOS) {
+		if(isTransitioning || isLoading || window.isIOS) {
 			return;
 		}
 		window.curScrollTop = window.pageYOffset;
@@ -365,7 +417,10 @@
 		}, PRE_SCROLL_THRESHOLD);
 	});
 
-	window.curScrollTop = articleScrollTop = tileScrollTop = window.pageYOffset;
+	window.curScrollTop = tileScrollTop = window.pageYOffset;
+	window.isTileView = hasLoadedTiles = !$body.hasClass('article');
 	window.isScrolling = false;
-
+	if(!window.isTileView) {
+		lastArticleUrl = document.location.href;
+	}
 }());
