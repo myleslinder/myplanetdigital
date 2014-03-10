@@ -1,4 +1,8 @@
-@import "../includes.less";
+---
+referencesOthers: false
+---
+@import "../variables.css.less";
+@import "../mixins.css.less";
 
 @tile-height: 250px;
 @tile-width: 33.3%;
@@ -137,7 +141,7 @@
 					display: block;
 					height: 40px;
 					width: 42px;
-					background: url(../images/spritempd.png) 0 0 no-repeat;
+					background: url(../../images/spritempd.png) 0 0 no-repeat;
 					background-size: 533px auto;
 					.transform(translateZ(0) rotate(45deg));
 					.transition-transform(0.25s);

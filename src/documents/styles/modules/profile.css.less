@@ -1,4 +1,8 @@
-@import "../includes.less";
+---
+referencesOthers: false
+---
+@import "../variables.css.less";
+@import "../mixins.css.less";
 
 // desktop transition to profile page
 body.desktop-capable {
@@ -136,7 +140,7 @@ body.desktop-capable {
 					text-decoration: none;
 					height: 40px;
 					width: 40px;
-					background: transparent url(../images/spritempd.png) 0 0 no-repeat;
+					background: transparent url(../../images/spritempd.png) 0 0 no-repeat;
 					background-size: 533px auto;
 
 					&:after {
@@ -147,7 +151,7 @@ body.desktop-capable {
 						height: 40px;
 						top: 0;
 						left: 0;
-						background: transparent url(../images/spritempd.png) 0 0 no-repeat;
+						background: transparent url(../../images/spritempd.png) 0 0 no-repeat;
 						background-size: 533px auto;
 						opacity: 0.01;
 						.transition(opacity 0.3s);
@@ -309,7 +313,7 @@ body.desktop-capable {
 					height: 40px;
 					left: 22px;
 					top: 31px;
-					background: #fff url(../images/spritempd.png) 0 0 no-repeat;
+					background: #fff url(../../images/spritempd.png) 0 0 no-repeat;
 					background-size: 533px;
 				}
 				&.company:before {

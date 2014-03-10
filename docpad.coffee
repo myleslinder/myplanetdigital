@@ -61,12 +61,12 @@ module.exports =
 					]
 				layout:
 					$nin: ['content']
-			return database.findAllLive(options, [{sticky: -1, date: -1}]).on "add", (model) ->
+			return database.findAll(options, [{sticky: -1, date: -1}]).on "add", (model) ->
 				model.setMetaDefaults({sticky: false})
 
 		# Create a collection for each available tag.
 		careers: (database) ->
-			database.findAllLive
+			database.findAll
 				tags:
 					$has: 'careers'
 				layout:
@@ -79,51 +79,51 @@ module.exports =
 				layout:
 					$nin: ['content']
 			}
-			return database.findAllLive(options, [{date: -1}])
+			return database.findAll(options, [{date: -1}])
 		people: (database) ->
-			database.findAllLive
+			database.findAll
 				tags:
 					$has: 'people'
 				layout:
 					$nin: ['content']
 				, {date: -1}
 		business: (database) ->
-			database.findAllLive
+			database.findAll
 				tags:
 					$has: 'business'
 				layout:
 					$nin: ['content']
 				, {date: -1}
 		technology: (database) ->
-			database.findAllLive
+			database.findAll
 				tags:
 					$has: 'technology'
 				layout:
 					$nin: ['content']
 				, {date: -1}
 		culture: (database) ->
-			database.findAllLive
+			database.findAll
 				tags:
 					$has: 'culture'
 				layout:
 					$nin: ['content']
 				, {date: -1}
 		events: (database) ->
-			database.findAllLive
+			database.findAll
 				tags:
 					$has: 'events'
 				layout:
 					$nin: ['content']
 				, {date: -1}
 		work: (database) ->
-			database.findAllLive
+			database.findAll
 				tags:
 					$has: 'work'
 				layout:
 					$nin: ['content']
 				, {date: -1}
 		company: (database) ->
-			database.findAllLive
+			database.findAll
 				tags:
 					$has: 'company'
 				layout:
@@ -132,12 +132,12 @@ module.exports =
 
 		# Rendered content into individual segmented HTML pages.
 		content: (database) ->
-			database.findAllLive({relativeOutDirPath: $in: ['people', 'article', 'careers']}).on "add", (model) ->
+			database.findAll({relativeOutDirPath: $in: ['people', 'article', 'careers']}).on "add", (model) ->
 				model.setMetaDefaults({additionalLayouts: ['content']})
 
 		# Navigation menu.
 		menu: (database) ->
-			database.findAllLive
+			database.findAll
 				menu:
 					$gt: 0
 				layout:

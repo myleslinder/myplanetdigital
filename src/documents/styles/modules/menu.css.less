@@ -1,4 +1,8 @@
-@import "../includes.less";
+---
+referencesOthers: false
+---
+@import "../variables.css.less";
+@import "../mixins.css.less";
 @menu-transition-time:0.4s;
 @indicator-width: 8px;
 @menu-hover-offset:11px;
@@ -92,7 +96,7 @@
 				left:44px;
 				width: 42px;
 				height: 40px;
-				background:url('../images/spritempd.png') 0 0 no-repeat;
+				background:url('../../images/spritempd.png') 0 0 no-repeat;
 				background-size:533px;
 				.transition-transform(@menu-transition-time);
 			}
@@ -271,7 +275,7 @@
 	 	position:absolute;
 		width: 30px;
 		height: 43px;
-		background:url('../images/spritempd.png') no-repeat -140px 0;
+		background:url('../../images/spritempd.png') no-repeat -140px 0;
 		background-size:533px;
 		margin:40px 0 0 30px;
 		.translateZ();
