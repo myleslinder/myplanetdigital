@@ -75,7 +75,7 @@ module.exports =
 				menu:
 					$gt: 0
 				layout:
-					$ne: 'content-tiles'
+					$nin: ['content', 'content-tiles']
 				, {menu: 1}
 
 	plugins:

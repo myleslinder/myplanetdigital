@@ -13,13 +13,13 @@
 <% @document.size ?= 'medium' %>
 <% @document.size = 'small' if not tile %>
 
-<% if (@tagName && (@tagName not in @document.tags)): %>
+<% if (@document.tags && @tagName && (@tagName not in @document.tags)): %>
 	<% visibility = '' %>
 <% else: %>
 	<% visibility = 'visible' %>
 <% end %>
 
-<div 
+<div
 	class="tile<%= if @document.size then ' ' + @document.size %><%= if @document.colour then ' ' + @document.colour %><%= ' ' + visibility %><%= ' ' + @document.tags.join(' ') if @document.tags? %>">
 
 	<div class="content">
