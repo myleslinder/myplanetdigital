@@ -64,72 +64,6 @@ module.exports =
 			return database.findAllLive(options, [{sticky: -1, date: -1}]).on "add", (model) ->
 				model.setMetaDefaults({sticky: false})
 
-		# Create a collection for each available tag.
-		careers: (database) ->
-			database.findAllLive
-				tags:
-					$has: 'careers'
-				layout:
-					$nin: ['content']
-				, {date: -1}
-		design: (database) ->
-			options = {
-				tags:
-					$has: 'design'
-				layout:
-					$nin: ['content']
-			}
-			return database.findAllLive(options, [{date: -1}])
-		people: (database) ->
-			database.findAllLive
-				tags:
-					$has: 'people'
-				layout:
-					$nin: ['content']
-				, {date: -1}
-		business: (database) ->
-			database.findAllLive
-				tags:
-					$has: 'business'
-				layout:
-					$nin: ['content']
-				, {date: -1}
-		technology: (database) ->
-			database.findAllLive
-				tags:
-					$has: 'technology'
-				layout:
-					$nin: ['content']
-				, {date: -1}
-		culture: (database) ->
-			database.findAllLive
-				tags:
-					$has: 'culture'
-				layout:
-					$nin: ['content']
-				, {date: -1}
-		events: (database) ->
-			database.findAllLive
-				tags:
-					$has: 'events'
-				layout:
-					$nin: ['content']
-				, {date: -1}
-		work: (database) ->
-			database.findAllLive
-				tags:
-					$has: 'work'
-				layout:
-					$nin: ['content']
-				, {date: -1}
-		company: (database) ->
-			database.findAllLive
-				tags:
-					$has: 'company'
-				layout:
-					$nin: ['content']
-				, {date: -1}
-
 		# Rendered content into individual segmented HTML pages.
 		content: (database) ->
 			database.findAllLive({relativeOutDirPath: $in: ['people', 'article', 'careers']}).on "add", (model) ->
@@ -145,45 +79,6 @@ module.exports =
 				, {menu: 1}
 
 	plugins:
-
-		# Provide the tagged pages
-		tags:
-			extension: '.html'
-			injectDocumentHelper: (document) ->
-				tag = document.get('tag')
-				name = tag.charAt(0).toUpperCase() + tag.slice(1)
-				meta = {
-					layout: 'articles'
-					# isPaged: true
-					# collection: tag
-					# pageSize: 999999
-					pagedCollection: 'homepage'					
-				}
-				# Add the menu items for those that need them.
-				# @todo Move this to a seperate .json file?
-				switch name
-					when "Company"
-						meta.title = "Our Company"
-						meta.menu = 2
-					when "Work"
-						meta.title = "Our Work"
-						meta.menu = 3
-					when "People"
-						meta.title = "Our People"
-						meta.menu = 4
-					when "Careers"
-						meta.title = "Careers Opps"
-						meta.menu = 5
-					when "Design"
-						meta.title = "Design Thinking"
-						meta.menu = 6
-					when "Technology"
-						meta.title = "Tech Thinking"
-						meta.menu = 7
-					when "Business"
-						meta.title = "Business Thinking"
-						meta.menu = 8
-				document.setMeta(meta)
 
 		# Formatting for the dates
 		moment:

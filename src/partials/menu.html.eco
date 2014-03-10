@@ -3,7 +3,15 @@
 		<% for item in @menuItems: %>
 			<% if item.slug.indexOf('.') == -1: %>
 				<li class="<%= if item.slug is '' then 'all' else item.slug %><%= if item.state == 'current' then ' active' %>">
-					<a href="<%= @getUrl(item.url) %>"><span><%= item.title or item.menuTitle %></span></a>
+					<a
+						href="<%= @getUrl(item.url) %>"
+						<% if item.meta.banner?: %>
+							data-banner="<%= item.meta.banner %>"
+						<% end %>>
+						<span>
+							<%= item.title or item.menuTitle %>
+						</span>
+					</a>
 				</li>
 			<% end %>
 		<% end %>

@@ -31,6 +31,7 @@
 		wasLinkClick,
 		EXTERNAL_URL_REGEX = /^([^:\/?#]+:)?(?:\/\/([^\/?#]*))?([^?#]+)?(\?[^#]*)?(#.*)?/,
 		ARTICLE_REGEX = /\/(article|people|careers)\//,
+		TAG_REGEX = /\/(tags)\//,
 		MAPS_REGEX = /http:\/\/maps\.google\.com/,
 		COVER_SRC_REGEX = /url\(['"]?(.*\.\w+)['"]?\)/,
 		FULL_WIDTH = 1324,
@@ -128,6 +129,7 @@
 		var isArticleUrl = data.url.match(ARTICLE_REGEX),
 			top = window.curScrollTop,
 			overridePopstateScrollmove,
+			isTagsUrl = data.url.match(TAG_REGEX),
 			timeoutLen = 50;
 
 		wasLinkClick = new Date() - linkClickedTime < 300;
@@ -230,9 +232,18 @@
 				});
 			}, timeoutLen);
 
-		} /*else if (isTagsUrl) {
+		} else if (isTagsUrl) {
+			// @todo Handle the homepage URL tag "home".
+			// Grab the desired tag.
 			var tag = data.hash.split(/\//).pop();
-			
+
+			// Filter the tiles with Isotope.
+			window.tiles.filter('.' + tag);
+			$window.trigger('filter');
+
+
+			// Disable the window redirect.
+			/*
 			// window.tiles is defined in tiles-immediate.js
 			[].forEach.call(window.tiles.items, function(item) {
 				item.element.classList.remove('visible');
@@ -246,7 +257,8 @@
 			}
 			window.tiles.arrange({filter: '.visible'});
 			$window.trigger('filter');
-		} */
+			*/
+		}
 	}
 
 	function finishTransition() {

@@ -1,6 +1,6 @@
 ---
 title: "A Brief History of JavaScript"
-tags: ["technology"]
+tags: ["technology", "home"]
 banner: "A Brief History of\nJavaScript"
 summary: "It’s been five years since the first copies of Douglas Crockford’s “JavaScript: the Good Parts” hit bookshelves. A lot has changed since."
 author: "Neil Taylor"
@@ -10,8 +10,6 @@ size: "medium"
 colour: "white"
 sticky: false
 imagePosition: "top"
-isOnHomapage: true
-
 ---
 
 ## It’s been five years since the first copies of Douglas Crockford’s “JavaScript: the Good Parts” hit bookshelves. A lot has changed since.
