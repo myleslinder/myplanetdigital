@@ -38,6 +38,7 @@
 				<ul class="tags">
 					<% i = 0 %>
 					<% for tag in @document.tags: %>
+						<% continue if tag is 'home' %>
 						<% i = i + 1 %>
 						<% url = @getUrl('/tags/' + tag) %>
 						<li>
