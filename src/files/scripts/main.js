@@ -238,7 +238,8 @@
 			var tag = data.hash.split(/\//).pop();
 
 			// Filter the tiles with Isotope.
-			window.tiles.filter('.' + tag);
+			//window.tiles.filter('.' + tag);
+			window.tiles.arrange({filter: '.' + tag});
 			$window.trigger('filter');
 
 
@@ -441,6 +442,30 @@
 	}
 	window.requestAnimationFrame(function () {
 		$body.addClass('loaded');
+	});
+
+
+	$(document).ready(function() {
+		var tag = 'home';
+		var $articles = $('.articles');
+		if ($articles.length >= 0) {
+			tag = $articles.data('tag');
+		}
+		window.tiles = new Isotope( '.main-wrap', {
+		  itemSelector: '.tile',
+		  filter: '.' + tag,
+		  masonry: {
+		    columnWidth: '.grid-size'
+		  },
+		  transitionDuration: 0
+		});
+		if('ontouchstart' in window) {
+		    var els = document.querySelectorAll('.tile'),
+		        len = els.length;
+		    while(len--) {
+		        els[len].style.opacity = 1;
+		    }
+		}
 	});
 	
 }());

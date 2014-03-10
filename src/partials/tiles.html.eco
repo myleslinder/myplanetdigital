@@ -1,6 +1,8 @@
-<% for document in @getPageCollection(@document.pagedCollection).toJSON(): %>
-    <%- @partial('tile', true, {'document': document, 'getUrl': @getUrl, 'tagName': @document.meta.tagName}) %>
-<% end %>
+<div class="articles" data-tag="<%= @document.meta.tagName %>">
+	<% for document in @getPageCollection(@document.pagedCollection).toJSON(): %>
+	    <%- @partial('tile', true, {'document': document, 'getUrl': @getUrl, 'tagName': @document.meta.tagName}) %>
+	<% end %>
+</div>
 <script src="<%- @getUrl(@site.isotope[0]) %>"></script>
 <script>
 <%- @include(@site['tiles-immediate'][0]) %>

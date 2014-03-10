@@ -14,7 +14,7 @@
 <% @document.size = 'small' if not tile %>
 
 <% if (@document.tags && @tagName && (@tagName not in @document.tags)): %>
-	<% visibility = '' %>
+	<% visibility = 'visible' %>
 <% else: %>
 	<% visibility = 'visible' %>
 <% end %>
