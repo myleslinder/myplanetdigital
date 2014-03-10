@@ -108,7 +108,7 @@ body.article #viewport {
   margin-top:-@menu-hover-offset;  
   font-size:15px;
   background:transparent;
-  padding: 75px 5px 0;
+  padding: 0;
   &.active {
     color:#000;
   }
@@ -117,6 +117,10 @@ body.article #viewport {
   }
 
   > a {
+    display: block;
+    .border-box();
+    padding-top: 75px;    
+    height: 100%;
     font-size: 14px;
     z-index: 1;
     position: relative;
@@ -130,7 +134,119 @@ body.article #viewport {
     left:51px;
     width: 29px;
     height: 40px;
-    background:url('../images/sprite-ie.png') no-repeat 0 0;
+    background:url(../images/spritempd-small.png) no-repeat 0 0;
+  }
+  &.company{
+    &:before {
+      background-position: -312px 0;
+    }
+    &.hover, &.active {
+      a > span {
+        color: @company-color;
+      }
+      &:before {
+        background-position: -312px -41px;
+      }
+      &:after {
+        border-color: @company-color;
+      }
+    }
+  }
+  &.people {
+    &:before {
+      background-position: -265px 0;
+    }
+    &.hover, &.active {
+      a > span {
+        color: @team-color;
+      }
+      &:before {
+        background-position: -265px -40px;
+      }
+      &:after {
+        border-color: @team-color;
+      }
+    }
+  }
+  &.careers {
+    &:before {
+      background-position: -99px 0;
+    }
+    &.hover, &.active {
+      a > span {
+        color: @careers-color;
+      }
+      &:before {
+        background-position: -99px -40px;
+      }
+      &:after {
+        border-color: @careers-color;
+      }
+    }
+  }
+  &.contact {
+    &:before {
+      background-position: -409px 0;
+    }
+    &.hover, &.active {
+      a > span {
+        color: @contact-color;
+      }
+      &:before {
+        background-position: -409px -40px;
+      }
+      &:after {
+        border-color: @contact-color;
+      }
+    }
+  }
+  &.design {
+    &:before {
+      background-position: -140px 0;
+    }
+    &.hover, &.active {
+      a > span {
+        color: @design-color;
+      }
+      &:before {
+        background-position: -140px -40px;
+      }
+      &:after {
+        border-color: @design-color;
+      }
+    }
+  }
+  &.technology {
+    &:before {
+      background-position: -184px 0;
+    }
+    &.hover, &.active {
+      a > span {
+        color: @development-color;
+      }
+      &:before {
+        background-position: -184px -40px;
+      }
+      &:after {
+        border-color: @development-color;
+      }
+    }
+  }
+  &.business {
+    &:before {
+      background-position: -224px 0;
+    }
+    &.hover, &.active {
+      a > span {
+        color: @business-color;
+      }
+      &:before {
+        background-position: -224px -40px;
+      }
+      &:after {
+        border-color: @business-color;
+      }
+    }
   }
   &:after {
     top:70px;
@@ -193,8 +309,6 @@ body.width-mobile #menu ul > li {
   font-family: "TradeGothic", Helvetica, sans-serif;
   font-size: 16px;
   width: 100%;
-  padding-bottom: 100px;
-
   .border-box();
 
   .grid-size {
@@ -303,35 +417,32 @@ body.width-mobile #menu ul > li {
           display: block;
           height: 39px;
           width: 35px;
-          background: url(../images/tags/icon-design-color.png) no-repeat;                    
+          background-image: url(../images/spritempd-small.png);
         }
         &:hover:before {
           top: 18px;
           left: 12px;
         }
-        &.design:before {
-          background-image: url(../images/sprite-ie.png);
-          background-position: 0 0;
-        }
-        &.culture:before {
-          background-image: url(../images/sprite-ie.png);
-          background-position: 0 0;
-        }
-        &.careers:before {
-          background-image: url(../images/sprite-ie.png);
-          background-position: 0 0;
-        }
-        &.technology:before {
-          background-image: url(../images/sprite-ie.png);
-          background-position: 0 0;
+        &.company:before {
+          background-position: -312px -40px;
         }
         &.people:before {
-          background-image: url(../images/sprite-ie.png);
-          background-position: 0 0;
+          background-position: -265px -40px;
+        }
+        &.careers:before {
+          background-position: -99px -40px;
+        }
+        &.contact:before {
+          background-position: -409px -40px;
+        }
+        &.design:before {
+          background-position: -140px -40px;
+        }
+        &.technology:before {
+          background-position: -184px -40px;
         }
         &.business:before {
-          background-image: url(../images/sprite-ie.png);
-          background-position: 0 0;
+          background-position: -224px -40px;
         }
       }
     }
@@ -421,63 +532,265 @@ body.article #main {
   padding-bottom: 0px;
 }
 
-#footer {
-  position: relative;
-  z-index: 1;
+.footer {
   background-color: black;
   color: white;
+  padding-top: 44px;
+
   .contact-info {
     position: relative;
-    width: 720px;
+    width: 650px;
     margin: 0 auto;
-    top: -40px;
-    span {
-      font-family: "Plantin";
-      font-weight: bold;
-      letter-spacing: -4px;
+    background-color: #232323;
+    .email-us,
+    .call-us {
       display: inline-block;
-      padding: 20px 30px;
-      font-size: 5em;
-      color: black;
-      background: white;
-      &:last-of-type {
-        padding-top: 0;
+      padding-top: 16px;
+      padding-bottom: 16px;
+      text-align: center;
+      width: 50%;
+      &:first-child {
+        width: 49%;
+        border-right: 1px solid #484848;
       }
-    }    
+      h3 {
+        font-family: "TradeGothic";
+        font-weight: normal;
+        font-size: 16px;
+        color: #b0b0b0;
+        margin-bottom: 0;
+        margin-top: 0;
+      }
+      p {
+        font-family: "Plantin";
+        font-weight: bold;
+        font-size: 30px;
+        margin-bottom: 0;
+        margin-top: 0;
+      }
+    }
   }
   .additional-info {
-    margin: 50px auto 0;
-    width: 820px;
+    margin: 125px 0 0;
+    padding-bottom: 20px;
+    text-align: center;
+    
+    font-family: 'TradeGothic';
     h3 {
+      font-size: 15px;
       margin-top: 0;
+    }
+
+    & > div {
+      text-align: left;  
     }
   }
   .contact {
     display: inline-block;
-    padding: 0 30px 0 20px;
-    border-left: 1px solid #555;
+    position: relative;
+    height: 75px;
+    padding: 0 30px 10px 20px;
     border-right: 1px solid #555;
     width: 170px;
     margin-bottom: 50px;
-    span {
+    h3 {
       display: block;
-      font-size: 1.2em;
-      color: #5b5b5b;
+      font-size: 15px;
+      font-weight: normal;
+      color: white;
+    }
+    ul.social-media-footer {
+      padding: 0;
+      margin: 0;
+      font-size: 0;
+      list-style: none;
+      li {
+        display: inline-block;
+        margin-right: 10px;
+        a {
+          display: inline-block;
+          position: relative;
+          .hide-text();
+          width: 23px;
+          height: 23px;
+          background: url(../images/spritempd-small.png) 0 0 no-repeat;
+          background-size: 533px;
+          &:after {
+            content: '';
+            display: block;
+            position: absolute;
+            width: 23px;
+            height: 23px;
+            top: 0;
+            left: 0;
+            background: url(../images/spritempd-small.png) 0 0 no-repeat;
+            background-size: 533px;
+            opacity: 0.01;
+            .transition(opacity 0.3s);
+          }
+          &:hover:after {
+            opacity: 1;
+            .transition(opacity 0.3s);
+          }
+          &.twitter {
+            background-position: -96px -166px;
+            &:after {
+              background-position: -96px -188px;
+            }
+          }
+          &.facebook {
+            background-position: -130px -166px;
+            &:after {
+              background-position: -130px -188px;
+            }
+          }
+          &.dribbble {
+            background-position: -165px -166px;
+            &:after {
+              background-position: -165px -188px;
+            }
+          }
+          &.drupal {
+            background-position: -199px -166px;
+            &:after {
+              background-position: -199px -188px;
+            }
+          }
+          &.linkedin {
+            background-position: -234px -166px;
+            &:after {
+              background-position: -234px -188px;
+            }
+          }
+        }
+      }
+    }
+    @media screen and (max-width: 1024px) {
+      height: 280px;
+      float: left;
+
+      ul.social-media-footer {
+        bottom: 150px;
+      }
+    }
+    @media screen and (max-width: 767px) {
+      height: 200px;
+      &:before {
+        display: none;
+      }
+      ul.social-media-footer {
+        bottom: 83px;
+      }
+    }
+    @media screen and (max-width: 650px) {
+      width: 100%;
+      height: 90px;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      text-align: center;
+      float: none;
+
+      ul.social-media-footer {
+        display: block;
+        position: static;
+        margin-top: 20px;
+      }
     }
   }
   .address {
     display: inline-block;
+    position: relative;
     vertical-align: top;
     padding-left: 20px;
-    padding-right: 50px;
-    margin-bottom: 50px;
+    padding-right: 30px;
+    margin-bottom: 100px;
+    width: 187px;
 
+    &:last-of-type {
+      padding-right: 0;
+    }
+    &:before {
+      content: '';
+      display: block;
+      position: absolute;
+      width: 62px;
+      height: 64px;
+      background: url(../images/spritempd-small.png) -462px -1px no-repeat;
+      background-size: 533px;
+    }
+    &.toronto {
+      width: 125px;
+      &:before {
+        top: -74px;
+        width: 62px;
+        height: 64px;
+      }
+    }
+    &.vancouver {
+      width: 160px;
+      &:before {
+        height: 44px;
+        top: -54px;
+        left: 23px;
+        background-position: -463px -73px;
+      }
+    }
+    &.chernihiv {
+      width: 140px;
+      &:before {
+        top: -64px;
+        left: 21px;
+        height: 56px;
+        background-position: -471px -120px;
+      }
+    }
+    &.chicago {
+      width: 150px;
+      &:before {
+        top: -64px;
+        left: 13px;
+        height: 56px;
+        background-position: -302px -150px;
+      }
+    }
     h3 {
       font-weight: normal;
+      font-size: 15px;
     }
     span {
       display: block;
       color: #5b5b5b;
+      font-size: 15px;
+    }
+    @media screen and (max-width: 1024px) {
+      padding-left: 38px;
+      width: 210px;
+      &.toronto:before {
+        left: 34px;
+      }
+      &.vancouver:before {
+        left: 42px;
+      }
+      &.chernihiv:before {
+        left: 39px;
+      }
+      &.chicago:before {
+        left: 35px;
+      }
+    }
+    @media screen and (max-width: 767px) {
+      margin-bottom: 20px;
+      &:before {
+        display: none;
+      }
+    }
+    @media screen and (max-width: 650px) {
+      text-align: center;
+      padding: 0;
+      &.toronto, &.chicago, &.chernihiv, &.vancouver {
+        width: 100%;
+      }
     }
   }
 }
