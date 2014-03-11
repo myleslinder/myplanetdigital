@@ -93,6 +93,7 @@
 					window.requestAnimationFrame(function () {
 						$mainWrap.html(data);
 						$window.trigger('tiles-init');
+
 						window.setTimeout(function () {
 							window.requestAnimationFrame(function () {
 								hasLoadedTiles = true;
@@ -100,6 +101,26 @@
 								$loadgiftiles.hide();
 								$main.css('height', '');
 								window.curScrollTop = window.pageYOffset;
+
+								// Filter by the current tag
+								var currentTag = $('.nav li.active');
+								if (currentTag.length === 0) {
+									currentTag = 'home';
+								}
+								else {
+									currentTag = currentTag.attr('class');
+									var classes = currentTag.split(' ');
+									for (var i = 0; i < classes.length; i++) {
+										if (classes[i] != 'active') {
+											currentTag = classes[i];
+											break;
+										}
+									}
+								}
+								// Now that the tag is found, show the tiles for that tag
+								window.tiles.arrange({filter: currentTag});
+								window.initializePage();
+
 							});
 						}, 0);
 					});
