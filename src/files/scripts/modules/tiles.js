@@ -77,6 +77,7 @@
 		}
 		layerQueue = [];
 	}
+	window.removeAllLayers = removeAllLayers;
 
 	function flushQueue() {
 		var len = queue.length,
@@ -179,6 +180,30 @@
 	$window.on('tiles-init', function () {
 		window.initializeTiles();
 		initializePage();
+
+
+		// Filter by the current tag
+		var currentTag = $('.nav li.active');
+		if (currentTag.length === 0) {
+			currentTag = 'home';
+		}
+		else {
+			currentTag = currentTag.attr('class');
+			var classes = currentTag.split(' ');
+			for (var i = 0; i < classes.length; i++) {
+				if (classes[i] != 'active') {
+					currentTag = classes[i];
+					break;
+				}
+			}
+		}
+		// Now that the tag is found, show the tiles for that tag
+		window.tiles.arrange({filter: '.' + currentTag});
+		window.removeAllLayers();
+			window.revealAll();
+
+		// Loading the home tiles.
+		$window.trigger('filter');
 	});
 
 }());

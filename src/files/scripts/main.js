@@ -118,8 +118,12 @@
 									}
 								}
 								// Now that the tag is found, show the tiles for that tag
-								window.tiles.arrange({filter: currentTag});
-								window.initializePage();
+								window.tiles.arrange({filter: '.' + currentTag});
+								window.removeAllLayers();
+			window.revealAll();
+
+								// Loading the home tiles.
+								$window.trigger('filter');
 
 							});
 						}, 0);
@@ -260,6 +264,36 @@
 						$loadgiftiles.find('.loading-spinner').css('top', window.pageHeight/2 - SPINNER_HEIGHT);
 						$loadgiftiles.show();
 					}
+					else {
+
+								// Filter by the current tag
+								var currentTag = $('.nav li.active');
+								if (currentTag.length === 0) {
+									currentTag = 'home';
+								}
+								else {
+									currentTag = currentTag.attr('class');
+									var classes = currentTag.split(' ');
+									for (var i = 0; i < classes.length; i++) {
+										if (classes[i] != 'active') {
+											currentTag = classes[i];
+											break;
+										}
+									}
+								}
+								// Now that the tag is found, show the tiles for that tag
+								window.tiles.arrange({filter: '.' + currentTag});
+								window.removeAllLayers();
+			window.revealAll();
+
+								// Loading the home tiles.
+								$window.trigger('filter');
+
+								// Initialize the page so that the tiles appear.
+								window.initializePage();
+
+
+					}
 					$main.css({
 						transform:  !overridePopstateScrollmove || wasLinkClick ? 'translate3d(-1px, ' + (top - tileScrollTop) + 'px, 0)' : '',
 						transition: ''
@@ -286,6 +320,9 @@
 
 			// Filter the tiles with Isotope.
 			window.tiles.arrange({filter: '.' + tag});
+			window.removeAllLayers();
+			window.revealAll();
+
 			$window.trigger('filter');
 
 			// Initialize the page so that the tiles appear.
@@ -293,12 +330,20 @@
 		} else {
 			// Loading the home tiles.
 			window.tiles.arrange({filter: '.home'});
+			window.removeAllLayers();
+			window.revealAll();
 			$window.trigger('filter');
 
 			// Initialize the page so that the tiles appear.
 			window.initializePage();
 		}
 	}
+	window.revealAll = function() {
+
+		[].forEach.call(window.tiles.items, function(item) {
+			item.element.classList.add('reveal');
+		});
+	};
 
 	function finishTransition() {
 		isTransitioning = false;
