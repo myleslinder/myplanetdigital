@@ -101,30 +101,7 @@
 								$loadgiftiles.hide();
 								$main.css('height', '');
 								window.curScrollTop = window.pageYOffset;
-
-								// Filter by the current tag
-								var currentTag = $('.nav li.active');
-								if (currentTag.length === 0) {
-									currentTag = 'home';
-								}
-								else {
-									currentTag = currentTag.attr('class');
-									var classes = currentTag.split(' ');
-									for (var i = 0; i < classes.length; i++) {
-										if (classes[i] != 'active') {
-											currentTag = classes[i];
-											break;
-										}
-									}
-								}
-								// Now that the tag is found, show the tiles for that tag
-								window.tiles.arrange({filter: '.' + currentTag});
-								window.removeAllLayers();
-			window.revealAll();
-
-								// Loading the home tiles.
-								$window.trigger('filter');
-
+								window.tileTagSort();
 							});
 						}, 0);
 					});
@@ -265,34 +242,7 @@
 						$loadgiftiles.show();
 					}
 					else {
-
-								// Filter by the current tag
-								var currentTag = $('.nav li.active');
-								if (currentTag.length === 0) {
-									currentTag = 'home';
-								}
-								else {
-									currentTag = currentTag.attr('class');
-									var classes = currentTag.split(' ');
-									for (var i = 0; i < classes.length; i++) {
-										if (classes[i] != 'active') {
-											currentTag = classes[i];
-											break;
-										}
-									}
-								}
-								// Now that the tag is found, show the tiles for that tag
-								window.tiles.arrange({filter: '.' + currentTag});
-								window.removeAllLayers();
-			window.revealAll();
-
-								// Loading the home tiles.
-								$window.trigger('filter');
-
-								// Initialize the page so that the tiles appear.
-								window.initializePage();
-
-
+						window.tileTagSort();
 					}
 					$main.css({
 						transform:  !overridePopstateScrollmove || wasLinkClick ? 'translate3d(-1px, ' + (top - tileScrollTop) + 'px, 0)' : '',
