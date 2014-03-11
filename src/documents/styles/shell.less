@@ -61,9 +61,6 @@ body {
 			max-width:@max-width;
 			margin:0 auto @footer-height;
 			min-height:100%;
-			.tile-template {
-				height: 10000px;
-			}
 		}
 	}
 	#article {
@@ -141,30 +138,37 @@ body.article {
 	@media only screen and (max-width :1174px) {
 		display:block;
 		position:fixed;
-		right:@logo-gutter-width;
+		right:@logo-gutter-width - 11px;
 		.translateZ();
-		top:18px;
+		top:11px;
+		height: 40px;
+		width: 40px;
 		z-index:2;
 		font-size:0;
-		background:transparent;
 		.user-select();
-		width: 20px;
-		height: 18px;
-		border: 4px solid #000;
-		border-width: 4px 0 4px 0;
 
-		&:focus {
-			outline:none;
-		}
-		&:after {
-			content: '';
-			position:absolute;
-			top:50%;
-			margin-top:-2px;
-			left:0;
-			right:0;
-			height:4px;
-			background:#000;
+		#menu-button {
+			position: relative;
+			top: 11px;
+			left: 11px;
+			width: 20px;
+			height: 18px;
+			border: 4px solid #000;
+			border-width: 4px 0 4px 0;
+			background: transparent;
+			&:focus {
+				outline:none;
+			}
+			&:after {
+				content: '';
+				position:absolute;
+				top:50%;
+				margin-top:-2px;
+				left:0;
+				right:0;
+				height:4px;
+				background:#000;
+			}
 		}
 	}
 }
@@ -182,6 +186,7 @@ body.article {
 	position: relative;
 	margin:0 -11px;
 	z-index: 1;
+	bottom: -10px;
 }
 
 a[href^=tel]{
@@ -218,7 +223,7 @@ a[href^=tel]{
 			background-position: 0px 0px;
 		}
 	}
-	#logo, #menu, #menu-toggle, .footer {
+	#logo, #menu, #menu-toggle {
 		.transition-transform();
 		.translateZ();
 	}
@@ -246,7 +251,7 @@ a[href^=tel]{
 		width:100%;
 		background:#fff;
 		//border-bottom:1px solid #cecece;
-		box-shadow: 4px -1px 13px rgba(0,0,0,0.2);
+		box-shadow: 0 1px 2px rgba(0, 0, 0, 0.125); //4px -1px 13px #ddd;
 		z-index:2;
 	}
 	#article-cover-photo {
@@ -256,16 +261,8 @@ a[href^=tel]{
 		pointer-events:none;
 		.user-select();
 
-		#logo, #viewport #main, #menu, #menu-toggle, .footer {
+		#logo, #viewport, #menu, #menu-toggle {
 			.translate3d(-249px,0,0);
-		}
-	}
-	body.menu.article #viewport {
-		#article{
-	 		.translate3d( ~"calc(-100% - 249px)",0,0);
-		}
-		#main {
-			.translate3d(-100%,0,0);
 		}
 	}
 }
@@ -283,5 +280,13 @@ a[href^=tel]{
 	}
 	#wrap:before {
 		height:@mobile-menu-height;
+	}
+	#viewport {
+		#main, #article {
+			padding-top:@mobile-menu-height + 10;
+		}
+		#article {
+			padding-top:@mobile-menu-height;
+		}
 	}
 }
