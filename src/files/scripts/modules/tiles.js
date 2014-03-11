@@ -177,6 +177,7 @@
 	});
 
 	$window.on('tiles-init', function () {
+		window.initializeTiles();
 		initializePage();
 	});
 

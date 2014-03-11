@@ -437,7 +437,7 @@
 	/**
 	 * Initialize the tiles when the page loads.
 	 */
-	$(document).ready(function() {
+	window.initializeTiles = function() {
 		var tag = 'home';
 		var $articles = $('.articles');
 		if ($articles.length >= 0) {
@@ -458,6 +458,7 @@
 		        els[len].style.opacity = 1;
 		    }
 		}
-	});
+	}
+	$(document).ready(window.initializeTiles);
 	
 }());
