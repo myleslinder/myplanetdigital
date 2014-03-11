@@ -115,11 +115,10 @@ body.article #viewport {
   &.all {
     display:none;
   }
-
   > a {
     display: block;
     .border-box();
-    padding-top: 75px;    
+    padding-top: 75px;
     height: 100%;
     font-size: 14px;
     z-index: 1;
@@ -130,8 +129,8 @@ body.article #viewport {
   &:before {
     content:'';
     position:absolute;
-    top:44px;
-    left:51px;
+    top: 44px;
+    left: 51px;
     width: 29px;
     height: 40px;
     background:url(../images/spritempd-small.png) no-repeat 0 0;
@@ -147,9 +146,6 @@ body.article #viewport {
       &:before {
         background-position: -312px -41px;
       }
-      &:after {
-        border-color: @company-color;
-      }
     }
   }
   &.people {
@@ -158,13 +154,10 @@ body.article #viewport {
     }
     &.hover, &.active {
       a > span {
-        color: @team-color;
+        color: @team-color;        
       }
       &:before {
         background-position: -265px -40px;
-      }
-      &:after {
-        border-color: @team-color;
       }
     }
   }
@@ -179,9 +172,6 @@ body.article #viewport {
       &:before {
         background-position: -99px -40px;
       }
-      &:after {
-        border-color: @careers-color;
-      }
     }
   }
   &.contact {
@@ -194,9 +184,6 @@ body.article #viewport {
       }
       &:before {
         background-position: -409px -40px;
-      }
-      &:after {
-        border-color: @contact-color;
       }
     }
   }
@@ -211,9 +198,6 @@ body.article #viewport {
       &:before {
         background-position: -140px -40px;
       }
-      &:after {
-        border-color: @design-color;
-      }
     }
   }
   &.technology {
@@ -226,10 +210,7 @@ body.article #viewport {
       }
       &:before {
         background-position: -184px -40px;
-      }
-      &:after {
-        border-color: @development-color;
-      }
+      }      
     }
   }
   &.business {
@@ -242,9 +223,6 @@ body.article #viewport {
       }
       &:before {
         background-position: -224px -40px;
-      }
-      &:after {
-        border-color: @business-color;
       }
     }
   }
@@ -261,13 +239,9 @@ body.article #viewport {
     opacity:0.99;    
   }
   &:hover, &.active {
-    & > a {
-      color:#ff0f0f;
+    > a {
+      padding-top: 87px;
     }    
-    padding-top: 87px;
-    &:before {
-      background-position: 0 -40px;        
-    }
     &:after {
       display: none;
     }

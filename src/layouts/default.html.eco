@@ -89,6 +89,7 @@
 		</div>
 		<!--[if IE 8]>
 		<script src="<%- @getUrl(@site.jquery1[0]) %>"></script>
+		<script src="<%- @getUrl(@site['menu-ie8'][0]) %>"></script>
 		<![endif]-->
 		<!--[if (!IE) | (gte IE 9)]> -->
 		<script src="<%- @getUrl(@site.jquery2[0]) %>"></script>

@@ -39,6 +39,9 @@ module.exports =
 			'tiles-immediate' : [
 				'/scripts/modules/tiles-immediate.js'	
 			]
+			'menu-ie8' : [
+				'/scripts/menu-ie8.js'	
+			]
 
 			# Social Media Services
 			services:
