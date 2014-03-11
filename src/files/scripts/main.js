@@ -233,32 +233,22 @@
 			}, timeoutLen);
 
 		} else if (isTagsUrl) {
-			// @todo Handle the homepage URL tag "home".
 			// Grab the desired tag.
 			var tag = data.hash.split(/\//).pop();
 
 			// Filter the tiles with Isotope.
-			//window.tiles.filter('.' + tag);
 			window.tiles.arrange({filter: '.' + tag});
 			$window.trigger('filter');
 
-
-			// Disable the window redirect.
-			/*
-			// window.tiles is defined in tiles-immediate.js
-			[].forEach.call(window.tiles.items, function(item) {
-				item.element.classList.remove('visible');
-			});
-
-			// window.tileTaggedGroups is defined in tiles-immediate.js
-			if (typeof window.tileTaggedGroups[tag] !== 'undefined') {
-				window.tileTaggedGroups[tag].forEach(function(tile) {
-					tile.classList.add('visible');
-				});
-			}
-			window.tiles.arrange({filter: '.visible'});
+			// Initialize the page so that the tiles appear.
+			window.initializePage();
+		} else {
+			// Loading the home tiles.
+			window.tiles.arrange({filter: '.home'});
 			$window.trigger('filter');
-			*/
+
+			// Initialize the page so that the tiles appear.
+			window.initializePage();
 		}
 	}
 
@@ -444,7 +434,9 @@
 		$body.addClass('loaded');
 	});
 
-
+	/**
+	 * Initialize the tiles when the page loads.
+	 */
 	$(document).ready(function() {
 		var tag = 'home';
 		var $articles = $('.articles');

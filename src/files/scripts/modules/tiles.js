@@ -41,6 +41,7 @@
 		hasHiddenTiles = $hiddenTiles.length;
 		firstEventTimeout = null;
 	}
+	window.initializePage = initializePage;
 
 	function removeLayer(item) {
 		item.classList.remove('reveal');
@@ -176,7 +177,6 @@
 	});
 
 	$window.on('tiles-init', function () {
-		window.initializeTiles();
 		initializePage();
 	});
 

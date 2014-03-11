@@ -3,7 +3,3 @@
 	    <%- @partial('tile', true, {'document': document, 'getUrl': @getUrl, 'tagName': @document.meta.tagName}) %>
 	<% end %>
 </div>
-<script src="<%- @getUrl(@site.isotope[0]) %>"></script>
-<script>
-<%- @include(@site['tiles-immediate'][0]) %>
-</script>

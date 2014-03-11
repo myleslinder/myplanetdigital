@@ -20,6 +20,7 @@ module.exports =
 				'/scripts/vendor/history.min.js'
 				'/scripts/init.js'
 				'/scripts/vendor/prism.js'
+				'/scripts/vendor/isotope-beta2.pkgd.min.js'
 			]
 			'ie8styles': [
 				'/styles/site-ie8.css'
@@ -32,12 +33,6 @@ module.exports =
 			]
 			'html5shiv': [
 				'/scripts/vendor/html5shiv.js'
-			]			
-			'isotope' : [
-			  '/scripts/vendor/isotope-beta2.pkgd.min.js'
-			]
-			'tiles-immediate' : [
-				'/scripts/modules/tiles-immediate.js'	
 			]
 
 			# Social Media Services
