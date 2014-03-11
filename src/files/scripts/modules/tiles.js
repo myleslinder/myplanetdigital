@@ -22,9 +22,9 @@
 		if(!window.isTileView) {
 			return;
 		}
-		
+
 		$hiddenTiles = window.tiles.items.filter(function (tile) {
-			if(tile.position.y + topOffset < scrollData.bottom ) {
+			if(tile.position.y + topOffset < (window.pageYOffset + window.pageHeight)) {
 				tile.element.style.opacity = '0.99';
 				return false;
 			} else {

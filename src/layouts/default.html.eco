@@ -13,13 +13,15 @@
 			<meta name="description" content="<%= @document.summary %>">
 		<% end %>
 		<%- @getBlock("meta").toHTML() %>
-		
+		<script>
+			 (new Image()).src = "/images/loading.gif";
+		</script>
 		<!--[if !IE]> -->
 		<%- @getBlock('styles').add(@getUrl(@site.styles)).toHTML() %>
 		<!-- <![endif]-->
-		
+
 		<!--[if (IE 8) | (IE 9)]>
-		<link rel="stylesheet" href="<%- @getUrl(@site.ie8styles[0]) %>">				
+		<link rel="stylesheet" href="<%- @getUrl(@site.ie8styles[0]) %>">
 		<![endif]-->
 
 		<!--[if IE 8]>
@@ -28,10 +30,10 @@
 			window.html5 = {
 				'elements': 'section article footer',
 				'shivCSS': false,
-				'shivMethods': false				
+				'shivMethods': false
 			}
 			window.isIE8 = true;
-		</script> 
+		</script>
 		<![endif]-->
 		<link rel="icon" type="image/png" href="<%= @getUrl('/favicon.png') %>" />
 	</head>
@@ -42,14 +44,12 @@
 				<a href="<%= @getUrl('/') %>">Myplanet</a>
 			</h1>
 			<div id="viewport">
-				
+
 				<section id="main" <% if @document.layout != 'articles': %>style="transition: none; -webkit-transition: none; position: absolute;"<% end %>>
 					<div class="main-wrap" style="position: relative;">
 						<% if @document.layout is 'articles': %>
 						<div class="grid-size"></div>
 						<%- @content %>
-						<% else: %>
-						<div class="tile-template"></div>
 						<% end %>
 					</div>
 					<div class="loading-overlay-tiles" <% if @document.layout == 'articles': %>style="display:none;"<% end %>>
@@ -57,15 +57,13 @@
 					</div>
 					<%- @partial('footer') %>
 				</section>
-				
+
 				<!--[if (!IE) | (gte IE 10)]> -->
 				<article id="article" <% if @document.layout != 'articles': %>style="position: static; margin-left: 100%;"<% end %>>
 					<div id="article-inner"  <% if @document.layout != 'content' && @document.layout != 'articles': %>class="reveal"<% end %>>
 						<% if @document.layout != 'articles': %>
 						<!-- Article goes here for modern browsers -->
 						<%- @content %>
-						<% else: %>
-							<div class="article-template"></div>
 						<% end %>
 					</div>
 					<div class="loading-overlay" <% if @document.layout != 'articles': %>style="display:none;"<% end %>>
@@ -76,12 +74,12 @@
 
 				<!--[if (IE 8) | (IE 9)]>
 				<% if @document.layout != 'articles': %>
-				<article id="article">										
+				<article id="article">
 					<%- @content %>
 				</article>
 				<% end %>
 				<![endif]-->
-				
+
 			</div>
 
 			<!-- MENU GOES HERE -->

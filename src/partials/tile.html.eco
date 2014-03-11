@@ -24,7 +24,7 @@
 
 	<div class="content">
 		<% if @document.size != 'small' && @document.imagePosition != 'bottom' : %>
-			<a class="tile-image" 
+			<a class="tile-image"
 				<% if tile: %>
 					style="background-image: url('<%= @getUrl(tile) %>');
 					filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='<%= @getUrl(tile) %>', sizingMethod='scale');
@@ -51,6 +51,9 @@
 				</ul>
 			<% end %>
 			<a class="tile-title" href="<%= @getUrl(@document.url) %>">
+				<% if @document.layout != 'person': %>
+					<p class="description">This is a description of the myplanet wins momentum of the year. We are so happy that we won yay! This is a description of the myplanet wins momentum of the year. This is a description of the myplanet wins momentum of the year.</p>
+				<% end %>
 				<h2><%= @document.title %></h2>
 				<% if @document.layout is 'person' and @document.summary?: %>
 					<% quote = if @document.summary.length > 70 then @document.summary.substring(0, 70) + '...' else @document.summary %>

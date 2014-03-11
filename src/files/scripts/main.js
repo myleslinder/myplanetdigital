@@ -11,10 +11,12 @@
 		$article = $('#article'),
 		$articlein = $('#article-inner'),
 		$main = $('#main'),
+		$mainWrap = $('.main-wrap'),
 		$loadgif = $('.loading-overlay'),
 		$loadgiftiles = $('.loading-overlay-tiles'),
 		$anchors = $('a'),
 		$footer = $('.footer'),
+		$ajaxer = null,
 		popped = false,
 		hasLoadedTiles,
 		isLoading =  false,
@@ -37,8 +39,9 @@
 		FULL_WIDTH = 1324,
 		DESKTOP_WIDTH = 1174,
 		END_SCROLL_THRESHOLD = 400,
+		SPINNER_HEIGHT = 61,
+		IOS_CHROME_HEIGHT = 70,
 		PRE_SCROLL_THRESHOLD = 50;
-		//MAX_PANEL_HEIGHT = 10000; //todo: not this, vulnerable to articles that may be taller than the tile page
 
 	function setResponsiveState() {
 		var width = $window.width(),
@@ -80,15 +83,25 @@
 	}
 
 	function loadViaAjax() {
+		$articlein.removeClass('reveal');
+
 		if (isTileView) {
-			if ($('.main-wrap').find('.tile').length === 0) {
+			if ($mainWrap.find('.tile').length === 0) {
 				isLoading = true;
-				$('.main-wrap').load('/index-content-tiles.html', function(){
+				$ajaxer = $.get('/index-content-tiles.html', function(data){
+					$ajaxer = null;
 					window.requestAnimationFrame(function () {
+						$mainWrap.html(data);
 						$window.trigger('tiles-init');
-						hasLoadedTiles = true;
-						isLoading = false;
-						$loadgiftiles.hide();
+						window.setTimeout(function () {
+							window.requestAnimationFrame(function () {
+								hasLoadedTiles = true;
+								isLoading = false;
+								$loadgiftiles.hide();
+								$main.css('height', '');
+								window.curScrollTop = window.pageYOffset;
+							});
+						}, 0);
 					});
 				});
 			}
@@ -96,23 +109,26 @@
 		}
 		else {
 			isLoading = true;
-			$.get(History.getState().hash + '-content', function(data) {
+			$ajaxer = $.get(History.getState().hash + '-content/index.html', function(data) {
+				$ajaxer = null;
 				var coverSrc = $(data).eq(0).css('background-image').match(COVER_SRC_REGEX)[1],
 					image = new Image();
-
 				// once cover image is loaded then attach article to DOM
 				image.onload = function() {
-					window.requestAnimationFrame(function () {
-						$articlein.html(data);
-						$loadgif.hide();
-						$articlein.removeClass('reveal');
-						window.setTimeout(function(){
-							window.requestAnimationFrame(function () {
-								isLoading = false;
-								$articlein.addClass('reveal');
-							});
-						}, 100);
-					});
+					window.setTimeout(function(){
+						window.requestAnimationFrame(function () {
+							$articlein.html(data);
+							window.setTimeout(function(){
+								window.requestAnimationFrame(function () {
+									isLoading = false;
+									$loadgif.hide();
+									$articlein.addClass('reveal');
+									$article.css('height', '');
+									window.curScrollTop = window.pageYOffset;
+								});
+							}, 100);
+						});
+					}, 100);
 				};
 				image.src = coverSrc;
 			});
@@ -121,6 +137,11 @@
 	}
 
 	function handlePageChange(e, data) {
+		if($ajaxer) {
+			$ajaxer.abort();
+			isLoading = false;
+		}
+
 		if(window.isIOS) {
 			window.curScrollTop = window.pageYOffset; //ios scroll handler doesn't fire properly
 		}
@@ -130,7 +151,7 @@
 			top = window.curScrollTop,
 			overridePopstateScrollmove,
 			isTagsUrl = data.url.match(TAG_REGEX),
-			timeoutLen = 50;
+			timeoutLen = 25;
 
 		wasLinkClick = new Date() - linkClickedTime < 300;
 		overridePopstateScrollmove = !wasLinkClick && !window.isIOS; //ios doesn't mess with the scrollbar during popstate
@@ -148,11 +169,6 @@
 			$window.trigger('article');
 			//todo: show the loading gif
 
-			if(doAjax) {
-				$loadgif.find('.loading-spinner').css('top', window.pageHeight/2 - 61);
-				$loadgif.show();
-			}
-
 			$article.css({
 				transform:  !overridePopstateScrollmove || wasLinkClick ? 'translate3d(-1px, ' + (top - articleScrollTop) + 'px, 0)' : '',
 				transition: 'none'
@@ -169,6 +185,11 @@
 
 			window.setTimeout(function () {
 				window.requestAnimationFrame(function () {
+					if(doAjax) {
+						$article.css('height', window.pageHeight + (window.isIOS ? IOS_CHROME_HEIGHT : 0));
+						$loadgif.find('.loading-spinner').css('top', window.pageHeight/2 - SPINNER_HEIGHT);
+						$loadgif.show();
+					}
 					$article.css({
 						transform:  !overridePopstateScrollmove || wasLinkClick ?'translate3d(-100%, ' + (top - articleScrollTop) + 'px, 0)' : '',
 						transition: ''
@@ -196,10 +217,6 @@
 			$window.trigger('tiles');
 			//todo: show the loading gif
 
-			if (doAjax = !hasLoadedTiles) {
-				$loadgiftiles.find('.loading-spinner').css('top', window.pageHeight/2 - 61);
-				$loadgiftiles.show();
-			}
 
 			$main.css({
 				transform: !overridePopstateScrollmove || wasLinkClick ? 'translate3d(-100%, ' + (top - tileScrollTop) + 'px, 0)' : '',
@@ -217,6 +234,11 @@
 
 			window.setTimeout(function () {
 				window.requestAnimationFrame(function () {
+					if (doAjax = !hasLoadedTiles) {
+						$main.css('height', window.pageHeight + (window.isIOS ? IOS_CHROME_HEIGHT : 0));
+						$loadgiftiles.find('.loading-spinner').css('top', window.pageHeight/2 - SPINNER_HEIGHT);
+						$loadgiftiles.show();
+					}
 					$main.css({
 						transform:  !overridePopstateScrollmove || wasLinkClick ? 'translate3d(-1px, ' + (top - tileScrollTop) + 'px, 0)' : '',
 						transition: ''
@@ -235,6 +257,11 @@
 		} else if (isTagsUrl) {
 			// Grab the desired tag.
 			var tag = data.hash.split(/\//).pop();
+
+			// window.tiles is defined in tiles-immediate.js
+			//[].forEach.call(window.tiles.items, function(item) {
+			//	item.element.classList.remove('visible');
+			//});
 
 			// Filter the tiles with Isotope.
 			window.tiles.arrange({filter: '.' + tag});
