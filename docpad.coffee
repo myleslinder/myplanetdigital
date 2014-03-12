@@ -34,6 +34,9 @@ module.exports =
 			]
 			'html5shiv': [
 				'/scripts/vendor/html5shiv.js'
+			]			
+			'menu-ie8' : [
+				'/scripts/menu-ie8.js'	
 			]
 
 			# Social Media Services
