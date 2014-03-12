@@ -8,7 +8,7 @@ window.tiles = new Isotope( '.main-wrap', {
 });
 
 var loadingGif = new Image();
-  loadingGif.src = "images/loading.gif";
+  loadingGif.src = "/images/loading.gif";
   loadingGif.onload = function () {
     if('ontouchstart' in window) {
         var els = document.querySelectorAll('.tile'),

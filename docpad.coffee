@@ -15,6 +15,7 @@ module.exports =
 				'/scripts/vendor/scrollfix.js'
 				'/scripts/modules/menu.js'
 				'/scripts/modules/tiles.js'
+				'/scripts/modules/elevator.js'
 				'/scripts/main.js'
 				'/scripts/vendor/fastclick.js'
 				'/scripts/vendor/history.min.js'
@@ -26,7 +27,7 @@ module.exports =
 				'/styles/site-ie8.css'
 			]
 			'jquery1': [
-				'/scripts/vendor/jquery-1.11.0.min.js'	
+				'/scripts/vendor/jquery-1.11.0.min.js'
 			]
 			'jquery2': [
 				'/scripts/vendor/jquery-2.1.0.min.js'
