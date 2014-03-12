@@ -92,13 +92,5 @@
 		<script src="<%- @getUrl(@site.jquery2[0]) %>"></script>
 		<!-- <![endif]-->
 		<%- @getBlock('scripts').add(@getUrl(@site.scripts)).toHTML() %>
-		<% if @document.layout != 'articles': %>
-			<script src="<%- @getUrl(@site.isotope[0]) %>"></script>
-			<script>
-			window.initializeTiles = function() {
-				<%- @include(@site['tiles-immediate'][0]) %>
-			};
-			</script>
-		<% end %>
 	</body>
 </html>
