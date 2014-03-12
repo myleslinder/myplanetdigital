@@ -31,7 +31,6 @@
   "devDependencies": {
     "docpad": "~6",
     "docpad-plugin-marked": "~2.2.0",
-    "docpad-plugin-livereload": "~2.5.6",    
     "grunt": "~0.4.2",
     "grunt-git": "https://github.com/RobLoach/grunt-git/tarball/clean",
     "grunt-contrib-copy": "~0.5.0",

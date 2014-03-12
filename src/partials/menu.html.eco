@@ -12,5 +12,5 @@
 </div>
 
 <!--[if (!IE) | (gte IE 10)]> -->
-<button id="menu-toggle">Show Menu</button>
+<div id="menu-toggle"><button id="menu-button">Show Menu</button></div>
 <!-- <![endif]-->
