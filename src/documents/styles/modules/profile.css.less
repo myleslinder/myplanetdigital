@@ -1,29 +1,13 @@
 @import "../includes.less";
 
-// desktop transition to profile page
-body.desktop-capable {
-	#article-inner.reveal {
-		.profile-banner {
-			opacity: 1;
-			.transition(opacity 0.5s);
-		}
-		.profile-body {
-			opacity: 1;
-			.translate3d(0, 0, 0);
-			.transition(all 0.8s 0.15s);
-		}
-	}	
-}
-
-// mobile transition to profile page
 #article-inner.reveal {
 	.profile-banner {
 		opacity: 1;
-		.transition(opacity 0.4s);
 	}
 	.profile-body {
 		opacity: 1;
-		.transition(opacity 0.4s);
+		.transform(none);
+		.showBack();
 	}
 }
 
@@ -36,6 +20,7 @@ body.desktop-capable {
 	background-position: center center;
 	.background-cover();
 	opacity: 0.001;
+	.transition(opacity 0.5s);
 
 	@media screen and (max-width: 480px) {
 		height: 300px;
@@ -53,6 +38,7 @@ body.desktop-capable {
 	.border-box();
 	opacity: 0.001;
 	.translate3d(0, 15px, 0);
+	.transition-transform(0.8s 0.15s, opacity 0.8s 0.15s);
 
 	@media screen and (max-width: 1350px) {
 		width: 100%;
@@ -91,7 +77,7 @@ body.desktop-capable {
 				height: 120px;
 				border-width: 5px;
 			}
-		}	
+		}
 
 		h1 {
 			text-align: center;

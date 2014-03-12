@@ -6,13 +6,18 @@ window.tiles = new Isotope( '.main-wrap', {
   },
   transitionDuration: 0
 });
-if('ontouchstart' in window) {
-    var els = document.querySelectorAll('.tile'),
-        len = els.length;
-    while(len--) {
-        els[len].style.opacity = 1;
+
+var loadingGif = new Image();
+  loadingGif.src = "images/loading.gif";
+  loadingGif.onload = function () {
+    if('ontouchstart' in window) {
+        var els = document.querySelectorAll('.tile'),
+            len = els.length;
+        while(len--) {
+            els[len].style.opacity = 1;
+        }
     }
-}
+  };
 
 // Create predefined groups of tiles, based on their tags
 // window.tileTaggedGroups = {'careers': [TileDomEl1, TileDomEl2 ... ],  ... }

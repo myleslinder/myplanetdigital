@@ -22,9 +22,9 @@
 		if(!window.isTileView) {
 			return;
 		}
-		
+
 		$hiddenTiles = window.tiles.items.filter(function (tile) {
-			if(tile.position.y + topOffset < scrollData.bottom ) {
+			if(tile.position.y + topOffset < (window.pageYOffset + window.pageHeight)) {
 				tile.element.style.opacity = '0.99';
 				return false;
 			} else {
@@ -87,11 +87,11 @@
 			item.tile.classList.add(queue[len].klass);
 			queue.splice(len, 1);
 			if(++count === 3 && queue.length) {
-				return flushingTimeout = window.setTimeout(finishFlush, 50);
+				return flushingTimeout = window.setTimeout(finishFlush, 60);
 			}
 		}
 		if(queue.length) {
-			return flushingTimeout = window.setTimeout(finishFlush, 50);
+			return flushingTimeout = window.setTimeout(finishFlush, 60);
 		}
 		flushingTimeout = null;
 	}
@@ -124,7 +124,9 @@
 		}
 
 		if(added && !flushingTimeout) {
-			window.requestAnimationFrame(flushQueue);
+			window.setTimeout(function () {
+				window.requestAnimationFrame(flushQueue);
+			}, 0);
 		}
 		throttleTimeout = null;
 	}

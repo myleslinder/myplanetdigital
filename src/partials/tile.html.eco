@@ -22,10 +22,9 @@
 <div 
 	class="tile<%= if @document.size then ' ' + @document.size %><%= if @document.colour then ' ' + @document.colour %><%= ' ' + visibility %>"
 	data-tags="<%= @document.tags.join(' ') if @document.tags? %>" >
-
 	<div class="content">
 		<% if @document.size != 'small' && @document.imagePosition != 'bottom' : %>
-			<a class="tile-image" 
+			<a class="tile-image"
 				<% if tile: %>
 					style="background-image: url('<%= @getUrl(tile) %>');
 					filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='<%= @getUrl(tile) %>', sizingMethod='scale');
@@ -51,6 +50,9 @@
 				</ul>
 			<% end %>
 			<a class="tile-title" href="<%= @getUrl(@document.url) %>">
+				<% if @document.layout != 'person' && @document.summary?: %>
+					<p class="description"><%= @document.summary %></p>
+				<% end %>
 				<h2><%= @document.title %></h2>
 				<% if @document.layout is 'person' and @document.summary?: %>
 					<% quote = if @document.summary.length > 70 then @document.summary.substring(0, 70) + '...' else @document.summary %>
