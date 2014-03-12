@@ -136,19 +136,18 @@
 		}
 
 		.article-info {
-			max-width: 950px;
+			width: 950px;
 			margin: 0 auto;
 			font-family: "TradeGothic";
 			font-size: 1.5em;
 			padding-bottom: 25px;
 			margin-bottom: 50px;
 			border-bottom: 1px solid #ccc;
-			width: 100%;
 			display: table;
 
 
 			@media screen and (max-width: 1024px) {
-				max-width: 92.7734375%;
+				width: 92.7734375%;
 			}
 			@media screen and (max-width: 480px) {
 				padding-bottom: 15px;
@@ -243,7 +242,7 @@
 					margin-bottom: 20px;
 				}
 			}
-			p {
+			p, div.image, div.image-full {
 				margin-bottom: 33px;
 				padding: 0 80px;
 				font: 2.2em/1.5 Plantin;
@@ -263,17 +262,31 @@
 					font-size: 1.7em;
 				}
 			}
-			p.image, p.image-full {
-				margin: 40px auto 45px;
+			div.image, div.image-full {
+				margin: 60px auto 45px;
 				img {
 					width: 100%;
 					margin-bottom: 20px;
 				}
 				text-align: center;
-				em {
+				p {
 					font-family: TradeGothic;
 					font-style: normal;
 					font-size: 15px;
+					em {
+						font-size: 15px;
+						font-style: italic;
+					}
+					strong {
+						font-size: 15px;
+						font-style: normal;
+						font-weight: bold;
+					}
+				}
+				+div.image, +div.image-full {
+					&:before {
+						display: none;
+					}
 				}
 				&:before {
 					content: '';
@@ -457,11 +470,11 @@
 					font-size: 2.2em;
 					line-height: 1.5;
 				}
-				ul {
+				> ul {
 					padding-left: 20px;
 					margin-bottom: 0;
 				}
-				ol {
+				> ol {
 					padding-left: 61px;
 					margin-bottom: 0;
 				}
@@ -507,26 +520,37 @@
 			}
 			blockquote {
 				max-width: 780px;
-				margin: 75px auto;
-				padding: 0 80px;
-				font: 2.2em/1.5 Plantin;
-				letter-spacing: -0.01em;
+				margin: 50px auto;
+				padding: 0 0 0 67px;
 				.border-box();
-				font-family: TradeGothic;
-				font-size: 1.9em;
 				border-left: 2px solid #ccc;
+
+				p {
+					padding: 0;
+					margin: 0;
+					font-family: TradeGothic;
+					font-size: 2em;
+					line-height: 1.6;
+					letter-spacing: -0.01em;
+				}
 
 				@media screen and (max-width: 1024px) {
 					padding: 0 8.4%;
-					font-size: 2em;
+					p {
+						font-size: 2em;
+					}
 					margin: 50px auto;
 				}
 				@media screen and (max-width: 560px) {
 					padding: 0 5%;
-					font-size: 1.8em;
+					p {
+						font-size: 1.8em;
+					}
 				}
 				@media screen and (max-width: 480px) {
-					font-size: 1.5em;
+					p {
+						font-size: 1.5em;
+					}
 					margin: 40px auto;
 				}
 			}
@@ -538,7 +562,7 @@
 				font-size: 1.5em;
 				span {
 					display: inline-block;
-					padding-bottom: 20px;
+					padding-bottom: 13px;
 					border-bottom: 1px solid #ccc;
 				}
 
