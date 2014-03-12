@@ -1,9 +1,9 @@
 $(function(){
-  $('#menu').on('mouseover', 'li', function(){
+  $('#menu li').on('mouseenter', function(){
     $(this).addClass('hover');
   });
 
-  $('#menu').on('mouseout', 'li', function(){
+  $('#menu li').on('mouseleave', function(){
     $(this).removeClass('hover');
   });
 });

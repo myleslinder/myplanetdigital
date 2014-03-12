@@ -45,6 +45,7 @@
 			</h1>
 			<div id="viewport">
 
+				<!--[if (!IE) | (gte IE 10)]> -->
 				<section id="main" <% if @document.layout != 'articles': %>style="transition: none; -webkit-transition: none; position: absolute;"<% end %>>
 					<div class="main-wrap" style="position: relative;">
 						<% if @document.layout is 'articles': %>
@@ -57,12 +58,10 @@
 					</div>
 					<%- @partial('footer') %>
 				</section>
-
-				<!--[if (!IE) | (gte IE 10)]> -->
+				
 				<article id="article" <% if @document.layout != 'articles': %>style="position: static; margin-left: 100%;"<% end %>>
 					<div id="article-inner"  <% if @document.layout != 'content' && @document.layout != 'articles': %>class="reveal"<% end %>>
-						<% if @document.layout != 'articles': %>
-						<!-- Article goes here for modern browsers -->
+						<% if @document.layout != 'articles': %>						
 						<%- @content %>
 						<% end %>
 					</div>
@@ -73,14 +72,21 @@
 				<!-- <![endif]-->
 
 				<!--[if (IE 8) | (IE 9)]>
-				<% if @document.layout != 'articles': %>
+				<% if @document.layout is 'articles': %>
+				<section id="main">
+					<div class="main-wrap" style="position: relative;">						
+						<div class="grid-size"></div>
+						<%- @content %>						
+					</div>					
+					<%- @partial('footer') %>
+				</section>
+				<% else: %>				
 				<article id="article">
-					<div id="article-inner" >			
-						<% if @document.layout != 'articles': %>						
-						<%- @content %>
-						<% else: %>
+					<div id="article-inner" >				
+						<%- @content %>				
 					</div>
-				</article>
+					<%- @partial('footer') %>
+				</article>				
 				<% end %>
 				<![endif]-->
 

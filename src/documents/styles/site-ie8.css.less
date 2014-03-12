@@ -109,6 +109,7 @@ body.article #viewport {
   font-size:15px;
   background:transparent;
   padding: 0;
+  zoom: 1;
   &.active {
     color:#000;
   }
@@ -125,6 +126,11 @@ body.article #viewport {
     position: relative;
     text-decoration: none;
     color: #000;
+    > span {
+      border-top : 1px solid black;
+      background: white;
+      padding-top: 0.2em;
+    }
   }
   &:before {
     content:'';
@@ -133,7 +139,8 @@ body.article #viewport {
     left: 51px;
     width: 29px;
     height: 40px;
-    background:url(../images/spritempd-small.png) no-repeat 0 0;
+    background:url('../images/spritempd-small.png') no-repeat 0 0;    
+    zoom: 1;
   }
   &.company{
     &:before {
@@ -226,24 +233,12 @@ body.article #viewport {
       }
     }
   }
-  &:after {
-    top:70px;
-    left:22px;
-    content:'';
-    display:block;
-    position:absolute;
-    width:84px;
-    background:#fff;
-    height:26px;
-    border-top:1px solid #000;
-    opacity:0.99;    
-  }
-  &:hover, &.active {
+  &.hover, &.active {
     > a {
       padding-top: 87px;
-    }    
-    &:after {
-      display: none;
+      > span {
+        border-top: none;
+      }
     }
   }
 }
@@ -305,6 +300,9 @@ body.width-mobile #menu ul > li {
 
       .tile-content {
         position: relative;
+        & .description {
+          display: none;
+        }
       }
       a.tile-title {
         display: block;
@@ -974,31 +972,41 @@ body.article #main {
       margin-top: 150px;
       width: 100%;
       .footer-doodle {
+        position: relative;
         height: 110px;
         width: 90px;
         margin: -55px auto 0;
-        background-color: #ffffff;
-        background-repeat: no-repeat;
-        background-position: 50%;
-        -webkit-background-size: 45px 55px;
-        background-size: 45px 55px;
-        &.careers {
-          background-image: url(../images/tags/icon-careers.png);
+        background: white;
+        &:before {
+          content: '';
+          display: block;
+          position: absolute;
+          width: 42px;
+          height: 40px;
+          left: 22px;
+          top: 31px;
+          background: #fff url(../images/spritempd-small.png) 0 0 no-repeat;            
         }
-        &.business {
-          background-image: url(../images/tags/icon-business.png);
+        &.company:before {
+          background-position: -312px 0;
         }
-        &.technology {
-          background-image: url(../images/tags/icon-technology.png);
+        &.team:before {
+          background-position: -265px 0;
         }
-        &.design {
-          background-image: url(../images/tags/icon-design.png);
+        &.careers:before {
+          background-position: -99px 0;
         }
-        &.people {
-          background-image: url(../images/tags/icon-people.png);
+        &.contact:before {
+          background-position: -409px 0;
         }
-        &.culture {
-          background-image: url(../images/tags/icon-culture.png);
+        &.design:before {
+          background-position: -140px 0;
+        }
+        &.development:before {
+          background-position: -184px 0;
+        }
+        &.business:before {
+          background-position: -224px 0;
         }
       }
     }
@@ -1113,6 +1121,7 @@ body.article #main {
         margin: 0;
         padding: 0;
         display: table-cell;
+        height: 54px;
         vertical-align: middle;
         text-align: right;
         margin-right: 22px;
@@ -1138,10 +1147,6 @@ body.article #main {
       max-width: 950px;
       margin: 0 auto;
 
-      @media screen and (max-width: 1024px) {
-        max-width: 92.7734375%;
-      }
-
       h2 {
         padding-right: 250px;
         text-align: left;
@@ -1150,19 +1155,6 @@ body.article #main {
         letter-spacing: -0.02em;
         font-weight: normal;
         .border-box();
-
-        @media screen and (max-width: 1024px) {
-          padding-right: 25%;
-          font-size: 2.5em;
-        }
-        @media screen and (max-width: 560px) {
-          padding-right: 15%;
-        }
-        @media screen and (max-width: 480px) {
-          padding-right: 0;
-          font-size: 2em;
-          margin-bottom: 20px;
-        }
       }
       p {
         margin-bottom: 33px;
@@ -1170,19 +1162,6 @@ body.article #main {
         font: 2.2em/1.5 Plantin;
         letter-spacing: -0.01em;
         .border-box();
-
-        @media screen and (max-width: 1024px) {
-          padding: 0 8.4%;
-          font-size: 2em;
-        }
-        @media screen and (max-width: 560px) {
-          padding: 0 5%;
-          font-size: 1.8em;
-        }
-        @media screen and (max-width: 480px) {
-          padding: 0 3%;
-          font-size: 1.7em;
-        }
       }
       p.image, p.image-full {
         margin: 40px auto 45px;
@@ -1202,10 +1181,7 @@ body.article #main {
           border-bottom: 1px solid #ccc;
           margin: 0 auto;
           width: 50%;
-          margin-bottom: 38px;
-          @media screen and (max-width: 600px) {
-            margin-bottom: 18px;
-          }
+          margin-bottom: 38px;          
         }
         &:after {
           content: '';
@@ -1214,9 +1190,6 @@ body.article #main {
           margin: 0 auto;
           width: 50%;
           margin-top: 20px;
-          @media screen and (max-width: 600px) {
-            margin-top: 10px;
-          }
         }
       }
       p.image-full {
@@ -1249,41 +1222,11 @@ body.article #main {
         letter-spacing: -0.01em;
         .border-box();
       }
-      h3 {
-        @media screen and (max-width: 1024px) {
-          padding: 0 8.4%;
-          font-size: 2.5em;
-          margin-bottom: 25px;
-        }
-        @media screen and (max-width: 560px) {
-          padding: 0 5%;
-          margin-bottom: 20px;
-        }
-        @media screen and (max-width: 480px) {
-          padding: 0 3%;
-          margin-bottom: 15px;
-        }
-      }
       h4 {
         font-size: 2.2em;
         line-height: 1.5;
-        margin-bottom: 20px;
-
-        @media screen and (max-width: 1024px) {
-          padding: 0 8.4%;
-          font-size: 2em;
-          margin-bottom: 15px;
-        }
-        @media screen and (max-width: 560px) {
-          padding: 0 5%;
-        }
-        @media screen and (max-width: 480px) {
-          padding: 0 3%;
-          font-size: 2em;
-          margin-bottom: 10px;
-        }
+        margin-bottom: 20px;      
       }
-
       a {
         color: #ee5b33;
         text-decoration: none;
@@ -1319,54 +1262,7 @@ body.article #main {
         }
         ul, ol {
           margin-bottom: 0;
-        }
-        @media screen and (max-width: 1024px) {
-          padding: 0 8.4%;
-          > li {
-            font-size: 2em;
-            padding-left: 73px;
-          }
-          ul {
-            padding-left: 52px;
-          }
-          ol {
-            padding-left: 101px;
-          }
-        }
-        @media screen and (max-width: 560px) {
-          padding: 0 5%;
-          > li {
-            font-size: 1.8em;
-            padding-left: 45px;
-            &:before {
-              padding-right: 15px;
-              margin-left: -33px;
-            }
-          }
-          ul {
-            padding-left: 31px;
-          }
-          ol {
-            padding-left: 70px;
-          }
-        }
-        @media screen and (max-width: 480px) {
-          padding: 0 3%;
-          > li {
-            font-size: 1.7em;
-            padding-left: 37px;
-            &:before {
-              padding-right: 20px;
-              margin-left: -37px;
-            }
-          }
-          ul {
-            padding-left: 36px;
-          }
-          ol {
-            padding-left: 62px;
-          }
-        }
+        }               
       }
       ol {
         margin-bottom: 33px;
@@ -1386,45 +1282,6 @@ body.article #main {
           padding-left: 61px;
           margin-bottom: 0;
         }
-        @media screen and (max-width: 1024px) {
-          padding: 0 8.4% 0 16%;
-          > li {
-            font-size: 2em;
-          }
-          ul {
-            padding-left: 0;
-          }
-          ol {
-            padding-left: 102px;
-          }
-        }
-        @media screen and (max-width: 560px) {
-          padding: 0 5% 0 16%;
-          > li {
-            padding-left: 10px;
-            font-size: 1.8em;
-          }
-          ul {
-            padding-left: 0;
-          }
-          ol {
-            padding-left: 70px;
-          }
-        }
-        @media screen and (max-width: 480px) {
-          padding: 0 3% 0 33px;
-          > li {
-            padding-left: 10px;
-            font-size: 1.7em;
-          }
-          ul {
-            padding-left: 10px;
-          }
-          ol {
-            padding-left: 60px;
-          }
-        }
-
       }
       blockquote {
         max-width: 780px;
@@ -1436,20 +1293,6 @@ body.article #main {
         font-family: TradeGothic;
         font-size: 1.9em;
         border-left: 2px solid #ccc;
-
-        @media screen and (max-width: 1024px) {
-          padding: 0 8.4%;
-          font-size: 2em;
-          margin: 50px auto;
-        }
-        @media screen and (max-width: 560px) {
-          padding: 0 5%;
-          font-size: 1.8em;
-        }
-        @media screen and (max-width: 480px) {
-          font-size: 1.5em;
-          margin: 40px auto;
-        }
       }
       blockquote ~ .source {
         font-family: TradeGothic;
@@ -1461,19 +1304,7 @@ body.article #main {
           display: inline-block;
           padding-bottom: 20px;
           border-bottom: 1px solid #ccc;
-        }
-
-        @media screen and (max-width: 1024px) {
-          margin: 0 auto 40px;
-        }
-        @media screen and (max-width: 560px) {
-          padding: 0 5%;
-          font-size: 1.8em;
-        }
-        @media screen and (max-width: 480px) {
-          font-size: 1.5em;
-          margin: 40px auto;
-        }
+        }        
       }
       .pull-quote {
         font-family: TradeGothic;
@@ -1485,20 +1316,7 @@ body.article #main {
         padding: 35px;
         margin-left: 25px;
         margin-bottom: 25px;
-        background-color: #f0f0f0;
-        @media screen and (max-width: 1024px) {
-          width: 45%;
-          font-size: 1.8em;
-        }
-        @media screen and (max-width: 767px) {
-          width: 40%;
-          font-size: 1.7em;
-        }
-        @media screen and (max-width: 600px) {
-          width: 100%;
-          font-size: 1.6em;
-          padding: 30px;
-        }
+        background-color: #f0f0f0;        
         &:before {
           content: '\201C';
           display: block;
@@ -1532,22 +1350,7 @@ body.article #main {
           font-size: initial;
           width:790px;
           display: inline-block;
-        }
-
-        @media screen and (max-width: 1024px) {
-          width: 91.6%;
-          font-size: 1.3em;
-          line-height: 1.3;
-          code {
-            width: 500px;
-          }
-        }
-        @media screen and (max-width: 560px) {
-          width: 95%;
-        }
-        @media screen and (max-width: 480px) {
-          width: 97%;
-        }
+        }      
       }
       .article-footer {
         border-top: 1px solid #ccc;
@@ -1567,8 +1370,11 @@ body.article #main {
             height: 40px;
             left: 22px;
             top: 31px;
-            background: #fff url(../images/spritempd.png) 0 0 no-repeat;
-            background-size: 533px;
+            background-color:#fff;
+            background-image:url(../images/spritempd-small.png);
+            background-repeat: no-repeat;
+            background-position: -140px 0;
+            zoom:1;            
           }
           &.company:before {
             background-position: -312px 0;
