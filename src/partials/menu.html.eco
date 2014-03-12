@@ -7,8 +7,9 @@
 				<% liClass = item.meta.class if item.meta.class? %>
 
 				<li class="<%= liClass %><%= if item.state == 'current' then ' active' %>">
+				<% console.log item.meta %>
 					<a
-						href="<%= @getUrl(item.url) %>"
+						href="<%= if item.meta.link? then item.meta.link else @getUrl(item.url) %>"
 						<% if item.meta.banner?: %>
 							data-banner="<%= item.meta.banner %>"
 						<% end %>>
