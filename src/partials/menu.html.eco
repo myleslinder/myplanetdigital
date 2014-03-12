@@ -2,12 +2,23 @@
 	<ul class="nav navbar-nav">
 		<% for item in @menuItems: %>
 			<% if item.slug.indexOf('.') == -1: %>
-				<li class="<%= if item.slug is '' then 'all' else item.slug %><%= if item.state == 'current' then ' active' %>">
-					<a href="<%= @getUrl(item.url) %>"><span><%= item.title or item.menuTitle %></span></a>
+
+				<% liClass = if item.slug is '' then 'all' else item.slug %>
+				<% liClass = item.meta.class if item.meta.class? %>
+
+				<li class="<%= liClass %><%= if item.state == 'current' then ' active' %>">
+					<a
+						href="<%= if item.meta.link? then item.meta.link else @getUrl(item.url) %>"
+						<% if item.meta.banner?: %>
+							data-banner="<%= item.meta.banner %>"
+						<% end %>>
+						<span>
+							<%= item.title or item.menuTitle %>
+						</span>
+					</a>
 				</li>
 			<% end %>
 		<% end %>
-		<li class="contact page"><a href="#footer"><span>Contact Us</span></a></li>
 	</ul>
 </div>
 

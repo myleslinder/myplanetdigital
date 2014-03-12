@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "grunt": "~0.4.2",
-    "grunt-git": "https://github.com/RobLoach/grunt-git/tarball/clean",
+    "grunt-git": "~0.2.6",
     "grunt-contrib-copy": "~0.5.0",
     "grunt-contrib-clean": "~0.5.0",
     "docpad": "~6",
@@ -18,7 +18,6 @@
     "docpad-plugin-cleanurls": "~2.6.2",
     "docpad-plugin-ghpages": "~2.4.3",
     "docpad-plugin-less": "~2.4.1",
-    "docpad-plugin-tags": "~2.0.7",
     "docpad-plugin-partials": "~2.8.1",
     "docpad-plugin-geturl": "~2.1.1",
     "docpad-plugin-associatedfiles": "~2.2.0",
