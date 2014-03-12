@@ -3,19 +3,19 @@
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0">
 		<% if @document.title?: %>
 			<title><%= @document.title %> | <%= @site.title %></title>
 		<% else: %>
 			<title><%= @site.title %></title>
 		<% end %>
+		<script>
+			 (new Image()).src = "/images/loading.gif";
+		</script>
 		<% if @document.summary?: %>
 			<meta name="description" content="<%= @document.summary %>">
 		<% end %>
 		<%- @getBlock("meta").toHTML() %>
-		<script>
-			 (new Image()).src = "/images/loading.gif";
-		</script>
 		<!--[if !IE]> -->
 		<%- @getBlock('styles').add(@getUrl(@site.styles)).toHTML() %>
 		<!-- <![endif]-->

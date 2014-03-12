@@ -15,6 +15,7 @@ module.exports =
 				'/scripts/vendor/scrollfix.js'
 				'/scripts/modules/menu.js'
 				'/scripts/modules/tiles.js'
+				'/scripts/modules/elevator.js'
 				'/scripts/main.js'
 				'/scripts/vendor/fastclick.js'
 				'/scripts/vendor/history.min.js'
@@ -25,19 +26,19 @@ module.exports =
 				'/styles/site-ie8.css'
 			]
 			'jquery1': [
-				'/scripts/vendor/jquery-1.11.0.min.js'	
+				'/scripts/vendor/jquery-1.11.0.min.js'
 			]
 			'jquery2': [
 				'/scripts/vendor/jquery-2.1.0.min.js'
 			]
 			'html5shiv': [
 				'/scripts/vendor/html5shiv.js'
-			]			
+			]
 			'isotope' : [
 			  '/scripts/vendor/isotope-beta2.pkgd.min.js'
 			]
 			'tiles-immediate' : [
-				'/scripts/modules/tiles-immediate.js'	
+				'/scripts/modules/tiles-immediate.js'
 			]
 
 			# Social Media Services
@@ -157,7 +158,7 @@ module.exports =
 					# isPaged: true
 					# collection: tag
 					# pageSize: 999999
-					pagedCollection: 'homepage'					
+					pagedCollection: 'homepage'
 				}
 				# Add the menu items for those that need them.
 				# @todo Move this to a seperate .json file?

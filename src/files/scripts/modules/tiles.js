@@ -87,11 +87,11 @@
 			item.tile.classList.add(queue[len].klass);
 			queue.splice(len, 1);
 			if(++count === 3 && queue.length) {
-				return flushingTimeout = window.setTimeout(finishFlush, 50);
+				return flushingTimeout = window.setTimeout(finishFlush, 60);
 			}
 		}
 		if(queue.length) {
-			return flushingTimeout = window.setTimeout(finishFlush, 50);
+			return flushingTimeout = window.setTimeout(finishFlush, 60);
 		}
 		flushingTimeout = null;
 	}
@@ -124,7 +124,9 @@
 		}
 
 		if(added && !flushingTimeout) {
-			window.requestAnimationFrame(flushQueue);
+			window.setTimeout(function () {
+				window.requestAnimationFrame(flushQueue);
+			}, 0);
 		}
 		throttleTimeout = null;
 	}
