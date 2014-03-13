@@ -41,3 +41,4 @@ src/files/associated-files/careers/*
 src/files/images/default-covers/*
 !src/files/images/default-covers/1*
 !src/files/images/default-covers/2*
+src/build.sh

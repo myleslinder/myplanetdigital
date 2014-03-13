@@ -2,6 +2,39 @@
 
 	'use strict';
 
+	/**
+	 * Initialize the tiles when the page loads.
+	 */
+	window.initializeTiles = function() {
+		var tag = 'home';
+		var $articles = $('.articles');
+		if ($articles.length >= 0) {
+			tag = $articles.data('tag');
+		}
+		window.tiles = new Isotope( '.main-wrap', {
+		  itemSelector: '.tile',
+		  filter: '.' + tag,
+		  masonry: {
+		    columnWidth: '.grid-size'
+		  },
+		  transitionDuration: 0
+		});
+
+		var loadingGif = new Image();
+		loadingGif.src = "/images/loading.gif";
+		loadingGif.onload = function () {
+			if('ontouchstart' in window) {
+			    var els = document.querySelectorAll('.tile'),
+			        len = els.length;
+			    while(len--) {
+			        els[len].style.opacity = 1;
+			    }
+			}
+		};
+
+	}
+	$(document).ready(window.initializeTiles);
+
 	if(!window.isSinglePageApp) {
 		return;
 	}
@@ -34,6 +67,7 @@
 		wasLinkClick,
 		EXTERNAL_URL_REGEX = /^([^:\/?#]+:)?(?:\/\/([^\/?#]*))?([^?#]+)?(\?[^#]*)?(#.*)?/,
 		ARTICLE_REGEX = /\/(article|people|careers)\//,
+		TAG_REGEX = /\/(tags)\//,
 		MAPS_REGEX = /http:\/\/maps\.google\.com/,
 		COVER_SRC_REGEX = /url\(['"]?(.*\.\w+)['"]?\)/,
 		IS_FIREFOX = navigator.userAgent.toLowerCase().indexOf('firefox') > -1,
@@ -116,6 +150,7 @@
 						window.requestAnimationFrame(function () {
 							$mainWrap.html(data);
 							$window.trigger('tiles-init');
+							window.tileTagSort();
 							window.requestAnimationFrame(function() {
 								hasLoadedTiles = true;
 								isLoading = false;
@@ -167,6 +202,7 @@
 		var isArticleUrl = data.url.match(ARTICLE_REGEX),
 			top = window.curScrollTop,
 			overridePopstateScrollmove,
+			isTagsUrl = data.url.match(TAG_REGEX),
 			timeoutLen = 50;
 
 		wasLinkClick = new Date() - linkClickedTime < 300;
@@ -260,6 +296,9 @@
 						$loadgiftiles.find('.loading-spinner').css('top', window.pageHeight/2 - SPINNER_HEIGHT);
 						$loadgiftiles.show();
 					}
+					else {
+						window.tileTagSort();
+					}
 					$main.css({
 						transform:  !overridePopstateScrollmove || wasLinkClick ? 'translate3d(-1px, ' + (top - tileScrollTop) + 'px, 0)' : '',
 						transition: ''
@@ -275,24 +314,41 @@
 				});
 			}, timeoutLen);
 
-		} /*else if (isTagsUrl) {
+		} else if (isTagsUrl) {
+			// Grab the desired tag.
 			var tag = data.hash.split(/\//).pop();
 
 			// window.tiles is defined in tiles-immediate.js
-			[].forEach.call(window.tiles.items, function(item) {
-				item.element.classList.remove('visible');
-			});
+			//[].forEach.call(window.tiles.items, function(item) {
+			//	item.element.classList.remove('visible');
+			//});
 
-			// window.tileTaggedGroups is defined in tiles-immediate.js
-			if (typeof window.tileTaggedGroups[tag] !== 'undefined') {
-				window.tileTaggedGroups[tag].forEach(function(tile) {
-					tile.classList.add('visible');
-				});
-			}
-			window.tiles.arrange({filter: '.visible'});
+			// Filter the tiles with Isotope.
+			window.tiles.arrange({filter: '.' + tag});
+			window.removeAllLayers();
+			window.revealAll();
+
 			$window.trigger('filter');
-		} */
+
+			// Initialize the page so that the tiles appear.
+			window.initializePage();
+		} else {
+			// Loading the home tiles.
+			window.tiles.arrange({filter: '.home'});
+			window.removeAllLayers();
+			window.revealAll();
+			$window.trigger('filter');
+
+			// Initialize the page so that the tiles appear.
+			window.initializePage();
+		}
 	}
+	window.revealAll = function() {
+
+		[].forEach.call(window.tiles.items, function(item) {
+			item.element.classList.add('reveal');
+		});
+	};
 
 	function finishTransition() {
 		if(doAjax) {
@@ -497,4 +553,5 @@
 	window.requestAnimationFrame(function () {
 		$body.addClass('loaded');
 	});
+	
 }());

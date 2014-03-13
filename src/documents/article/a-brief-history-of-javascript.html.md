@@ -10,8 +10,6 @@ size: "medium"
 colour: "white"
 sticky: false
 imagePosition: "top"
-isOnHomapage: true
-
 ---
 
 ## It’s been five years since the first copies of Douglas Crockford’s “JavaScript: the Good Parts” hit bookshelves. A lot has changed since.

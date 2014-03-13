@@ -8,7 +8,7 @@ window.tiles = new Isotope( '.main-wrap', {
 });
 
 var loadingGif = new Image();
-  loadingGif.src = "images/loading.gif";
+  loadingGif.src = "/images/loading.gif";
   loadingGif.onload = function () {
     if('ontouchstart' in window) {
         var els = document.querySelectorAll('.tile'),
@@ -21,6 +21,7 @@ var loadingGif = new Image();
 
 // Create predefined groups of tiles, based on their tags
 // window.tileTaggedGroups = {'careers': [TileDomEl1, TileDomEl2 ... ],  ... }
+/*
 window.tileTaggedGroups = {};
 if('forEach' in []) {
   [].forEach.call(document.querySelectorAll('.tile'), function(tile) {
@@ -29,4 +30,4 @@ if('forEach' in []) {
           window.tileTaggedGroups[usedTag].push(tile);
       });
   });
-}
+}*/
