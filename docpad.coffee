@@ -96,6 +96,9 @@ module.exports =
 
 		associatedfiles:
 			useRelativeBase: true
+		
+		cleanurls:
+      static: true
 
 	# Environmental variables
 	environments:
