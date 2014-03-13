@@ -100,5 +100,8 @@
 			};
 			</script>
 		<% end %>
+		<!--[if (IE 8) | (IE 9)]>		
+		<script src="<%- @getUrl(@site['menu-ie8'][0]) %>"></script>
+		<![endif]-->
 	</body>
 </html>

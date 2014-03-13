@@ -126,23 +126,90 @@ body.article #viewport {
   &:before {
     content:'';
     position:absolute;
-    top:44px;
-    left:51px;
-    width: 29px;
+    top: 44px;
+    left: 47px;
+    width: 35px;
     height: 40px;
-    background:url('../images/sprite-ie.png') no-repeat 0 0;
+    background:url('../images/spritempd-small.png') no-repeat 0 0;    
+    zoom: 1;
   }
-  &:after {
-    top:70px;
-    left:22px;
-    content:'';
-    display:block;
-    position:absolute;
-    width:84px;
-    background:#fff;
-    height:26px;
-    border-top:1px solid #000;
-    opacity:0.99;    
+  &.company{
+    &:before {
+      background-position: -312px 0;
+    }
+    &.hover, &.active {
+      a > span {
+        color: @company-color;
+      }
+      &:before {
+        background-position: -312px -41px;
+      }
+    }
+  }
+  &.people {
+    &:before {
+      background-position: -270px 0;
+    }
+    &.hover, &.active {
+      a > span {
+        color: @team-color;        
+      }
+      &:before {
+        background-position: -270px -40px;
+      }
+    }
+  }
+  &.careers {
+    &:before {
+      background-position: -103px 0;
+    }
+    &.hover, &.active {
+      a > span {
+        color: @careers-color;
+      }
+      &:before {
+        background-position: -103px -40px;
+      }
+    }
+  }
+  &.contact {
+    &:before {
+      background-position: -414px 0;
+    }
+    &.hover, &.active {
+      a > span {
+        color: @contact-color;
+      }
+      &:before {
+        background-position: -414px -40px;
+      }
+    }
+  }
+  &.design {
+    &:before {
+      background-position: -145px 0;
+    }
+    &.hover, &.active {
+      a > span {
+        color: @design-color;
+      }
+      &:before {
+        background-position: -145px -40px;
+      }
+    }
+  }
+  &.technology {
+    &:before {
+      background-position: -189px 0;
+    }
+    &.hover, &.active {
+      a > span {
+        color: @development-color;
+      }
+      &:before {
+        background-position: -189px -40px;
+      }      
+    }
   }
   &:hover, &.active {
     & > a {
@@ -150,10 +217,23 @@ body.article #viewport {
     }    
     padding-top: 87px;
     &:before {
-      background-position: 0 -40px;        
+      background-position: -229px 0;
     }
-    &:after {
-      display: none;
+    &.hover, &.active {
+      a > span {
+        color: @business-color;
+      }
+      &:before {
+        background-position: -229px -40px;
+      }
+    }
+  }
+  &.hover, &.active {
+    > a {
+      padding-top: 87px;
+      > span {
+        border-top: none;
+      }
     }
   }
 }
