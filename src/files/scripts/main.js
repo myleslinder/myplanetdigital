@@ -26,7 +26,7 @@
 		articleScrollTop = 0,
 		tileScrollTop = 0,
 		RELATIVE_URL_REGEX = /^(?:\/\/|[^\/]+)*\//,
-		pageUrl = document.location.href.replace(RELATIVE_URL_REGEX, ''),
+		pageUrl = '/' + document.location.href.replace(RELATIVE_URL_REGEX, ''),
 		lastArticleUrl = '',
 		doAjax,
 		isTransitioning = false,
@@ -34,13 +34,14 @@
 		linkClickedTime = new Date(),
 		wasLinkClick,
 		EXTERNAL_URL_REGEX = /^([^:\/?#]+:)?(?:\/\/([^\/?#]*))?([^?#]+)?(\?[^#]*)?(#.*)?/,
-		ARTICLE_REGEX = /\/(article|people|careers)\//,
+		ARTICLE_REGEX = /^((?!tags).)*\/(article|people|careers)\//,
+		TAG_REGEX = /\/tags\/(.*)?/,
 		MAPS_REGEX = /http:\/\/maps\.google\.com/,
 		COVER_SRC_REGEX = /url\(['"]?(.*\.\w+)['"]?\)/,
 		IS_FIREFOX = navigator.userAgent.toLowerCase().indexOf('firefox') > -1,
 		FULL_WIDTH = 1324,
 		DESKTOP_WIDTH = 1174,
-		END_SCROLL_THRESHOLD = 650,
+		END_SCROLL_THRESHOLD = 250,
 		SPINNER_HEIGHT = 61,
 		IOS_CHROME_HEIGHT = 70,
 		PRE_SCROLL_THRESHOLD = 100;
@@ -105,11 +106,15 @@
 		}, 0);
 	}
 
+	function removeTrailingSlash(url) {
+		return url.replace(/(\/)+$/,'');
+	}
+
 	function loadViaAjax() {
 		if (isTileView) {
 			if ($mainWrap.find('.tile').length === 0) {
 				isLoading = true;
-				$ajaxer = $.get('/index-content-tiles.html', function(data){
+				$ajaxer = $.get('/index-content-tiles/index.html', function(data){
 					$ajaxer = null;
 					window.setTimeout(function () {
 						window.requestAnimationFrame(function () {
@@ -136,7 +141,7 @@
 			$articlein.removeClass('reveal');
 			isLoading = true;
 
-			$ajaxer = $.get(pageUrl + '-content', function(data) {
+			$ajaxer = $.get(removeTrailingSlash(pageUrl) + '-content/index.html', function(data) {
 				$ajaxer = null;
 				window.setTimeout(function () {
 					var image = new Image();
@@ -161,15 +166,19 @@
 			window.isBusy = false;
 		}
 
-		if(!IS_FIREFOX) {
+		if(window.isIOS) {
 			window.curScrollTop = window.pageYOffset;
 		}
 		cancelTransition = isTransitioning;
 
 		var isArticleUrl = data.url.match(ARTICLE_REGEX),
+			isTagUrl = !isArticleUrl && data.url.match(TAG_REGEX),
 			top = window.curScrollTop,
 			overridePopstateScrollmove,
 			timeoutLen = 50;
+		if(isTagUrl) {
+			isTagUrl = isTagUrl[1];
+		}
 
 		wasLinkClick = new Date() - linkClickedTime < 300;
 		overridePopstateScrollmove = !wasLinkClick && !window.isIOS; //ios doesn't mess with the scrollbar during popstate
@@ -275,7 +284,13 @@
 				});
 			}, timeoutLen);
 
-		} /*else if (isTagsUrl) {
+		} else if(isTagUrl && window.isTileView) {
+			if(window.currentTag !== isTagUrl) {
+				window.tiles.arrange({filter: '.' + isTagUrl});
+				$window.trigger('filter', [isTagUrl]);
+				window.currentTag = isTagUrl;
+			}
+		}/*else if (isTagsUrl) {
 			var tag = data.hash.split(/\//).pop();
 
 			// window.tiles is defined in tiles-immediate.js
@@ -303,7 +318,7 @@
 			window.setTimeout(function () {
 				isTransitioning = false;
 				if(cancelTransition) {
-					return cleanupTransition();
+					//return cleanupTransition();
 				}
 				window.requestAnimationFrame(loadViaAjax);
 			}, 200);
@@ -338,13 +353,13 @@
 		if(!window.isTileView) {
 			endTransition =  function () {
 				if(cancelTransition) {
-					return $body.removeClass('animating');
+					//return cleanupTransition();
 				}
 				window.scroll(0, window.curScrollTop = articleScrollTop + (window.isIOS ? 0 : (window.pageYOffset - window.curScrollTop)));
 				window.setTimeout(function () {
 					//window.requestAnimationFrame(function () {
 						if(cancelTransition) {
-							return cleanupTransition();
+							//return cleanupTransition();
 						}
 						$article.css({
 							transition: '',
@@ -361,13 +376,13 @@
 		} else {
 			endTransition = function () {
 				if(cancelTransition) {
-					return cleanupTransition();
+					//return cleanupTransition();
 				}
 				window.scroll(0, window.curScrollTop = tileScrollTop + (window.isIOS ? 0 : (window.pageYOffset - window.curScrollTop)));
 				window.setTimeout(function () {
 					//window.requestAnimationFrame(function () {
 						if(cancelTransition) {
-							return cleanupTransition();
+						//	return cleanupTransition();
 						}
 						$main.css({
 							transition: '',
@@ -383,10 +398,10 @@
 				}, 0);
 			};
 		}
-		window.setTimeout(function () {
-			window.requestAnimationFrame(function () {
+		//window.setTimeout(function () {
+			//window.requestAnimationFrame(function () {
 				if(cancelTransition) {
-					return cleanupTransition();
+					//return cleanupTransition();
 				}
 				$article.css({
 					transform: '',
@@ -401,8 +416,8 @@
 					return window.setTimeout(endTransition, 0);
 				}
 				endTransition();
-			});
-		}, window.isIOS ? 50 : 0);
+		//	});
+		//}, window.isIOS ? 50 : 25);
 	}
 
 	//init capabiliites
@@ -444,6 +459,10 @@
 			$window.trigger('scroll-top');
 			return false;
 		} else if(!isExternalUrl(url)) {
+			debugger;
+			if(url === pageUrl) {
+				$window.trigger('same-tag');
+			}
 			pageUrl = url;
 			linkClickedTime = new Date();
 			History.pushState(null, null, pageUrl);
@@ -452,7 +471,6 @@
 	});
 
 	$article.append($footer.clone());
-
 	$window.on('page-change', handlePageChange);
 	$article.on('transitionend webkitTransitionEnd', handleTransitionEnd);
 
@@ -490,13 +508,15 @@
 		}, PRE_SCROLL_THRESHOLD);
 	});
 
-	if(!window.isTileView) {
-		articleScrollTop = window.curScrollTop;
-		lastArticleUrl = document.location.href;
-		$articlein.addClass('reveal');
-	} else {
-		tileScrollTop = window.curScrollTop;
-	}
+	window.setTimeout(function() {
+		if(!window.isTileView) {
+			articleScrollTop = window.curScrollTop;
+			lastArticleUrl = document.location.href;
+			$articlein.addClass('reveal');
+		} else {
+			tileScrollTop = window.curScrollTop;
+		}
+	}, 750);
 	window.requestAnimationFrame(function () {
 		$body.addClass('loaded');
 	});

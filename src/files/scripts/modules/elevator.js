@@ -42,8 +42,8 @@
 
 		isElevating = false;
 
-		window.setTimeout(function() {
-			window.requestAnimationFrame(function() {
+		//window.setTimeout(function() {
+			//window.requestAnimationFrame(function() {
 				$viewport.css({
 					transform: 'translateZ(0)',
 					transition: 'none'
@@ -58,8 +58,8 @@
 					window.scroll(0, window.curScrollTop = 0);
 					window.setTimeout(window.requestAnimationFrame.bind(null, finishTransitionEnd), 0);
 				}, 0);
-			});
-		}, 0);
+		//	});
+	//	}, 0);
 	});
 
 }());
