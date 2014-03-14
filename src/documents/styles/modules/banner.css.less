@@ -1,0 +1,52 @@
+@import "../includes.less";
+
+.banner {
+    margin: -@menu-height -10px 30px -10px;
+    color: white;
+    .border-box();
+    padding: 120px 0 0.5em;
+    font-family: "Plantin";
+    font-weight: bold;
+    font-size: 2.8em;
+    background-color: @mpd-orange;
+    background-image: url('../images/bannerdoodle.png');
+    background-position: 70% 110px;
+    background-repeat: no-repeat;
+    .transition(height 0.3s);
+
+    @media screen and (max-width: 767px) {
+        font-size: 1.8em;
+        padding: 120px 0 10px 0;
+        background-image: none;
+    }
+
+    .banner-text {
+        max-width: 1024px;
+        margin: 0 auto;
+        padding: 0 180px 0 70px;
+        .border-box();
+        text-transform: lowercase;
+        text-align: left;
+
+        @media screen and (max-width: 767px) {
+            padding: 0 1em;
+        }
+    }
+
+    /**
+     * Chevron
+     */
+    text-align: center;
+    &:after {
+        border-left: 25px solid transparent;
+        border-right: 25px solid transparent;
+        border-top: 18px solid @mpd-orange;
+        content: '';
+        position: absolute;
+        margin: 20px 0 0 -20px;
+
+        @media screen and (max-width: 767px) {
+            margin-top: 10px;
+        }
+    }
+}

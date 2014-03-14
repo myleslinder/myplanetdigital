@@ -5,7 +5,7 @@ pagedCollection: 'homepage'
 menu: 3
 menuOrder: 3
 menuTitle: Careers
-menuBanner: We're proud of our culture, our space, and our working experience.
+menuBanner: <p>We're proud of our culture, our space, and our working experience.</p>
 tagName: careers
 ---
 
