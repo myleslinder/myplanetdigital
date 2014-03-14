@@ -49,8 +49,8 @@
 				<section id="main" <% if @document.layout != 'articles': %>style="transition: none; -webkit-transition: none; position: absolute;"<% end %>>
 				
 					<% if @document.meta.menuBanner?: %>
-						<div class="banner">
-							<div class="banner-text">
+						<div class="banner">							
+							<div class="banner-text">							
 						  	<%- @document.meta.menuBanner %>
 							</div>
 						</div>
