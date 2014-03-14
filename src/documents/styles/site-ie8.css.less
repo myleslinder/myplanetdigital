@@ -136,8 +136,8 @@ body.article #viewport {
     content:'';
     position:absolute;
     top: 44px;
-    left: 51px;
-    width: 29px;
+    left: 47px;
+    width: 35px;
     height: 40px;
     background:url('../images/spritempd-small.png') no-repeat 0 0;    
     zoom: 1;
@@ -153,6 +153,71 @@ body.article #viewport {
       &:before {
         background-position: -312px -41px;
       }
+    }
+  }
+  &.people {
+    &:before {
+      background-position: -270px 0;
+    }
+    &.hover, &.active {
+      a > span {
+        color: @team-color;        
+      }
+      &:before {
+        background-position: -270px -40px;
+      }
+    }
+  }
+  &.careers {
+    &:before {
+      background-position: -103px 0;
+    }
+    &.hover, &.active {
+      a > span {
+        color: @careers-color;
+      }
+      &:before {
+        background-position: -103px -40px;
+      }
+    }
+  }
+  &.contact {
+    &:before {
+      background-position: -414px 0;
+    }
+    &.hover, &.active {
+      a > span {
+        color: @contact-color;
+      }
+      &:before {
+        background-position: -414px -40px;
+      }
+    }
+  }
+  &.design {
+    &:before {
+      background-position: -145px 0;
+    }
+    &.hover, &.active {
+      a > span {
+        color: @design-color;
+      }
+      &:before {
+        background-position: -145px -40px;
+      }
+    }
+  }
+  &.technology {
+    &:before {
+      background-position: -189px 0;
+    }
+    &.hover, &.active {
+      a > span {
+        color: @development-color;
+      }
+      &:before {
+        background-position: -189px -40px;
+      }      
     }
   }
   &.people {
@@ -222,14 +287,14 @@ body.article #viewport {
   }
   &.business {
     &:before {
-      background-position: -224px 0;
+      background-position: -229px 0;
     }
     &.hover, &.active {
       a > span {
         color: @business-color;
       }
       &:before {
-        background-position: -224px -40px;
+        background-position: -229px -40px;
       }
     }
   }

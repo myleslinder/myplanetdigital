@@ -5,7 +5,7 @@ module.exports =
 	templateData:
 		site:
 			title: 'Myplanet Digital'
-			url: ''
+			url: '/swat'
 			styles: [
 				'/styles/main.css'
 			]
@@ -101,6 +101,9 @@ module.exports =
 
 		associatedfiles:
 			useRelativeBase: true
+
+		cleanurls:
+      static: true
 
 	# Environmental variables
 	environments:
