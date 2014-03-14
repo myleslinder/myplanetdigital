@@ -20,5 +20,19 @@
         padding: 0 180px 0 70px;
         .border-box();
         text-transform: lowercase;
+        text-align: left;
+    }
+
+    /**
+     * Chevron
+     */
+    text-align: center;
+    &:after {
+        border-left: 25px solid transparent;
+        border-right: 25px solid transparent;
+        border-top: 18px solid @mpd-orange;
+        content: '';
+        position: absolute;
+        margin: 20px 0 0 -20px;
     }
 }
