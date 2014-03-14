@@ -5,7 +5,7 @@ module.exports =
 	templateData:
 		site:
 			title: 'Myplanet Digital'
-			url: 'http://myplanetdigital.github.io/swat'
+			url: ''
 			styles: [
 				'/styles/main.css'
 			]
@@ -21,7 +21,6 @@ module.exports =
 				'/scripts/vendor/history.min.js'
 				'/scripts/init.js'
 				'/scripts/vendor/prism.js'
-				'/scripts/vendor/isotope-beta2.pkgd.min.js'
 			]
 			'ie8styles': [
 				'/styles/site-ie8.css'
@@ -34,9 +33,15 @@ module.exports =
 			]
 			'html5shiv': [
 				'/scripts/vendor/html5shiv.js'
-			]			
+			]
 			'menu-ie8' : [
-				'/scripts/menu-ie8.js'	
+				'/scripts/menu-ie8.js'
+			]
+			'isotope' : [
+				'/scripts/vendor/isotope-beta2.pkgd.min.js'
+			]
+			'tiles-immediate' : [
+				'/scripts/modules/tiles-immediate.js'
 			]
 
 			# Social Media Services
@@ -45,7 +50,7 @@ module.exports =
 
 			# Override getUrl to fetch relevant url for environment
 			getUrl: (document) ->
-				return @site.url + (document.url or document.get?('url'))
+				return (document.url or document.get?('url'))
 
 	# Set up collections to query and sort documents.
 	collections:

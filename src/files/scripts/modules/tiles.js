@@ -41,7 +41,6 @@
 		hasHiddenTiles = $hiddenTiles.length;
 		firstEventTimeout = null;
 	}
-	window.initializePage = initializePage;
 
 	function removeLayer(item) {
 		item.classList.remove('reveal');
@@ -73,11 +72,10 @@
 		queue = [];
 		len = layerQueue.length;
 		while(len--){
-			removeLayer(queue[len]);
+			removeLayer(layerQueue[len]);
 		}
 		layerQueue = [];
 	}
-	window.removeAllLayers = removeAllLayers;
 
 	function flushQueue() {
 		var len = queue.length,
@@ -160,11 +158,11 @@
 		}
 
 		//remove the layer after scrolling
-		if(! window.isScrolling) {
-			window.requestAnimationFrame(removeLayer.bind(null, e.target));
-		} else {
+		//if(! window.isScrolling) {
+		//	window.requestAnimationFrame(removeLayer.bind(null, e.target));
+		//} else {
 			layerQueue.push(e.target);
-		}
+		//}
 	}
 
 	//only attach events if the device is capable of showing desktop
@@ -182,32 +180,6 @@
 	$window.on('tiles-init', function () {
 		window.initializeTiles();
 		initializePage();
-		window.tileTagSort();
 	});
-
-	window.tileTagSort = function() {
-		// Filter by the current tag
-		var currentTag = $('.nav li.active');
-		if (currentTag.length === 0) {
-			currentTag = 'home';
-		}
-		else {
-			currentTag = currentTag.attr('class');
-			var classes = currentTag.split(' ');
-			for (var i = 0; i < classes.length; i++) {
-				if (classes[i] != 'active') {
-					currentTag = classes[i];
-					break;
-				}
-			}
-		}
-		// Now that the tag is found, show the tiles for that tag
-		window.tiles.arrange({filter: '.' + currentTag});
-		window.removeAllLayers();
-		window.revealAll();
-
-		// Loading the home tiles.
-		$window.trigger('filter');
-	};
 
 }());

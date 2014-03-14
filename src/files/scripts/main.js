@@ -2,39 +2,6 @@
 
 	'use strict';
 
-	/**
-	 * Initialize the tiles when the page loads.
-	 */
-	window.initializeTiles = function() {
-		var tag = 'home';
-		var $articles = $('.articles');
-		if ($articles.length >= 0) {
-			tag = $articles.data('tag');
-		}
-		window.tiles = new Isotope( '.main-wrap', {
-		  itemSelector: '.tile',
-		  filter: '.' + tag,
-		  masonry: {
-		    columnWidth: '.grid-size'
-		  },
-		  transitionDuration: 0
-		});
-
-		var loadingGif = new Image();
-		loadingGif.src = "/images/loading.gif";
-		loadingGif.onload = function () {
-			if('ontouchstart' in window) {
-			    var els = document.querySelectorAll('.tile'),
-			        len = els.length;
-			    while(len--) {
-			        els[len].style.opacity = 1;
-			    }
-			}
-		};
-
-	}
-	$(document).ready(window.initializeTiles);
-
 	if(!window.isSinglePageApp) {
 		return;
 	}
@@ -42,6 +9,7 @@
 	var $window = $(window),
 		$body = $('body'),
 		$article = $('#article'),
+		$viewport = $('#viewport'),
 		$articlein = $('#article-inner'),
 		$main = $('#main'),
 		$mainWrap = $('.main-wrap'),
@@ -67,16 +35,15 @@
 		wasLinkClick,
 		EXTERNAL_URL_REGEX = /^([^:\/?#]+:)?(?:\/\/([^\/?#]*))?([^?#]+)?(\?[^#]*)?(#.*)?/,
 		ARTICLE_REGEX = /\/(article|people|careers)\//,
-		TAG_REGEX = /\/(tags)\//,
 		MAPS_REGEX = /http:\/\/maps\.google\.com/,
 		COVER_SRC_REGEX = /url\(['"]?(.*\.\w+)['"]?\)/,
 		IS_FIREFOX = navigator.userAgent.toLowerCase().indexOf('firefox') > -1,
 		FULL_WIDTH = 1324,
 		DESKTOP_WIDTH = 1174,
-		END_SCROLL_THRESHOLD = 400,
+		END_SCROLL_THRESHOLD = 650,
 		SPINNER_HEIGHT = 61,
 		IOS_CHROME_HEIGHT = 70,
-		PRE_SCROLL_THRESHOLD = 50;
+		PRE_SCROLL_THRESHOLD = 100;
 
 	function setResponsiveState() {
 		var width = $window.width(),
@@ -139,8 +106,6 @@
 	}
 
 	function loadViaAjax() {
-		$articlein.removeClass('reveal');
-
 		if (isTileView) {
 			if ($mainWrap.find('.tile').length === 0) {
 				isLoading = true;
@@ -149,8 +114,8 @@
 					window.setTimeout(function () {
 						window.requestAnimationFrame(function () {
 							$mainWrap.html(data);
+
 							$window.trigger('tiles-init');
-							window.tileTagSort();
 							window.requestAnimationFrame(function() {
 								hasLoadedTiles = true;
 								isLoading = false;
@@ -168,13 +133,15 @@
 			$loadgif.hide();
 		}
 		else {
+			$articlein.removeClass('reveal');
 			isLoading = true;
 
-			$ajaxer = $.get(pageUrl + '-content/index.html', function(data) {
+			$ajaxer = $.get(pageUrl + '-content', function(data) {
 				$ajaxer = null;
 				window.setTimeout(function () {
 					var image = new Image();
-					image.onload = finishArticleLoad.bind(null, data);
+					image.onload = image.onerror = finishArticleLoad.bind(null, data);
+
 					if($(data).eq(0).length) {
 						image.src = $(data).eq(0).css('background-image').match(COVER_SRC_REGEX)[1];
 					} else {
@@ -194,7 +161,7 @@
 			window.isBusy = false;
 		}
 
-		if(window.isIOS) {//!IS_FIREFOX) {
+		if(!IS_FIREFOX) {
 			window.curScrollTop = window.pageYOffset;
 		}
 		cancelTransition = isTransitioning;
@@ -202,7 +169,6 @@
 		var isArticleUrl = data.url.match(ARTICLE_REGEX),
 			top = window.curScrollTop,
 			overridePopstateScrollmove,
-			isTagsUrl = data.url.match(TAG_REGEX),
 			timeoutLen = 50;
 
 		wasLinkClick = new Date() - linkClickedTime < 300;
@@ -211,6 +177,7 @@
 			pageUrl = document.location.href.replace(RELATIVE_URL_REGEX, '');
 			pageUrl = pageUrl || '/';
 		}
+
 		if(isArticleUrl && window.isTileView) {
 			window.isTileView = false;
 			window.isBusy = true;
@@ -223,8 +190,6 @@
 			}
 
 			$window.trigger('article');
-			//todo: show the loading gif
-
 			$article.css({
 				transform:  !overridePopstateScrollmove || wasLinkClick ? 'translate3d(-1px, ' + (top - articleScrollTop) + 'px, 0)' : '',
 				transition: 'none'
@@ -243,7 +208,7 @@
 				window.requestAnimationFrame(function () {
 					if(doAjax) {
 						$article.css('height', window.pageHeight + (window.isIOS ? IOS_CHROME_HEIGHT : 0));
-						$loadgif.find('.loading-spinner').css('top', window.pageHeight/2 - SPINNER_HEIGHT);
+						$loadgif.find('.loading-spinner').css('top', window.pageHeight / 2 - SPINNER_HEIGHT);
 						$loadgif.show();
 					}
 					$article.css({
@@ -274,7 +239,6 @@
 			$window.trigger('tiles');
 			//todo: show the loading gif
 
-
 			$main.css({
 				transform: !overridePopstateScrollmove || wasLinkClick ? 'translate3d(-100%, ' + (top - tileScrollTop) + 'px, 0)' : '',
 				transition: 'none'
@@ -293,11 +257,8 @@
 				window.requestAnimationFrame(function () {
 					if (doAjax = !hasLoadedTiles) {
 						$main.css('height', window.pageHeight + (window.isIOS ? IOS_CHROME_HEIGHT : 0));
-						$loadgiftiles.find('.loading-spinner').css('top', window.pageHeight/2 - SPINNER_HEIGHT);
+						$loadgiftiles.find('.loading-spinner').css('top', window.pageHeight / 2 - SPINNER_HEIGHT);
 						$loadgiftiles.show();
-					}
-					else {
-						window.tileTagSort();
 					}
 					$main.css({
 						transform:  !overridePopstateScrollmove || wasLinkClick ? 'translate3d(-1px, ' + (top - tileScrollTop) + 'px, 0)' : '',
@@ -314,61 +275,45 @@
 				});
 			}, timeoutLen);
 
-		} else if (isTagsUrl) {
-			// Grab the desired tag.
+		} /*else if (isTagsUrl) {
 			var tag = data.hash.split(/\//).pop();
 
 			// window.tiles is defined in tiles-immediate.js
-			//[].forEach.call(window.tiles.items, function(item) {
-			//	item.element.classList.remove('visible');
-			//});
+			[].forEach.call(window.tiles.items, function(item) {
+				item.element.classList.remove('visible');
+			});
 
-			// Filter the tiles with Isotope.
-			window.tiles.arrange({filter: '.' + tag});
-			window.removeAllLayers();
-			window.revealAll();
-
+			// window.tileTaggedGroups is defined in tiles-immediate.js
+			if (typeof window.tileTaggedGroups[tag] !== 'undefined') {
+				window.tileTaggedGroups[tag].forEach(function(tile) {
+					tile.classList.add('visible');
+				});
+			}
+			window.tiles.arrange({filter: '.visible'});
 			$window.trigger('filter');
-
-			// Initialize the page so that the tiles appear.
-			window.initializePage();
-		} else {
-			// Loading the home tiles.
-			window.tiles.arrange({filter: '.home'});
-			window.removeAllLayers();
-			window.revealAll();
-			$window.trigger('filter');
-
-			// Initialize the page so that the tiles appear.
-			window.initializePage();
-		}
+		} */
 	}
-	window.revealAll = function() {
 
-		[].forEach.call(window.tiles.items, function(item) {
-			item.element.classList.add('reveal');
-		});
-	};
+	function cleanupTransition() {
+		$body.removeClass('animating');
+	}
 
 	function finishTransition() {
 		if(doAjax) {
 			window.setTimeout(function () {
+				isTransitioning = false;
 				if(cancelTransition) {
-					return;
+					return cleanupTransition();
 				}
 				window.requestAnimationFrame(loadViaAjax);
-				isTransitioning = false;
-			}, 150);
+			}, 200);
 		} else {
-			$body.removeClass('animating');
 			window.setTimeout(function () {
-				if(cancelTransition) {
-					return;
-				}
+				window.requestAnimationFrame(cleanupTransition);
 				window.isBusy = false;
 				window.curScrollTop = window.pageYOffset;
 				isTransitioning = false;
-			}, 150);
+			}, 200);
 		}
 	}
 
@@ -395,11 +340,11 @@
 				if(cancelTransition) {
 					return $body.removeClass('animating');
 				}
-				window.scroll(0, articleScrollTop);// + (window.isIOS ? 0 : (window.pageYOffset - window.curScrollTop)));
+				window.scroll(0, window.curScrollTop = articleScrollTop + (window.isIOS ? 0 : (window.pageYOffset - window.curScrollTop)));
 				window.setTimeout(function () {
-					window.requestAnimationFrame(function () {
+					//window.requestAnimationFrame(function () {
 						if(cancelTransition) {
-							return $body.removeClass('animating');
+							return cleanupTransition();
 						}
 						$article.css({
 							transition: '',
@@ -410,19 +355,19 @@
 							position: 'absolute'
 						});
 						finishTransition();
-					});
+				//	});
 				}, 0);
 			};
 		} else {
 			endTransition = function () {
 				if(cancelTransition) {
-					return $body.removeClass('animating');
+					return cleanupTransition();
 				}
-				window.scroll(0, tileScrollTop);//+ (window.isIOS ? 0 : (window.pageYOffset - window.curScrollTop)));
+				window.scroll(0, window.curScrollTop = tileScrollTop + (window.isIOS ? 0 : (window.pageYOffset - window.curScrollTop)));
 				window.setTimeout(function () {
-					window.requestAnimationFrame(function () {
+					//window.requestAnimationFrame(function () {
 						if(cancelTransition) {
-							return $body.removeClass('animating');
+							return cleanupTransition();
 						}
 						$main.css({
 							transition: '',
@@ -433,15 +378,15 @@
 							left: '100%',
 							marginLeft: ''
 						});
-						window.requestAnimationFrame(finishTransition);
-					});
+						finishTransition();
+					//});
 				}, 0);
 			};
 		}
 		window.setTimeout(function () {
 			window.requestAnimationFrame(function () {
 				if(cancelTransition) {
-					return $body.removeClass('animating');
+					return cleanupTransition();
 				}
 				$article.css({
 					transform: '',
@@ -451,14 +396,14 @@
 					transform: '',
 					transition: 'none'
 				});
+
 				if(window.isIOS) {
 					return window.setTimeout(endTransition, 0);
 				}
 				endTransition();
 			});
-		}, 0);
+		}, window.isIOS ? 50 : 0);
 	}
-	$article.on('transitionend webkitTransitionEnd', handleTransitionEnd);
 
 	//init capabiliites
 	setResponsiveState();
@@ -509,6 +454,7 @@
 	$article.append($footer.clone());
 
 	$window.on('page-change', handlePageChange);
+	$article.on('transitionend webkitTransitionEnd', handleTransitionEnd);
 
 	//global scroll handler
 	$window.on('scroll', function() {
@@ -547,11 +493,11 @@
 	if(!window.isTileView) {
 		articleScrollTop = window.curScrollTop;
 		lastArticleUrl = document.location.href;
+		$articlein.addClass('reveal');
 	} else {
 		tileScrollTop = window.curScrollTop;
 	}
 	window.requestAnimationFrame(function () {
 		$body.addClass('loaded');
 	});
-	
 }());

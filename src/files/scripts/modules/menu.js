@@ -10,8 +10,10 @@
 		$body = $('body'),
 		$wrap = $('#wrap'),
 		$menu = $('#menu'),
+		$menuGhost = $('<div data-role="menu-ghost"></div>'),
+		$logo = $('#logo'),
 		$viewport = $('#viewport'),
-		$indicator = $('<span data-role="menu-indicator" />'),
+		$indicator = $('<span data-role="menu-indicator"></span>'),
 		$active = $menu.find('.active'),
 		$mainWrap = $('.main-wrap'),
 		curScrollTop,
@@ -26,13 +28,14 @@
 		mouseMoveDelta = 0,
 		scrollDelta = 0,
 		pageHasLoaded = false,
+		wasForcedShown = false,
 		desktopMenuRafTimeout,
 		isWebkitMobileNotIOS,
 		HEADER_HEIGHT = 127,
 		MENU_WIDTH = 250,
 		SCROLL_UP_THRESHOLD = 20,
 		MOUSE_MOVE_THRESHOLD = 50,
-		DESKTOP_MENU_BREAKPOINT =  17, //parseInt($viewport.css('padding-top').replace(/px/,''), 10) - $menu.outerHeight(true),
+		DESKTOP_MENU_BREAKPOINT =  16, //parseInt($viewport.css('padding-top').replace(/px/,''), 10) - $menu.outerHeight(true),
 		MOUSE_MOVE_THROTTLE_THRESHOLD = 25;
 
 	function setIndicator(item, transition) {
@@ -105,7 +108,7 @@
 
 	function showLargeMenu() {
 		if(desktopMenuState !== 'large-menu') {
-			desktopMenuState = 'large-menu'
+			desktopMenuState = 'large-menu';
 			window.requestAnimationFrame(function () {
 				desktopMenuOffset = 0;
 				desktopMenuRafTimeout = null;
@@ -128,16 +131,18 @@
 		if(window.responsiveState === 'mobile') {
 			return;
 		}
+		top = top || window.pageYOffset;
 		doTransition = returningToTileView || !window.isTileView || top > (HEADER_HEIGHT + DESKTOP_MENU_BREAKPOINT);
 		transition = 'transform ' + getMenuTransitionTime() + 's ease';
-		top = top || window.pageYOffset;
 		desktopMenuOffset = window.isTileView ? (returningToTileView ? 0 : -Math.min(top - DESKTOP_MENU_BREAKPOINT, HEADER_HEIGHT - 1)) : -HEADER_HEIGHT + 1;
 		desktopMenuState = 'sticky';
+		wasForcedShown = false;
 		setIndicator(null, returningToTileView ? transition : (doTransition ? '' : 'none'));
 		$menu.css({
 			transform: 'translate3d(0,' + desktopMenuOffset + 'px, 0)',
 			transition: returningToTileView ? transition : (doTransition ? '' : 'none')
 		});
+
 	}
 
 	function hideLargeMenu(e, data) {
@@ -153,6 +158,7 @@
 		desktopMenuState = 'hidden';
 		curScrollTop = data ? data.top || window.pageYOffset : window.pageYOffset;
 		setIndicator(null, 'transform ' + transitionTime + 's ease');
+		wasForcedShown = false;
 	}
 
 	function closeMenu(immediate) {
@@ -180,6 +186,10 @@
 
 			$window.trigger('menu');
 			window.requestAnimationFrame(function () {
+				if(window.isTileView) {
+					return $body.addClass('menu');
+				}
+
 				$viewport.css({
 					transform:'translateZ(0)'
 				});
@@ -200,7 +210,7 @@
 	function handleScroll (e, data) {
 		var top,
 			doTransition;
-		if(window.isBusy || data.isFinalEvent || window.responsiveState === 'mobile' ) {
+		if(window.isBusy || data.isFinalEvent || !window.isTileView || window.responsiveState === 'mobile' ) {
 			return;
 		}
 
@@ -219,7 +229,7 @@
 		mouseMoveDelta = 0;
 	}
 
-	function handleMouseMove(e) {
+	/*function handleMouseMove(e) {
 		if(window.isBusy) {
 			return;
 		}
@@ -239,7 +249,7 @@
 		scrollDelta = 0;
 		curMouseTop = y;
 		lastMouseMove = now;
-	}
+	}*/
 
 	//handle the mobile menu toggle button being pressed
 	$('#menu-toggle').on('click', openMenu);
@@ -273,10 +283,20 @@
 	$window.on('deviceCapabilities', function (e, data) {
 		if(data.desktopCapable) {
 			$window.on('pageScroll', handleScroll);
-			$body.on('mousemove', handleMouseMove);
+			//$body.on('mousemove', handleMouseMove);
 			$wrap.append($indicator);
+			$wrap.append($menuGhost);
 			$menu.on('mouseenter mouseleave', 'li', function() {
 				$(this).toggleClass('hover');
+			});
+			$menuGhost.on('mouseenter', function() {
+				wasForcedShown = true;
+				showLargeMenu();
+			});
+			$menuGhost.on('mouseleave', function () {
+				if(wasForcedShown) {
+					hideLargeMenu();
+				}
 			});
 			if(!window.isTileView) {
 				window.setTimeout(function () {

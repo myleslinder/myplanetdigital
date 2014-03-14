@@ -52,16 +52,26 @@
 						<div class="grid-size"></div>
 						<%- @content %>
 						<% end %>
+						<script src="<%- @getUrl(@site.isotope[0]) %>"></script>
+						<script>
+						<% if @document.layout != 'articles': %>
+							window.initializeTiles = function(){
+						<% end %>
+						    <%- @include(@site['tiles-immediate'][0]) %>
+						<% if @document.layout != 'articles': %>
+							};
+						<% end %>
+						</script>
 					</div>
 					<div class="loading-overlay-tiles" <% if @document.layout == 'articles': %>style="display:none;"<% end %>>
 						<div class="loading-spinner"></div>
 					</div>
 					<%- @partial('footer') %>
 				</section>
-				
+
 				<article id="article" <% if @document.layout != 'articles': %>style="position: static; margin-left: 100%;"<% end %>>
 					<div id="article-inner"  <% if @document.layout != 'content' && @document.layout != 'articles': %>class="reveal"<% end %>>
-						<% if @document.layout != 'articles': %>						
+						<% if @document.layout != 'articles': %>
 						<%- @content %>
 						<% end %>
 					</div>
@@ -74,19 +84,19 @@
 				<!--[if (IE 8) | (IE 9)]>
 				<% if @document.layout is 'articles': %>
 				<section id="main">
-					<div class="main-wrap" style="position: relative;">						
+					<div class="main-wrap" style="position: relative;">
 						<div class="grid-size"></div>
-						<%- @content %>						
-					</div>					
-					<%- @partial('footer') %>
-				</section>
-				<% else: %>				
-				<article id="article">
-					<div id="article-inner" >				
-						<%- @content %>				
+						<%- @content %>
 					</div>
 					<%- @partial('footer') %>
-				</article>				
+				</section>
+				<% else: %>
+				<article id="article">
+					<div id="article-inner" >
+						<%- @content %>
+					</div>
+					<%- @partial('footer') %>
+				</article>
 				<% end %>
 				<![endif]-->
 
