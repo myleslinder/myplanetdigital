@@ -57,5 +57,7 @@
       <div class="footer-doodle careers"></div>
     </div>
 
+    <%- @getNavLinks() %>
+
   </div>
 </div>

@@ -78,7 +78,48 @@ module.exports =
 					$nin: ['content', 'content-tiles']
 				, {menuOrder: 1}
 
+		# Articles collection for the next/previous links.
+ 		articles: (database) ->
+ 			database.findAllLive
+ 				relativeOutDirPath:
+ 					$in: [
+ 						'article'
+ 					]
+ 				layout:
+ 					$nin: ['content', 'content-tile']
+ 				, {date: -1}
+
+		# Careers collection for the next/previous links.
+ 		careers: (database) ->
+ 			database.findAllLive
+ 				relativeOutDirPath:
+ 					$in: [
+ 						'careers'
+ 					]
+ 				layout:
+ 					$nin: ['content', 'content-tile']
+ 				, {date: -1}
+
+		# People collection for the next/previous links.
+ 		people: (database) ->
+ 			database.findAllLive
+ 				relativeOutDirPath:
+ 					$in: [
+ 						'people'
+ 					]
+ 				layout:
+ 					$nin: ['content', 'content-tile']
+ 				, {date: -1}
+
 	plugins:
+
+	# Navlinks plugin:
+ 		# https://github.com/lucor/docpad-plugin-navlinks
+ 		navlinks:
+ 			collections:
+ 				articles: -1
+ 				people: 1
+ 				careers: 1
 
 		# Formatting for the dates
 		moment:
