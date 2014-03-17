@@ -5,6 +5,6 @@ pagedCollection: 'homepage'
 menu: 2
 menuOrder: 2
 menuTitle: People
-menuBanner: <p>Years of standing at our desks while working have developed a profound sense of bipedal balance in each of us.</p>
+menuBanner: <p>Tired of herding wild cats, we let them organize themselves. It worked pretty well. Meet our team.</p>
 tagName: people
 ---
