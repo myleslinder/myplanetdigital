@@ -5,6 +5,6 @@ pagedCollection: 'homepage'
 menu: 6
 menuOrder: 6
 menuTitle: Technology
-menuBanner: <p>Iteratively building product functionality that satisfies user goals, prioritized by business value.</p>
+menuBanner: <p>Some thoughts on technology.</p>
 tagName: technology
 ---

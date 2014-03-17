@@ -5,6 +5,6 @@ pagedCollection: 'homepage'
 menu: 5
 menuOrder: 5
 menuTitle: Design
-menuBanner: <p>The "why" we build - in discovery, we seek to understand what problem we're solving and for whom.</p>
+menuBanner: <p>And now, our thoughts on design.</p>
 tagName: design
 ---

@@ -99,7 +99,7 @@ module.exports =
 			useRelativeBase: true
 		
 		cleanurls:
-      static: true
+			static: true
 
 	# Environmental variables
 	environments:
