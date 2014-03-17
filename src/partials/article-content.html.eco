@@ -108,8 +108,6 @@
 				<%- @getNavLinks() %>
 				<div class="footer-doodle careers"></div>
 			</div>
-
-
 		</div>
 	<% end %>
 
