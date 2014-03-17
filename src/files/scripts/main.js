@@ -318,11 +318,6 @@
 			// Grab the desired tag.
 			var tag = data.hash.split(/\//).pop();
 
-			// window.tiles is defined in tiles-immediate.js
-			//[].forEach.call(window.tiles.items, function(item) {
-			//	item.element.classList.remove('visible');
-			//});
-
 			// Filter the tiles with Isotope.
 			window.tiles.arrange({filter: '.' + tag});
 			window.removeAllLayers();
@@ -337,6 +332,7 @@
 			window.tiles.arrange({filter: '.home'});
 			window.removeAllLayers();
 			window.revealAll();
+			
 			$window.trigger('filter');
 
 			// Initialize the page so that the tiles appear.
