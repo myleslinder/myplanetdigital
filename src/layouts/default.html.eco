@@ -43,7 +43,9 @@
 			<h1 id="logo">
 				<a href="<%= @getUrl('/') %>">Myplanet</a>
 			</h1>
+			<!--[if (!IE) | (gte IE 10)]> -->
 			<div class="banner-bg"></div>
+			<!-- <![endif]-->
 			<div id="viewport">
 
 				<!--[if (!IE) | (gte IE 10)]> -->
@@ -85,6 +87,15 @@
 				<!--[if (IE 8) | (IE 9)]>
 				<% if @document.layout is 'articles': %>
 				<section id="main">
+					
+					<% if @document.meta.menuBanner?: %>
+						<div class="banner">							
+							<div class="banner-text">							
+						  	<%- @document.meta.menuBanner %>
+							</div>
+						</div>						
+					<% end %>	
+
 					<div class="main-wrap" style="position: relative;">						
 						<div class="grid-size"></div>
 						<%- @content %>						
