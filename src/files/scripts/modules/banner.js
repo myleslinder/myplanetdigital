@@ -3,16 +3,33 @@
     return;
   }
 
-  var $window = $(window);
   var $menu = $('#menu');
-  var $banner = $('.banner');
-  var $bannerText = $('.banner > .banner-text');
-  var $bannerBg = $('.banner-bg');
+  var banner = document.getElementById('banner');
+  var $bannerText = $('#banner > .banner-text');
+  var $bannerBg = $('#banner-bg');
+  var $bannerDoodle = $('#banner-doodle');
   var noop = function(){};
 
-  function placeBannerBackground(newHeight) {    
+  var pathToBannerSettnigsMap = {};
+  $('#menu').find('a').each(function(){
+    var self = $(this);
+    pathToBannerSettnigsMap[self.attr('href')] = {
+      'bannerText' : self.data('banner'),
+      'bannerColour' : self.data('menu-colour'),
+      'bannerDoodle' : '/images/' + self.data('menu-doodle'),
+    }
+    // preload all the doodles
+    ;(new Image()).src = pathToBannerSettnigsMap[self.attr('href')]['bannerDoodle'];
+  })
+
+  function placeBannerBackground(newHeight, newColor) {
+    if (typeof newColor === 'undefined') {
+      newColor = MPD_ORANGE;
+    }
+
     $bannerBg.css({
-      'transform' : 'translate3d(0, ' + newHeight + 'px, 0)'
+      'transform' : 'translate3d(0, ' + newHeight + 'px, 0)',
+      'background-color' : newColor
     });    
   }
 
@@ -36,19 +53,49 @@
     $bannerText.css({'opacity': 0.01});
   }
 
+  function bannerDoodleTransitionHandler() {
+    arguments.callee.cb()
+    arguments.callee.cb = noop;
+  }
+  bannerTextTransitionHandler.cb = noop;
+  $bannerDoodle.on('transitionend webkitTransitionEnd', bannerDoodleTransitionHandler);
+  
+  function bannerChangeDoodle(newDoodle) {
+    bannerDoodleTransitionHandler.cb = function() {
+      $bannerDoodle.css({
+        'background-image' : 'url("' + newDoodle + '")',
+        //'opacity' : 0.99
+        'transform' : 'translate3d(0, 0, 0)',
+      });
+    }
+
+    $bannerDoodle.css({'transform' : 'translate3d(0, -450px, 0)'});
+    // $bannerDoodle.css({'opacity' : 0.01});
+  }
+
   function handleBannerTextUpdate() {
     var pathTo = window.location.pathname;
-    var bannerText = $('#menu').find('a[href="'+pathTo+'"]').data('banner');
+    var bannerText = pathToBannerSettnigsMap[pathTo]['bannerText'];
+    var newColour = pathToBannerSettnigsMap[pathTo]['bannerColour'];
+    var newDoodle = pathToBannerSettnigsMap[pathTo]['bannerDoodle']
     
+    bannerChangeDoodle(newDoodle);
+
     bannerTextFadeOut(function() {      
       $bannerText.html(bannerText);
-      bannerTextFadeIn();      
-      placeBannerBackground($banner.outerHeight());
+      bannerTextFadeIn();
+      placeBannerBackground(banner.offsetHeight, newColour);
     });
   }
 
-  window.requestAnimationFrame(function(){placeBannerBackground($banner.outerHeight())});
+  var initialColour = pathToBannerSettnigsMap[window.location.pathname]['bannerColour'];
+  var initialDoodle = pathToBannerSettnigsMap[window.location.pathname]['bannerDoodle'];
 
-  $window.on('filter', handleBannerTextUpdate);
+  window.requestAnimationFrame(function(){
+    placeBannerBackground(banner.offsetHeight, initialColour);
+    bannerChangeDoodle(initialDoodle);
+  });
+
+  $(window).on('filter', handleBannerTextUpdate);
 
 } ());

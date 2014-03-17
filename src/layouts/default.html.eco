@@ -44,7 +44,9 @@
 				<a href="<%= @getUrl('/') %>">Myplanet</a>
 			</h1>
 			<!--[if (!IE) | (gte IE 10)]> -->
-			<div class="banner-bg"></div>
+			<div id="banner-bg">
+				<div id="banner-doodle"></div>
+			</div>
 			<!-- <![endif]-->
 			<div id="viewport">
 
@@ -52,7 +54,7 @@
 				<section id="main" <% if @document.layout != 'articles': %>style="transition: none; -webkit-transition: none; position: absolute;"<% end %>>
 				
 					<% if @document.meta.menuBanner?: %>
-						<div class="banner">							
+						<div id="banner">							
 							<div class="banner-text">							
 						  	<%- @document.meta.menuBanner %>
 							</div>
@@ -87,9 +89,15 @@
 				<!--[if (IE 8) | (IE 9)]>
 				<% if @document.layout is 'articles': %>
 				<section id="main">
-					
+
 					<% if @document.meta.menuBanner?: %>
-						<div class="banner">							
+						<div id="banner"
+							<% if @document.meta.menuColour?: %>
+								style="background-color: <%- @document.meta.menuColour %> "
+							<% else: %>
+								style="background-color: #f16838 "
+							<% end %>
+						>
 							<div class="banner-text">							
 						  	<%- @document.meta.menuBanner %>
 							</div>
