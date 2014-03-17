@@ -43,12 +43,9 @@
     bannerTextFadeOut(function() {      
       $bannerText.html(bannerText);
       bannerTextFadeIn();      
-      placeBannerBackground($banner.outerHeight(), function() {
-
-      });
+      placeBannerBackground($banner.outerHeight());
     });
   }
-
 
   window.requestAnimationFrame(function(){placeBannerBackground($banner.outerHeight())});
 
