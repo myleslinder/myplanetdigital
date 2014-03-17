@@ -105,10 +105,11 @@
 
 			<% # Add the article footer %>
 			<div class="article-footer">
+				<%- @getNavLinks() %>
 				<div class="footer-doodle careers"></div>
 			</div>
 
-			<%- @getNavLinks() %>
+
 		</div>
 	<% end %>
 

@@ -1,0 +1,198 @@
+[32mdebug:[39m Emitting the event: consoleSetup
+    [2m→ [2014-03-17 14:09:49.553] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:1184] [DocPad.emitSerial][22m
+[32mdebug:[39m Emitted the event: consoleSetup
+    [2m→ [2014-03-17 14:09:49.560] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:1189] [TaskGroup.<anonymous>][22m
+[32mdebug:[39m Loading user's configuration: /home/rob/.docpad.cson
+    [2m→ [2014-03-17 14:09:49.565] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:1441] [Task.<anonymous>][22m
+[32mdebug:[39m Loading configuration path: /home/rob/.docpad.cson
+    [2m→ [2014-03-17 14:09:49.567] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:1592] [load][22m
+[32mdebug:[39m Loading user's configuration: /home/rob/.docpad.cson
+    [2m→ [2014-03-17 14:09:49.589] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:1449] [unknown][22m
+[32mdebug:[39m Loading website package.json configuration: /home/rob/Documents/swat/package.json
+    [2m→ [2014-03-17 14:09:49.591] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:1485] [Task.<anonymous>][22m
+[32mdebug:[39m Loading configuration path: /home/rob/Documents/swat/package.json
+    [2m→ [2014-03-17 14:09:49.592] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:1592] [load][22m
+[32mdebug:[39m Loaded website package.json configuration: /home/rob/Documents/swat/package.json
+    [2m→ [2014-03-17 14:09:49.595] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:1494] [unknown][22m
+[32mdebug:[39m Loading .env file configuration: /home/rob/Documents/swat/.env
+    [2m→ [2014-03-17 14:09:49.596] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:1502] [Task.<anonymous>][22m
+[32mdebug:[39m Loading website configuration
+    [2m→ [2014-03-17 14:09:49.598] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:1524] [Task.<anonymous>][22m
+[32mdebug:[39m Loading configuration path: /home/rob/Documents/swat/docpad.coffee
+    [2m→ [2014-03-17 14:09:49.600] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:1592] [load][22m
+[32mdebug:[39m Loaded website configuration
+    [2m→ [2014-03-17 14:09:49.630] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:1539] [unknown][22m
+[32mdebug:[39m Plugins loading for: /home/rob/Documents/swat/node_modules
+    [2m→ [2014-03-17 14:09:49.634] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:2574] [DocPad.loadPluginsIn][22m
+[32mdebug:[39m Loading plugin: .bin
+    [2m→ [2014-03-17 14:09:49.638] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:2530] [DocPad.loadPlugin][22m
+[32mdebug:[39m Loading plugin: docpad
+    [2m→ [2014-03-17 14:09:49.639] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:2530] [DocPad.loadPlugin][22m
+[32mdebug:[39m Loading plugin: associatedfiles
+    [2m→ [2014-03-17 14:09:49.641] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:2530] [DocPad.loadPlugin][22m
+[32mdebug:[39m Loading plugin: cleanurls
+    [2m→ [2014-03-17 14:09:49.643] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:2530] [DocPad.loadPlugin][22m
+[32mdebug:[39m Loading plugin: eco
+    [2m→ [2014-03-17 14:09:49.644] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:2530] [DocPad.loadPlugin][22m
+[32mdebug:[39m Loading plugin: geturl
+    [2m→ [2014-03-17 14:09:49.646] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:2530] [DocPad.loadPlugin][22m
+[32mdebug:[39m Loading plugin: ghpages
+    [2m→ [2014-03-17 14:09:49.648] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:2530] [DocPad.loadPlugin][22m
+[32mdebug:[39m Skipped the unsupported plugin: docpad due to type
+    [2m→ [2014-03-17 14:09:49.650] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:2544] [unknown][22m
+[32mdebug:[39m Loading plugin: less
+    [2m→ [2014-03-17 14:09:49.651] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:2530] [DocPad.loadPlugin][22m
+[32mdebug:[39m Loaded plugin: associatedfiles
+    [2m→ [2014-03-17 14:09:49.657] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:2560] [unknown][22m
+[32mdebug:[39m Loading plugin: marked
+    [2m→ [2014-03-17 14:09:49.658] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:2530] [DocPad.loadPlugin][22m
+[32mdebug:[39m Loaded plugin: cleanurls
+    [2m→ [2014-03-17 14:09:49.661] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:2560] [unknown][22m
+[32mdebug:[39m Loading plugin: menu
+    [2m→ [2014-03-17 14:09:49.662] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:2530] [DocPad.loadPlugin][22m
+[32mdebug:[39m Loaded plugin: eco
+    [2m→ [2014-03-17 14:09:49.664] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:2560] [unknown][22m
+[32mdebug:[39m Loading plugin: moment
+    [2m→ [2014-03-17 14:09:49.667] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:2530] [DocPad.loadPlugin][22m
+[32mdebug:[39m Loaded plugin: geturl
+    [2m→ [2014-03-17 14:09:49.670] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:2560] [unknown][22m
+[32mdebug:[39m Loading plugin: multiplelayouts
+    [2m→ [2014-03-17 14:09:49.672] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:2530] [DocPad.loadPlugin][22m
+[32mdebug:[39m Loaded plugin: ghpages
+    [2m→ [2014-03-17 14:09:49.692] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:2560] [unknown][22m
+[32mdebug:[39m Loading plugin: navlinks
+    [2m→ [2014-03-17 14:09:49.693] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:2530] [DocPad.loadPlugin][22m
+[32mdebug:[39m Loaded plugin: less
+    [2m→ [2014-03-17 14:09:49.696] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:2560] [unknown][22m
+[32mdebug:[39m Loading plugin: paged
+    [2m→ [2014-03-17 14:09:49.697] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:2530] [DocPad.loadPlugin][22m
+[32mdebug:[39m Loaded plugin: marked
+    [2m→ [2014-03-17 14:09:49.702] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:2560] [unknown][22m
+[32mdebug:[39m Loaded plugin: menu
+    [2m→ [2014-03-17 14:09:49.707] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:2560] [unknown][22m
+[32mdebug:[39m Loading plugin: partials
+    [2m→ [2014-03-17 14:09:49.708] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:2530] [DocPad.loadPlugin][22m
+[32mdebug:[39m Loading plugin: services
+    [2m→ [2014-03-17 14:09:49.710] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:2530] [DocPad.loadPlugin][22m
+[32mdebug:[39m Loaded plugin: moment
+    [2m→ [2014-03-17 14:09:49.715] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:2560] [unknown][22m
+[32mdebug:[39m Loading plugin: grunt
+    [2m→ [2014-03-17 14:09:49.716] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:2530] [DocPad.loadPlugin][22m
+[32mdebug:[39m Loaded plugin: multiplelayouts
+    [2m→ [2014-03-17 14:09:49.722] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:2560] [unknown][22m
+[32mdebug:[39m Loading plugin: grunt-contrib-clean
+    [2m→ [2014-03-17 14:09:49.723] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:2530] [DocPad.loadPlugin][22m
+[32mdebug:[39m Loaded plugin: navlinks
+    [2m→ [2014-03-17 14:09:49.727] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:2560] [unknown][22m
+[32mdebug:[39m Loading plugin: grunt-contrib-copy
+    [2m→ [2014-03-17 14:09:49.728] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:2530] [DocPad.loadPlugin][22m
+[32mdebug:[39m Loaded plugin: paged
+    [2m→ [2014-03-17 14:09:49.735] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:2560] [unknown][22m
+[32mdebug:[39m Loading plugin: grunt-git
+    [2m→ [2014-03-17 14:09:49.736] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:2530] [DocPad.loadPlugin][22m
+[32mdebug:[39m Loaded plugin: partials
+    [2m→ [2014-03-17 14:09:49.745] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:2560] [unknown][22m
+[32mdebug:[39m Loaded plugin: services
+    [2m→ [2014-03-17 14:09:49.748] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:2560] [unknown][22m
+[32mdebug:[39m Skipped the unsupported plugin: grunt due to type
+    [2m→ [2014-03-17 14:09:49.750] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:2544] [unknown][22m
+[32mdebug:[39m Skipped the unsupported plugin: grunt-contrib-clean due to type
+    [2m→ [2014-03-17 14:09:49.752] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:2544] [unknown][22m
+[32mdebug:[39m Skipped the unsupported plugin: grunt-git due to type
+    [2m→ [2014-03-17 14:09:49.753] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:2544] [unknown][22m
+[32mdebug:[39m Plugins loaded for: /home/rob/Documents/swat/node_modules
+    [2m→ [2014-03-17 14:09:49.754] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:2597] [Object.scandir.next][22m
+[33mwarning:[39m The custom collection menu is not a valid collection instance
+    [2m→ [2014-03-17 14:09:49.761] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:1739] [unknown][22m
+[32mdebug:[39m Emitting the event: extendCollections
+    [2m→ [2014-03-17 14:09:49.763] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:1184] [DocPad.emitSerial][22m
+[32mdebug:[39m Emitted the event: extendCollections
+    [2m→ [2014-03-17 14:09:49.766] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:1189] [TaskGroup.<anonymous>][22m
+[32mdebug:[39m Emitting the event: extendTemplateData
+    [2m→ [2014-03-17 14:09:49.768] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:1184] [DocPad.emitSerial][22m
+[32mdebug:[39m Emitted the event: extendTemplateData
+    [2m→ [2014-03-17 14:09:49.771] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:1189] [TaskGroup.<anonymous>][22m
+[32mdebug:[39m Emitting the event: docpadLoaded
+    [2m→ [2014-03-17 14:09:49.773] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:1184] [DocPad.emitSerial][22m
+[32mdebug:[39m Emitted the event: docpadLoaded
+    [2m→ [2014-03-17 14:09:49.774] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:1189] [TaskGroup.<anonymous>][22m
+[32minfo:[39m Welcome to DocPad v6.64.0 (local installation: /home/rob/Documents/swat/node_modules/docpad)
+    [2m→ [2014-03-17 14:09:49.777] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:1262] [DocPad.ready][22m
+[32minfo:[39m Contribute: http://docpad.org/docs/contribute
+    [2m→ [2014-03-17 14:09:49.778] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:1263] [DocPad.ready][22m
+[32minfo:[39m Plugins: associatedfiles v2.2.0, cleanurls v2.7.0, eco v2.0.3, geturl v2.1.1, ghpages v2.4.3, less v2.4.1, marked v2.2.0, menu v2.1.0, moment v2.0.2, multiplelayouts v2.0.3, navlinks v2.0.2, paged v2.2.4, partials v2.8.1, services v2.5.0
+    [2m→ [2014-03-17 14:09:49.780] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:1264] [DocPad.ready][22m
+[32minfo:[39m Environment: development
+    [2m→ [2014-03-17 14:09:49.781] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:1265] [DocPad.ready][22m
+[32mdebug:[39m Emitting the event: welcome
+    [2m→ [2014-03-17 14:09:49.783] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:1184] [DocPad.emitSerial][22m
+[32mdebug:[39m Emitted the event: welcome
+    [2m→ [2014-03-17 14:09:49.788] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:1189] [TaskGroup.<anonymous>][22m
+[32mdebug:[39m Emitting the event: docpadReady
+    [2m→ [2014-03-17 14:09:49.793] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:1184] [DocPad.emitSerial][22m
+[32mdebug:[39m Emitted the event: docpadReady
+    [2m→ [2014-03-17 14:09:49.797] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:1189] [TaskGroup.<anonymous>][22m
+[32mdebug:[39m Emitting the event: serverBefore
+    [2m→ [2014-03-17 14:09:49.841] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:1184] [DocPad.emitSerial][22m
+[32mdebug:[39m Emitted the event: serverBefore
+    [2m→ [2014-03-17 14:09:49.843] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:1189] [TaskGroup.<anonymous>][22m
+[32mdebug:[39m Emitting the event: serverExtend
+    [2m→ [2014-03-17 14:09:49.853] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:1184] [DocPad.emitSerial][22m
+[32mdebug:[39m Emitted the event: serverExtend
+    [2m→ [2014-03-17 14:09:49.855] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:1189] [TaskGroup.<anonymous>][22m
+[32mdebug:[39m Starting server on hostname null port 9998 directory /home/rob/Documents/swat/out
+    [2m→ [2014-03-17 14:09:49.857] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:4384] [Task.<anonymous>][22m
+[32minfo:[39m DocPad listening to http://0.0.0.0:9998/ on directory /home/rob/Documents/swat/out
+    [2m→ [2014-03-17 14:09:49.860] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:4391] [Server.<anonymous>][22m
+[32mdebug:[39m Emitting the event: serverAfter
+    [2m→ [2014-03-17 14:09:49.862] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:1184] [DocPad.emitSerial][22m
+[32mdebug:[39m Emitted the event: serverAfter
+    [2m→ [2014-03-17 14:09:49.864] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:1189] [TaskGroup.<anonymous>][22m
+[32minfo:[39m Generating...
+    [2m→ [2014-03-17 14:09:49.867] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:3079] [DocPad.generate][22m
+[32mdebug:[39m Emitting the event: notify
+    [2m→ [2014-03-17 14:09:49.869] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:1184] [DocPad.emitSerial][22m
+[32mdebug:[39m Emitted the event: notify
+    [2m→ [2014-03-17 14:09:49.873] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:1189] [TaskGroup.<anonymous>][22m
+[32mdebug:[39m Generate options: { cache: false,
+  initial: true,
+  reset: true,
+  populate: true,
+  reload: true,
+  partial: false,
+  renderPasses: 1 }
+    [2m→ [2014-03-17 14:09:49.877] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:3142] [Task.<anonymous>][22m
+[32mdebug:[39m Emitting the event: populateCollectionsBefore
+    [2m→ [2014-03-17 14:09:49.880] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:1184] [DocPad.emitSerial][22m
+[32mdebug:[39m Emitted the event: populateCollectionsBefore
+    [2m→ [2014-03-17 14:09:49.882] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:1189] [TaskGroup.<anonymous>][22m
+[32mdebug:[39m Parsing directory: /home/rob/Documents/swat/src/documents
+    [2m→ [2014-03-17 14:09:49.886] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:2406] [unknown][22m
+[32mdebug:[39m Detect the file: document: /home/rob/Documents/swat/src/documents/404.html.eco
+    [2m→ [2014-03-17 14:09:49.893] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:2294] [DocumentModel.<anonymous>][22m
+[32mdebug:[39m Detect the file: document: /home/rob/Documents/swat/src/documents/index.html.md
+    [2m→ [2014-03-17 14:09:49.901] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:2294] [DocumentModel.<anonymous>][22m
+[32mdebug:[39m Stat the file and cache the result: document: /home/rob/Documents/swat/src/documents/404.html.eco
+    [2m→ [2014-03-17 14:09:49.913] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:2294] [DocumentModel.<anonymous>][22m
+[32mdebug:[39m Detect the file: document: /home/rob/Documents/swat/src/documents/article/a-brief-history-of-javascript.html.md
+    [2m→ [2014-03-17 14:09:49.924] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:2294] [DocumentModel.<anonymous>][22m
+[32mdebug:[39m Detect the file: document: /home/rob/Documents/swat/src/documents/article/beyond-responsive.html.md
+    [2m→ [2014-03-17 14:09:49.927] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:2294] [DocumentModel.<anonymous>][22m
+[32mdebug:[39m Detect the file: document: /home/rob/Documents/swat/src/documents/article/boundary-objects-design-research-0.html.md
+    [2m→ [2014-03-17 14:09:49.930] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:2294] [DocumentModel.<anonymous>][22m
+[32mdebug:[39m Detect the file: document: /home/rob/Documents/swat/src/documents/article/building-sensitivity-user-needs.html.md
+    [2m→ [2014-03-17 14:09:49.933] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:2294] [DocumentModel.<anonymous>][22m
+[32mdebug:[39m Detect the file: document: /home/rob/Documents/swat/src/documents/article/building-teams-avoiding-dysfunctions.html.md
+    [2m→ [2014-03-17 14:09:49.935] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:2294] [DocumentModel.<anonymous>][22m
+[32mdebug:[39m Stat the file and cache the result: document: /home/rob/Documents/swat/src/documents/index.html.md
+    [2m→ [2014-03-17 14:09:49.938] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:2294] [DocumentModel.<anonymous>][22m
+[32mdebug:[39m Detect the file: document: /home/rob/Documents/swat/src/documents/careers/account-lead.html.md
+    [2m→ [2014-03-17 14:09:49.940] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:2294] [DocumentModel.<anonymous>][22m
+[32mdebug:[39m Detect the file: document: /home/rob/Documents/swat/src/documents/careers/business-development-rep.html.md
+    [2m→ [2014-03-17 14:09:49.943] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:2294] [DocumentModel.<anonymous>][22m
+[32mdebug:[39m Detect the file: document: /home/rob/Documents/swat/src/documents/people/aaron-legaspi.html.md
+    [2m→ [2014-03-17 14:09:49.948] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:2294] [DocumentModel.<anonymous>][22m
+[32mdebug:[39m Detect the file: document: /home/rob/Documents/swat/src/documents/people/akshay-barve.html.md
+    [2m→ [2014-03-17 14:09:49.951] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:2294] [DocumentModel.<anonymous>][22m
+[32mdebug:[39m Detect the file: document: /home/rob/Documents/swat/src/documents/people/aleksandr-kyrychok.html.md
+    [2m→ [2014-03-17 14:09:49.954] [/home/rob/Documents/swat/node_modules/docpad/out/lib/docpad.js:2294] [DocumentModel.<anonymous>][22m
