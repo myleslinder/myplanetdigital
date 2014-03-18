@@ -29,13 +29,14 @@
 
     $bannerBg.css({
       'transform' : 'translate3d(0, ' + newHeight + 'px, 0)',
-      'background-color' : newColor
-    });    
+      'background-color' : newColor,
+      'opacity' : 0.99
+    });
   }
 
   // Adjustable transitionend handler.
-  // This will always be assigned as handler for 
-  // transitionend but the actual functionality can be changed by 
+  // This will always be assigned as handler for
+  // transitionend but the actual functionality can be changed by
   // assigning function to bannerTextTransitionHandler.cb
   function bannerTextTransitionHandler() {
     arguments.callee.cb()
@@ -54,12 +55,12 @@
   }
 
   function bannerDoodleTransitionHandler() {
-    arguments.callee.cb()
+    arguments.callee.cb();
     arguments.callee.cb = noop;
   }
   bannerTextTransitionHandler.cb = noop;
   $bannerDoodle.on('transitionend webkitTransitionEnd', bannerDoodleTransitionHandler);
-  
+
   function bannerChangeDoodle(newDoodle) {
     bannerDoodleTransitionHandler.cb = function() {
       $bannerDoodle.css({
@@ -67,7 +68,7 @@
         //'opacity' : 0.99
         'transform' : 'translate3d(0, 0, 0)',
       });
-    }
+    };
 
     $bannerDoodle.css({'transform' : 'translate3d(0, -450px, 0)'});
     // $bannerDoodle.css({'opacity' : 0.01});
@@ -77,15 +78,19 @@
     var pathTo = window.location.pathname;
     var bannerText = pathToBannerSettnigsMap[pathTo]['bannerText'];
     var newColour = pathToBannerSettnigsMap[pathTo]['bannerColour'];
-    var newDoodle = pathToBannerSettnigsMap[pathTo]['bannerDoodle']
-    
+    var newDoodle = pathToBannerSettnigsMap[pathTo]['bannerDoodle'];
+
     bannerChangeDoodle(newDoodle);
 
-    bannerTextFadeOut(function() {      
+    bannerTextFadeOut(function() {
       $bannerText.html(bannerText);
       bannerTextFadeIn();
       placeBannerBackground(banner.offsetHeight, newColour);
     });
+  }
+
+  function bannerTransparent() {
+    //$bannerBg.css({'opacity': 0.01});
   }
 
   var initialColour = pathToBannerSettnigsMap[window.location.pathname]['bannerColour'];
@@ -97,5 +102,6 @@
   });
 
   $(window).on('filter', handleBannerTextUpdate);
-
+  $(window).on('article', bannerTransparent);
+  $(window).on('tiles', handleBannerTextUpdate);
 } ());

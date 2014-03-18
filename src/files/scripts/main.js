@@ -237,8 +237,9 @@
             if(wasLinkClick || doArticleAjax) {
                 articleScrollTop = 0;
             }
-
+            $('#banner-bg').css({'opacity': 0.01});
             $window.trigger('article');
+
             $article.css({
                 transform:  !overridePopstateScrollmove || wasLinkClick ? 'translate3d(-1px, ' + (top - articleScrollTop) + 'px, 0)' : '',
                 transition: 'none'
