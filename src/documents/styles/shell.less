@@ -219,6 +219,11 @@ a[href^=tel]{
 				.transition-transform(@transition-time);
 			}
 		}
+		&.desktop-capable {
+			#logo:hover {
+				background-position: 0px 0px;
+			}
+		}
 	}
 	#viewport {
 		#main, #article {
@@ -236,9 +241,6 @@ a[href^=tel]{
 		width: 90px;
 		background-size: 528px auto;
 		background-position: 0 -94px;
-		&:hover {
-			background-position: 0px 0px;
-		}
 	}
 	#logo, #menu, #menu-toggle {
 		.transition-transform();
@@ -291,8 +293,12 @@ a[href^=tel]{
 		width: 67px;
 		background-size: 390px auto;
 		background-position: 0 -69px;
-		&:hover {
-			background-position: 0 0;
+	}
+	body.desktop-capable {
+		#logo {
+			&:hover {
+				background-position: 0 0;
+			}
 		}
 	}
 	#wrap:before {

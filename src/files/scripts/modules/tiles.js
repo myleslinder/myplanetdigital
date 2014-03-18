@@ -212,7 +212,6 @@
 	});
 
 	$window.on('same-page', function() {
-		debugger;
 		if(window.responsiveState !== 'mobile' || !window.mobileMenuIsOpen) {
 			$window.trigger('scroll-top');
 		}

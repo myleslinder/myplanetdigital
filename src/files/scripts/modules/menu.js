@@ -53,7 +53,7 @@
 			if(window.responsiveState !== 'mobile') {
 				setIndicator($item[0]);
 			} else if(window.mobileMenuIsOpen) {
-				window.setTimeout(closeMenu, 50);
+				window.setTimeout(closeMenu, 100);
 			}
 			$active.removeClass('active');
 			$active = $item.addClass('active');
@@ -178,7 +178,7 @@
 			if(dontPushState !== true) {
 				//window.location.hash = 'menu-open';
 			}
-
+			window.curScrollTop = window.pageYOffset;
 			$window.trigger('menu');
 			window.requestAnimationFrame(function () {
 				if(window.isTileView) {
@@ -263,7 +263,6 @@
 			$window.on('pageScroll', handleScroll);
 			//$body.on('mousemove', handleMouseMove);
 			$wrap.append($indicator);
-			$wrap.append($menuGhost);
 			$menu.on('mouseenter mouseleave', 'li', function() {
 				$(this).toggleClass('hover');
 			});
@@ -277,6 +276,8 @@
 				}
 				if(!enteredMenu && desktopMenuState !== 'large-menu') {//} && (!window.isBusy || window.isTileView)) {
 					showLargeMenu();
+				} else if(enteredMenu) {
+					enteredMenu = false;
 				}
 			});
 			$menuGhost.on('mouseleave', function(e) {
@@ -306,6 +307,13 @@
 		}
 	});
 
+	$wrap.append($menuGhost);
+	$menuGhost.on('click', function() {
+		if(window.responsiveState === 'mobile') {
+			$window.trigger('scroll-top');
+		}
+	});
+
 	//handle menu view changes when the users resizes the window
 	$window.on('responsiveStateChange', function (e, data) {
 		window.requestAnimationFrame(function() {
@@ -327,11 +335,12 @@
 	//	if(mobileMenuIsOpen) {
 	//		closeMenu();
 	//	}
+		enteredMenu = false;
 		mouseMoveDelta = 0;
 		scrollDelta = 0;
 	});
 
-	$window.on('same-page same-filter', closeMenu);
+	$window.on('same-page same-filter elevator-done', closeMenu);
 	$window.on('filter',function (e, tag) {
 		activateLink($menu.find('li.' + tag));
 	});

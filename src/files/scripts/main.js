@@ -41,7 +41,6 @@
         EXTERNAL_URL_REGEX = /^([^:\/?#]+:)?(?:\/\/([^\/?#]*))?([^?#]+)?(\?[^#]*)?(#.*)?/,
         ARTICLE_REGEX = /^((?!tags).)*\/(article|people|careers)\//,
         TAG_REGEX = /\/tags\/(.*)?/,
-        HOME_REGEX = /^\/$/,
         MAPS_REGEX = /http:\/\/maps\.google\.com/,
         COVER_SRC_REGEX = /url\(['"]?(.*\.\w+)['"]?\)/,
         IS_FIREFOX = navigator.userAgent.toLowerCase().indexOf('firefox') > -1,
@@ -80,7 +79,7 @@
     function startScrolling() {
         return finishStartScrolling();
         //window.setTimeout(function () {
-            window.requestAnimationFrame(finishStartScrolling);
+           // window.requestAnimationFrame(finishStartScrolling);
     //  }, 0);
     }
     function finishEndScrolling() {
@@ -179,9 +178,9 @@
         isLoading = false;
         window.isBusy = false;
         if(window.isTileView) {
-			window.currentTag = '';
+            window.currentTag = '';
         } else {
-			lastArticleUrl = '';
+            lastArticleUrl = '';
         }
 
     }
@@ -189,7 +188,6 @@
     function handlePageChange(e, data) {
         var isArticleUrl = data.url.match(ARTICLE_REGEX),
             isTagUrl = !isArticleUrl && data.url.match(TAG_REGEX),
-			isHomeUrl = data.url.match(HOME_REGEX),
             overridePopstateScrollmove,
             timeoutLen = IS_FIREFOX ? 50 : 0,
             noTransition = false,
@@ -204,15 +202,6 @@
             abortAjax();
         }
 
-        filterTag = null;
-
-		if (isTagUrl) {
-			filterTag = isTagUrl[1];
-		}
-		if (pageUrl === '/') {
-			filterTag = 'home';
-		}
-
         cancelTransition = isTransitionEnding;
         isTransitionEnding = false;
         wasLinkClick = new Date() - linkClickedTime < 300;
@@ -222,6 +211,15 @@
 
         if(!wasLinkClick) {
             pageUrl = '/' + document.location.href.replace(RELATIVE_URL_REGEX, '');
+        }
+
+        filterTag = null;
+
+        if (isTagUrl) {
+            filterTag = isTagUrl[1];
+        }
+        if (pageUrl === '/') {
+            filterTag = 'home';
         }
 
         if(isArticleUrl && window.isTileView) {
@@ -277,23 +275,23 @@
             }, timeoutLen);
 
         }  else if(isArticleUrl && !window.isTileView) { // article view to article view transition
-			window.isBusy = true;
-			doArticleAjax = true;
-			articleScrollTop = 0;
-			lastArticleUrl = data.url;
+            window.isBusy = true;
+            doArticleAjax = true;
+            articleScrollTop = 0;
+            lastArticleUrl = data.url;
 
-			window.setTimeout(function () {
-				window.requestAnimationFrame(function () {
-					if(doArticleAjax) {
-						$article.css('height', window.pageHeight + (window.isIOS ? IOS_CHROME_HEIGHT : 0));
-						$loadgif.find('.loading-spinner').css('top', window.pageHeight / 2 - SPINNER_HEIGHT);
-						$loadgif.show();
-						window.requestAnimationFrame(loadViaAjax);
-					}
-				});
-			}, timeoutLen);
+            window.setTimeout(function () {
+                window.requestAnimationFrame(function () {
+                    if(doArticleAjax) {
+                        $article.css('height', window.pageHeight + (window.isIOS ? IOS_CHROME_HEIGHT : 0));
+                        $loadgif.find('.loading-spinner').css('top', window.pageHeight / 2 - SPINNER_HEIGHT);
+                        $loadgif.show();
+                        window.requestAnimationFrame(loadViaAjax);
+                    }
+                });
+            }, timeoutLen);
 
-		} else if(!isArticleUrl && !window.isTileView) {
+        } else if(!isArticleUrl && !window.isTileView) {
             window.isTileView = true;
             window.isBusy = true;
             if(!wasCancelled) {
@@ -342,28 +340,29 @@
                     }]);
                     $body.removeClass('article');
                     if(noTransition){
-                    	window.setTimeout(window.requestAnimationFrame.bind(null, function() {
-                    		handleTransitionEnd();
-                    	}), 0);
-                	}
+                        window.setTimeout(window.requestAnimationFrame.bind(null, function() {
+                            handleTransitionEnd();
+                        }), 0);
+                    }
                 });
             }, timeoutLen);
 
-			if(window.responsiveState === 'mobile' && window.mobileMenuIsOpen) {
-				noTransition = true;
-			}
-			if (filterTag && hasLoadedTiles && window.currentTag !== filterTag) {
-				window.tiles.arrange({filter: '.' + filterTag});
-				$window.trigger('filter', [filterTag, !noTransition]);
-				window.currentTag = filterTag;
-			} else {
-				$window.trigger('same-filter');
-			}
-		} else if(filterTag && window.isTileView && window.currentTag !== filterTag) {
-			window.tiles.arrange({filter: '.' + filterTag});
-			$window.trigger('filter', [filterTag]);
-			window.currentTag = filterTag;
-		}
+            if(window.responsiveState === 'mobile' && window.mobileMenuIsOpen) {
+                noTransition = true;
+            }
+
+            if (filterTag && hasLoadedTiles && window.currentTag !== filterTag) {
+                window.tiles.arrange({filter: '.' + filterTag});
+                $window.trigger('filter', [filterTag, !noTransition]);
+                window.currentTag = filterTag;
+            } else if(hasLoadedTiles) {
+                $window.trigger('same-filter');
+            }
+        } else if(filterTag && window.isTileView && window.currentTag !== filterTag) {
+            window.tiles.arrange({filter: '.' + filterTag});
+            $window.trigger('filter', [filterTag]);
+            window.currentTag = filterTag;
+        }
     }
 
     function cleanupTransition() {
@@ -372,12 +371,12 @@
         if(cancelTransition && window.isTileView && doArticleAjax) {
             lastArticleUrl = '';
         } else if(cancelTransition && !window.isTileView && doTileAjax) {
-			window.currentTag = null;
+            window.currentTag = null;
         }
         cancelTransition = false;
     }
 
-	function finishTransition() {
+    function finishTransition() {
         if((window.isTileView && doTileAjax) || (!window.isTileView && doArticleAjax)) {
             window.setTimeout(function () {
                 isTransitionEnding = false;
@@ -485,7 +484,7 @@
             endTransition();
         };
         if(window.isIOS){
-            return window.requestAnimationFrame(startTransitionEnd, 25);
+            return window.setTimeout(window.requestAnimationFrame.bind(null, startTransitionEnd), 0);
         }
         startTransitionEnd();
     }
@@ -526,16 +525,15 @@
     //handle push/pop state
     $body.on('click', 'a', function(e) {
         var url = $(this).attr('href');
-       	if(!isExternalUrl(url)) {
-       		debugger;
-           	if(e.target.getAttribute('data-attr') === 'contact-link') {
-           		$window.trigger('scroll-to', [window.isTileView ? $footer.offset().top : $articleFooter.offset().top]);
-        	} else if(url === pageUrl) {
+        if(!isExternalUrl(url)) {
+            if(e.currentTarget.getAttribute('data-attr') === 'contact-link') {
+                $window.trigger('scroll-to', [window.isTileView ? $footer.offset().top - 90 : $articleFooter.offset().top - 90]);
+            } else if(url === pageUrl) {
                 $window.trigger('same-page');
             } else {
-				pageUrl = url;
-				linkClickedTime = new Date();
-				History.pushState(null, null, pageUrl);
+                pageUrl = url;
+                linkClickedTime = new Date();
+                History.pushState(null, null, pageUrl);
             }
             return false;
         }
@@ -544,7 +542,6 @@
     $article.append($articleFooter = $footer.clone());
     $window.on('page-change', handlePageChange);
     $article.on('transitionend webkitTransitionEnd', handleTransitionEnd);
-
 
     //global scroll handler
     $window.on('scroll', function() {
@@ -583,6 +580,7 @@
     window.setTimeout(function() {
         if(!window.isTileView) {
             $articlein.addClass('reveal');
+            articleScrollTop = window.curScrollTop;
         } else {
             tileScrollTop = window.curScrollTop;
         }
@@ -590,7 +588,6 @@
 
     window.requestAnimationFrame(function () {
         if(!window.isTileView) {
-            articleScrollTop = window.curScrollTop;
             lastArticleUrl = document.location.href;
         }
         $body.addClass('loaded');
