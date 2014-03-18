@@ -1,6 +1,5 @@
 <div id="menu">
 	<ul class="nav navbar-nav">
-		<a href="/people/arvin-singla">ARTICLE LINK</a>
 		<% for item in @menuItems: %>
 			<% if item.slug.indexOf('.') == -1: %>
 
