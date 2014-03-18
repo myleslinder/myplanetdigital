@@ -1,6 +1,6 @@
 ---
 title: "Building a Sensitivity to User Needs"
-tags: ["design", "technology"]
+tags: ["design", "technology", "home"]
 banner: "Building a Sensitivity \nto User Needs"
 summary: "Mastery, to many technologists, is a goal unto itself. We laud our jQuery gurus but forget our usability engineers."
 author: "Shanly Suepaul"
@@ -13,7 +13,7 @@ imagePosition: "top"
 
 ---
 
-## Mastery, to many technologists, is a goal unto itself. We laud our “jQuery gurus” but forget our “usability engineers.” 
+## Mastery, to many technologists, is a goal unto itself. We laud our “jQuery gurus” but forget our “usability engineers.”
 
 Self-improvement for technologists is often motivated by the “hacker ethos.” We learn technologies because they're there and they're cool – why else would you learn them? Mastery, to many technologists, is a goal unto itself. We laud our “jQuery gurus” but forget our “usability engineers.”
 

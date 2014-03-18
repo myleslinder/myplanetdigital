@@ -19,7 +19,6 @@
 		curScrollTop,
 		curMouseTop,
 		lastMouseMove = new Date(),
-		mobileMenuIsOpen = false,
 		mobileMenuIsTransitioning = false,
 		indicatorOffset,
 		desktopMenuState,
@@ -53,13 +52,8 @@
 		window.requestAnimationFrame(function () {
 			if(window.responsiveState !== 'mobile') {
 				setIndicator($item[0]);
-			} else if(mobileMenuIsOpen) {
-				window.setTimeout(function () {
-					window.requestAnimationFrame(function() {
-						$body.removeClass('menu');
-						mobileMenuIsOpen = false;
-					});
-				}, 50);
+			} else if(window.mobileMenuIsOpen) {
+				window.setTimeout(closeMenu, 50);
 			}
 			$active.removeClass('active');
 			$active = $item.addClass('active');
@@ -101,7 +95,7 @@
 			if(mobileMenuIsTransitioning) {
 				return;
 			}
-			if(mobileMenuIsOpen && e.originalEvent.touches[0].clientX < window.innerWidth - MENU_WIDTH) {
+			if(window.mobileMenuIsOpen && e.originalEvent.touches[0].clientX < window.innerWidth - MENU_WIDTH) {
 				closeMenu();
 				return false;
 			}
@@ -130,7 +124,7 @@
 
 	function stickLargeMenu(top, returningToTileView) {
 		var doTransition,
-			transition
+			transition;
 		if(window.responsiveState === 'mobile') {
 			return;
 		}
@@ -163,26 +157,26 @@
 	}
 
 	function closeMenu(immediate) {
-		if(!mobileMenuIsTransitioning  && mobileMenuIsOpen) {
+		if(!mobileMenuIsTransitioning  && window.mobileMenuIsOpen) {
 			mobileMenuIsTransitioning = true;
-			mobileMenuIsOpen = false;
 			//window.location.hash = '';
 			window.requestAnimationFrame(function() {
+				window.mobileMenuIsOpen = false;
 				$body.removeClass('menu');
 			});
 		}
 	}
 
 	function openMenu(dontPushState) {
-		if(!mobileMenuIsTransitioning  && !mobileMenuIsOpen) {
+		if(!mobileMenuIsTransitioning  && !window.mobileMenuIsOpen) {
 			if(window.hasTouchEvents) {
 				window.afterScrollFixOrientationChange();
 			}
 			mobileMenuIsTransitioning = true;
-			mobileMenuIsOpen = true;
+			window.mobileMenuIsOpen = true;
 			mobileMenuYOffset = window.pageYOffset;
 			if(dontPushState !== true) {
-		//		window.location.hash = 'menu-open';
+				//window.location.hash = 'menu-open';
 			}
 
 			$window.trigger('menu');
@@ -234,28 +228,6 @@
 		mouseMoveDelta = 0;
 	}
 
-	/*function handleMouseMove(e) {
-		if(window.isBusy) {
-			return;
-		}
-		var y,
-			now = new Date();
-		if(window.responsiveState === 'mobile' || (now - MOUSE_MOVE_THROTTLE_THRESHOLD <= lastMouseMove)) {
-			return lastMouseMove = now;
-		}
-
-		if((y = e.clientY) < curMouseTop) {
-			mouseMoveDelta += curMouseTop - y;
-			if((y < (HEADER_HEIGHT * 1.5)) || mouseMoveDelta >= MOUSE_MOVE_THRESHOLD) {
-				showLargeMenu();
-				mouseMoveDelta = 0;
-			}
-		}
-		scrollDelta = 0;
-		curMouseTop = y;
-		lastMouseMove = now;
-	}*/
-
 	//handle the mobile menu toggle button being pressed
 	$('#menu-toggle').on('click', openMenu);
 
@@ -268,16 +240,16 @@
 			if(isWebkitMobileNotIOS) {
 				window.requestAnimationFrame(function () {
 					$wrap.css({
-						position: mobileMenuIsOpen ? 'fixed' : '',
-						top: mobileMenuIsOpen ? -mobileMenuYOffset : ''
+						position: window.mobileMenuIsOpen ? 'fixed' : '',
+						top: window.mobileMenuIsOpen ? -mobileMenuYOffset : ''
 					});
-					if(!mobileMenuIsOpen) {
+					if(!window.mobileMenuIsOpen) {
 						window.scrollTo(0, mobileMenuYOffset);
 					}
 				});
 			} else if(window.hasTouchEvents) {
 				$menu.css({
-					top: mobileMenuIsOpen ? 0 : ''
+					top: window.mobileMenuIsOpen ? 0 : ''
 				});
 			}
 			mobileMenuIsTransitioning = false;
@@ -325,10 +297,6 @@
 				}, 200);
 			}
 			$(initDesktopMenu);
-
-			//sred: [8 hours] animated gif in browser
-			//window.prepareAnimatedIcon('menu-hover', $menu, 3, -136, -40, 0, -41);
-			//	window.animateIcon('menu-hover', 160);
 		} else if (data.hasTouchEvents) {
 			isWebkitMobileNotIOS = !data.isIOS; //meh
 			$(initMobileMenu);
@@ -354,7 +322,7 @@
 			}
 		});
 	});
-
+	window.mobileMenuIsOpen = false;
 	$window.on('page-change', function (e, data) {
 	//	if(mobileMenuIsOpen) {
 	//		closeMenu();
@@ -363,7 +331,7 @@
 		scrollDelta = 0;
 	});
 
-	$window.on('same-tag', closeMenu);
+	$window.on('same-page same-filter', closeMenu);
 	$window.on('filter',function (e, tag) {
 		activateLink($menu.find('li.' + tag));
 	});
@@ -371,7 +339,7 @@
 	$window.on('article-transition', hideLargeMenu);
 
 	$window.on('tiles-transition', function(e, data) {
-		if((curScrollTop = data.top) <= HEADER_HEIGHT) {
+		if(window.responsiveState !== 'mobile' && (curScrollTop = data.top) <= HEADER_HEIGHT) {
 			stickLargeMenu(curScrollTop, true);
 		}
 	});

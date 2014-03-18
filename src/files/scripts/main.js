@@ -1,523 +1,598 @@
 (function main () {
 
-	'use strict';
+    'use strict';
 
-	if(!window.isSinglePageApp) {
-		return;
-	}
+    if(!window.isSinglePageApp) {
+        return;
+    }
 
-	var $window = $(window),
-		$body = $('body'),
-		$article = $('#article'),
-		$viewport = $('#viewport'),
-		$articlein = $('#article-inner'),
-		$main = $('#main'),
-		$mainWrap = $('.main-wrap'),
-		$loadgif = $('.loading-overlay'),
-		$loadgiftiles = $('.loading-overlay-tiles'),
-		$anchors = $('a'),
-		$footer = $('.footer'),
-		$ajaxer = null,
-		popped = false,
-		hasLoadedTiles,
-		isLoading =  false,
-		scrollTimeout,
-		preScrollTimeout,
-		articleScrollTop = 0,
-		tileScrollTop = 0,
-		RELATIVE_URL_REGEX = /^(?:\/\/|[^\/]+)*\//,
-		pageUrl = '/' + document.location.href.replace(RELATIVE_URL_REGEX, ''),
-		lastArticleUrl = '',
-		doAjax,
-		isTransitioning = false,
-		cancelTransition = false,
-		linkClickedTime = new Date(),
-		wasLinkClick,
-		EXTERNAL_URL_REGEX = /^([^:\/?#]+:)?(?:\/\/([^\/?#]*))?([^?#]+)?(\?[^#]*)?(#.*)?/,
-		ARTICLE_REGEX = /^((?!tags).)*\/(article|people|careers)\//,
-		TAG_REGEX = /\/tags\/(.*)?/,
-		MAPS_REGEX = /http:\/\/maps\.google\.com/,
-		COVER_SRC_REGEX = /url\(['"]?(.*\.\w+)['"]?\)/,
-		IS_FIREFOX = navigator.userAgent.toLowerCase().indexOf('firefox') > -1,
-		FULL_WIDTH = 1324,
-		DESKTOP_WIDTH = 1174,
-		END_SCROLL_THRESHOLD = 250,
-		SPINNER_HEIGHT = 61,
-		IOS_CHROME_HEIGHT = 70,
-		PRE_SCROLL_THRESHOLD = 100;
+    var $window = $(window),
+        $body = $('body'),
+        $article = $('#article'),
+        $viewport = $('#viewport'),
+        $articlein = $('#article-inner'),
+        $main = $('#main'),
+        $mainWrap = $('.main-wrap'),
+        $loadgif = $('.loading-overlay'),
+        $loadgiftiles = $('.loading-overlay-tiles'),
+        $anchors = $('a'),
+        $footer = $('.footer'),
+        $articleFooter,
+        $ajaxer = null,
+        popped = false,
+        hasLoadedTiles,
+        filterTag,
+        isLoading =  false,
+        scrollTimeout,
+        preScrollTimeout,
+        articleScrollTop = 0,
+        tileScrollTop = 0,
+        RELATIVE_URL_REGEX = /^(?:\/\/|[^\/]+)*\//,
+        pageUrl = '/' + document.location.href.replace(RELATIVE_URL_REGEX, ''),
+        lastArticleUrl = '',
+        doArticleAjax,
+        doTileAjax,
+        isTransitioning = false,
+        isTransitionEnding = false,
+        cancelTransition = false,
+        linkClickedTime = new Date(),
+        wasLinkClick,
+        aborted = false,
+        EXTERNAL_URL_REGEX = /^([^:\/?#]+:)?(?:\/\/([^\/?#]*))?([^?#]+)?(\?[^#]*)?(#.*)?/,
+        ARTICLE_REGEX = /^((?!tags).)*\/(article|people|careers)\//,
+        TAG_REGEX = /\/tags\/(.*)?/,
+        HOME_REGEX = /^\/$/,
+        MAPS_REGEX = /http:\/\/maps\.google\.com/,
+        COVER_SRC_REGEX = /url\(['"]?(.*\.\w+)['"]?\)/,
+        IS_FIREFOX = navigator.userAgent.toLowerCase().indexOf('firefox') > -1,
+        FULL_WIDTH = 1324,
+        DESKTOP_WIDTH = 1174,
+        END_SCROLL_THRESHOLD = 250,
+        SPINNER_HEIGHT = 61,
+        IOS_CHROME_HEIGHT = 70,
+        PRE_SCROLL_THRESHOLD = 100;
 
-	function setResponsiveState() {
-		var width = $window.width(),
-			old,
-			state = width >= FULL_WIDTH ? 'full' : (width >= DESKTOP_WIDTH ? 'desktop' : 'mobile');
+    function setResponsiveState() {
+        var width = $window.width(),
+            old,
+            state = width >= FULL_WIDTH ? 'full' : (width >= DESKTOP_WIDTH ? 'desktop' : 'mobile');
 
-		window.pageHeight = $window.height();
+        window.pageHeight = $window.height();
 
-		if(window.responsiveState === state) {
-			return;
+        if(window.responsiveState === state) {
+            return;
+        }
+
+        old = window.responsiveState;
+        window.responsiveState = state;
+
+        $window.trigger('responsiveStateChange', [{
+            newState: state,
+            oldState: old
+        }]);
+    }
+
+    function finishStartScrolling() {
+        window.isScrolling = true;
+        $body.addClass('scrolling');
+    }
+
+    function startScrolling() {
+        return finishStartScrolling();
+        //window.setTimeout(function () {
+            window.requestAnimationFrame(finishStartScrolling);
+    //  }, 0);
+    }
+    function finishEndScrolling() {
+        window.isScrolling = false;
+        $body.removeClass('scrolling');
+    }
+
+    function endScrolling() {
+        window.requestAnimationFrame(finishEndScrolling);
+        scrollTimeout = null;
+        $window.trigger('after-scrolling');
+    }
+
+    function finishArticleLoad(data) {
+        window.setTimeout(function(){
+            window.requestAnimationFrame(function () {
+                $articlein.html(data);
+                window.requestAnimationFrame(function() {
+                    isLoading = false;
+                    $loadgif.hide();
+                    $articlein.addClass('reveal');
+                    $article.css('height', '');
+                    window.setTimeout(function () {
+                        if(isTransitioning || isTransitionEnding) {
+                            return;
+                        }
+                        window.isBusy = false;
+                    }, 100);
+                });
+            });
+        }, 0);
+    }
+
+    function removeTrailingSlash(url) {
+        return url.replace(/(\/)+$/,'');
+    }
+
+    function loadViaAjax() {
+        if (isTileView) {
+            if ($mainWrap.find('.tile').length === 0) {
+                isLoading = true;
+                $ajaxer = $.get('/index-content-tiles/index.html', function(data){
+                    $ajaxer = null;
+                    window.setTimeout(function () {
+                        window.requestAnimationFrame(function () {
+                            $mainWrap.html(data);
+
+                            $window.trigger('tiles-init');
+                            window.requestAnimationFrame(function() {
+                                hasLoadedTiles = true;
+                                isLoading = false;
+                                $loadgiftiles.hide();
+                                window.tiles.arrange({filter: '.' + filterTag});
+                                $window.trigger('filter', [filterTag]);
+                                window.currentTag = filterTag;
+                                if(isTransitioning || isTransitionEnding) {
+                                    return;
+                                }
+                                $main.css('height', '');
+                                window.setTimeout(function () {
+                                    window.isBusy = false;
+                                }, 100);
+                            });
+                        });
+                    }, 100);
+                });
+            }
+        }
+        else {
+            $articlein.removeClass('reveal');
+            isLoading = true;
+            $ajaxer = $.get(removeTrailingSlash(window.location.href) + '-content/index.html', function(data) {
+                $ajaxer = null;
+                window.setTimeout(function () {
+                    var image = new Image(),
+                        $loadedData = $(data).eq(0),
+                        bgImg;
+                    image.onload = image.onerror = finishArticleLoad.bind(null, data);
+                    if($loadedData.length && $loadedData[0].nodeType === 1 && (bgImg = $loadedData.css('background-image'))) {
+                        image.src = bgImg.match(COVER_SRC_REGEX)[1];
+                    } else {
+                        finishArticleLoad(data);
+                    }
+                }, 100);
+            });
+        }
+        $body.removeClass('animating').css('height', '');
+    }
+
+    function abortAjax() {
+        $ajaxer.abort();
+        $body.removeClass('animating');
+        $body.css({
+            height: ''
+        });
+        isLoading = false;
+        window.isBusy = false;
+        if(window.isTileView) {
+			window.currentTag = '';
+        } else {
+			lastArticleUrl = '';
+        }
+
+    }
+
+    function handlePageChange(e, data) {
+        var isArticleUrl = data.url.match(ARTICLE_REGEX),
+            isTagUrl = !isArticleUrl && data.url.match(TAG_REGEX),
+			isHomeUrl = data.url.match(HOME_REGEX),
+            overridePopstateScrollmove,
+            timeoutLen = IS_FIREFOX ? 50 : 0,
+            noTransition = false,
+            wasCancelled,
+            top;
+
+        if(!IS_FIREFOX) {
+            window.curScrollTop = window.pageYOffset;
+        }
+
+        if(aborted = $ajaxer) {
+            abortAjax();
+        }
+
+        filterTag = null;
+
+		if (isTagUrl) {
+			filterTag = isTagUrl[1];
+		}
+		if (pageUrl === '/') {
+			filterTag = 'home';
 		}
 
-		old = window.responsiveState;
-		window.responsiveState = state;
+        cancelTransition = isTransitionEnding;
+        isTransitionEnding = false;
+        wasLinkClick = new Date() - linkClickedTime < 300;
+        overridePopstateScrollmove = !wasLinkClick && !window.isIOS; //ios doesn't mess with the scrollbar during popstate
+        top = window.curScrollTop;
+        wasCancelled = cancelTransition || isTransitioning || aborted;
 
-		$window.trigger('responsiveStateChange', [{
-			newState: state,
-			oldState: old
-		}]);
-	}
+        if(!wasLinkClick) {
+            pageUrl = '/' + document.location.href.replace(RELATIVE_URL_REGEX, '');
+        }
 
-	function finishStartScrolling() {
-		window.isScrolling = true;
-		$body.addClass('scrolling');
-	}
+        if(isArticleUrl && window.isTileView) {
+            window.isTileView = false;
+            window.isBusy = true;
 
-	function startScrolling() {
-		return finishStartScrolling();
-		//window.setTimeout(function () {
-			window.requestAnimationFrame(finishStartScrolling);
-	//	}, 0);
-	}
-	function finishEndScrolling() {
-		window.isScrolling = false;
-		$body.removeClass('scrolling');
-	}
+            if(!wasCancelled) {
+                tileScrollTop = window.curScrollTop;
+            }
+            isTransitioning = true;
 
-	function endScrolling() {
-		window.requestAnimationFrame(finishEndScrolling);
-		scrollTimeout = null;
-		$window.trigger('after-scrolling');
-	}
+            doArticleAjax = lastArticleUrl !== data.url;
+            lastArticleUrl = data.url;
+            if(wasLinkClick || doArticleAjax) {
+                articleScrollTop = 0;
+            }
 
-	function finishArticleLoad(data) {
-		window.setTimeout(function(){
-			window.requestAnimationFrame(function () {
-				$articlein.html(data);
-				window.requestAnimationFrame(function() {
-					isLoading = false;
-					$loadgif.hide();
-					$articlein.addClass('reveal');
-					$article.css('height', '');
-					window.setTimeout(function () {
-						window.isBusy = false;
-						window.curScrollTop = window.pageYOffset;
-					}, 100);
-				});
-			});
-		}, 0);
-	}
+            $window.trigger('article');
+            $article.css({
+                transform:  !overridePopstateScrollmove || wasLinkClick ? 'translate3d(-1px, ' + (top - articleScrollTop) + 'px, 0)' : '',
+                transition: 'none'
+            });
+            $main.css({
+                transform: overridePopstateScrollmove ? 'translate3d(-1px, ' + -(top - articleScrollTop) + 'px, 0)' : (wasCancelled ? 'translate3d(-1px, ' + (top - tileScrollTop) + 'px, 0)' : ''),
+                transition: 'none'
+            });
+            $body.addClass('animating').css('height', articleScrollTop + window.pageHeight);
 
-	function removeTrailingSlash(url) {
-		return url.replace(/(\/)+$/,'');
-	}
+            if(overridePopstateScrollmove) {
+                window.scroll(0, articleScrollTop);
+            }
 
-	function loadViaAjax() {
-		if (isTileView) {
-			if ($mainWrap.find('.tile').length === 0) {
-				isLoading = true;
-				$ajaxer = $.get('/index-content-tiles/index.html', function(data){
-					$ajaxer = null;
-					window.setTimeout(function () {
-						window.requestAnimationFrame(function () {
-							$mainWrap.html(data);
+            window.setTimeout(function () {
+                window.requestAnimationFrame(function () {
+                    if(doArticleAjax) {
+                        $article.css('height', window.pageHeight + (window.isIOS ? IOS_CHROME_HEIGHT : 0));
+                        $loadgif.find('.loading-spinner').css('top', window.pageHeight / 2 - SPINNER_HEIGHT);
+                        $loadgif.show();
+                    }
+                    $article.css({
+                        transform:  !overridePopstateScrollmove || wasLinkClick ?'translate3d(-100%, ' + (top - articleScrollTop) + 'px, 0)' : '',
+                        transition: ''
+                    });
+                    $main.css({
+                        transform: overridePopstateScrollmove ? 'translate3d(-100%, ' + -(top - articleScrollTop) + 'px, 0)' : (wasCancelled ? 'translate3d(-100%, ' + (top - tileScrollTop) + 'px, 0)' : ''),
+                        transition: ''
+                    });
+                    $window.trigger('article-transition', [{
+                        top: articleScrollTop
+                    }]);
+                    $body.addClass('article');
+                });
+            }, timeoutLen);
 
-							$window.trigger('tiles-init');
-							window.requestAnimationFrame(function() {
-								hasLoadedTiles = true;
-								isLoading = false;
-								$loadgiftiles.hide();
-								$main.css('height', '');
-								window.setTimeout(function () {
-									window.isBusy = false;
-									window.curScrollTop = window.pageYOffset;
-								}, 100);
-							});
-						});
-					}, 100);
-				});
-			}
-			$loadgif.hide();
-		}
-		else {
-			$articlein.removeClass('reveal');
-			isLoading = true;
-
-			$ajaxer = $.get(removeTrailingSlash(pageUrl) + '-content/index.html', function(data) {
-				$ajaxer = null;
-				window.setTimeout(function () {
-					var image = new Image();
-					image.onload = image.onerror = finishArticleLoad.bind(null, data);
-
-					if($(data).eq(0).length) {
-						image.src = $(data).eq(0).css('background-image').match(COVER_SRC_REGEX)[1];
-					} else {
-						finishArticleLoad(data);
-					}
-				}, 100);
-			});
-		}
-		$body.removeClass('animating').css('height', '');
-	}
-
-	function handlePageChange(e, data) {
-		if($ajaxer) {
-			$ajaxer.abort();
-			$body.removeClass('animating');
-			isLoading = false;
-			window.isBusy = false;
-		}
-
-		if(window.isIOS) {
-			window.curScrollTop = window.pageYOffset;
-		}
-		cancelTransition = isTransitioning;
-
-		var isArticleUrl = data.url.match(ARTICLE_REGEX),
-			isTagUrl = !isArticleUrl && data.url.match(TAG_REGEX),
-			top = window.curScrollTop,
-			overridePopstateScrollmove,
-			timeoutLen = 50;
-		if(isTagUrl) {
-			isTagUrl = isTagUrl[1];
-		}
-
-		wasLinkClick = new Date() - linkClickedTime < 300;
-		overridePopstateScrollmove = !wasLinkClick && !window.isIOS; //ios doesn't mess with the scrollbar during popstate
-		if(!wasLinkClick) {
-			pageUrl = document.location.href.replace(RELATIVE_URL_REGEX, '');
-			pageUrl = pageUrl || '/';
-		}
-
-		if(isArticleUrl && window.isTileView) {
-			window.isTileView = false;
+        }  else if(isArticleUrl && !window.isTileView) { // article view to article view transition
 			window.isBusy = true;
-			isTransitioning = true;
-			tileScrollTop = top;
-			doAjax = lastArticleUrl !== data.url;
+			doArticleAjax = true;
+			articleScrollTop = 0;
 			lastArticleUrl = data.url;
-			if(wasLinkClick) {
-				articleScrollTop = 0;
-			}
-
-			$window.trigger('article');
-			$article.css({
-				transform:  !overridePopstateScrollmove || wasLinkClick ? 'translate3d(-1px, ' + (top - articleScrollTop) + 'px, 0)' : '',
-				transition: 'none'
-			});
-			$main.css({
-				transform: overridePopstateScrollmove ? 'translate3d(-1px, ' + -(top - articleScrollTop) + 'px, 0)' : '',
-				transition: 'none'
-			});
-			$body.addClass('animating').css('height', articleScrollTop + window.pageHeight);
-
-			if(overridePopstateScrollmove) {
-				window.scroll(0, window.curScrollTop = articleScrollTop);
-			}
 
 			window.setTimeout(function () {
 				window.requestAnimationFrame(function () {
-					if(doAjax) {
+					if(doArticleAjax) {
 						$article.css('height', window.pageHeight + (window.isIOS ? IOS_CHROME_HEIGHT : 0));
 						$loadgif.find('.loading-spinner').css('top', window.pageHeight / 2 - SPINNER_HEIGHT);
 						$loadgif.show();
+						window.requestAnimationFrame(loadViaAjax);
 					}
-					$article.css({
-						transform:  !overridePopstateScrollmove || wasLinkClick ?'translate3d(-100%, ' + (top - articleScrollTop) + 'px, 0)' : '',
-						transition: ''
-					});
-					$main.css({
-						transform: overridePopstateScrollmove ? 'translate3d(-100%, ' + -(top - articleScrollTop) + 'px, 0)' : '',
-						transition: ''
-					});
-					$window.trigger('article-transition', [{
-						top: articleScrollTop
-					}]);
-					$body.addClass('article');
 				});
 			}, timeoutLen);
 
 		} else if(!isArticleUrl && !window.isTileView) {
-			window.isTileView = true;
-			window.isBusy = true;
-			isTransitioning = true;
-			articleScrollTop = top;
+            window.isTileView = true;
+            window.isBusy = true;
+            if(!wasCancelled) {
+                articleScrollTop = window.curScrollTop;
+            }
+            isTransitioning = true;
+            doTileAjax = !hasLoadedTiles;
+            if(wasLinkClick || doTileAjax) {
+                tileScrollTop = 0;
+            }
 
-			if(wasLinkClick) {
-				tileScrollTop = 0;
+            $window.trigger('tiles');
+
+            $main.css({
+                transform: !overridePopstateScrollmove || wasLinkClick ? 'translate3d(-100%, ' + (top - tileScrollTop) + 'px, 0)' : '',
+                transition: 'none'
+            });
+            $article.css({
+                transform: overridePopstateScrollmove ? 'translate3d(-100%, ' + -(top - tileScrollTop) + 'px, 0)' : (wasCancelled ? 'translate3d(-100%, ' + (top - articleScrollTop) + 'px, 0)' : ''),
+                transition: 'none'
+            });
+
+            $body.addClass('animating').css('height', tileScrollTop + window.pageHeight);
+
+            if(overridePopstateScrollmove) {
+                window.scroll(0, tileScrollTop);
+            }
+
+            window.setTimeout(function () {
+                window.requestAnimationFrame(function () {
+                    if (doTileAjax) {
+                        $main.css('height', window.pageHeight + (window.isIOS ? IOS_CHROME_HEIGHT : 0));
+                        $loadgiftiles.find('.loading-spinner').css('top', window.pageHeight / 2 - SPINNER_HEIGHT);
+                        $loadgiftiles.show();
+                    }
+                    $main.css({
+                        transform:  !overridePopstateScrollmove || wasLinkClick ? 'translate3d(-1px, ' + (top - tileScrollTop) + 'px, 0)' : '',
+                        transition: noTransition ? 'none' : ''
+                    });
+                    $article.css({
+                        transform: overridePopstateScrollmove  ? 'translate3d(-1px, ' + -(top - tileScrollTop) + 'px, 0)' : (wasCancelled ? 'translate3d(-1px, ' + (top - articleScrollTop) + 'px, 0)' : ''),
+                        transition:  noTransition ? 'none' : ''
+                    });
+                    $window.trigger('tiles-transition', [{
+                        top: tileScrollTop
+                    }]);
+                    $body.removeClass('article');
+                    if(noTransition){
+                    	window.setTimeout(window.requestAnimationFrame.bind(null, function() {
+                    		handleTransitionEnd();
+                    	}), 0);
+                	}
+                });
+            }, timeoutLen);
+
+			if(window.responsiveState === 'mobile' && window.mobileMenuIsOpen) {
+				noTransition = true;
 			}
-
-			$window.trigger('tiles');
-			//todo: show the loading gif
-
-			$main.css({
-				transform: !overridePopstateScrollmove || wasLinkClick ? 'translate3d(-100%, ' + (top - tileScrollTop) + 'px, 0)' : '',
-				transition: 'none'
-			});
-			$article.css({
-				transform: overridePopstateScrollmove ? 'translate3d(-100%, ' + -(top - tileScrollTop) + 'px, 0)' : '',
-				transition: 'none'
-			});
-			$body.addClass('animating').css('height', tileScrollTop + window.pageHeight);
-
-			if(overridePopstateScrollmove) {
-				window.scroll(0, window.curScrollTop = tileScrollTop);
+			if (filterTag && hasLoadedTiles && window.currentTag !== filterTag) {
+				window.tiles.arrange({filter: '.' + filterTag});
+				$window.trigger('filter', [filterTag, !noTransition]);
+				window.currentTag = filterTag;
+			} else {
+				$window.trigger('same-filter');
 			}
+		} else if(filterTag && window.isTileView && window.currentTag !== filterTag) {
+			window.tiles.arrange({filter: '.' + filterTag});
+			$window.trigger('filter', [filterTag]);
+			window.currentTag = filterTag;
+		}
+    }
 
-			window.setTimeout(function () {
-				window.requestAnimationFrame(function () {
-					if (doAjax = !hasLoadedTiles) {
-						$main.css('height', window.pageHeight + (window.isIOS ? IOS_CHROME_HEIGHT : 0));
-						$loadgiftiles.find('.loading-spinner').css('top', window.pageHeight / 2 - SPINNER_HEIGHT);
-						$loadgiftiles.show();
-					}
-					$main.css({
-						transform:  !overridePopstateScrollmove || wasLinkClick ? 'translate3d(-1px, ' + (top - tileScrollTop) + 'px, 0)' : '',
-						transition: ''
-					});
-					$article.css({
-						transform: overridePopstateScrollmove ? 'translate3d(-1px, ' + -(top - tileScrollTop) + 'px, 0)' : '',
-						transition: ''
-					});
-					$window.trigger('tiles-transition', [{
-						top: tileScrollTop
-					}]);
-					$body.removeClass('article');
-				});
-			}, timeoutLen);
-
-		} else if(isTagUrl && window.isTileView) {
-			if(window.currentTag !== isTagUrl) {
-				window.tiles.arrange({filter: '.' + isTagUrl});
-				$window.trigger('filter', [isTagUrl]);
-				window.currentTag = isTagUrl;
-			}
-		}/*else if (isTagsUrl) {
-			var tag = data.hash.split(/\//).pop();
-
-			// window.tiles is defined in tiles-immediate.js
-			[].forEach.call(window.tiles.items, function(item) {
-				item.element.classList.remove('visible');
-			});
-
-			// window.tileTaggedGroups is defined in tiles-immediate.js
-			if (typeof window.tileTaggedGroups[tag] !== 'undefined') {
-				window.tileTaggedGroups[tag].forEach(function(tile) {
-					tile.classList.add('visible');
-				});
-			}
-			window.tiles.arrange({filter: '.visible'});
-			$window.trigger('filter');
-		} */
-	}
-
-	function cleanupTransition() {
-		$body.removeClass('animating');
-	}
+    function cleanupTransition() {
+        $body.removeClass('animating').css('height', '');
+        isTransitionEnding = false;
+        if(cancelTransition && window.isTileView && doArticleAjax) {
+            lastArticleUrl = '';
+        } else if(cancelTransition && !window.isTileView && doTileAjax) {
+			window.currentTag = null;
+        }
+        cancelTransition = false;
+    }
 
 	function finishTransition() {
-		if(doAjax) {
-			window.setTimeout(function () {
-				isTransitioning = false;
-				if(cancelTransition) {
-					//return cleanupTransition();
-				}
-				window.requestAnimationFrame(loadViaAjax);
-			}, 200);
-		} else {
-			window.setTimeout(function () {
-				window.requestAnimationFrame(cleanupTransition);
-				window.isBusy = false;
-				window.curScrollTop = window.pageYOffset;
-				isTransitioning = false;
-			}, 200);
-		}
-	}
+        if((window.isTileView && doTileAjax) || (!window.isTileView && doArticleAjax)) {
+            window.setTimeout(function () {
+                isTransitionEnding = false;
+                if(cancelTransition) {
+                    return cleanupTransition();
+                }
+                window.requestAnimationFrame(loadViaAjax);
+            }, 0);
+        } else {
+            window.setTimeout(window.requestAnimationFrame.bind(null, function () {
+                cleanupTransition();
+                window.isBusy = false;
+            }), 0);
+        }
+    }
 
-	function isExternalUrl(url) {
-		var match = url.match(EXTERNAL_URL_REGEX);
-		if (typeof match[1] === 'string' && match[1].length > 0 && match[1].toLowerCase() !== location.protocol) {
-			return true;
-		}
-		if (typeof match[2] === 'string' && match[2].length > 0 && match[2].replace(new RegExp(':('+{'http:':80,'https:':443}[location.protocol]+')?$'), '') !== location.host) {
-			return true;
-		}
-		return false;
-	}
+    function isExternalUrl(url) {
+        var match = url.match(EXTERNAL_URL_REGEX);
+        if (typeof match[1] === 'string' && match[1].length > 0 && match[1].toLowerCase() !== location.protocol) {
+            return true;
+        }
+        if (typeof match[2] === 'string' && match[2].length > 0 && match[2].replace(new RegExp(':('+{'http:':80,'https:':443}[location.protocol]+')?$'), '') !== location.host) {
+            return true;
+        }
+        return false;
+    }
 
-	function handleTransitionEnd(e) {
-		if(!isTransitioning || e.target !== $article[0]) {
-			return;
-		}
+    function handleTransitionEnd(e) {
+        var startTransitionEnd,
+            endTransition;
+        if(!isTransitioning ||  (e && e.target !== $article[0])) {
+            return;
+        }
 
-		var endTransition;
+        isTransitionEnding = true;
+        isTransitioning = false;
 
-		if(!window.isTileView) {
-			endTransition =  function () {
-				if(cancelTransition) {
-					//return cleanupTransition();
-				}
-				window.scroll(0, window.curScrollTop = articleScrollTop + (window.isIOS ? 0 : (window.pageYOffset - window.curScrollTop)));
-				window.setTimeout(function () {
-					//window.requestAnimationFrame(function () {
-						if(cancelTransition) {
-							//return cleanupTransition();
-						}
-						$article.css({
-							transition: '',
-							position: 'static',
-							marginLeft: '100%'
-						});
-						$main.css({
-							position: 'absolute'
-						});
-						finishTransition();
-				//	});
-				}, 0);
-			};
-		} else {
-			endTransition = function () {
-				if(cancelTransition) {
-					//return cleanupTransition();
-				}
-				window.scroll(0, window.curScrollTop = tileScrollTop + (window.isIOS ? 0 : (window.pageYOffset - window.curScrollTop)));
-				window.setTimeout(function () {
-					//window.requestAnimationFrame(function () {
-						if(cancelTransition) {
-						//	return cleanupTransition();
-						}
-						$main.css({
-							transition: '',
-							position: ''
-						});
-						$article.css({
-							position: 'absolute',
-							left: '100%',
-							marginLeft: ''
-						});
-						finishTransition();
-					//});
-				}, 0);
-			};
-		}
-		//window.setTimeout(function () {
-			//window.requestAnimationFrame(function () {
-				if(cancelTransition) {
-					//return cleanupTransition();
-				}
-				$article.css({
-					transform: '',
-					transition: 'none'
-				});
-				$main.css({
-					transform: '',
-					transition: 'none'
-				});
+        if(!window.isTileView) {
+            endTransition =  function () {
+                if(cancelTransition) {
+                    return cleanupTransition();
+                }
+                window.scroll(0, articleScrollTop + (window.isIOS ? 0 : (window.pageYOffset - window.curScrollTop)));
+                window.setTimeout(function () {
+                    //window.requestAnimationFrame(function () {
+                        if(cancelTransition) {
+                            return cleanupTransition();
+                        }
+                        $loadgiftiles.hide();
+                        $article.css({
+                            transition: '',
+                            position: 'static',
+                            marginLeft: '100%'
+                        });
+                        $main.css({
+                            position: 'absolute'
+                        });
+                        finishTransition();
+                //  });
+                }, 0);
+            };
+        } else {
+            endTransition = function () {
+                if(cancelTransition) {
+                    return cleanupTransition();
+                }
+                window.scroll(0, tileScrollTop + (window.isIOS ? 0 : (window.pageYOffset - window.curScrollTop)));
+                window.setTimeout(function () {
+                    //window.requestAnimationFrame(function () {
+                        if(cancelTransition) {
+                            return cleanupTransition();
+                        }
+                        $loadgif.hide();
+                        $main.css({
+                            transition: '',
+                            position: ''
+                        });
+                        $article.css({
+                            position: 'absolute',
+                            left: '100%',
+                            marginLeft: ''
+                        });
+                        finishTransition();
+                    //});
+                }, 0);
+            };
+        }
 
-				if(window.isIOS) {
-					return window.setTimeout(endTransition, 0);
-				}
-				endTransition();
-		//	});
-		//}, window.isIOS ? 50 : 25);
-	}
+        startTransitionEnd = function() {
+            if(cancelTransition) {
+                return cleanupTransition();
+            }
+            $article.css({
+                transform: '',
+                transition: 'none'
+            });
+            $main.css({
+                transform: '',
+                transition: 'none'
+            });
 
-	//init capabiliites
-	setResponsiveState();
-	$window.smartresize(setResponsiveState);
+            if(window.isIOS) {
+                return window.setTimeout(endTransition, 0);
+            }
+            endTransition();
+        };
+        if(window.isIOS){
+            return window.requestAnimationFrame(startTransitionEnd, 25);
+        }
+        startTransitionEnd();
+    }
 
-	window.curScrollTop = window.pageYOffset;
-	window.isTileView = hasLoadedTiles = !$body.hasClass('article');
-	window.isScrolling = false;
+    //init capabiliites
+    setResponsiveState();
+    $window.smartresize(setResponsiveState);
 
-	$window.trigger('deviceCapabilities', [{
-		desktopCapable: window.desktopCapable = Math.max(screen.width, screen.height) >= DESKTOP_WIDTH,
-		hasTouchEvents: window.hasTouchEvents = 'ontouchstart' in window,
-		isIOS: window.isIOS = !!navigator.userAgent.match(/(iPad|iPhone|iPod)/g),
-		top: window.pageYOffset,
-		bottom: window.pageYOffset + window.pageHeight
-	}]);
+    window.curScrollTop = window.pageYOffset;
+    window.isTileView = hasLoadedTiles = !$body.hasClass('article');
+    window.isScrolling = false;
 
-	SPINNER_HEIGHT = window.isIOS ? 25 : SPINNER_HEIGHT;
-	pageUrl = pageUrl || '/';
+    $window.trigger('deviceCapabilities', [{
+        desktopCapable: window.desktopCapable = Math.max(screen.width, screen.height) >= DESKTOP_WIDTH,
+        hasTouchEvents: window.hasTouchEvents = 'ontouchstart' in window,
+        isIOS: window.isIOS = !!navigator.userAgent.match(/(iPad|iPhone|iPod)/g),
+        top: window.pageYOffset,
+        bottom: window.pageYOffset + window.pageHeight
+    }]);
 
-	if(window.desktopCapable) {
-		$body.addClass('desktop-capable');
-	}
+    SPINNER_HEIGHT = window.isIOS ? 25 : SPINNER_HEIGHT;
+    pageUrl = pageUrl || '/';
 
-	//handle geo urls
-	if(window.hasTouchEvents) {
-		$anchors.each(function () {
-			var $link = $(this),
-				href = $link.attr('href'),
-				longLat = $link.attr('data-long-lat') || '43.65163,-79.37104';
-			$link.attr('href', window.isIOS ? href.replace(MAPS_REGEX, 'http://maps.apple.com') : href.match(MAPS_REGEX) ? 'geo:' + longLat : href);
-		});
-	}
-	//handle push/pop state
-	$body.on('click', 'a', function() {
-		var url = $(this).attr('href');
-		if(url === '/' && pageUrl === '/') {
-			$window.trigger('scroll-top');
-			return false;
-		} else if(!isExternalUrl(url)) {
-			debugger;
-			if(url === pageUrl) {
-				$window.trigger('same-tag');
-			}
-			pageUrl = url;
-			linkClickedTime = new Date();
-			History.pushState(null, null, pageUrl);
-			return false;
-		}
-	});
+    if(window.desktopCapable) {
+        $body.addClass('desktop-capable');
+    }
 
-	$article.append($footer.clone());
-	$window.on('page-change', handlePageChange);
-	$article.on('transitionend webkitTransitionEnd', handleTransitionEnd);
+    //handle geo urls
+    if(window.hasTouchEvents) {
+        $anchors.each(function () {
+            var $link = $(this),
+                href = $link.attr('href'),
+                longLat = $link.attr('data-long-lat') || '43.65163,-79.37104';
+            $link.attr('href', window.isIOS ? href.replace(MAPS_REGEX, 'http://maps.apple.com') : href.match(MAPS_REGEX) ? 'geo:' + longLat : href);
+        });
+    }
 
-	//global scroll handler
-	$window.on('scroll', function() {
-		if(window.isIOS) {
-			return;
-		}
-		if(isTransitioning || isLoading) {
-			return;
-		}
-		window.curScrollTop = window.pageYOffset;
+    //handle push/pop state
+    $body.on('click', 'a', function(e) {
+        var url = $(this).attr('href');
+       	if(!isExternalUrl(url)) {
+       		debugger;
+           	if(e.target.getAttribute('data-attr') === 'contact-link') {
+           		$window.trigger('scroll-to', [window.isTileView ? $footer.offset().top : $articleFooter.offset().top]);
+        	} else if(url === pageUrl) {
+                $window.trigger('same-page');
+            } else {
+				pageUrl = url;
+				linkClickedTime = new Date();
+				History.pushState(null, null, pageUrl);
+            }
+            return false;
+        }
+    });
 
-		if(!window.isScrolling) {
-			startScrolling();
-		}
+    $article.append($articleFooter = $footer.clone());
+    $window.on('page-change', handlePageChange);
+    $article.on('transitionend webkitTransitionEnd', handleTransitionEnd);
 
-		$window.trigger('pageScroll', [{
-			top: window.curScrollTop,
-			bottom: window.curScrollTop + window.pageHeight,
-			isFinalEvent: false
-		}]);
 
-		if(scrollTimeout) {
-			window.clearTimeout(scrollTimeout);
-			window.clearTimeout(preScrollTimeout);
-		}
-		scrollTimeout = window.setTimeout(endScrolling, END_SCROLL_THRESHOLD);
-		preScrollTimeout = window.setTimeout(function() {
-			$window.trigger('pageScroll', [{
-				top: window.curScrollTop,
-				bottom: window.curScrollTop + window.pageHeight,
-				isFinalEvent: true
-			}]);
-		}, PRE_SCROLL_THRESHOLD);
-	});
+    //global scroll handler
+    $window.on('scroll', function() {
+        if(window.isIOS) {
+            return;
+        }
+        window.curScrollTop = window.pageYOffset;
+        if(isTransitioning || isLoading || isTransitionEnding) {
+            return;
+        }
 
-	window.setTimeout(function() {
-		if(!window.isTileView) {
-			articleScrollTop = window.curScrollTop;
-			lastArticleUrl = document.location.href;
-			$articlein.addClass('reveal');
-		} else {
-			tileScrollTop = window.curScrollTop;
-		}
-	}, 750);
-	window.requestAnimationFrame(function () {
-		$body.addClass('loaded');
-	});
+        if(!window.isScrolling) {
+            startScrolling();
+        }
+
+        $window.trigger('pageScroll', [{
+            top: window.curScrollTop,
+            bottom: window.curScrollTop + window.pageHeight,
+            isFinalEvent: false
+        }]);
+
+        if(scrollTimeout) {
+            window.clearTimeout(scrollTimeout);
+            window.clearTimeout(preScrollTimeout);
+        }
+        scrollTimeout = window.setTimeout(endScrolling, END_SCROLL_THRESHOLD);
+        preScrollTimeout = window.setTimeout(function() {
+            $window.trigger('pageScroll', [{
+                top: window.curScrollTop,
+                bottom: window.curScrollTop + window.pageHeight,
+                isFinalEvent: true
+            }]);
+        }, PRE_SCROLL_THRESHOLD);
+    });
+
+    window.setTimeout(function() {
+        if(!window.isTileView) {
+            $articlein.addClass('reveal');
+        } else {
+            tileScrollTop = window.curScrollTop;
+        }
+    }, 750);
+
+    window.requestAnimationFrame(function () {
+        if(!window.isTileView) {
+            articleScrollTop = window.curScrollTop;
+            lastArticleUrl = document.location.href;
+        }
+        $body.addClass('loaded');
+    });
 }());

@@ -1,7 +1,7 @@
 ---
 title: "Andrew Semuschak"
 role: "UI Designer"
-tags: ["people"]
+tags: ["people", "home"]
 skill: "Interaction Design, Visual-Interactive Design, User Research, Usability Testing"
 summary: "I'm not saying it was portals. But it was portals."
 coverImageUrl: ""

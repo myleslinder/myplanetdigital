@@ -61,6 +61,9 @@
 	}
 
 	function removeAllLayers() {
+		if(!$hiddenTiles) {
+			return;
+		}
 		var len = $hiddenTiles.length;
 		while(len--){
 			removeLayer($hiddenTiles[len].element);
@@ -178,14 +181,18 @@
 		}
 	});
 
-	$window.on('filter', function(e, tag) {
+	$window.on('filter', function(e, tag, immediate, scroll) {
 		var first = true;
 		//window.setTimeout(function() {
 			window.tiles.items.map(function (tile) {
 				var $tile = $(tile.element).removeClass('reveal revealed show hidden').css({
-					opacity:0.01,
+					opacity: immediate ? 1 : 0.01,
 					transition: 'none'
 				});
+
+				if(immediate) {
+					return;
+				}
 
 				window.setTimeout(function() {
 					if(first){
@@ -199,9 +206,16 @@
 							transition: ''
 						});
 					});
-				}.bind($tile), 100);
+				}.bind($tile), 0);
 			});
 		//}, 0);
+	});
+
+	$window.on('same-page', function() {
+		debugger;
+		if(window.responsiveState !== 'mobile' || !window.mobileMenuIsOpen) {
+			$window.trigger('scroll-top');
+		}
 	});
 
 	$window.on('tiles-init', function () {

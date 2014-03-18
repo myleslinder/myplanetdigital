@@ -16,6 +16,7 @@
 <script>
 	window.currentTag = '<%- @tagName %>';
 </script>
+
 <% if (@document.tags && @tagName && (@tagName not in @document.tags)): %>
 	<% visibility = '' %>
 <% else: %>

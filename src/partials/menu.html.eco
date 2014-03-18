@@ -1,13 +1,14 @@
 <div id="menu">
 	<ul class="nav navbar-nav">
+		<a href="/people/arvin-singla">ARTICLE LINK</a>
 		<% for item in @menuItems: %>
 			<% if item.slug.indexOf('.') == -1: %>
 
-				<% liClass = if item.slug is '' then 'all' else item.slug %>
+				<% liClass = if item.slug is '' then 'home' else item.slug %>
 				<% liClass = item.meta.class if item.meta.class? %>
 
 				<li class="<%= liClass %><%= if item.state == 'current' then ' active' %>">
-					<a
+					<a  <%= if item.slug == 'contact' then 'data-attr=contact-link' %>
 						href="<%= if item.meta.link? then item.meta.link else @getUrl(item.url) %>"
 						<% if item.meta.banner?: %>
 							data-banner="<%= item.meta.banner %>"
