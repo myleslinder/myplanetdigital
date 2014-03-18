@@ -13,8 +13,12 @@
 <% @document.size ?= 'medium' %>
 <% @document.size = 'small' if not tile %>
 
+<script>
+	window.currentTag = '<%- @tagName %>';
+</script>
+
 <% if (@document.tags && @tagName && (@tagName not in @document.tags)): %>
-	<% visibility = 'visible' %>
+	<% visibility = '' %>
 <% else: %>
 	<% visibility = 'visible' %>
 <% end %>
@@ -25,7 +29,7 @@
 		<% if @document.size != 'small' && @document.imagePosition != 'bottom' : %>
 			<a class="tile-image"
 				<% if tile: %>
-					style="background-image: url('<%= @getUrl(tile) %>');
+					style="background-image: url('<%= @getUrl(tile)  %>');
 					filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='<%= @getUrl(tile) %>', sizingMethod='scale');
 					"
 				<% end %>

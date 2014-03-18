@@ -1,6 +1,6 @@
 ---
 title: "A Brief History of JavaScript"
-tags: ["technology"]
+tags: ["home", "technology"]
 banner: "A Brief History of\nJavaScript"
 summary: "It’s been five years since the first copies of Douglas Crockford’s “JavaScript: the Good Parts” hit bookshelves. A lot has changed since."
 author: "Neil Taylor"
@@ -15,7 +15,7 @@ imagePosition: "top"
 
 ## It’s been five years since the first copies of Douglas Crockford’s “JavaScript: the Good Parts” hit bookshelves. A lot has changed since.
 
-Now regarded as the language’s “Genesis”, [The Good Parts](http://www.amazon.ca/JavaScript-Good-Parts-Douglas-Crockford/dp/0596517742) revolutionized the way developers used “[the world’s most misunderstood](http://www.crockford.com/javascript/javascript.html)” language by de-mistyfing its core principles and laying out its best practices. 
+Now regarded as the language’s “Genesis”, [The Good Parts](http://www.amazon.ca/JavaScript-Good-Parts-Douglas-Crockford/dp/0596517742) revolutionized the way developers used “[the world’s most misunderstood](http://www.crockford.com/javascript/javascript.html)” language by de-mistyfing its core principles and laying out its best practices.
 
 Around the same time, a 22-year-old senior at the Rochester Institute of Technology named John Resig presented a project at BarCamp NYC. Frustrated by a lack of standardization from browser vendors, Resig’s “jQuery” aimed to simplify JavaScript’s interaction with those non-standard APIs via simple wrappers and adapters. A short while later, Resig [discussed](http://ejohn.org/blog/selectors-in-javascript/) and eventually implemented the ability to query the DOM with JavaScript via CSS selectors.
 

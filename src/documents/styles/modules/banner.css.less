@@ -1,6 +1,6 @@
 @import "../includes.less";
 
-.banner {
+#banner {
     margin: -@menu-height -10px 30px -10px;
     color: white;
     .border-box();
@@ -8,17 +8,16 @@
     font-family: "Plantin";
     font-weight: bold;
     font-size: 2.8em;
-    background-color: @mpd-orange;
-    background-image: url('../images/bannerdoodle.png');
-    background-size: 394px;
-    background-position: 70% 110px;
-    background-repeat: no-repeat;
-    .transition(height 0.3s);
+    background-color: transparent;
 
     @media screen and (max-width: 767px) {
+        margin: -@mobile-menu-height 0 16px 0;
         font-size: 1.8em;
-        padding: 120px 0 10px 0;
+        padding: (@mobile-menu-height - 10px) 0 20px 0;
         background-image: none;
+    }
+    @media screen and (max-width: 480px) {
+        font-size: 1.4em;
     }
 
     .banner-text {
@@ -26,28 +25,41 @@
         margin: 0 auto;
         padding: 0 180px 0 70px;
         .border-box();
-        text-transform: lowercase;
         text-align: left;
+        opacity: 0.99;
+        .transition(opacity, 0.3s);
 
         @media screen and (max-width: 767px) {
             padding: 0 1em;
         }
     }
+}
 
-    /**
-     * Chevron
-     */
-    text-align: center;
-    &:after {
-        border-left: 25px solid transparent;
-        border-right: 25px solid transparent;
-        border-top: 18px solid @mpd-orange;
-        content: '';
+#banner-bg {
+    position: absolute;
+    top: -10000px;
+    height: 10000px;
+    width: 100%;
+    background-color: @mpd-orange;
+    .transition-transform(0.3s, background-color 0.6s, opacity 0.15s);
+    .translate3d(0, 0, 0);
+
+    #banner-doodle {
+        width: 100%;
+        height: 500px;
         position: absolute;
-        margin: 20px 0 0 -20px;
+        bottom: 0;
+        .translate3d(0, 0, 0);
+        .transition-transform(0.3s);
+        //.transition(opacity,0.3s);
+        background-size: 394px;
+        background-position: 90% 230px;
+        background-repeat: no-repeat;
+    }
 
-        @media screen and (max-width: 767px) {
-            margin-top: 10px;
+    @media screen and (max-width: 767px) {
+        #banner-doodle {
+            display: none;
         }
     }
 }

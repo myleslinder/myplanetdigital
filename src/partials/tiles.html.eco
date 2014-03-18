@@ -1,5 +1,3 @@
-<div class="articles" data-tag="<%= @document.meta.tagName %>">
-	<% for document in @getPageCollection(@document.pagedCollection).toJSON(): %>
-	    <%- @partial('tile', true, {'document': document, 'getUrl': @getUrl, 'tagName': @document.meta.tagName}) %>
-	<% end %>
-</div>
+<% for document in @getPageCollection(@document.pagedCollection).toJSON(): %>
+    <%- @partial('tile', true, {'document': document, 'getUrl': @getUrl, 'tagName': @document.meta.tagName}) %>
+<% end %>

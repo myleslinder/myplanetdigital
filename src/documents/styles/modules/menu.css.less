@@ -57,6 +57,12 @@
 		width:@menu-height;
 		position:relative;
 		color: black;
+		a {
+				display:inline-block;
+				height:100%;
+				position: relative;
+				z-index: 1;
+		}
 		&.active {
 			background:#fff;
 			color:#000;
@@ -64,7 +70,6 @@
 		@media only screen and (max-width: 1174px) {
 			font-size: 15px;
 			&:last-of-type {
-				margin-top:30px;
 				border-bottom:0;
 			}
 		}
@@ -74,7 +79,7 @@
 			.transition-transform(@menu-transition-time);
 			background:transparent;
 
-			&.all {
+			&.home {
 				display:none;
 			}
 			a {
@@ -298,6 +303,7 @@
 			color: white;
 
 			a {
+				min-width:300px;
 				text-decoration: none;
 				color: inherit;
 			}
