@@ -7,4 +7,6 @@ menuOrder: 5
 menuTitle: Design
 menuBanner: "<p>And now, our thoughts on design.</p>"
 tagName: design
+menuColour: '#e146fc'
+menuDoodle: "bannerdoodle-test-2.png"
 ---
