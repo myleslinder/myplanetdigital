@@ -1,7 +1,7 @@
 ---
 title: "Join our team as a Business Development Rep"
 tags: ["careers"]
-banner: "Join our team as a \nBusiness Development Rep"
+banner: "Join our team \nas a Business\n Development Rep"
 summary: Work closely with the Director of Business Development to identify and research prospective clients.
 author: "Steph Brown"
 date: "2013-8-10"

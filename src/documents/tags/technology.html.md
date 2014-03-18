@@ -5,6 +5,8 @@ pagedCollection: 'homepage'
 menu: 6
 menuOrder: 6
 menuTitle: Technology
-menuBanner: Iteratively building product functionality that satisfies user goals, prioritized by business value.
+menuBanner: "<p>Some thoughts on technology.</p>"
 tagName: technology
+menuColour: '#84c600'
+menuDoodle: "bannerdoodle-test-3.png"
 ---
