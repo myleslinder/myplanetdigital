@@ -29,7 +29,6 @@
 		pageHasLoaded = false,
 		enteredMenu = false,
 		desktopMenuRafTimeout,
-		isWebkitMobileNotIOS,
 		HEADER_HEIGHT = 127,
 		MENU_WIDTH = 250,
 		SCROLL_UP_THRESHOLD = 20,
@@ -53,7 +52,7 @@
 			if(window.responsiveState !== 'mobile') {
 				setIndicator($item[0]);
 			} else if(window.mobileMenuIsOpen) {
-				window.setTimeout(closeMenu, 100);
+				window.setTimeout(closeMenu, 50);
 			}
 			$active.removeClass('active');
 			$active = $item.addClass('active');
@@ -83,7 +82,7 @@
 
 	function initMobileMenu() {
 		window.afterScrollFixOrientationChange = function() {
-			$menu.css('height',  window.innerHeight + (isWebkitMobileNotIOS ? 58 : 2));
+			$menu.css('height',  window.innerHeight + 2);
 		};
 		window.afterScrollFixOrientationChange();
 
@@ -174,19 +173,18 @@
 			}
 			mobileMenuIsTransitioning = true;
 			window.mobileMenuIsOpen = true;
-			mobileMenuYOffset = window.pageYOffset;
-			if(dontPushState !== true) {
-				//window.location.hash = 'menu-open';
-			}
-			window.curScrollTop = window.pageYOffset;
+			mobileMenuYOffset = window.curScrollTop = window.pageYOffset;
+
 			$window.trigger('menu');
-			window.requestAnimationFrame(function () {
+
+			window.setTimeout(window.requestAnimationFrame.bind(null, function () {
 				if(window.isTileView) {
 					return $body.addClass('menu');
 				}
 
 				$viewport.css({
-					transform:'translateZ(0)'
+					transform:'translateZ(0)',
+					transition: ''
 				});
 				window.setTimeout(function() {
 					window.requestAnimationFrame(function() {
@@ -196,7 +194,7 @@
 						$body.addClass('menu');
 					});
 				}, 0);
-			});
+			}), 0);
 		} else if(window.desktopCapable) {
 			closeMenu();
 		}
@@ -237,16 +235,19 @@
 			return;
 		}
 		if(window.responsiveState === 'mobile') {
-			if(isWebkitMobileNotIOS) {
-				window.requestAnimationFrame(function () {
+			if(window.isWebkitMobileNotIOS) {
+				//window.requestAnimationFrame(function () {
 					$wrap.css({
 						position: window.mobileMenuIsOpen ? 'fixed' : '',
 						top: window.mobileMenuIsOpen ? -mobileMenuYOffset : ''
 					});
-					if(!window.mobileMenuIsOpen) {
-						window.scrollTo(0, mobileMenuYOffset);
+					if(!window.justClosedMenu) {
+						if(!window.mobileMenuIsOpen) {
+							window.scroll(0, mobileMenuYOffset);
+						}
 					}
-				});
+					window.justClosedMenu = false;
+				//});
 			} else if(window.hasTouchEvents) {
 				$menu.css({
 					top: window.mobileMenuIsOpen ? 0 : ''
@@ -299,7 +300,6 @@
 			}
 			$(initDesktopMenu);
 		} else if (data.hasTouchEvents) {
-			isWebkitMobileNotIOS = !data.isIOS; //meh
 			$(initMobileMenu);
 		}
 		if($active.length) {

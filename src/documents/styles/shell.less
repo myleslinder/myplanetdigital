@@ -35,12 +35,32 @@ body {
 	position:relative;
 	background: #f0f0f0;
 
+	[data-role="menu-ghost"] {
+	  top: 0;
+	  width: 100%;
+	  height:75px;
+	  position: fixed;
+	  .translateZ();
+	  z-index:2;
+	}
+
+	@media only screen and (max-width: 767px) {
+	  [data-role="menu-ghost"] {
+	    height: 62px;
+	  }
+	}
 	@media screen and (min-width: 1140px) {
 	  [data-role="menu-ghost"] {
-	    position: fixed;
-	    top: 0;
-	    height: 160px;
-	    width: 100%;
+	    height: 155px;
+	    z-index:1;
+	  }
+	  #menu {
+	    margin-left:1px;
+	  }
+	}
+	@media screen and (max-width: 1139px) {
+	  #menu {
+	    z-index: 5;
 	  }
 	}
 }
@@ -156,7 +176,7 @@ body.article {
 		top:11px;
 		height: 40px;
 		width: 40px;
-		z-index:2;
+		z-index:3;
 		font-size:0;
 		.user-select();
 
@@ -255,6 +275,7 @@ a[href^=tel]{
 		margin-left:-1px;
 		border:1px solid #fff;
 		margin-top:-1px;
+		border-bottom: 0;
 	}
 	#menu, #menu-toggle {
 		pointer-events:auto;

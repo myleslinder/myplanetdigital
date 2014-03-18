@@ -11,6 +11,7 @@
         $article = $('#article'),
         $viewport = $('#viewport'),
         $articlein = $('#article-inner'),
+        $wrap = $('#wrap'),
         $main = $('#main'),
         $mainWrap = $('.main-wrap'),
         $loadgif = $('.loading-overlay'),
@@ -358,10 +359,21 @@
             } else if(hasLoadedTiles) {
                 $window.trigger('same-filter');
             }
+            if(wasLinkClick && window.isWebkitMobileNotIOS) {
+                window.justClosedMenu = true;
+                window.scroll(0, 0);
+                $wrap.css('top', 0);
+            }
         } else if(filterTag && window.isTileView && window.currentTag !== filterTag) {
             window.tiles.arrange({filter: '.' + filterTag});
             $window.trigger('filter', [filterTag]);
             window.currentTag = filterTag;
+            tileScrollTop = 0;
+            if(wasLinkClick && window.isWebkitMobileNotIOS) {
+                window.justClosedMenu = true;
+                window.scroll(0, 0);
+                $wrap.css('top', 0);
+            }
         }
     }
 
@@ -504,6 +516,8 @@
         top: window.pageYOffset,
         bottom: window.pageYOffset + window.pageHeight
     }]);
+    window.isWebkitMobileNotIOS =  window.hasTouchEvents && !window.isIOS; //meh
+
 
     SPINNER_HEIGHT = window.isIOS ? 25 : SPINNER_HEIGHT;
     pageUrl = pageUrl || '/';
