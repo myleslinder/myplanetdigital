@@ -11,9 +11,13 @@
     background-color: transparent;
     
     @media screen and (max-width: 767px) {
+        margin: -@mobile-menu-height 0 16px 0;
         font-size: 1.8em;
-        padding: 120px 0 10px 0;
+        padding: (@mobile-menu-height - 10px) 0 20px 0;
         background-image: none;
+    }
+    @media screen and (max-width: 480px) {        
+        font-size: 1.4em;        
     }
 
     .banner-text {
@@ -52,5 +56,11 @@
         background-size: 394px;
         background-position: 90% 230px;
         background-repeat: no-repeat;
+    }
+
+    @media screen and (max-width: 767px) {
+        #banner-doodle {
+            display: none;
+        }
     }
 }
