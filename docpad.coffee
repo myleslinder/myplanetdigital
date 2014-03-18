@@ -5,7 +5,7 @@ module.exports =
 	templateData:
 		site:
 			title: 'Myplanet Digital'
-			url: ''
+			url: '/swat'
 			styles: [
 				'/styles/main.css'
 			]
