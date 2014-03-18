@@ -16,6 +16,7 @@ module.exports =
 				'/scripts/modules/menu.js'
 				'/scripts/modules/tiles.js'
 				'/scripts/modules/elevator.js'
+				'/scripts/modules/banner.js'
 				'/scripts/main.js'
 				'/scripts/vendor/fastclick.js'
 				'/scripts/vendor/history.min.js'
@@ -84,6 +85,12 @@ module.exports =
 
 	plugins:
 
+		# Navlinks plugin:
+ 		# https://github.com/lucor/docpad-plugin-navlinks
+ 		navlinks:
+ 			collections:
+ 				homepage: 1
+
 		# Formatting for the dates
 		moment:
 			formats: [
@@ -103,7 +110,7 @@ module.exports =
 			useRelativeBase: true
 
 		cleanurls:
-      		static: true
+			static: true
 
 	# Environmental variables
 	environments:

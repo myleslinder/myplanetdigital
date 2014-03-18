@@ -47,6 +47,16 @@
 
 				<!--[if (!IE) | (gte IE 10)]> -->
 				<section id="main" <% if @document.layout != 'articles': %>style="transition: none; -webkit-transition: none; position: absolute;"<% end %>>
+				
+					<% if @document.meta.menuBanner?: %>
+						<div class="banner">							
+							<div class="banner-text">							
+						  	<%- @document.meta.menuBanner %>
+							</div>
+						</div>
+					<% end %>	
+
+
 					<div class="main-wrap" style="position: relative;">
 						<% if @document.layout is 'articles': %>
 						<div class="grid-size"></div>

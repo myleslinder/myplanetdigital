@@ -5,7 +5,7 @@ pagedCollection: 'homepage'
 menu: 3
 menuOrder: 3
 menuTitle: Careers
-menuBanner: We're proud of our culture, our space, and our working experience.
+menuBanner: "<p>Join our merry band of designers, technologists, business folk and shameless pug lovers.</p>"
 tagName: careers
 ---
 
