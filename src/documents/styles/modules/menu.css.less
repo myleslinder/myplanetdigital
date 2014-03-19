@@ -43,7 +43,6 @@
 	}
 	ul > li {
 		.border-box();
-		.text-overflow();
 		text-align: center;
 		vertical-align: top;
 		display:inline-block;
@@ -54,7 +53,7 @@
 		text-transform:lowercase;
 		height:@menu-height;
 		line-height:168px;
-		width:@menu-height;
+		width:100px;
 		position:relative;
 		color: black;
 		a {
@@ -76,7 +75,6 @@
 		@media only screen and (min-width: 1175px) {
 			height:@menu-height;
 			margin-top:-@menu-hover-offset;
-			.transition-transform(@menu-transition-time);
 			background:transparent;
 
 			&.home {
@@ -85,158 +83,79 @@
 			a {
 				color: inherit;
 				text-decoration: none;
+				.transition-transform(@menu-transition-time);
 			}
 			a > span {
 				z-index: 1;
 				position: relative;
+				top: -17px;
 			}
 			&:before {
 				content:'';
 				position:absolute;
 				top:44px;
-				left:44px;
+				left:28px;
 				width: 42px;
 				height: 40px;
+				opacity: 0.2;
 				background:url('../images/spritempd.png') 0 0 no-repeat;
 				background-size:533px;
-				.transition-transform(@menu-transition-time);
+				.transition-transform(@menu-transition-time, opacity @menu-transition-time);
 			}
-			&.company{
+			&.what-we-do {
 				&:before {
-					background-position: -312px 0;
-				}
-				&.hover, &.active {
-					a > span {
-						color: @company-color;
-					}
-					&:before {
-						background-position: -312px -41px;
-					}
-					&:after {
-						border-color: @company-color;
-					}
+					background-position: -366px -43px;
 				}
 			}
 			&.people {
 				&:before {
-					background-position: -265px 0;
-				}
-				&.hover, &.active {
-					a > span {
-						color: @team-color;
-					}
-					&:before {
-						background-position: -265px -40px;
-					}
-					&:after {
-						border-color: @team-color;
-					}
+					background-position: -272px -43px;
 				}
 			}
-			&.careers, &.what-we-do {
+			&.careers {
 				&:before {
-					background-position: -99px 0;
-				}
-				&.hover, &.active {
-					a > span {
-						color: @careers-color;
-					}
-					&:before {
-						background-position: -99px -40px;
-					}
-					&:after {
-						border-color: @careers-color;
-					}
+					background-position: -95px -43px;
 				}
 			}
 			&.contact {
+				margin-right: 300px;
 				&:before {
-					background-position: -409px 0;
-				}
-				&.hover, &.active {
-					a > span {
-						color: @contact-color;
-					}
-					&:before {
-						background-position: -409px -40px;
-					}
-					&:after {
-						border-color: @contact-color;
-					}
+					background-position: -321px -43px;
 				}
 			}
 			&.design {
 				&:before {
-					background-position: -140px 0;
+					opacity: 0.01;
+					background-position: -138px -43px;
 				}
-				&.hover, &.active {
-					a > span {
-						color: @design-color;
-					}
-					&:before {
-						background-position: -140px -40px;
-					}
-					&:after {
-						border-color: @design-color;
-					}
+				&:after {
+					content: 'thoughts:';
+					position: absolute;
+					font-family: TradeGothic;
+					font-size: 13px;
+					letter-spacing: -0.03em;
+					font-weight: bold;
+					top: -17px;
+					left: -50px;
 				}
 			}
 			&.technology {
 				&:before {
-					background-position: -184px 0;
-				}
-				&.hover, &.active {
-					a > span {
-						color: @development-color;
-					}
-					&:before {
-						background-position: -184px -40px;
-					}
-					&:after {
-						border-color: @development-color;
-					}
+					opacity: 0.01;
+					background-position: -187px -43px;
 				}
 			}
-			&.business {
+			&.community {
 				&:before {
-					background-position: -224px 0;
+					background-position: -229px -43px;
 				}
-				&.hover, &.active {
-					a > span {
-						color: @business-color;
-					}
-					&:before {
-						background-position: -224px -40px;
-					}
-					&:after {
-						border-color: @business-color;
-					}
-				}
-			}
-			&:after {
-				top:70px;
-				left:22px;
-				content:'';
-				display:block;
-				position:absolute;
-				width:84px;
-				background:#fff;
-				height:26px;
-				border-top:1px solid #e6e6e6;
-				opacity:0.99;
-				.transition-transform(@menu-transition-time, opacity @menu-transition-time);
 			}
 			&.hover, &.active {
-				.transform(translateY(@menu-hover-offset));
-
-				&:before {
-					background-position: -146px -40px;
-					.transform(translateY(-@menu-hover-offset));
+				a {
+					.transform(translateY(25px));
 				}
-				&:after {
-					opacity:0.01;
-					border-color:#ff0f0f;
-					.transform(translateY(37px));
+				&:before {
+					opacity: 1;
 				}
 			}
 		}
