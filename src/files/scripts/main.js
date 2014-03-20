@@ -97,7 +97,6 @@
     function finishArticleLoad(data) {
         window.setTimeout(function(){
             window.requestAnimationFrame(function () {
-                $articlein.html(data);
                 window.requestAnimationFrame(function() {
                     isLoading = false;
                     $loadgif.hide();
@@ -123,11 +122,9 @@
         if (isTileView) {
             if ($mainWrap.find('.tile').length === 0) {
                 isLoading = true;
-                $ajaxer = $.get(window.baseUrl + 'index-content-tiles/index.html', function(data){
-                    $ajaxer = null;
+                $mainWrap.load(window.baseUrl + 'index.html .main-wrap', function() {
                     window.setTimeout(function () {
                         window.requestAnimationFrame(function () {
-                            $mainWrap.html(data);
                             $window.trigger('tiles-init');
                             window.requestAnimationFrame(function() {
                                 hasLoadedTiles = true;
@@ -153,8 +150,7 @@
         else {
             $articlein.removeClass('reveal');
             isLoading = true;
-            $ajaxer = $.get(removeTrailingSlash(window.location.href) + '-content/index.html', function(data) {
-                $ajaxer = null;
+            $articlein.load(removeTrailingSlash(window.location.href) + '/index.html #article', function(data) {
                 window.setTimeout(function () {
                     var image = new Image(),
                         $loadedData = $(data).eq(0),
