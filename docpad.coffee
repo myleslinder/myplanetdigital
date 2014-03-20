@@ -13,6 +13,7 @@ module.exports =
 			scripts: [
 				'/scripts/pollyfill.js'
 				'/scripts/vendor/scrollfix.js'
+				'/scripts/variables.js'
 				'/scripts/modules/menu.js'
 				'/scripts/modules/tiles.js'
 				'/scripts/modules/elevator.js'
