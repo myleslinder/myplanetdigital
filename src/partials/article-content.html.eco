@@ -89,7 +89,7 @@
 		<% # Provide the tags %>
 		<% if @document.tags?: %>
 			<ul class="article-tags">
-				<% for tag in @document.tags or []: %>
+				<% for tag in @document.tags or [] when tag isnt 'home': %>
 					<li><a href="<%= @getUrl("/tags/" + tag) %>"><%= tag %></a></li>
 				<% end %>
 			</ul>
