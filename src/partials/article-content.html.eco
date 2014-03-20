@@ -106,7 +106,9 @@
 			<% # Add the article footer %>
 			<div class="article-footer">
 				<%- @getNavLinks() %>
-				<div class="footer-doodle careers"></div>
+				<% tags = 'careers' %>
+				<% tags = @document.tags[0] if @document.tags? %>
+				<div class="footer-doodle <%= tags %>"></div>
 			</div>
 		</div>
 	<% end %>
