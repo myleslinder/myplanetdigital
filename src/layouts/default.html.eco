@@ -104,7 +104,7 @@
 							<% if @document.meta.menuColour?: %>
 								style="background-color: <%- @document.meta.menuColour %> "
 							<% else: %>
-								style="background-color: #f16838 "
+								style="background-color: #f05a28 "
 							<% end %>
 						>
 							<div class="banner-text">

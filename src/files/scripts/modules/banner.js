@@ -20,7 +20,7 @@
     }
     // preload all the doodles
     ;(new Image()).src = pathToBannerSettnigsMap[self.attr('href')]['bannerDoodle'];
-  })
+  });
 
   function placeBannerBackground(newHeight, newColor) {
     if (typeof newColor === 'undefined') {
@@ -39,7 +39,7 @@
   // transitionend but the actual functionality can be changed by
   // assigning function to bannerTextTransitionHandler.cb
   function bannerTextTransitionHandler() {
-    arguments.callee.cb()
+    arguments.callee.cb();
     arguments.callee.cb = noop;
   }
   bannerTextTransitionHandler.cb = noop;
