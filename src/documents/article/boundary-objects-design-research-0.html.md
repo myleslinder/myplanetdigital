@@ -10,7 +10,7 @@ size: "small"
 colour: "white"
 sticky: false
 imagePosition: "top"
-
+ignored: true
 ---
 
 ## While the name may be unfamiliar, most of us working in the digital space are well-acquainted with the concept and use of boundary objects. Examples are all around us; objects that act as a bridge between two different groups, building mutual understanding. 

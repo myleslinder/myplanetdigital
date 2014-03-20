@@ -64,6 +64,7 @@ module.exports =
 						'careers'
 						'people'
 					]
+				ignored: $ne: true
 				layout:
 					$nin: ['content']
 			return database.findAllLive(options, [{sticky: -1, date: -1}]).on "add", (model) ->
@@ -71,7 +72,10 @@ module.exports =
 
 		# Rendered content into individual segmented HTML pages.
 		content: (database) ->
-			database.findAllLive({relativeOutDirPath: $in: ['people', 'article', 'careers']}).on "add", (model) ->
+			database.findAllLive(
+				relativeOutDirPath: $in: ['people', 'article', 'careers']
+				ignored: $ne: true
+			).on "add", (model) ->
 				model.setMetaDefaults({additionalLayouts: ['content']})
 
 		# Navigation menu.

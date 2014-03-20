@@ -1,6 +1,6 @@
 ---
 title: "Beyond Responsive"
-tags: ["design", "technology"]
+tags: ["design", "technology", "community"]
 banner: "Beyond \nResponsive"
 summary: "The rise of mobile has forced creators of web experiences to think beyond the desktop format."
 author: "Nate Archer"
