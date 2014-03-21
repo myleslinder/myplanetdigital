@@ -48,7 +48,7 @@ module.exports = (grunt) ->
 					directories: true
 					onlyignoredfiles: true
 				files: [
-					src: 'src/documents/styles/sprites.css'
+					src: 'src'
 				]
 
 		sprite:
