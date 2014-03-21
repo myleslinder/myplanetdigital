@@ -1,4 +1,5 @@
 @import "includes.less";
+@import (less) "sprites.css";
 
 html, body {
 	margin:0;
@@ -140,8 +141,6 @@ body.article {
 	height:80px;
 	width:80px;
 	font-size:0;
-	background:url('../images/spritempd.png') no-repeat 0 -121px;
-	background-size:434px auto;
 	position:fixed;
 	.translateZ();
 	.user-select();
@@ -153,16 +152,20 @@ body.article {
 		left:@logo-gutter-width;
 		margin-left:0;
 	}
-	@media only screen and (min-width : 1173px) {
-		&:hover {
-			background-position:0 -38px;
-		}
-	}
 	a {
-		height: 100%;
-		width: 100%;
+		height: 80px;
+		width: 80px;
+		background-size: 300%;
 		text-decoration: none;
 		display: inline-block;
+		@media only screen and (min-width : 1173px) {
+			&:hover {
+				.icon-myplanet-black;
+				width: 80px;
+				height: 80px;
+				background-position-x: 80px;
+			}
+		}
 	}
 }
 

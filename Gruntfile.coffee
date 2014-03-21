@@ -7,11 +7,14 @@
 #	npm install grunt -g
 #	grunt content
 #
+# Sprite Sheet:
+#   grunt sprite
+#
 module.exports = (grunt) ->
 	grunt.initConfig
 		# Retrieve any information from package.json.
 		pkg: grunt.file.readJSON("package.json")
-	
+
 		# Clone the content repository.
 		gitclone:
 			content:
@@ -45,12 +48,22 @@ module.exports = (grunt) ->
 					directories: true
 					onlyignoredfiles: true
 				files: [
-					src: 'src'
+					src: 'src/documents/styles/sprites.css'
 				]
 
+		sprite:
+			all:
+				src: 'src/sprites/*.png'
+				destCSS: 'src/documents/styles/sprites.css'
+				destImg: 'src/files/images/sprites.png'
+				algorithm: 'binary-tree'
+				imgPath: '../images/sprites.png'
+
+	# Register all the available Grunt tasks.
 	grunt.loadNpmTasks 'grunt-git'
 	grunt.loadNpmTasks 'grunt-contrib-copy'
 	grunt.loadNpmTasks 'grunt-contrib-clean'
+	grunt.loadNpmTasks 'grunt-spritesmith'
 
 	# Clear the local changes, both from the build, and any git ignored files.
 	grunt.registerTask 'clear', ['gitclean', 'clean']
@@ -60,4 +73,4 @@ module.exports = (grunt) ->
 
 	# By default, simply install the content.
 	grunt.registerTask 'default', ['content']
-	
+

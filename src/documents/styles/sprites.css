@@ -1,0 +1,132 @@
+.icon-back {
+  background-image: url(../images/sprites.png);
+  background-position: 0px -191px;
+  width: 160px;
+  height: 159px;
+}
+.icon-careers-color {
+  background-image: url(../images/sprites.png);
+  background-position: -247px -350px;
+  width: 53px;
+  height: 72px;
+}
+.icon-careers {
+  background-image: url(../images/sprites.png);
+  background-position: -194px -350px;
+  width: 53px;
+  height: 73px;
+}
+.icon-chicago {
+  background-image: url(../images/sprites.png);
+  background-position: -356px -191px;
+  width: 99px;
+  height: 87px;
+}
+.icon-community-color {
+  background-image: url(../images/sprites.png);
+  background-position: 0px -435px;
+  width: 72px;
+  height: 66px;
+}
+.icon-community {
+  background-image: url(../images/sprites.png);
+  background-position: -442px -350px;
+  width: 72px;
+  height: 67px;
+}
+.icon-contact-color {
+  background-image: url(../images/sprites.png);
+  background-position: -340px -435px;
+  width: 72px;
+  height: 50px;
+}
+.icon-contact {
+  background-image: url(../images/sprites.png);
+  background-position: -412px -435px;
+  width: 73px;
+  height: 49px;
+}
+.icon-design-color {
+  background-image: url(../images/sprites.png);
+  background-position: -119px -350px;
+  width: 75px;
+  height: 74px;
+}
+.icon-design {
+  background-image: url(../images/sprites.png);
+  background-position: -455px -191px;
+  width: 75px;
+  height: 75px;
+}
+.icon-myplanet-black {
+  background-image: url(../images/sprites.png);
+  background-position: -362px 0px;
+  width: 181px;
+  height: 181px;
+}
+.icon-myplanet-orange {
+  background-image: url(../images/sprites.png);
+  background-position: 0px 0px;
+  width: 181px;
+  height: 191px;
+}
+.icon-myplanet-white {
+  background-image: url(../images/sprites.png);
+  background-position: -181px 0px;
+  width: 181px;
+  height: 181px;
+}
+.icon-people-color {
+  background-image: url(../images/sprites.png);
+  background-position: -72px -435px;
+  width: 73px;
+  height: 65px;
+}
+.icon-people {
+  background-image: url(../images/sprites.png);
+  background-position: -145px -435px;
+  width: 74px;
+  height: 64px;
+}
+.icon-technology-color {
+  background-image: url(../images/sprites.png);
+  background-position: -300px -350px;
+  width: 71px;
+  height: 69px;
+}
+.icon-technology {
+  background-image: url(../images/sprites.png);
+  background-position: -371px -350px;
+  width: 71px;
+  height: 69px;
+}
+.icon-toronto {
+  background-image: url(../images/sprites.png);
+  background-position: -160px -191px;
+  width: 119px;
+  height: 128px;
+}
+.icon-ukraine {
+  background-image: url(../images/sprites.png);
+  background-position: -279px -191px;
+  width: 77px;
+  height: 105px;
+}
+.icon-vancouver {
+  background-image: url(../images/sprites.png);
+  background-position: 0px -350px;
+  width: 119px;
+  height: 85px;
+}
+.icon-what-we-do-color {
+  background-image: url(../images/sprites.png);
+  background-position: -219px -435px;
+  width: 61px;
+  height: 61px;
+}
+.icon-what-we-do {
+  background-image: url(../images/sprites.png);
+  background-position: -280px -435px;
+  width: 60px;
+  height: 60px;
+}

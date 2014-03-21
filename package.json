@@ -29,6 +29,7 @@
   "main": "node_modules/docpad/bin/docpad-server",
   "scripts": {},
   "devDependencies": {
+    "grunt-spritesmith": "~1.22.0",
     "docpad": "~6",
     "docpad-plugin-marked": "~2.2.0",
     "grunt": "~0.4.2",
