@@ -1,3 +1,6 @@
+<% documentTag = '' %>
+<% documentTag = @document.tags[0] if @document.tags? %>
+
 <div id="menu">
 	<ul class="nav navbar-nav">
 		<% for item in @menuItems: %>
@@ -5,6 +8,7 @@
 
 				<% liClass = if item.slug is '' then 'home' else item.slug %>
 				<% liClass = item.meta.class if item.meta.class? %>
+				<% item.state = 'current' if liClass == documentTag %>
 
 				<li class="<%= liClass %><%= if item.state == 'current' then ' active' %>">
 					<a  <%= if item.slug == 'contact' then 'data-attr=contact-link' %>
