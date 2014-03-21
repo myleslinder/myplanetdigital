@@ -1,4 +1,0 @@
-<div class="grid-size"></div>
-<% for document in @getPageCollection(@document.pagedCollection).toJSON(): %>
-    <%- @partial('tile', true, {'document': document, 'getUrl': @getUrl, 'tagName': @document.meta.tagName}) %>
-<% end %>

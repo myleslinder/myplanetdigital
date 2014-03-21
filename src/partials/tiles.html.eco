@@ -1,5 +1,0 @@
-<% for document in @getPageCollection(@document.pagedCollection).toJSON(): %>
-	<% if not document.ignored: %>
-		<%- @partial('tile', true, {'document': document, 'getUrl': @getUrl, 'tagName': @document.meta.tagName}) %>
-	<% end %>
-<% end %>

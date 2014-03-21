@@ -66,8 +66,6 @@ module.exports =
 						'people'
 					]
 				ignored: $ne: true
-				layout:
-					$nin: ['content']
 			return database.findAllLive(options, [{sticky: -1, date: -1}]).on "add", (model) ->
 				model.setMetaDefaults({sticky: false})
 
@@ -76,16 +74,13 @@ module.exports =
 			database.findAllLive(
 				relativeOutDirPath: $in: ['people', 'article', 'careers']
 				ignored: $ne: true
-			).on "add", (model) ->
-				model.setMetaDefaults({additionalLayouts: ['content']})
+			)
 
 		# Navigation menu.
 		menu: (database) ->
 			database.findAllLive
 				menu:
 					$gt: 0
-				layout:
-					$nin: ['content', 'content-tiles']
 				, {menuOrder: 1}
 
 	plugins:

@@ -14,7 +14,6 @@
     "docpad": "~6",
     "docpad-plugin-eco": "~2.0.3",
     "docpad-plugin-navlinks": "~2.0.2",
-    "docpad-plugin-multiplelayouts": "~2.0.3",
     "docpad-plugin-paged": "~2.2.4",
     "docpad-plugin-cleanurls": "~2.7.0",
     "docpad-plugin-ghpages": "~2.4.3",

@@ -1,7 +1,6 @@
 ---
 title: "404 Not Found"
 layout: default
-additionalLayouts: ['content']
 ---
 
 <div class="article-404">
