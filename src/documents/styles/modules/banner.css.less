@@ -6,20 +6,51 @@
     height: 557px;
     .transition(background-color 0.5s);
 
-    &.home, &.company, &.people, &.careers {
+    &.home {
         background-color: @mpd-orange;
+        .banner-text:before {
+            background-image: url(../../images/bannerdoodle-test-1.png);
+        }
+    }
+    &.company {
+        background-color: @mpd-orange;
+        .banner-text:before {
+            background-image: url(../../images/bannerdoodle-test-2.png);
+        }
+    }
+    &.people {
+        background-color: @mpd-orange;
+        .banner-text:before {
+            background-image: url(../../images/bannerdoodle-test-3.png);
+        }
+    }
+    &.careers {
+        background-color: @mpd-orange;
+        .banner-text:before {
+            background-image: url(../../images/bannerdoodle-test-1.png);
+        }
     }
     &.design {
         background-color: #5f5ca9;
+        .banner-text:before {
+            background-image: url(../../images/bannerdoodle-test-2.png);
+        }
     }
     &.technology {
         background-color: #58c0a2;
+        .banner-text:before {
+            background-image: url(../../images/bannerdoodle-test-3.png);
+        }
     }
     &.community {
         background-color: #ea3d67;
+        .banner-text:before {
+            background-image: url(../../images/bannerdoodle-test-1.png);
+        }
     }
 
     .banner-text {
+        position: relative;
         max-width: 935px;
         margin: 0 auto;
         padding-top: 231px;
@@ -31,10 +62,24 @@
         line-height: 60px;
         letter-spacing: -2.3px;
         .font-fix();
+        .transition(opacity 0.4s);
 
         p {
             margin: 0;
             padding: 0 10px;
+        }
+
+        &:before {
+            content: '';
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: 300px;
+            top: 200px;
+            left: 680px;
+            background-image: url(../../images/bannerdoodle.png);
+            background-size: 394px;
+            background-repeat: no-repeat;
         }
     }
 }

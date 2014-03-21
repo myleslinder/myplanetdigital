@@ -12,7 +12,7 @@
         tag = me.data('tag');
     bannerInfo[tag] = {
       'bannerText' : me.data('banner'),
-      'bannerDoodle' : 'images/' + me.data('menu-doodle'),
+      'bannerDoodle' : '../images/' + me.data('menu-doodle'),
     };
     // preload all the doodles
     (new Image()).src = bannerInfo[tag].bannerDoodle;
@@ -22,13 +22,16 @@
     var bannerText = bannerInfo[tag]['bannerText'],
         newDoodle = bannerInfo[tag]['bannerDoodle'];
 
-    $bannerText.html(bannerText);
+    $bannerText.css({'opacity': 0.01});
+    window.setTimeout(function () {
+      $bannerText.html(bannerText);
+      $bannerText.css({'opacity': 0.99});
+    }, 400);
     $banner.attr('class', tag);
   }
 
   $(window).on('filter', function(e, tag){
     bannerUpdate(tag);
   });
-
 
 }());
