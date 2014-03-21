@@ -13,10 +13,6 @@
 <% @document.size ?= 'medium' %>
 <% @document.size = 'small' if not tile %>
 
-<script>
-	window.currentTag = '<%- @tagName %>';
-</script>
-
 <% if (@document.tags && @tagName && (@tagName not in @document.tags)): %>
 	<% visibility = '' %>
 <% else: %>

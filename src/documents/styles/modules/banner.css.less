@@ -4,7 +4,7 @@
     color: white;
     .border-box();
     height: 557px;
-    .transition(background-color 0.5s);
+    .transition(background-color 0.7s);
 
     &.home {
         background-color: @mpd-orange;
@@ -49,6 +49,13 @@
         }
     }
 
+    @media only screen and (max-width :1174px) {
+        height: 387px;
+    }
+    @media only screen and (max-width :900px) {
+        height: 387px;
+    }
+
     .banner-text {
         position: relative;
         max-width: 935px;
@@ -62,7 +69,7 @@
         line-height: 60px;
         letter-spacing: -2.3px;
         .font-fix();
-        .transition(opacity 0.4s);
+        .transition(opacity 0.7s ease-in-out 0.125s);
 
         p {
             margin: 0;
@@ -80,6 +87,17 @@
             background-image: url(../../images/bannerdoodle.png);
             background-size: 394px;
             background-repeat: no-repeat;
+        }
+
+        @media only screen and (max-width :1174px) {
+            font-size: 3.3em;
+            padding-top: 90px;
+            width: 855px;
+        }
+        @media only screen and (max-width :900px) {
+            font-size: 3.3em;
+            padding: 90px 20px 0;
+            width: 100%;
         }
     }
 }

@@ -203,7 +203,7 @@
 	function handleScroll (e, data) {
 		var top,
 			doTransition;
-		if(window.isBusy || data.isFinalEvent || enteredMenu || window.responsiveState === 'mobile' ) {
+		if(window.isBusy || window.isElevating || data.isFinalEvent || enteredMenu || window.responsiveState === 'mobile' ) {
 			return;
 		}
 		top = Math.max(data.top, 0);
