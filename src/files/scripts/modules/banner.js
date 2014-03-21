@@ -16,7 +16,7 @@
     pathToBannerSettnigsMap[self.attr('href')] = {
       'bannerText' : self.data('banner'),
       'bannerColour' : self.data('menu-colour'),
-      'bannerDoodle' : '/images/' + self.data('menu-doodle'),
+      'bannerDoodle' : 'images/' + self.data('menu-doodle'),
     }
     // preload all the doodles
     ;(new Image()).src = pathToBannerSettnigsMap[self.attr('href')]['bannerDoodle'];
@@ -64,7 +64,7 @@
   function bannerChangeDoodle(newDoodle) {
     bannerDoodleTransitionHandler.cb = function() {
       $bannerDoodle.css({
-        'background-image' : 'url("' + newDoodle + '")',
+        'background-image' : 'url("' + window.baseUrl + newDoodle + '")',
         //'opacity' : 0.99
         'transform' : 'translate3d(0, 0, 0)',
       });
