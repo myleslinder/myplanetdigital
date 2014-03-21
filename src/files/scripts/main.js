@@ -122,7 +122,7 @@
         if (isTileView) {
             if ($mainWrap.find('.tile').length === 0) {
                 isLoading = true;
-                $mainWrap.load(window.baseUrl + 'index.html .main-wrap', function() {
+                $mainWrap.load(window.baseUrl + ' .main-wrap', function() {
                     window.setTimeout(function () {
                         window.requestAnimationFrame(function () {
                             $window.trigger('tiles-init');
@@ -150,7 +150,10 @@
         else {
             $articlein.removeClass('reveal');
             isLoading = true;
-            $articlein.load(removeTrailingSlash(window.location.href) + '/index.html #article', function(data) {
+            $articlein.load(removeTrailingSlash(window.location.href) + '/ #article', function(data) {
+                // @todo Fix the Cover Banner pre-loading.
+                finishArticleLoad(data);
+                /*
                 window.setTimeout(function () {
                     var image = new Image(),
                         $loadedData = $(data).eq(0),
@@ -162,6 +165,7 @@
                         finishArticleLoad(data);
                     }
                 }, 1000);
+                */
             });
         }
         $body.removeClass('animating');
