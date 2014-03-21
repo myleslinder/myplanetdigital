@@ -1,65 +1,40 @@
 @import "../includes.less";
 
 #banner {
-    margin: -@menu-height -10px 30px -10px;
     color: white;
     .border-box();
-    padding: 120px 0 0.5em;
-    font-family: "Plantin";
-    font-weight: bold;
-    font-size: 2.8em;
-    background-color: transparent;
+    height: 557px;
+    .transition(background-color 0.5s);
 
-    @media screen and (max-width: 767px) {
-        margin: -@mobile-menu-height 0 16px 0;
-        font-size: 1.8em;
-        padding: (@mobile-menu-height - 10px) 0 20px 0;
-        background-image: none;
+    &.home, &.company, &.people, &.careers {
+        background-color: @mpd-orange;
     }
-    @media screen and (max-width: 480px) {
-        font-size: 1.4em;
+    &.design {
+        background-color: #5f5ca9;
+    }
+    &.technology {
+        background-color: #58c0a2;
+    }
+    &.community {
+        background-color: #ea3d67;
     }
 
     .banner-text {
-        max-width: 1024px;
+        max-width: 935px;
         margin: 0 auto;
-        padding: 0 180px 0 70px;
+        padding-top: 231px;
         .border-box();
         text-align: left;
-        opacity: 0.99;
-        .transition(opacity, 0.3s);
+        font-family: "Plantin";
+        font-weight: bold;
+        font-size: 3.6em;
+        line-height: 60px;
+        letter-spacing: -2.3px;
+        .font-fix();
 
-        @media screen and (max-width: 767px) {
-            padding: 0 1em;
-        }
-    }
-}
-
-#banner-bg {
-    position: absolute;
-    top: -10000px;
-    height: 10000px;
-    width: 100%;
-    background-color: @mpd-orange;
-    .transition-transform(0.3s, background-color 0.6s, opacity 0.15s);
-    .translate3d(0, 0, 0);
-
-    #banner-doodle {
-        width: 100%;
-        height: 500px;
-        position: absolute;
-        bottom: 0;
-        .translate3d(0, 0, 0);
-        .transition-transform(0.3s);
-        //.transition(opacity,0.3s);
-        background-size: 394px;
-        background-position: 90% 230px;
-        background-repeat: no-repeat;
-    }
-
-    @media screen and (max-width: 767px) {
-        #banner-doodle {
-            display: none;
+        p {
+            margin: 0;
+            padding: 0 10px;
         }
     }
 }
