@@ -230,6 +230,7 @@
         if(isArticleUrl && window.isTileView) { // Going to article view from tile view
             window.isTileView = false;
             window.isBusy = true;
+            $back.find('a').attr('href', window.currentTag === 'home'? '/': '/tags/' + window.currentTag);
 
             if(!wasCancelled) {
                 tileScrollTop = window.curScrollTop;
@@ -284,6 +285,8 @@
             doArticleAjax = true;
             articleScrollTop = 0;
             lastArticleUrl = data.url;
+            //@TODO: handle article to article tag update
+            //window.currentTag = ???;
 
             window.setTimeout(function () {
                 window.requestAnimationFrame(function () {
@@ -566,6 +569,7 @@
     });
 
     $article.append($articleFooter = $footer.clone());
+    window.currentTag = $('#menu').find('li.active').attr('class').split(' ')[0];
     $window.on('page-change', handlePageChange);
     $article.on('transitionend webkitTransitionEnd', handleTransitionEnd);
 
@@ -607,6 +611,8 @@
         if(!window.isTileView) {
             $articlein.addClass('reveal');
             $back.addClass('reveal');
+            // set link to return to primary tag on landing on article
+            $back.find('a').attr('href', window.currentTag === 'home'? '/': '/tags/' + window.currentTag);
             articleScrollTop = window.curScrollTop;
         } else {
             tileScrollTop = window.curScrollTop;
