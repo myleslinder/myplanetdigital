@@ -32,7 +32,6 @@
     if(immediate) {
       return $bannerText.css({'opacity': 1});
     }
-    debugger;
     window.setTimeout(window.requestAnimationFrame.bind(null, function() {
       $bannerText.css({'opacity': 0.99, 'transition' : ''});
     }), 0);

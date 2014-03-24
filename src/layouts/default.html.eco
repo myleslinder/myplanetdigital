@@ -40,10 +40,12 @@
 
 	<body class="<% if @document.layout != 'articles': %>article <% end %>">
 		<div id="wrap">
-
 			<h1 id="logo">
 				<a href="<%= @getUrl('/') %>">Myplanet</a>
 			</h1>
+			<div id="back">
+				<a href="<%= @getUrl('/') %>">Back</a>
+			</div>
 			<div id="viewport">
 
 				<!--[if (!IE) | (gte IE 10)]> -->
