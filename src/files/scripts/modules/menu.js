@@ -346,6 +346,9 @@
 	$window.on('filter',function (e, tag) {
 		activateLink($menu.find('li.' + tag));
 	});
+	$window.on('article-to-article', function (e, tag) {
+		activateLink($menu.find('li.' + tag));
+	});
 
 	$window.on('article-transition', hideLargeMenu);
 

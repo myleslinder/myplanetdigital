@@ -10,6 +10,7 @@
         $body = $('body'),
         $article = $('#article'),
         $back = $('#back'),
+        $backlink = $('#back a'),
         $viewport = $('#viewport'),
         $articlein = $('#article-inner'),
         $wrap = $('#wrap'),
@@ -22,6 +23,7 @@
         $articleFooter,
         $ajaxer = null,
         popped = false,
+        fromTiles = false,
         hasLoadedTiles,
         filterTag,
         isLoading =  false,
@@ -167,6 +169,14 @@
                         finishArticleLoad(data);
                     }
                 }, 1000);
+                if (!fromTiles) {
+                    var tag = $(data).closest('.article-body').attr('data-tag') || $(data).closest('.profile-body').attr('data-tag'),
+                        href = tag === 'home'? '/' : '/tags/' + tag;
+                    debugger;
+                    console.log(href);
+                    $backlink.attr('href', href);
+                    $window.trigger('article-to-article', [tag]);
+                }
             });
         }
         $body.removeClass('animating');
@@ -230,7 +240,7 @@
         if(isArticleUrl && window.isTileView) { // Going to article view from tile view
             window.isTileView = false;
             window.isBusy = true;
-            $back.find('a').attr('href', window.currentTag === 'home'? '/': '/tags/' + window.currentTag);
+            fromTiles = true;
 
             if(!wasCancelled) {
                 tileScrollTop = window.curScrollTop;
@@ -283,10 +293,9 @@
         }  else if(isArticleUrl && !window.isTileView) { // article view to article view transition
             window.isBusy = true;
             doArticleAjax = true;
+            fromTiles = false;
             articleScrollTop = 0;
             lastArticleUrl = data.url;
-            //@TODO: handle article to article tag update
-            //window.currentTag = ???;
 
             window.setTimeout(function () {
                 window.requestAnimationFrame(function () {
@@ -557,6 +566,8 @@
         if(!isExternalUrl(url)) {
             if(e.currentTarget.getAttribute('data-attr') === 'contact-link') {
                 $window.trigger('scroll-to', [window.isTileView ? $footer.offset().top - 90 : $articleFooter.offset().top - 90]);
+            } else if (e.currentTarget.getAttribute('data-attr') === 'back' && fromTiles) {
+                History.back();
             } else if(url === pageUrl) {
                 $window.trigger('same-page');
             } else {
@@ -612,7 +623,7 @@
             $articlein.addClass('reveal');
             $back.addClass('reveal');
             // set link to return to primary tag on landing on article
-            $back.find('a').attr('href', window.currentTag === 'home'? '/': '/tags/' + window.currentTag);
+            $backlink.attr('href', window.currentTag === 'home'? '/': '/tags/' + window.currentTag);
             articleScrollTop = window.curScrollTop;
         } else {
             tileScrollTop = window.curScrollTop;

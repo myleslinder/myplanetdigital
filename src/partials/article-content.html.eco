@@ -22,6 +22,11 @@
 	<% authorImage = @getUrl(authorImageFile) if authorImageFile %>
 <% end %>
 
+<% # Get tag %>
+
+<% tags = '' %>
+<% tags = @document.tags[0] if @document.tags? %>
+
 <% # Output the article header %>
 
 <div class="article-banner" style="background-image: url(<%- cover if cover? %>);" >
@@ -43,7 +48,7 @@
 
 <% # Output the article body %>
 
-<div class="article-body">
+<div class="article-body" data-tag="<%= tags %>">
 	<div class="article-info">
 
 		<% # Provide the author image %>
@@ -106,8 +111,6 @@
 			<% # Add the article footer %>
 			<div class="article-footer">
 				<%- @getNavLinks() %>
-				<% tags = 'careers' %>
-				<% tags = @document.tags[0] if @document.tags? %>
 				<div class="footer-doodle <%= tags %>"></div>
 			</div>
 		</div>

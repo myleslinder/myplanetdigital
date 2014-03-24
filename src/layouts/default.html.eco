@@ -44,7 +44,7 @@
 				<a href="<%= @getUrl('/') %>">Myplanet</a>
 			</h1>
 			<div id="back">
-				<a href="<%= @getUrl('/') %>">Back</a>
+				<a href="<%= @getUrl('/') %>" data-attr="back">Back</a>
 			</div>
 			<div id="viewport">
 
