@@ -37,6 +37,10 @@
 		MOUSE_MOVE_THROTTLE_THRESHOLD = 25;
 
 	function setIndicator(item, transition) {
+		// Skip switching the indicator to the Home item.
+		if ($(item).is('.home')) {
+			return;
+		}
 		if(item) {
 			indicatorOffset = (item.offsetLeft - 14) - (window.responsiveState === 'full' ? $wrap[0].offsetLeft + $mainWrap[0].offsetLeft : 0);
 		}
