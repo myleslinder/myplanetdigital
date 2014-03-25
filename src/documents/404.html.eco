@@ -40,8 +40,9 @@ additionalLayouts: ['content']
 
 @media screen and (max-width: 720px) {
 	.article-404 {
-		background-position-y: 100px;
+		background-position: 20% 100px;
 		height: 480px;
+		margin-top: 2em;
 	}
 	.article-404-text {
 		top: 0;
