@@ -231,6 +231,7 @@
 
         if (isTagUrl) {
             filterTag = isTagUrl[1];
+            filterTag = removeTrailingSlash(filterTag);
         }
         if (pageUrl === window.baseUrl) {
             filterTag = 'home';
