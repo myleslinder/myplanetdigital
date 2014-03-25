@@ -1,6 +1,7 @@
 @import "fonts.less";
 @import "includes.less";
 @import "normalize.css.less";
+@import (css) "modules/navlinks.css";
 
 html, body {
   margin:0;
@@ -19,6 +20,42 @@ body {
 #wrap {
   padding-top: 1px;
   margin-top:-1px;
+}
+
+/**
+ * Masonry fixes.
+ */
+// Hide the hidden tiles.
+body #main .tile {
+  display: none;
+}
+// Show the visible tiles.
+body #main .main-wrap .tile.visible {
+  display: inline-block;
+}
+
+/**
+ * Hide the home menu tab.
+ */
+#menu ul > li.home {
+  display: none;
+}
+
+/**
+ * Footer underline
+ */
+footer a {
+  text-decoration: none;
+}
+footer a span {
+  text-decoration: none;
+}
+
+/**
+ * Article fixes
+ */
+div.image-full img {
+  width: 100%;
 }
 
 #viewport {
@@ -54,7 +91,7 @@ body {
   top:9px;
   font-size: 0;
   left:@logo-gutter-width;
-  background:url('../images/spritempd-small.png') 3px -91px no-repeat transparent;
+  background:url('../images/sprite-ie.png') 3px -91px no-repeat transparent;
   z-index: 101;  
 }
 
@@ -139,7 +176,7 @@ body.article #viewport {
     left: 47px;
     width: 35px;
     height: 40px;
-    background:url('../images/spritempd-small.png') no-repeat 0 0;    
+    background:url('../images/sprite-ie.png') no-repeat 0 0;
     zoom: 1;
   }
   &.company{
@@ -285,7 +322,7 @@ body.article #viewport {
       }      
     }
   }
-  &.business {
+  &.community {
     &:before {
       background-position: -229px 0;
     }
@@ -454,7 +491,7 @@ body.width-mobile #menu ul > li {
           display: block;
           height: 39px;
           width: 35px;
-          background-image: url(../images/spritempd-small.png);
+          background-image: url(../images/sprite-ie.png);
         }
         &:hover:before {
           top: 18px;
@@ -478,7 +515,7 @@ body.width-mobile #menu ul > li {
         &.technology:before {
           background-position: -184px -40px;
         }
-        &.business:before {
+        &.community:before {
           background-position: -224px -40px;
         }
       }
@@ -650,7 +687,7 @@ body.article #main {
           .hide-text();
           width: 23px;
           height: 23px;
-          background: url(../images/spritempd-small.png) 0 0 no-repeat;
+          background: url(../images/sprite-ie.png) 0 0 no-repeat;
           background-size: 533px;
           &:after {
             content: '';
@@ -660,7 +697,7 @@ body.article #main {
             height: 23px;
             top: 0;
             left: 0;
-            background: url(../images/spritempd-small.png) 0 0 no-repeat;
+            background: url(../images/sprite-ie.png) 0 0 no-repeat;
             background-size: 533px;
             opacity: 0.01;
             .transition(opacity 0.3s);
@@ -753,7 +790,7 @@ body.article #main {
       position: absolute;
       width: 62px;
       height: 64px;
-      background: url(../images/spritempd-small.png) -462px -1px no-repeat;
+      background: url(../images/sprite-ie.png) -462px -1px no-repeat;
       background-size: 533px;
     }
     &.toronto {
@@ -1050,7 +1087,7 @@ body.article #main {
           height: 40px;
           left: 22px;
           top: 31px;
-          background: #fff url(../images/spritempd-small.png) 0 0 no-repeat;            
+          background: #fff url(../images/sprite-ie.png) 0 0 no-repeat;            
         }
         &.company:before {
           background-position: -312px 0;
@@ -1070,7 +1107,7 @@ body.article #main {
         &.development:before {
           background-position: -184px 0;
         }
-        &.business:before {
+        &.community:before {
           background-position: -224px 0;
         }
       }
@@ -1436,7 +1473,7 @@ body.article #main {
             left: 22px;
             top: 31px;
             background-color:#fff;
-            background-image:url(../images/spritempd-small.png);
+            background-image:url(../images/sprite-ie.png);
             background-repeat: no-repeat;
             background-position: -140px 0;
             zoom:1;            
@@ -1459,7 +1496,7 @@ body.article #main {
           &.development:before {
             background-position: -184px 0;
           }
-          &.business:before {
+          &.community:before {
             background-position: -224px 0;
           }
         }

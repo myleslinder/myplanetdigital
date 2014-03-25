@@ -1,5 +1,14 @@
 <% documentTag = '' %>
 <% documentTag = @document.tags[0] if @document.tags? %>
+<% active = 'home' %>
+<% for item in @menuItems: %>
+	<% if item.slug.indexOf('.') == -1: %>
+		<% liClass = if item.slug is '' then 'home' else item.slug %>
+		<% liClass = item.meta.class if item.meta.class? %>
+		<% active = liClass if liClass == documentTag %>
+		<% active = liClass if item.state == 'current' %>
+	<% end %>
+<% end %>
 
 <div id="menu">
 	<ul class="nav navbar-nav">
@@ -8,9 +17,8 @@
 
 				<% liClass = if item.slug is '' then 'home' else item.slug %>
 				<% liClass = item.meta.class if item.meta.class? %>
-				<% item.state = 'current' if liClass == documentTag %>
 
-				<li class="<%= liClass %><%= if item.state == 'current' then ' active' %>">
+				<li class="<%= liClass %><%= if liClass == active then ' active' %>">
 					<a  <%= if item.slug == 'contact' then 'data-attr=contact-link' %>
 						href="<%= if item.meta.link? then item.meta.link else @getUrl(item.url) %>"
 						<% if item.meta.banner?: %>
