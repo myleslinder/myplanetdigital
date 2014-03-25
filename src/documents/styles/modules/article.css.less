@@ -69,7 +69,7 @@
 			max-width: 950px;
 			text-align: left;
 			margin: 20px auto 0;
-			font-size: 9em;
+			font-size: 8em;
 			line-height: 0.8em;
 			opacity: 0.9;
 			span {
@@ -618,37 +618,9 @@
 				}
 			}
 			.fancy-list {
-		    background: #f05a28;
+		    background: @mpd-orange;
 		    padding: 70px 160px 60px;
 		    color: white;
-
-		    @media only screen and (max-width: 1024px) {
-		    	padding: 60px 13% 50px;
-		    }
-				@media screen and (max-width: 767px) {
-					padding: 50px 10% 40px;
-					ul > li {
-						border: none;
-						padding-left: 64px;
-						margin-bottom: 16px;
-						font-size: 1.7em;
-						&:before {
-							left: 33px;
-						}
-					}
-		    }
-				@media screen and (max-width: 600px) {
-					padding: 50px 45px 40px;
-					ul > li {
-						font-size: 1.6em;
-					}
-		    }
-		    @media screen and (max-width: 400px) {
-					padding: 50px 20px 40px;
-					ul > li {
-						font-size: 1.5em;
-					}
-		    }
 
 		    &.orange {
 		        background: @mpd-orange;
@@ -703,7 +675,8 @@
                 background-position: -135px -501px;
                 background-size: 750px;
                 top: 0;
-                left: 63px;
+                left: 10px;
+                margin: 0;
                 padding: 0;
             }
             &.doodle1:before {
@@ -729,6 +702,46 @@
             }
         	}
 	  	  }
+
+	  	  @media only screen and (max-width: 1024px) {
+		    	padding: 60px 13% 50px;
+		    }
+				@media screen and (max-width: 767px) {
+					padding: 50px 10% 40px;
+					> ul {
+						li {
+							margin-bottom: 16px;
+							font-size: 1.7em;
+						}
+						&.doodle {
+							li {
+								border: none;
+								padding-left: 74px;
+								&:before {
+									left: -9px;
+								}
+							}
+						}
+					}
+		    }
+				@media screen and (max-width: 600px) {
+					padding: 40px 8% 30px;
+					> h2 {
+						font-size: 1.8em;
+					}
+					> ul li {
+						font-size: 1.6em;
+					}
+		    }
+		    @media screen and (max-width: 400px) {
+					padding: 30px 8% 20px;
+					> h2 {
+						font-size: 1.8em;
+					}
+					> ul li {
+						font-size: 1.5em;
+					}
+		    }
 			}
 			pre {
 				width: 100%;
