@@ -8,13 +8,13 @@
 	}
 	.article-title {
 		opacity: 1;
-		.transform(none);
+		.translate3d(0,0,0);
 		.showBack();
 		.transition-transform(0.8s ease 0.15s, opacity 0.8s ease 0.15s);
 	}
 	.article-body {
 		opacity: 1;
-		.transform(none);
+		.translate3d(0,0,0);
 		.showBack();
 		.transition-transform(0.6s ease 0.3s, opacity 0.6s ease 0.3s);
 	}
@@ -41,6 +41,7 @@
 		height: 480px;
 		background-repeat: no-repeat;
 		background-position: center center;
+		.translateZ();
 		.background-cover();
 		opacity: 0.001;
 

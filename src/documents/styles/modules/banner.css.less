@@ -4,28 +4,30 @@
     color: white;
     .border-box();
     height: 557px;
-    .transition(background-color 0.5s);
+    background: @mpd-orange;
+    .transition(background 0.5s);
+    .translateZ(0);
 
     &.home {
-        background-color: @mpd-orange;
+        background: @mpd-orange;
     }
     &.company {
-        background-color: @mpd-orange;
+        background: @mpd-orange;
     }
     &.people {
-        background-color: @mpd-orange;
+        background: @mpd-orange;
     }
     &.careers {
-        background-color: @mpd-orange;
+        background: @mpd-orange;
     }
     &.design {
-        background-color: #5f5ca9;
+        background: #5f5ca9;
     }
     &.technology {
-        background-color: #58c0a2;
+        background: #58c0a2;
     }
     &.community {
-        background-color: #ea3d67;
+        background: #ea3d67;
     }
 
     @media only screen and (max-width :1174px) {
@@ -58,6 +60,7 @@
         letter-spacing: -2.3px;
         .font-fix();
         .transition(opacity 0.4s ease-in-out);
+        .translateZ(0);
 
         p {
             margin: 0;
