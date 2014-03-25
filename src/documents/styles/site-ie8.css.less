@@ -50,6 +50,9 @@ footer a {
 footer a span {
   text-decoration: none;
 }
+.footer-doodle {
+  display: none !important;
+}
 
 /**
  * Article fixes
@@ -734,21 +737,21 @@ body.article #main {
             }
           }
           &.dribbble {
-            background-position: -165px -166px;
+            background-position: -158px -166px;
             &:after {
-              background-position: -165px -188px;
+              background-position: -158px -188px;
             }
           }
           &.drupal {
-            background-position: -199px -166px;
+            background-position: -275px -166px;
             &:after {
-              background-position: -199px -188px;
+              background-position: -275px -188px;
             }
           }
           &.linkedin {
-            background-position: -234px -166px;
+            background-position: -215px -166px;
             &:after {
-              background-position: -234px -188px;
+              background-position: -215px -188px;
             }
           }
         }
@@ -840,7 +843,7 @@ body.article #main {
         top: -64px;
         left: 13px;
         height: 56px;
-        background-position: -302px -150px;
+        background-position: -537px 0px;
       }
     }
     h3 {
@@ -1102,7 +1105,7 @@ body.article #main {
           height: 40px;
           left: 22px;
           top: 31px;
-          background: #fff url(../images/sprite-ie.png) 0 0 no-repeat;            
+          background: #fff url(../images/sprite-ie.png) 0 0 no-repeat;
         }
         &.company:before {
           background-position: -312px 0;
@@ -1178,6 +1181,8 @@ body.article #main {
 
   .article-body {
     z-index: 1;
+    zoom:1;
+    position: relative;
     font-family: "Plantin", serif;
     font-size: 62.5%;
     max-width: 1200px;
