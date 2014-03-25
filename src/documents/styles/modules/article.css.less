@@ -617,6 +617,119 @@
 					.clear-fix();
 				}
 			}
+			.fancy-list {
+		    background: #f05a28;
+		    padding: 70px 160px 60px;
+		    color: white;
+
+		    @media only screen and (max-width: 1024px) {
+		    	padding: 60px 13% 50px;
+		    }
+				@media screen and (max-width: 767px) {
+					padding: 50px 10% 40px;
+					ul > li {
+						border: none;
+						padding-left: 64px;
+						margin-bottom: 16px;
+						font-size: 1.7em;
+						&:before {
+							left: 33px;
+						}
+					}
+		    }
+				@media screen and (max-width: 600px) {
+					padding: 50px 45px 40px;
+					ul > li {
+						font-size: 1.6em;
+					}
+		    }
+		    @media screen and (max-width: 400px) {
+					padding: 50px 20px 40px;
+					ul > li {
+						font-size: 1.5em;
+					}
+		    }
+
+		    &.orange {
+		        background: @mpd-orange;
+		    }
+		    &.purple {
+		        background: @purple;
+		    }
+		    &.green {
+		        background: @green;
+		    }
+		    &.pink {
+		        background: @pink;
+		    }
+
+		    > h2 {
+		        font-size: 2em;
+		        font-style: italic;
+		        letter-spacing: 0.01em;
+		        padding: 0;
+		        margin: 0 0 25px 0;
+		    }
+
+		    > ul {
+	        padding: 0;
+	        margin: 0;
+
+	        li {
+	            position: relative;
+	            margin-bottom: 36px;
+	            padding-left: 24px;
+	            padding-bottom: 12px;
+	            font-family: TradeGothic;
+	            font-size: 1.8em;
+	            letter-spacing: -0.01em;
+	            border-left: 3px solid white;
+
+	            &:before {
+	            	display: none;
+	            }
+	        }
+
+	        &.doodle li {
+            padding-left: 94px;
+
+            &:before {
+                content: '';
+                display: block;
+                width: 70px;
+                height: 70px;
+                position: absolute;
+                background: url(../images/spritempd.png);
+                background-position: -135px -501px;
+                background-size: 750px;
+                top: 0;
+                left: 63px;
+                padding: 0;
+            }
+            &.doodle1:before {
+                background-position: -135px -501px;
+            }
+            &.doodle2:before {
+                background-position: -209px -501px;
+            }
+            &.doodle3:before {
+                background-position: -288px -501px;
+            }
+            &.doodle4:before {
+                background-position: -355px -501px;
+            }
+            &.doodle5:before {
+                background-position: -423px -501px;
+            }
+            &.doodle6:before {
+                background-position: -495px -501px;
+            }
+            &.doodle7:before {
+                background-position: -558px -501px;
+            }
+        	}
+	  	  }
+			}
 			pre {
 				width: 100%;
 				max-width: 790px;

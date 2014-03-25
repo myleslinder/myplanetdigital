@@ -39,9 +39,33 @@ I spoke to usability expert and Myplanet collaborator Michael Keara (www.tuag.ca
 
 Technologists are in a privileged position when it comes to understanding what hurts. We live and breathe technology, and we understand what causes friction. The trick is holding your own creations to the same standard that you use for the products you consume.
 
+<div class="fancy-list orange">
+  <h2>Our customer truth toolkit.</h2>
+  <ul class="doodle">
+    <li class="doodle1"><strong>User-Centered Design:</strong> A disciplined and immersive approach to uncovering, prioritizing, and solving for actual user needs.</li>
+    <li class="doodle2"><strong>Lean Startup Approach:</strong> A lean framework to validate business assumptions and product hypotheses.</li>
+  </ul>
+</div>
+
 Michael also suggested watching users attempt to use your product. It can be humiliating watching a non-technical user struggle with a product. It won't matter how beautifully optimized the back-end is, or what framework you used. In my experience, nothing will build your sensitivity more quickly.
 
+<div class="fancy-list purple">
+  <h2>Our customer truth toolkit.</h2>
+  <ul class="doodle">
+    <li class="doodle3"><strong>User-Centered Design:</strong> A disciplined and immersive approach to uncovering, prioritizing, and solving for actual user needs.</li>
+    <li class="doodle4"><strong>Lean Startup Approach:</strong> A lean framework to validate business assumptions and product hypotheses.</li>
+  </ul>
+</div>
+
 Another important way we build this sensitivity is through inter-disciplinary collaboration. As a “full-stack” developer on a SCRUM team, I frequently need to interact with product owners and designers. Having to scrap the most technically elegant solution because it did not serve user needs as well as a less elegant implementation is very humbling. Having this happen again and again has gradually drilled the need to balance user needs and technical beauty into me.
+
+<div class="fancy-list pink">
+  <h2>Our customer truth toolkit.</h2>
+  <ul class="doodle">
+    <li class="doodle5"><strong>User-Centered Design:</strong> A disciplined and immersive approach to uncovering, prioritizing, and solving for actual user needs.</li>
+    <li class="doodle6"><strong>Lean Startup Approach:</strong> A lean framework to validate business assumptions and product hypotheses.</li>
+  </ul>
+</div>
 
 ### What makes great technologists
 
