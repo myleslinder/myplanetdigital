@@ -540,7 +540,7 @@
         top: window.pageYOffset,
         bottom: window.pageYOffset + window.pageHeight
     }]);
-    window.isWebkitMobileNotIOS =  window.hasTouchEvents && !window.isIOS; //meh
+    window.isWebkitMobileNotIOS =  window.hasTouchEvents && !window.isIOS;
 
 
     SPINNER_HEIGHT = window.isIOS ? 25 : SPINNER_HEIGHT;
