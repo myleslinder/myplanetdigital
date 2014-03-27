@@ -262,7 +262,7 @@ body.article #viewport {
       }
     }
     &:before {
-      content: 'thoughts:';
+      content: 'thoughts';
       display: block;
       position: absolute;
       top: 60px;
@@ -273,6 +273,17 @@ body.article #viewport {
       font-weight: bold;
       width: 70px;
       text-align: left;
+    }
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 60px;
+      left: 0px;
+      height: 15px;
+      width: 20px;
+      background: url(../images/sprite-ie.png);
+      background-position: -323px -183px;
     }
   }
   &.technology {
@@ -518,10 +529,10 @@ body.width-mobile #menu ul > li {
       }
     }
     &.black {
-      a.tile-title {
+      a.tile-title, .content {
         background-color: black;
       }
-      h2 {
+      h2, p.description {
         color: white;
       }
       a.tile-doodle {
@@ -621,7 +632,7 @@ body.article #main {
       list-style: none;
       li {
         display: inline-block;
-        margin-right: 10px;
+        margin-right: 7px;
         a {
           display: inline-block;
           position: relative;
@@ -629,7 +640,6 @@ body.article #main {
           width: 23px;
           height: 23px;
           background: url(../images/sprite-ie.png) 0 0 no-repeat;
-          background-size: 533px;
           &:after {
             content: '';
             display: none;
@@ -639,7 +649,6 @@ body.article #main {
             top: 0;
             left: 0;
             background: url(../images/sprite-ie.png) 0 0 no-repeat;
-            background-size: 533px;
           }
           &:hover:after {
             display: block;
@@ -683,7 +692,7 @@ body.article #main {
     position: relative;
     vertical-align: top;
     padding-left: 20px;
-    padding-right: 30px;
+    padding-right: 0;
     margin-bottom: 100px;
     width: 187px;
 
@@ -697,7 +706,6 @@ body.article #main {
       width: 62px;
       height: 64px;
       background: url(../images/sprite-ie.png) -462px -1px no-repeat;
-      background-size: 533px;
     }
     &.toronto {
       width: 125px;
@@ -705,6 +713,7 @@ body.article #main {
         top: -74px;
         width: 62px;
         height: 64px;
+        background-position: -462px -1px;
       }
     }
     &.vancouver {
@@ -1084,9 +1093,10 @@ body.article #main {
       p, div.image, div.image-full {
         margin-bottom: 33px;
         padding: 0 80px;
-        font: 2.2em/1.5 Plantin, Georgia, serif;
+        font: 2.2em/1.5 Georgia, serif;
         letter-spacing: -0.01em;
         .border-box();
+        .antialias();
       }
       div.image, div.image-full {
         margin: 60px auto 45px;
@@ -1486,7 +1496,7 @@ body.article #main {
       height: 500px;
       top: -220px;
       left: 550px;
-      background-image: url(../../images/Banner-Doodle-Top-ie8.png);
+      background-image: url(../images/Banner-Doodle-Top-ie8.png);
       background-repeat: no-repeat;
     }
     &:after {
@@ -1497,7 +1507,7 @@ body.article #main {
       height: 127px;
       top: 430px;
       left: -490px;
-      background-image: url(../../images/Banner-Doodle-Bottom-ie8.png);
+      background-image: url(../images/Banner-Doodle-Bottom-ie8.png);
       background-repeat: no-repeat;
     }
 
