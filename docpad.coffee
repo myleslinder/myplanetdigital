@@ -117,6 +117,12 @@ module.exports =
 		cleanurls:
 			static: true
 
+		beautify:
+			js: false
+			css: false
+			max_preserve_newlines: 1
+			preserve_newlines: false
+
 	# Environmental variables
 	environments:
 		development:
