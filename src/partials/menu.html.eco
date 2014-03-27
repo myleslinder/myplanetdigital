@@ -31,7 +31,7 @@
 						<span>
 							<%= item.title or item.menuTitle %>
 						</span>
-						<!--[if IE 8]>
+						<!--[if (IE 8) | (IE 9)]>
 						<div class="menu-doodle"></div>
 						<!-- <![endif]-->
 					</a>
