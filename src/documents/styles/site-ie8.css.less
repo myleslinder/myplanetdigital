@@ -206,6 +206,10 @@ body.article #viewport {
     background:url('../images/sprite-ie.png') no-repeat 0 0;
     zoom: 1;
   }
+  &.home {
+    display: inline-block;
+    visibility: hidden;
+  }
   &.company, &what-we-do {
     a > .menu-doodle {
       background-position: -385px -95px;
@@ -237,7 +241,7 @@ body.article #viewport {
     }
   }
   &.contact {
-    margin-right: 20%;
+    margin-right: 150px;
     a > .menu-doodle {
       background-position: -340px -95px;
     }
@@ -248,6 +252,7 @@ body.article #viewport {
     }
   }
   &.design {
+    position: relative;
     a > .menu-doodle {
       background-position: -145px -95px;
     }
@@ -257,17 +262,17 @@ body.article #viewport {
       }
     }
     &:before {
-      content: 'thoughts';
+      content: 'thoughts:';
+      display: block;
       position: absolute;
-      font-family: Georgia, serif;
+      top: 60px;
+      left: -60px;
+      font-family: Tradegothic, Arial, Sans-serif;
       font-size: 13px;
       letter-spacing: -0.03em;
       font-weight: bold;
       width: 70px;
       text-align: left;
-      top: -17px;
-      left: -65px;
-      background:url('../images/spritempd-ie.png') -229px -33px no-repeat;
     }
   }
   &.technology {
