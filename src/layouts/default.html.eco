@@ -96,19 +96,13 @@
 				<!--[if (IE 8) | (IE 9)]>
 				<% if @document.layout is 'articles': %>
 				<section id="main">
-					<% if @document.meta.menuBanner?: %>
-						<div id="banner"
-							<% if @document.meta.menuColour?: %>
-								style="background-color: <%- @document.meta.menuColour %> "
-							<% else: %>
-								style="background-color: #f05a28 "
-							<% end %>
-						>
-							<div class="banner-text">
-						  	<%- @document.meta.menuBanner %>
-							</div>
-						</div>
-					<% end %>
+					<div id="banner" class="<% if @document.meta.tagName?: %><%- @document.meta.tagName %><% end %>">
+                        <div class="banner-text">
+                        <% if @document.meta.menuBanner?: %>
+                            <%- @document.meta.menuBanner %>
+                        <% end %>
+                        </div>
+                    </div>
 
 					<div class="main-wrap" style="position: relative;">
 						<div class="grid-size"></div>

@@ -40,7 +40,7 @@
 						<% continue if tag is 'home' %>
 						<% i = i + 1 %>
 						<% url = @getUrl('/tags/' + tag) %>
-						<li>
+						<li <% if i is 1: %>class="first"<% end %>>
 							<a class="tag" href="<%= url %>"><%= tag %></a>
 							<% if i is 1: %>
 								<a class="tile-doodle <%= tag %>" href="<%= url %>"></a>

@@ -54,7 +54,6 @@
     <%- @content %>
 
     <div class="article-footer">
-      <%- @getNavLinks() %>
       <div class="footer-doodle people"></div>
     </div>
 

@@ -110,7 +110,6 @@
 
 			<% # Add the article footer %>
 			<div class="article-footer">
-				<%- @getNavLinks() %>
 				<div class="footer-doodle <%= tags %>"></div>
 			</div>
 		</div>
