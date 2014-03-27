@@ -19,8 +19,8 @@
         $loadgif = $('.loading-overlay'),
         $loadgiftiles = $('.loading-overlay-tiles'),
         $anchors = $('a'),
-        $footer = $('.footer'),
-        $articleFooter,
+        $footer = $('#main .footer'),
+        $articleFooter = $('#article .footer'),
         $ajaxer = null,
         popped = false,
         fromTiles = false,
@@ -579,7 +579,7 @@
         }
     });
 
-    $article.append($articleFooter = $footer.clone());
+    //$article.append($articleFooter = $footer.clone());
     window.currentTag = $('#menu').find('li.active').attr('class').split(' ')[0];
     $window.on('page-change', handlePageChange);
     $article.on('transitionend webkitTransitionEnd', handleTransitionEnd);

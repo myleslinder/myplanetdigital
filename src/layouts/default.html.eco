@@ -81,7 +81,7 @@
 					<%- @partial('footer') %>
 				</section>
 
-				<article id="article" <% if @document.layout != 'articles': %>style="position: static; margin-left: 100%;"<% end %>>
+				<article id="article" style="<% if @document.layout != 'articles': %>position: static; margin-left: 100%;<% else: %>left: 100%;<% end %>">
 					<div id="article-inner"  <% if @document.layout != 'content' && @document.layout != 'articles': %>class="reveal"<% end %>>
 						<% if @document.layout != 'articles': %>
 						<%- @content %>
@@ -90,9 +90,7 @@
 					<div class="loading-overlay" <% if @document.layout != 'articles': %>style="display:none;"<% end %>>
 						<div class="loading-spinner"></div>
 					</div>
-                    <!--[if (IE 8) | (IE 9)]>
                     <%- @partial('footer') %>
-                    <![endif]-->
 				</article>
 			</div>
 
