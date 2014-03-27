@@ -48,7 +48,7 @@
 			</div>
 			<div id="viewport">
 
-				<!--[if (!IE) | (gte IE 10)]> -->
+				
 				<section id="main" <% if @document.layout != 'articles': %>style="transition: none; -webkit-transition: none; position: absolute;"<% end %>>
 
 					<div id="banner" class="<% if @document.meta.tagName?: %><%- @document.meta.tagName %><% end %>">
@@ -90,36 +90,10 @@
 					<div class="loading-overlay" <% if @document.layout != 'articles': %>style="display:none;"<% end %>>
 						<div class="loading-spinner"></div>
 					</div>
+                    <!--[if (IE 8) | (IE 9)]>
+                    <%- @partial('footer') %>
+                    <![endif]-->
 				</article>
-				<!-- <![endif]-->
-
-				<!--[if (IE 8) | (IE 9)]>
-				<% if @document.layout is 'articles': %>
-				<section id="main">
-					<div id="banner" class="<% if @document.meta.tagName?: %><%- @document.meta.tagName %><% end %>">
-                        <div class="banner-text">
-                        <% if @document.meta.menuBanner?: %>
-                            <%- @document.meta.menuBanner %>
-                        <% end %>
-                        </div>
-                    </div>
-
-					<div class="main-wrap" style="position: relative;">
-						<div class="grid-size"></div>
-						<%- @content %>
-					</div>
-					<%- @partial('footer') %>
-				</section>
-				<% else: %>
-				<article id="article">
-					<div id="article-inner" >
-						<%- @content %>
-					</div>
-					<%- @partial('footer') %>
-				</article>
-				<% end %>
-				<![endif]-->
-
 			</div>
 
 			<!-- MENU GOES HERE -->

@@ -15,6 +15,21 @@ html {
 
 body {
   background: #f0f0f0;
+  #viewport #article {
+    display: none;
+  }
+}
+
+body.article {
+  #viewport {
+    #main {
+      display: none;
+    }
+    #article {
+      display: inline-block;
+      margin-left: 0 !important;
+    }
+  }
 }
 
 #wrap {
@@ -479,12 +494,6 @@ body.width-mobile #menu ul > li {
       h2 {
         font-size: 3.8em;
       }
-      ul.tags {
-        top: 0;
-        left: 0;
-        padding-top: 37px;
-        padding-left: 90px;
-      }
       a.tile-doodle {
         top: -38px;
         left: -62px;
@@ -526,14 +535,12 @@ body.width-mobile #menu ul > li {
       a.tile-doodle {
         border-color: @doodle-line;
       }
-      ul.tags li {
-        a.tag {
+      ul.tags {
+        li a.tag {
           color: @tag-color-on-black;
         }
-        &:first-of-type {
-          a.tag {
-            color: white;
-          }
+        li.first a.tag {
+          color: white;
         }
       }
     }
@@ -1332,6 +1339,7 @@ body.article #main {
   background-position: right 110px;
   background-repeat: no-repeat;
   margin-top: -145px;
+  overflow: hidden;
 
   &.home {
     background: @mpd-orange;
@@ -1371,7 +1379,6 @@ body.article #main {
       top: -220px;
       left: 550px;
       background-image: url(../../images/Banner-Doodle-Top-ie8.png);
-      background-size: 677px;
       background-repeat: no-repeat;
     }
     &:after {
@@ -1383,7 +1390,6 @@ body.article #main {
       top: 430px;
       left: -490px;
       background-image: url(../../images/Banner-Doodle-Bottom-ie8.png);
-      background-size: 677px;
       background-repeat: no-repeat;
     }
 
