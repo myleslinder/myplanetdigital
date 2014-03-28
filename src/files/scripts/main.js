@@ -572,8 +572,9 @@
                 $window.trigger('same-page');
             } else {
                 pageUrl = url;
+                pageTitle = $(this).text();
                 linkClickedTime = new Date();
-                History.pushState(null, null, pageUrl);
+                History.pushState({}, pageTitle, pageUrl);
             }
             return false;
         }
