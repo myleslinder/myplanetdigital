@@ -107,8 +107,9 @@ div.image-full img {
   width:@logo-width;
   position:fixed;
   top:13px;
+  left: 0;
   font-size: 0;
-  left:@logo-gutter-width;
+  margin-left:@logo-gutter-width;
   background:url('../images/sprite-ie.png') 3px -95px no-repeat transparent;
   z-index: 101;
 
@@ -149,7 +150,7 @@ body.article #viewport {
   text-align: center;
   z-index:100;
   width:100%;
-  min-width: 800px;
+  min-width: 1024px;
   color:#000;
   background:#fff;
   border-bottom: 1px solid #ddd;
@@ -1536,6 +1537,9 @@ html.ie9 {
   }
   #menu ul > li.design:after {
     left: -15px;
+  }
+  #menu ul > li {
+    width: 90px;
   }
   #menu {
     min-width: 1024px;
