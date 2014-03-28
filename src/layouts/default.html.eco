@@ -1,9 +1,12 @@
 <!DOCTYPE html>
-<html>
+<!--[if IE 8 ]>    <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en"> <!--<![endif]-->
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0">
+        <!--[if (lt IE 8) ]><meta http-equiv="refresh" content="0;url=<%=@getUrl('ie7.html')%>"> <![endif]-->
 		<% if @document.title?: %>
 			<title><%= @document.title %> | <%= @site.title %></title>
 		<% else: %>
@@ -16,15 +19,13 @@
 			<meta name="description" content="<%= @document.summary %>">
 		<% end %>
 		<%- @getBlock("meta").toHTML() %>
+
 		<!--[if !IE]> -->
 		<%- @getBlock('styles').add(@getUrl(@site.styles)).toHTML() %>
 		<!-- <![endif]-->
 
 		<!--[if (IE 8) | (IE 9)]>
 		<link rel="stylesheet" href="<%- @getUrl(@site.ie8styles[0]) %>">
-		<![endif]-->
-
-		<!--[if IE 8]>
 		<script src="<%- @getUrl(@site.html5shiv[0]) %>"></script>
 		<script>
 			window.html5 = {
@@ -97,16 +98,13 @@
 			<!-- MENU GOES HERE -->
 			<%- @partial('menu', {menuItems: @generateMenu(@document.url, 'menu')}) %>
 		</div>
-		<!--[if IE 8]>
+		<!--[if (IE 8) | (IE 9)]>
 		<script src="<%- @getUrl(@site.jquery1[0]) %>"></script>
 		<script src="<%- @getUrl(@site['menu-ie8'][0]) %>"></script>
 		<![endif]-->
-		<!--[if (!IE) | (gte IE 9)]> -->
+		<!--[if (!IE) | (gte IE 9)] -->
 		<script src="<%- @getUrl(@site.jquery2[0]) %>"></script>
 		<!-- <![endif]-->
 		<%- @getBlock('scripts').add(@getUrl(@site.scripts)).toHTML() %>
-		<!--[if (IE 8) | (IE 9)]>
-		<script src="<%- @getUrl(@site['menu-ie8'][0]) %>"></script>
-		<![endif]-->
 	</body>
 </html>
