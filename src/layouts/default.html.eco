@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!--[if lt IE 8 ]>    <html lang="en" class="ie7"> <![endif]-->
 <!--[if IE 8 ]>    <html lang="en" class="ie8"> <![endif]-->
 <!--[if IE 9 ]>    <html lang="en" class="ie9"> <![endif]-->
 <!--[if (gt IE 9)|!(IE)]><!--> <html lang="en"> <!--<![endif]-->
@@ -23,6 +24,10 @@
 		<!--[if !IE]> -->
 		<%- @getBlock('styles').add(@getUrl(@site.styles)).toHTML() %>
 		<!-- <![endif]-->
+
+		<!--[if (lt IE 8)]>
+			<link rel="stylesheet" href="<%- @getUrl(@site.ie7styles[0]) %>">
+		<![endif]-->
 
 		<!--[if (IE 8) | (IE 9)]>
 		<link rel="stylesheet" href="<%- @getUrl(@site.ie8styles[0]) %>">

@@ -27,6 +27,9 @@ module.exports =
 			'ie8styles': [
 				'/styles/site-ie8.css'
 			]
+			'ie7styles': [
+				'/styles/site-ie7.css'
+			]
 			'jquery1': [
 				'/scripts/vendor/jquery-1.11.0.min.js'
 			]
