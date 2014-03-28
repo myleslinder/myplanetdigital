@@ -12,12 +12,12 @@ banner: "IE6 and IE7 Redirect"
 <body class="ie7" style="margin:0;padding:0;">
 	<div class="top">
 		<center>
-		<a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie" target="_blank"><img src="<%= @getUrl('associated-files/ie7/top.jpg') %>" title="Welcome to Myplanet - Upgrade your Browser" alt="Welcome to Myplanet - Upgrade your browser" /></a>
+		<a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie" target="_blank"><img style="border: none;" src="<%= @getUrl('associated-files/ie7/top.jpg') %>" title="Welcome to Myplanet - Upgrade your Browser" alt="Welcome to Myplanet - Upgrade your browser" /></a>
 		</center>
 	</div>
 	<div class="footer" style="background-color: black; width: 100%;">
 		<center>
-		<a href="mailto://hello@myplanet.io" title="Contact Us" alt="Contact Us" /><img src="<%= @getUrl('associated-files/ie7/footer.jpg') %>" title="Contact Us" alt="Contact Us" /></a>
+		<a href="mailto://hello@myplanet.io" title="Contact Us" alt="Contact Us" /><img src="<%= @getUrl('associated-files/ie7/footer.jpg') %>" title="Contact Us" alt="Contact Us" style="border: none;" /></a>
 		</center>
 	</div>
 
