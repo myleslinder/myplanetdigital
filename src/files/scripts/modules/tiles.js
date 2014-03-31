@@ -171,7 +171,6 @@
 
 	//only attach events if the device is capable of showing desktop
 	$window.on('deviceCapabilities', function (e, data) {
-        debugger;
 		if(data.desktopCapable || !data.hasTouchEvents) {
 			$window.on('pageScroll', handleScroll);
 			$window.on('after-scrolling', window.requestAnimationFrame.bind(null, removeLayers));
@@ -188,6 +187,9 @@
 			if(window.responsiveState === 'mobile' && window.mobileMenuIsOpen) {
 		      immediate = true;
 		    }
+
+            document.title = (tag !== 'home')? tag.charAt(0).toUpperCase() + tag.slice(1) + ' | Myplanet Digital' : 'Myplanet Digital';
+
 			window.tiles.items.map(function (tile) {
 				var $tile = $(tile.element).removeClass('reveal revealed show hidden').css({
 					opacity: immediate ? 1 : 0.01,
@@ -195,7 +197,8 @@
 				});
 
 				if(immediate) {
-					return;
+                    window.scroll(0, 0);
+                    return;
 				}
 
 				window.setTimeout(function() {
