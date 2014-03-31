@@ -55,7 +55,7 @@
 					<% quote = if @document.summary.length > truncatelength then @document.summary.substring(0, truncatelength) + '...' else @document.summary %>
 					<p class="description"><%= quote %></p>
 				<% end %>
-				<h2><%= @document.title %></h2>
+				<h2 class="main-title"><%= @document.title %></h2>
 				<% if @document.layout is 'person' and @document.summary?: %>
 					<% quote = if @document.summary.length > 70 then @document.summary.substring(0, 70) + '...' else @document.summary %>
 					<p class="quote"><%= quote %></p>
