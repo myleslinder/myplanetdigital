@@ -578,7 +578,7 @@
                 pageTitle = 'Myplanet Digital';
                 linkClickedTime = new Date();
                 if (url.match(ARTICLE_REGEX)) {
-                    pageTitle = $('a[href="' + url + '"].tile-title').find('.main-title').text() + ' | Myplanet Digital';
+                    pageTitle = $('a[href="' + url + '"].tile-title').find('h2').text() + ' | Myplanet Digital';
                 }
                 else if (url.match(TAG_REGEX)) {
                     linkTag = $(this).attr('data-tag');
