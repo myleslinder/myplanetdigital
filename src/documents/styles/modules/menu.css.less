@@ -214,7 +214,7 @@
 		}
 		ul > li {
 			text-align: left;
-			padding:0 30px;
+			padding: 0;
 			display:inline-block;
 			height:52px;
 			line-height:53px;
@@ -223,7 +223,9 @@
 			color: white;
 
 			a {
-				min-width:300px;
+				box-sizing: border-box;
+				min-width: 100%;
+				padding: 0 30px;
 				text-decoration: none;
 				color: inherit;
 			}
