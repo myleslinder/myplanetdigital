@@ -72,7 +72,7 @@
             position: absolute;
             width: 660px;
             height: 500px;
-            top: -220px;
+            top: -150px;
             left: 550px;
             background-image: url(../../images/Banner-Doodle-Top.png);
             background-size: 677px;
@@ -96,6 +96,9 @@
             padding-top: 90px;
             width: 855px;
             line-height: 56px;
+            &:before, &:after {
+                display: none;
+            }
         }
         @media only screen and (max-width :900px) {
             font-size: 2.5em;
@@ -103,9 +106,6 @@
             letter-spacing: -1.7px;
             width: 90%;
             line-height: 45px;
-            &:before, &:after {
-                display: none;
-            }
         }
         @media only screen and (max-width :767px) {
             padding-top: 60px;
