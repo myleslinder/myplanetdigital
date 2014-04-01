@@ -20,7 +20,7 @@
 		$hiddenTiles;
 
 	function initializePage() {
-		if(!window.isTileView || window.hasTouchEvents) {
+		if(!window.isTileView) {
 			return;
 		}
 
@@ -185,19 +185,18 @@
 		var first = true;
 		//window.setTimeout(function() {
 			if(window.responsiveState === 'mobile' && window.mobileMenuIsOpen) {
-		      immediate = true;
-		    }
+				immediate = true;
+			}
 			window.tiles.items.map(function (tile) {
-				if(immediate) {
-	          window.scroll(0, 0);
-	          return;
-				}
-
 				var $tile = $(tile.element).removeClass('reveal revealed show hidden').css({
 					opacity: immediate ? 1 : 0.01,
 					transition: 'none'
 				});
 
+				if(immediate) {
+					//window.scroll(0, 0);
+					return;
+				}
 
 				window.setTimeout(function() {
 					if(first){
