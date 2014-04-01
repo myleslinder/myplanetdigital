@@ -171,7 +171,7 @@
                     } else {
                         finishArticleLoad(data);
                     }
-                }, 1000);
+                }, 0);
                 if (!fromTiles) {
                     var tag = $(data).closest('.article-body').attr('data-tag') || $(data).closest('.profile-body').attr('data-tag'),
                         href = tag === 'home'? window.baseUrl : '/tags/' + tag;
@@ -575,7 +575,7 @@
                 $window.trigger('same-page');
             } else {
                 pageUrl = url;
-                /*pageTitle = 'Myplanet Digital';
+                pageTitle = 'Myplanet Digital';
                 linkClickedTime = new Date();
                 if (url.match(ARTICLE_REGEX)) {
                     pageTitle = $('a[href="' + url + '"].tile-title').find('h2').text() + ' | Myplanet Digital';
@@ -583,7 +583,7 @@
                 else if (url.match(TAG_REGEX)) {
                     linkTag = $(this).attr('data-tag');
                     pageTitle = (linkTag !== 'home')? linkTag.charAt(0).toUpperCase() + linkTag.slice(1) + ' | Myplanet Digital' : 'Myplanet Digital';
-                }*/
+                }
                 History.pushState(null, null, pageUrl);
             }
             return false;
