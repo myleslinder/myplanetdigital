@@ -183,7 +183,7 @@
 
 	$window.on('filter', function(e, tag, immediate, scroll) {
 		var first = true;
-		//window.setTimeout(function() {
+		window.setTimeout(function() {
 			if(window.responsiveState === 'mobile' && window.mobileMenuIsOpen) {
 				immediate = true;
 			}
@@ -212,7 +212,7 @@
 					});
 				}.bind($tile), 0);
 			});
-		//}, 0);
+		}, 0);
 	});
 
 	$window.on('same-page', function() {
