@@ -185,7 +185,16 @@
 		var first = true;
 		window.setTimeout(function() {
 			if(window.responsiveState === 'mobile' && window.mobileMenuIsOpen) {
-				immediate = true;
+				//immediate = true;
+				console.time('tile responsive');
+				$(tile.element)
+					.removeClass('reveal revealed show hidden')
+					.css({
+						opacity: 1
+					});
+				// set opacity
+				console.timeEnd('tile responsive');
+				return;
 			}
 			window.tiles.items.map(function (tile) {
 				var $tile = $(tile.element).removeClass('reveal revealed show hidden').css({
