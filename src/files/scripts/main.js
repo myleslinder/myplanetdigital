@@ -581,6 +581,8 @@
                     pageTitle = $('a[href="' + url + '"].tile-title').find('h2').text() + ' | Myplanet Digital';
                 }
                 else if (url.match(TAG_REGEX)) {
+                    // Add an active class to the menu earlier.
+                    $(this).addClass('active');
                     linkTag = $(this).attr('data-tag');
                     pageTitle = (linkTag !== 'home')? linkTag.charAt(0).toUpperCase() + linkTag.slice(1) + ' | Myplanet Digital' : 'Myplanet Digital';
                 }
