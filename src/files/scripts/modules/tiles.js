@@ -188,7 +188,7 @@
 			if(window.responsiveState === 'mobile' && window.mobileMenuIsOpen) {
 				//immediate = true;
 				console.time('tile responsive');
-				$(tile.element)
+				$('.tile')
 					.removeClass('reveal revealed show hidden')
 					.css({
 						opacity: 1
