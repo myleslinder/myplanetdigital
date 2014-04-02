@@ -34,7 +34,9 @@
   }
 
   $(window).on('filter', function(e, tag, immediate){
+    console.time('Banner filter');
     bannerUpdate(tag, immediate);
+    console.timeEnd('Banner filter');
   });
 
 }());

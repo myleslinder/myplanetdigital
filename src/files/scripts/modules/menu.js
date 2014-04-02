@@ -350,7 +350,9 @@
 
 	$window.on('same-page same-filter elevator-done', closeMenu);
 	$window.on('filter',function (e, tag) {
+		console.time('Menu filter');
 		activateLink($menu.find('li.' + tag));
+		console.timeEnd('Menu filter');
 	});
 	$window.on('article-to-article', function (e, tag) {
 		activateLink($menu.find('li.' + tag));
