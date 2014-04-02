@@ -188,11 +188,15 @@
 			if(window.responsiveState === 'mobile' && window.mobileMenuIsOpen) {
 				//immediate = true;
 				console.time('tile responsive');
+				window.scroll(0, 0);
+				/*
 				$('.tile')
 					.removeClass('reveal revealed show hidden')
 					.css({
 						opacity: 1
 					});
+
+				*/
 				// set opacity
 				console.timeEnd('tile responsive');
 				return;
@@ -202,11 +206,6 @@
 					opacity: immediate ? 1 : 0.01,
 					transition: 'none'
 				});
-
-				if(immediate) {
-					window.scroll(0, 0);
-					return;
-				}
 
 				window.setTimeout(function() {
 					if(first){
