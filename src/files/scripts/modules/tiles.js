@@ -182,8 +182,9 @@
 	});
 
 	$window.on('filter', function(e, tag, immediate, scroll) {
+		console.time('Tile filter');
 		var first = true;
-		window.setTimeout(function() {
+		//window.setTimeout(function() {
 			if(window.responsiveState === 'mobile' && window.mobileMenuIsOpen) {
 				//immediate = true;
 				console.time('tile responsive');
@@ -221,7 +222,8 @@
 					});
 				}.bind($tile), 0);
 			});
-		}, 0);
+		//}, 0);
+	console.timeEnd('Tile filter');
 	});
 
 	$window.on('same-page', function() {
