@@ -93,11 +93,11 @@
 			&:before {
 				content:'';
 				position:absolute;
-				top:44px;
+				top:42px;
 				left:27px;
 				width: 50px;
-				height: 48px;
-				opacity: 0.2;
+				height: 52px;
+				opacity: 0.12;
 				background:url('../images/spritempd.png') 0 0 no-repeat;
 				background-size:495px;
 				.transition-transform(@menu-transition-time, opacity @menu-transition-time);
@@ -113,7 +113,7 @@
 					width: 60px;
 					height: 52px;
 					left: 21px;
-					top: 40px;
+					top: 38px;
 				}
 			}
 			&.careers {
@@ -122,7 +122,7 @@
 					width: 43px;
 					height: 52px;
 					left: 29px;
-					top: 41px;
+					top: 39px;
 				}
 			}
 			&.contact {
@@ -132,15 +132,22 @@
 					width: 59px;
 					height: 57px;
 					left: 17px;
-					top: 36px;
+					top: 34px;
 					background-size: 495px;
+				}
+			}
+			&.design,
+			&.technology,
+			&.community {
+				&:before {
+					opacity: 0;
 				}
 			}
 			&.design {
 				&:before {
 					width: 65px;
 					left: 17px;
-					top: 38px;
+					top: 36px;
 					background-position: -135px -48px;
 				}
 				&:after {
@@ -162,7 +169,7 @@
 				&:before {
 					background-position: -202px -51px;
 					left: 24px;
-					top: 40px;
+					top: 38px;
 				}
 			}
 			&.community {
@@ -170,7 +177,7 @@
 					background-position: -254px -50px;
 					width: 53px;
 					left: 23px;
-					top: 38px;
+					top: 36px;
 				}
 			}
 			&.hover, &.active {
