@@ -401,22 +401,33 @@
 }
 
 #main .tile {
-	&.hidden {
-		.translate3d(0, 80px, 0);
+	@media screen and (min-width: 569px) {
+		.translateZ();
+
+		&.hidden {
+			.translate3d(0, 80px, 0);
+		}
+
+		&.reveal {
+			opacity: 0.99;
+			.transition(0.375s ease-out 0.159s, opacity 0.425s ease-in 0.16s);
+			.translateZ();
+		}
+		&.show {
+			opacity: 0.99;
+			.transition(opacity 0s 1.5s);
+		}
+		&.revealed {
+			opacity: 1;
+			.transform(none);
+			.transition(inherit);
+		}
 	}
-	&.reveal {
-		opacity: 0.99;
-		.transition(0.375s ease-out 0.159s, opacity 0.425s ease-in 0.16s);
+
+	@media screen and (max-width: 568px) {
+		opacity: 0.99
 	}
-	&.show {
-		opacity: 0.99;
-		.transition(opacity 0s 1.5s);
-	}
-	&.revealed {
-		opacity: 1;
-		.transform(none);
-		.transition(inherit);
-	}
+
 	.content ul.tags {
 		pointer-events:auto;
 	}
