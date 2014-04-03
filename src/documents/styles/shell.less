@@ -144,7 +144,7 @@ body.article {
 	position:fixed;
 	.translateZ();
 	.user-select();
-	top:17px;
+	top:29px;
 	left:50%;
 	z-index:3;
 	margin-left:-(@max-width/2 + @logo-width + @logo-gutter-width);
@@ -184,7 +184,7 @@ body {
 		.transition(none);
 		&.reveal {
 			opacity: 0.99;
-			.transition(opacity 0.7s);
+			.transition-transform(@transition-time, opacity 0.7s);
 		}
 		a {
 			height: 100%;
@@ -365,6 +365,10 @@ a[href^=tel]{
 
 		#logo, #viewport, #menu, #menu-toggle, #back {
 			.translate3d(-249px,0,0);
+		}
+		#back {
+			opacity: 0.01;
+			.transition-transform(@transition-time, opacity @transition-time);
 		}
 	}
 }

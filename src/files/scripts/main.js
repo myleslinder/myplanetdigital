@@ -218,7 +218,7 @@
             abortAjax();
         }
 
-        cancelTransition = isTransitionEnding;
+        cancelTransition = isTransitionEnding || isTransitioning;
         isTransitionEnding = false;
         wasLinkClick = new Date() - linkClickedTime < 300;
         overridePopstateScrollmove = !wasLinkClick && !window.isIOS; //ios doesn't mess with the scrollbar during popstate

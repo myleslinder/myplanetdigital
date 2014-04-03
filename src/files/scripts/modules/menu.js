@@ -30,7 +30,7 @@
 		pageHasLoaded = false,
 		enteredMenu = false,
 		desktopMenuRafTimeout,
-		HEADER_HEIGHT = 127,
+		HEADER_HEIGHT = 147,
 		INDICATOR_WIDTH = 10,
 		LOGO_WIDTH = 81,
 		MENU_WIDTH = 250,
