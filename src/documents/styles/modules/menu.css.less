@@ -94,43 +94,54 @@
 				content:'';
 				position:absolute;
 				top:44px;
-				left:28px;
-				width: 44px;
+				left:27px;
+				width: 50px;
 				height: 48px;
 				opacity: 0.2;
 				background:url('../images/spritempd.png') 0 0 no-repeat;
-				background-size:533px;
+				background-size:495px;
 				.transition-transform(@menu-transition-time, opacity @menu-transition-time);
 			}
 			&.company, &.what-we-do {
 				&:before {
-					background-position: -436px -53px;
-					background-size: 550px;
+					background-position: -443px -53px;
 				}
 			}
 			&.people {
 				&:before {
-					background-position: -313px -52px;
-					background-size: 525px;
+					background-position: -311px -52px;
+					width: 60px;
+					height: 52px;
+					left: 21px;
+					top: 40px;
 				}
 			}
 			&.careers {
 				&:before {
-					background-position: -117px -48px;
-					top: 38px;
+					background-position: -93px -52px;
+					width: 43px;
+					height: 52px;
+					left: 29px;
+					top: 41px;
 				}
 			}
 			&.contact {
 				margin-right: 20%;
 				&:before {
-					background-position: -372px -54px;
+					background-position: -377px -49px;
+					width: 59px;
+					height: 57px;
+					left: 17px;
+					top: 36px;
+					background-size: 495px;
 				}
 			}
 			&.design {
 				&:before {
-					opacity: 0.01;
-					background-position: -157px -48px;
-					background-size: 510px;
+					width: 65px;
+					left: 17px;
+					top: 38px;
+					background-position: -135px -48px;
 				}
 				&:after {
 					content: 'thoughts';
@@ -143,27 +154,28 @@
 					text-align: left;
 					top: -17px;
 					left: -65px;
-					background:url('../images/spritempd.png') -458px -67px no-repeat;
-					background-size:533px;
+					background: url('../images/spritempd.png') -423px -104px no-repeat;
+					background-size: 495px;
 				}
 			}
 			&.technology {
 				&:before {
-					opacity: 0.01;
-					background-position: -212px -51px;
-					background-size: 520px;
+					background-position: -202px -51px;
+					left: 24px;
+					top: 40px;
 				}
 			}
 			&.community {
 				&:before {
-					opacity: 0.01;
-					background-position: -262px -50px;
-					background-size: 520px;
+					background-position: -254px -50px;
+					width: 53px;
+					left: 23px;
+					top: 38px;
 				}
 			}
 			&.hover, &.active {
 				a {
-					.transform(translateY(28px));
+					.transform(translateY(35px));
 				}
 				&:before {
 					opacity: 1;
