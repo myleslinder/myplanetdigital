@@ -11,7 +11,7 @@
 		$wrap = $('#wrap'),
 		$menu = $('#menu'),
 		$banner = $('#banner'),
-		$menuGhost = $('<div data-role="menu-ghost"></div>'),
+		$menuGhost,
 		$logo = $('#logo'),
 		$viewport = $('#viewport'),
 		$indicator = $('<span data-role="menu-indicator"></span>'),
@@ -315,7 +315,10 @@
 		}
 	});
 
-	$wrap.append($menuGhost);
+	//$wrap.append($menuGhost);
+	$('#menu').wrap('<div data-role="menu-ghost" class="menu-ghost"></div>');
+	$menuGhost = $('.menu-ghost');
+
 	$menuGhost.on('click', function() {
 		if(window.responsiveState === 'mobile') {
 			$window.trigger('scroll-top');
