@@ -106,7 +106,7 @@ div.image-full img {
   height:95px;
   width:@logo-width;
   position:fixed;
-  top:13px;
+  top:20px;
   left: 0;
   font-size: 0;
   margin-left:@logo-gutter-width;
@@ -169,10 +169,10 @@ body.article #viewport {
   display:inline-block;
   list-style: none;
   text-transform:lowercase;
-  height:@menu-height;
+  height:@menu-height - 10;
   width:90px;
   position:relative;
-  margin-top:-@menu-hover-offset;
+  margin-top: 0;
   font-size:13px;
   background:transparent;
   padding: 0;
@@ -201,10 +201,10 @@ body.article #viewport {
   a > .menu-doodle {
     content:'';
     position:absolute;
-    top: 44px;
-    left: 12px;
-    width: 44px;
-    height: 48px;
+    top: 41px;
+    left: 10px;
+    width: 53px;
+    height: 53px;
     background:url('../images/sprite-ie.png') no-repeat 0 0;
     zoom: 1;
   }
@@ -214,53 +214,71 @@ body.article #viewport {
   }
   &.company, &what-we-do {
     a > .menu-doodle {
-      background-position: -385px -95px;
+      background-position: -451px -116px;
     }
     &.hover, &.active {
       a > .menu-doodle {
-        background-position: -385px -50px;
+        background-position: -451px -60px;
       }
     }
   }
   &.people {
     a > .menu-doodle {
-      background-position: -290px -95px;
+      width: 62px;
+      left: 6px;
+      background-position: -318px -116px;
     }
     &.hover, &.active {
       a > .menu-doodle {
-        background-position: -290px -50px;
+        background-position: -318px -60px;
       }
     }
   }
   &.careers {
     a > .menu-doodle {
-      background-position: -100px -95px;
+      width: 43px;
+      left: 13px;
+      background-position: -100px -116px;
     }
     &.hover, &.active {
       a > .menu-doodle {
-        background-position: -100px -50px;
+        background-position: -100px -60px;
       }
     }
   }
   &.contact {
     margin-right: 150px;
     a > .menu-doodle {
-      background-position: -340px -95px;
+      width: 63px;
+      left: 0;
+      background-position: -383px -116px;
     }
     &.hover, &.active {
       a > .menu-doodle {
-        background-position: -340px -50px;
+        background-position: -383px -60px;
+      }
+    }
+  }
+  &.design, &.technology, &.community {
+    a > .menu-doodle {
+      visibility: hidden;
+    }
+    &.hover, &.active {
+      a > .menu-doodle {
+        visibility: visible;
       }
     }
   }
   &.design {
     position: relative;
     a > .menu-doodle {
-      background-position: -145px -95px;
+      width: 65px;
+      left: 3px;
+      background-position: -143px -116px;
     }
     &.hover, &.active {
       a > .menu-doodle {
-        background-position: -145px -50px;
+        background-position: -143px -60px;
       }
     }
     &:before {
@@ -289,27 +307,31 @@ body.article #viewport {
   }
   &.technology {
     a > .menu-doodle {
-      background-position: -193px -95px;
+      left: 8px;
+      width: 54px;
+      background-position: -207px -116px;
     }
     &.hover, &.active {
       a > .menu-doodle {
-        background-position: -193px -50px;
+        background-position: -207px -60px;
       }
     }
   }
   &.community {
     a > .menu-doodle {
-      background-position: -242px -95px;
+      left: 8px;
+      width: 58px;
+      background-position: -260px -116px;
     }
     &.hover, &.active {
       a > .menu-doodle {
-        background-position: -242px -50px;
+        background-position: -260px -60px;
       }
     }
   }
   &.hover, &.active {
     > a {
-      padding-top: 28px;
+      padding-top: 35px;
     }
   }
 }
@@ -452,9 +474,9 @@ body.width-mobile #menu ul > li {
       a.tile-doodle {
         position: absolute;
         top: -14px;
-        left: -50px;
+        left: -55px;
         display: block;
-        width: 48px;
+        width: 52px;
         height: 45px;
         overflow: hidden;
         cursor: pointer;
@@ -462,16 +484,22 @@ body.width-mobile #menu ul > li {
 
         &:hover {
           top: -20px;
-          left: -56px;
+          left: -60px;
         }
         &.company {
           background-position: -382px -3px;
         }
         &.people {
-          background-position: -290px -3px;
+          background-position: -319px -7px;
         }
         &.careers {
+          top: -20px;
+          height: 55px;
+          width: 43px;
           background-position: -98px -5px;
+          &:hover {
+            top: -25px;
+          }
         }
         &.design {
           background-position: -145px -3px;
@@ -926,7 +954,7 @@ body.article #main {
 #article-inner {
   position: relative;
   font-size: 16px;
-  
+
   .article-banner {
     text-align: center;
     width: 100%;
@@ -1456,7 +1484,7 @@ body.article #main {
       position: absolute;
       width: 660px;
       height: 500px;
-      top: -220px;
+      top: -150px;
       left: 550px;
       background-image: url(../images/Banner-Doodle-Top-ie8.png);
       background-repeat: no-repeat;
