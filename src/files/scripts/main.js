@@ -566,6 +566,7 @@
     $body.on('click', 'a', function(e) {
         var url = $(this).attr('href');
 
+
         if(!isExternalUrl(url)) {
             if(e.currentTarget.getAttribute('data-attr') === 'contact-link') {
                 $window.trigger('scroll-to', [window.isTileView ? $footer.offset().top - 90 : $articleFooter.offset().top - 90]);
@@ -582,11 +583,14 @@
                 }
                 else if (url.match(TAG_REGEX)) {
                     // Add an active class to the menu earlier.
-                    $(this).addClass('active');
                     linkTag = $(this).attr('data-tag');
-                    pageTitle = (linkTag !== 'home')? linkTag.charAt(0).toUpperCase() + linkTag.slice(1) + ' | Myplanet Digital' : 'Myplanet Digital';
+
+                    if(linkTag) {
+                        $(this).addClass('active');
+                        pageTitle = (linkTag !== 'home')? linkTag.charAt(0).toUpperCase() + linkTag.slice(1) + ' | Myplanet Digital' : 'Myplanet Digital';
+                    }
                 }
-                History.pushState(null, null, pageUrl);
+                History.pushState({}, pageTitle, pageUrl);
             }
             return false;
         }
