@@ -14,7 +14,7 @@ html {
 }
 
 body {
-  background: #f0f0f0;
+  background: #ebebeb;
   #viewport #article {
     display: none;
   }
@@ -147,7 +147,6 @@ body.article #viewport {
   position: fixed;
   top: 0;
   left: 0;
-  text-align: center;
   z-index:100;
   width:100%;
   min-width: 1024px;
@@ -159,6 +158,7 @@ body.article #viewport {
     font-size:0;
     margin:0;
     padding:0;
+    margin-left: 100px;
   }
 }
 
@@ -473,42 +473,45 @@ body.width-mobile #menu ul > li {
       }
       a.tile-doodle {
         position: absolute;
-        top: -14px;
-        left: -55px;
+        top: -21px;
+        left: -57px;
         display: block;
         width: 52px;
-        height: 45px;
+        height: 52px;
         overflow: hidden;
         cursor: pointer;
         background-image: url(../images/sprite-ie.png);
 
         &:hover {
-          top: -20px;
-          left: -60px;
+          top: -25px;
+          left: -63px;
         }
         &.company {
-          background-position: -382px -3px;
+          background-position: -450px -7px;
         }
         &.people {
           background-position: -319px -7px;
         }
         &.careers {
-          top: -20px;
           height: 55px;
           width: 43px;
           background-position: -98px -5px;
-          &:hover {
-            top: -25px;
-          }
         }
         &.design {
-          background-position: -145px -3px;
+          left: -65px;
+          width: 65px;
+          background-position: -143px -9px;
+          &:hover {
+            left: -69px;
+          }
         }
         &.technology {
-          background-position: -193px -3px;
+          background-position: -208px -9px;
         }
         &.community {
-          background-position: -240px -3px;
+          left: -60px;
+          width: 56px;
+          background-position: -260px -7px;
         }
       }
     }
@@ -734,7 +737,7 @@ body.article #main {
         top: -74px;
         width: 62px;
         height: 64px;
-        background-position: -462px -1px;
+        background-position: -514px -1px;
       }
     }
     &.vancouver {
@@ -743,7 +746,7 @@ body.article #main {
         height: 44px;
         top: -54px;
         left: 23px;
-        background-position: -463px -73px;
+        background-position: -514px -74px;
       }
     }
     &.chernihiv {
@@ -752,7 +755,7 @@ body.article #main {
         top: -64px;
         left: 21px;
         height: 56px;
-        background-position: -471px -120px;
+        background-position: -516px -129px;
       }
     }
     &.chicago {
@@ -761,7 +764,7 @@ body.article #main {
         top: -64px;
         left: 13px;
         height: 56px;
-        background-position: -537px 0px;
+        background-position: -510px -193px;
       }
     }
     h3 {
@@ -940,11 +943,11 @@ body.article #main {
           content: '';
           display: block;
           position: absolute;
-          width: 42px;
+          width: 60px;
           height: 47px;
-          left: 22px;
+          left: 14px;
           top: 31px;
-          background: #fff url(../images/sprite-ie.png) -290px -50px no-repeat;
+          background: #fff url(../images/sprite-ie.png) -317px -62px no-repeat;
         }
       }
     }
@@ -1414,26 +1417,34 @@ body.article #main {
             display: block;
             position: absolute;
             width: 42px;
-            height: 47px;
+            height: 52px;
             left: 22px;
-            top: 31px;
+            top: 29px;
             background-color:#fff;
             background: #fff url(../images/sprite-ie.png) -290px -50px no-repeat;
           }
           &.home:before {
-            background-position: -385px -50px;
+            left: 20px;
+            width: 50px;
+            background-position: -451px -61px;
           }
           &.careers:before {
-            background-position: -100px -50px;
+            background-position: -100px -61px;
           }
           &.design:before {
-            background-position: -145px -50px;
+            left: 13px;
+            width: 64px;
+            background-position: -143px -62px;
           }
           &.technology:before {
-            background-position: -193px -50px;
+            left: 20px;
+            width: 51px;
+            background-position: -209px -61px;
           }
           &.community:before {
-            background-position: -242px -50px;
+            left: 18px;
+            width: 53px;
+            background-position: -261px -61px;
           }
         }
       }
