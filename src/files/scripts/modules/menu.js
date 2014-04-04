@@ -319,8 +319,8 @@
 	$('#menu').wrap('<div data-role="menu-ghost" class="menu-ghost"></div>');
 	$menuGhost = $('.menu-ghost');
 
-	$menuGhost.on('click', function() {
-		if(window.responsiveState === 'mobile') {
+	$menuGhost.on('click', function(e) {
+		if(window.responsiveState === 'mobile' && this === e.target) {
 			$window.trigger('scroll-top');
 		}
 	});

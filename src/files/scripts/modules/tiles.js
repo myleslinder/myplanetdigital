@@ -185,7 +185,6 @@
 		var first = true;
 		//window.setTimeout(function() {
 			if(window.responsiveState === 'mobile' && window.mobileMenuIsOpen) {
-				window.scroll(0, 0);
 				return;
 			}
 			window.tiles.items.map(function (tile) {
