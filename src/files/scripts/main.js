@@ -38,6 +38,7 @@
         lastArticleUrl = '',
         doArticleAjax,
         doTileAjax,
+        isFirstArticleLoad = true,
         isTransitioning = false,
         isTransitionEnding = false,
         cancelTransition = false,
@@ -55,7 +56,8 @@
         END_SCROLL_THRESHOLD = 250,
         SPINNER_HEIGHT = 61,
         IOS_CHROME_HEIGHT = 70,
-        PRE_SCROLL_THRESHOLD = 100;
+        PRE_SCROLL_THRESHOLD = 100,
+        FOUROHFOUR_HTML = '<div class="article-404"><div class="article-404-text"><h1>This page does not exist</h1><h2><em><a href="' + window.baseUrl  + '">Go home</a></em></h2></div></div>';
 
     function setResponsiveState() {
         var width = $window.width(),
@@ -101,9 +103,15 @@
 
     function finishArticleLoad(data) {
         window.setTimeout(function(){
-            window.requestAnimationFrame(function () {
-                $articlein.html(data);
+            if(!isFirstArticleLoad) {
                 $articlein.removeClass('reveal');
+            }
+            window.requestAnimationFrame(function () {
+                if(isFirstArticleLoad) {
+                    $articlein.removeClass('reveal');
+                }
+                isFirstArticleLoad = false;
+                $articlein.html(data);
                 window.requestAnimationFrame(function() {
                     isLoading = false;
                     $loadgif.hide();
@@ -165,12 +173,13 @@
                     var image = new Image(),
                         $loadedData = $(data).eq(0),
                         bgImg;
-                    image.onload = image.onerror = finishArticleLoad.bind(null, data);
-                    if($loadedData.length && $loadedData[0].nodeType === 1 && (bgImg = $loadedData.css('background-image'))) {
-                        image.src = bgImg.match(COVER_SRC_REGEX)[1];
-                    } else {
-                        finishArticleLoad(data);
-                    }
+                        if($loadedData.length && $loadedData[0].nodeType === 1 && (bgImg = $loadedData.css('background-image'))) {
+                            image = new Image();
+                            image.onload = image.onerror = finishArticleLoad.bind(null, data);
+                            image.src = bgImg.match(COVER_SRC_REGEX)[1];
+                        } else {
+                            finishArticleLoad(data);
+                        }
                 }, 0);
                 if (!fromTiles) {
                     var tag = $(data).closest('.article-body').attr('data-tag') || $(data).closest('.profile-body').attr('data-tag'),
@@ -178,6 +187,8 @@
                     $backlink.attr('href', href);
                     $window.trigger('article-to-article', [tag]);
                 }
+            }).fail( function() {
+               finishArticleLoad(FOUROHFOUR_HTML);
             });
         }
         $body.removeClass('animating');
@@ -218,10 +229,10 @@
             abortAjax();
         }
 
-        cancelTransition = isTransitionEnding || isTransitioning;
+        cancelTransition = isTransitionEnding;
         isTransitionEnding = false;
         wasLinkClick = new Date() - linkClickedTime < 300;
-        overridePopstateScrollmove = !wasLinkClick && !window.isIOS; //ios doesn't mess with the scrollbar during popstate
+        overridePopstateScrollmove = !window.isIOS; //ios doesn't mess with the scrollbar during popstate
         top = window.curScrollTop;
         wasCancelled = cancelTransition || isTransitioning || aborted;
 
@@ -245,7 +256,7 @@
             fromTiles = true;
 
             if(!wasCancelled) {
-                tileScrollTop = window.curScrollTop;
+                tileScrollTop = top;
             }
             isTransitioning = true;
 
@@ -257,13 +268,14 @@
             $window.trigger('article');
 
             $article.css({
-                transform:  !overridePopstateScrollmove || wasLinkClick ? 'translate3d(-1px, ' + (top - articleScrollTop) + 'px, 0)' : '',
+                transform:  !overridePopstateScrollmove ? 'translate3d(-1px, ' + (top - articleScrollTop) + 'px, 0)' : '',
                 transition: 'none'
             });
             $main.css({
                 transform: overridePopstateScrollmove ? 'translate3d(-1px, ' + -(top - articleScrollTop) + 'px, 0)' : (wasCancelled ? 'translate3d(-1px, ' + (top - tileScrollTop) + 'px, 0)' : ''),
                 transition: 'none'
             });
+
             $body.addClass('animating').css('height', articleScrollTop + window.pageHeight);
 
             if(overridePopstateScrollmove) {
@@ -273,12 +285,12 @@
             window.setTimeout(function () {
                 window.requestAnimationFrame(function () {
                     if(doArticleAjax) {
-                        $article.css('height', window.pageHeight + (window.isIOS ? IOS_CHROME_HEIGHT : 0));
+                        $article.css('height', window.pageHeight + (window.isIOS ? IOS_CHROME_HEIGHT : 1));
                         $loadgif.find('.loading-spinner').css('top', window.pageHeight / 2 - SPINNER_HEIGHT);
                         $loadgif.show();
                     }
                     $article.css({
-                        transform:  !overridePopstateScrollmove || wasLinkClick ?'translate3d(-100%, ' + (top - articleScrollTop) + 'px, 0)' : '',
+                        transform:  !overridePopstateScrollmove ?'translate3d(-100%, ' + (top - articleScrollTop) + 'px, 0)' : '',
                         transition: ''
                     });
                     $main.css({
@@ -302,7 +314,8 @@
             window.setTimeout(function () {
                 window.requestAnimationFrame(function () {
                     if(doArticleAjax) {
-                        $article.css('height', window.pageHeight + (window.isIOS ? IOS_CHROME_HEIGHT : 0));
+                        $articlein.html('');
+                        $article.css('height', window.pageHeight + (window.isIOS ? IOS_CHROME_HEIGHT : 1));
                         $back.removeClass('reveal');
                         $loadgif.find('.loading-spinner').css('top', window.pageHeight / 2 - SPINNER_HEIGHT);
                         $loadgif.show();
@@ -315,7 +328,7 @@
             window.isTileView = true;
             window.isBusy = true;
             if(!wasCancelled) {
-                articleScrollTop = window.curScrollTop;
+                articleScrollTop = top;
             }
             isTransitioning = true;
             doTileAjax = !hasLoadedTiles;
@@ -327,7 +340,7 @@
             $back.removeClass('reveal');
 
             $main.css({
-                transform: !overridePopstateScrollmove || wasLinkClick ? 'translate3d(-100%, ' + (top - tileScrollTop) + 'px, 0)' : '',
+                transform: !overridePopstateScrollmove ? 'translate3d(-100%, ' + (top - tileScrollTop) + 'px, 0)' : '',
                 transition: 'none'
             });
             $article.css({
@@ -349,7 +362,7 @@
                         $loadgiftiles.show();
                     }
                     $main.css({
-                        transform:  !overridePopstateScrollmove || wasLinkClick ? 'translate3d(-1px, ' + (top - tileScrollTop) + 'px, 0)' : '',
+                        transform:  !overridePopstateScrollmove ? 'translate3d(-1px, ' + (top - tileScrollTop) + 'px, 0)' : '',
                         transition: noTransition ? 'none' : ''
                     });
                     $article.css({
@@ -399,12 +412,14 @@
     }
 
     function cleanupTransition() {
-        $body.removeClass('animating').css('height', '');
         isTransitionEnding = false;
         if(cancelTransition && window.isTileView && doArticleAjax) {
             lastArticleUrl = '';
         } else if(cancelTransition && !window.isTileView && doTileAjax) {
             window.currentTag = null;
+        }
+        if(!cancelTransition) {
+            $body.removeClass('animating').css('height', '');
         }
         cancelTransition = false;
     }
