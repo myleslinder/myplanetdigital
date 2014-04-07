@@ -21,14 +21,20 @@
     if(window.responsiveState === 'mobile' && window.mobileMenuIsOpen) {
       immediate = true;
     }
-    $bannerText.css({opacity: 0.01, transition: 'none'});
-    $banner.css({transition: immediate ? 'none' : ''});
-    $bannerText.html(bannerText);
-    $banner.attr('class', tag);
+     $bannerText.html(bannerText).css({opacity: 0.01, transition: 'none'});
+     $banner.attr('class', '');
     if(immediate) {
-      return $bannerText.css({'opacity': 1});
+
+     //
+       return window.requestAnimationFrame(function () {
+          $banner.attr('class', tag);
+          $bannerText.css({'opacity': 1, 'transition' : 'none'});
+        });
+      //});
     }
+
     window.setTimeout(window.requestAnimationFrame.bind(null, function() {
+      $banner.attr('class', tag);
       $bannerText.css({'opacity': 0.99, 'transition' : ''});
     }), 0);
   }

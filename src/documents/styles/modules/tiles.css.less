@@ -398,6 +398,10 @@
 
 #main .tile {
 	.transition(opacity 0.4s ease-in-out);
+	&.revealed {
+		.transform(none);
+		.showBack();
+	}
 }
 
 #main .tile {

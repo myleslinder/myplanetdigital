@@ -34,7 +34,7 @@
 			return true;
 		}).sort(function (a, b) {
 			if(b.position.y === a.position.y) {
-				return b.position.x - a.position.x;
+				return a.position.x - b.position.x;
 			}
 			return a.position.y - b.position.y;
 		});
@@ -90,12 +90,12 @@
 			item = queue[len];
 			item.tile.classList.add(queue[len].klass);
 			queue.splice(len, 1);
-			if(++count === 3 && queue.length) {
-				return flushingTimeout = window.setTimeout(finishFlush, 60);
+			if(++count === 2 && queue.length) {
+				return flushingTimeout = window.setTimeout(finishFlush, 30);
 			}
 		}
 		if(queue.length) {
-			return flushingTimeout = window.setTimeout(finishFlush, 60);
+			return flushingTimeout = window.setTimeout(finishFlush, 30);
 		}
 		flushingTimeout = null;
 	}
@@ -148,7 +148,7 @@
 		}
 
 		scrollData = data;
-		throttleTimeout = setTimeout(onScroll, 120);
+		throttleTimeout = setTimeout(onScroll, 125);
 	}
 
 	function transitionEnd (e) {
@@ -182,30 +182,35 @@
 	});
 
 	$window.on('filter', function(e, tag, immediate, scroll) {
-		var first = true;
 		//window.setTimeout(function() {
+			var toAnimate = [];
 			if(window.responsiveState === 'mobile' && window.mobileMenuIsOpen) {
 				return;
 			}
-			window.tiles.items.map(function (tile) {
-				var $tile = $(tile.element).removeClass('reveal revealed show hidden').css({
-					opacity: immediate ? 1 : 0.01,
-					transition: 'none'
-				});
-
-				window.setTimeout(function() {
-					if(first){
-						window.scroll(0, 0);
-						first = false;
-					}
-					var $tile = this;
-					window.requestAnimationFrame(function() {
-						$tile.css({
-							opacity: '0.99',
-							transition: ''
-						});
+			window.requestAnimationFrame(function () {
+				window.tiles.items.map(function (tile) {
+					var $tile = $(tile.element).removeClass('reveal revealed show hidden').css({
+						opacity: immediate ? 1 : 0.01,
+						transition: 'none'
 					});
-				}.bind($tile), 0);
+					if(!immediate) {
+						toAnimate.push($tile);
+					}
+				});
+				if(toAnimate.length) {
+					window.setTimeout(window.requestAnimationFrame.bind(null, function () {
+						var len = toAnimate.length;
+						while(len--) {
+							toAnimate[len].css({
+								opacity: '0.99',
+								transition: ''
+							});
+						}
+						window.scroll(0, 0);
+					}), 0)
+				} else {
+					window.scroll(0, 0);
+				}
 			});
 		//}, 0);
 	});
