@@ -45,12 +45,17 @@
         linkClickedTime = new Date(),
         wasLinkClick,
         aborted = false,
+        chromePopStateTimeout,
+        chromePopStateScrollTop = null,
+        chromeUsedBackLink,
         EXTERNAL_URL_REGEX = /^([^:\/?#]+:)?(?:\/\/([^\/?#]*))?([^?#]+)?(\?[^#]*)?(#.*)?/,
         ARTICLE_REGEX = /^((?!tags).)*\/(article|people|careers)\//,
         TAG_REGEX = /\/tags\/(.*)?/,
         MAPS_REGEX = /http:\/\/maps\.google\.com/,
         COVER_SRC_REGEX = /url\(['"]?(.*\.\w+)['"]?\)/,
         IS_FIREFOX = navigator.userAgent.toLowerCase().indexOf('firefox') > -1,
+        IS_CHROME = navigator.userAgent.toLowerCase().indexOf('chrome') > -1,
+        IS_SAFARI = !IS_CHROME && navigator.userAgent.toLowerCase().indexOf('safari') > -1,
         FULL_WIDTH = 1324,
         DESKTOP_WIDTH = 1174,
         END_SCROLL_THRESHOLD = 250,
@@ -114,8 +119,8 @@
                 window.requestAnimationFrame(function() {
                     isLoading = false;
                     $loadgif.hide();
-                    $articlein.addClass('reveal');
                     $back.addClass('reveal');
+                    $articlein.addClass('reveal');
                     $body.css('height', '');
                     $article.css('height', '');
                     window.setTimeout(function () {
@@ -212,17 +217,21 @@
         }
     }
 
-    function handlePageChange(e, data) {
-       var isArticleUrl = data.url.match(ARTICLE_REGEX),
-           isTagUrl = !isArticleUrl && data.url.match(TAG_REGEX),
+    function handlePageChange() {
+       if(!(wasLinkClick = new Date() - linkClickedTime < 300)) {
+           pageUrl = '/' + document.location.href.replace(RELATIVE_URL_REGEX, '');
+       }
+
+       var isArticleUrl = pageUrl.match(ARTICLE_REGEX),
+           isTagUrl = !isArticleUrl && pageUrl.match(TAG_REGEX),
            overridePopstateScrollmove,
-           timeoutLen = IS_FIREFOX ? 50 : 0,
+           timeoutLen = 0,
            noTransition = false,
            doFilter = false,
            wasCancelled,
            top;
 
-       if(!IS_FIREFOX) {
+       if(window.isIOS) {
            window.curScrollTop = window.pageYOffset;
        }
 
@@ -232,14 +241,10 @@
 
        cancelTransition = isTransitionEnding;
        isTransitionEnding = false;
-       wasLinkClick = new Date() - linkClickedTime < 300;
+
        overridePopstateScrollmove = !window.isIOS; //ios doesn't mess with the scrollbar during popstate
        top = window.curScrollTop;
        wasCancelled = cancelTransition || isTransitioning || aborted;
-
-       if(!wasLinkClick) {
-           pageUrl = '/' + document.location.href.replace(RELATIVE_URL_REGEX, '');
-       }
 
        filterTag = null;
 
@@ -257,15 +262,16 @@
            fromTiles = true;
 
            if(!wasCancelled) {
-               tileScrollTop = top;
+           //    tileScrollTop = top;
            }
            isTransitioning = true;
 
-           doArticleAjax = lastArticleUrl !== data.url;
-           lastArticleUrl = data.url;
+           doArticleAjax = lastArticleUrl !== pageUrl;
+           lastArticleUrl = pageUrl;
            if(wasLinkClick || doArticleAjax) {
                articleScrollTop = 0;
            }
+
            $window.trigger('article');
 
            $article.css({
@@ -273,33 +279,38 @@
                transition: 'none'
            });
            $main.css({
-               transform: overridePopstateScrollmove ? 'translate3d(0, ' + -(top - articleScrollTop) + 'px, 0)' : (wasCancelled ? 'translate3d(-1px, ' + (top - tileScrollTop) + 'px, 0)' : ''),
+               transform: overridePopstateScrollmove ? 'translate3d(0, ' + -(top - articleScrollTop) + 'px, 0)' : (wasCancelled ? 'translate3d(0, ' + (top - tileScrollTop) + 'px, 0)' : ''),
                transition: 'none'
            });
-
-           $body.addClass('animating').css('height',  Math.max(articleScrollTop, tileScrollTop) + window.pageHeight);
-
+           $body.addClass('animating');
+           $body.css('height', articleScrollTop + window.pageHeight + 100);
            if(overridePopstateScrollmove) {
-               window.scroll(0, articleScrollTop);
+               window.scroll(0, window.curScrollTop = articleScrollTop);
            }
 
            window.setTimeout(function () {
-               window.requestAnimationFrame(function () {
+             if(overridePopstateScrollmove && IS_CHROME && !chromeUsedBackLink) {
+                 window.scroll(0, window.curScrollTop = articleScrollTop);
+             }
+             window.requestAnimationFrame(function () {
                    if(doArticleAjax) {
                        $articleFooter.hide();
                        $articlein.html('');
                        $article.css('height', window.pageHeight + (window.isIOS ? IOS_CHROME_HEIGHT : 1));
                        $loadgif.find('.loading-spinner').css('top', window.pageHeight / 2 - SPINNER_HEIGHT);
                        $loadgif.show();
-                   }
-                   $article.css({
-                       transform:  !overridePopstateScrollmove ?'translate3d(-100%, ' + (top - articleScrollTop) + 'px, 0)' : '',
-                       transition: ''
-                   });
+                   } else if(window.responsiveState === 'mobile') {
+                        $back.addClass('reveal');
+                     }
                    $main.css({
                        transform: overridePopstateScrollmove ? 'translate3d(-100%, ' + -(top - articleScrollTop) + 'px, 0)' : (wasCancelled ? 'translate3d(-100%, ' + (top - tileScrollTop) + 'px, 0)' : ''),
                        transition: ''
                    });
+                   $article.css({
+                       transform:  !overridePopstateScrollmove ?'translate3d(-100%, ' + (top - articleScrollTop) + 'px, 0)' : '',
+                       transition: ''
+                   });
+
                    $window.trigger('article-transition', [{
                        top: articleScrollTop
                    }]);
@@ -312,7 +323,7 @@
            doArticleAjax = true;
            fromTiles = false;
            articleScrollTop = 0;
-           lastArticleUrl = data.url;
+           lastArticleUrl = pageUrl;
 
            window.setTimeout(function () {
                window.requestAnimationFrame(function () {
@@ -331,7 +342,7 @@
            window.isTileView = true;
            window.isBusy = true;
            if(!wasCancelled) {
-               articleScrollTop = top;
+              // articleScrollTop = top;
            }
            isTransitioning = true;
            doTileAjax = !hasLoadedTiles;
@@ -339,8 +350,6 @@
                tileScrollTop = 0;
            }
            $window.trigger('tiles');
-           $back.removeClass('reveal');
-
            $main.css({
                transform: !overridePopstateScrollmove ? 'translate3d(-100%, ' + (top - tileScrollTop) + 'px, 0)' : '',
                transition: 'none'
@@ -349,13 +358,17 @@
                transform: overridePopstateScrollmove ? 'translate3d(-100%, ' + -(top - tileScrollTop) + 'px, 0)' : (wasCancelled ? 'translate3d(-100%, ' + (top - articleScrollTop) + 'px, 0)' : ''),
                transition: 'none'
            });
-           $body.addClass('animating').css('height', window.pageHeight + (window.isIOS ? IOS_CHROME_HEIGHT : 1));
 
-           if(overridePopstateScrollmove) {
-               window.scroll(0, tileScrollTop);
+           $body.addClass('animating');
+           $body.css('height', tileScrollTop + window.pageHeight + 100);
+            if(overridePopstateScrollmove) {
+               window.scroll(0, window.curScrollTop = tileScrollTop);
            }
 
            window.setTimeout(function () {
+              if(overridePopstateScrollmove && IS_CHROME && !chromeUsedBackLink) {
+                 window.scroll(0, window.curScrollTop = tileScrollTop);
+              }
                window.requestAnimationFrame(function () {
                    if (doTileAjax) {
                        $main.css('height', window.pageHeight + (window.isIOS ? IOS_CHROME_HEIGHT : 0));
@@ -365,12 +378,14 @@
                         window.tiles.arrange({filter: '.' + filterTag});
                         $window.trigger('filter', [filterTag, !noTransition]);
                    }
+                   $back.removeClass('reveal');
+
                    $main.css({
-                       transform:  !overridePopstateScrollmove ? 'translate3d(-1px, ' + (top - tileScrollTop) + 'px, 0)' : '',
+                       transform:  !overridePopstateScrollmove ? 'translate3d(0, ' + (top - tileScrollTop) + 'px, 0)' : '',
                        transition: noTransition ? 'none' : ''
                    });
                    $article.css({
-                       transform: overridePopstateScrollmove  ? 'translate3d(-1px, ' + -(top - tileScrollTop) + 'px, 0)' : (wasCancelled ? 'translate3d(-1px, ' + (top - articleScrollTop) + 'px, 0)' : ''),
+                       transform: overridePopstateScrollmove  ? 'translate3d(0, ' + -(top - tileScrollTop) + 'px, 0)' : (wasCancelled ? 'translate3d(0, ' + (top - articleScrollTop) + 'px, 0)' : ''),
                        transition:  noTransition ? 'none' : ''
                    });
                    $window.trigger('tiles-transition', [{
@@ -402,18 +417,27 @@
                $wrap.css('top', 0);
            }
        } else if(filterTag && window.isTileView && window.currentTag !== filterTag) { //change tag on tile view
-           window.tiles.arrange({filter: '.' + filterTag});
-           $window.trigger('filter', [filterTag]);
-           window.currentTag = filterTag;
-           tileScrollTop = 0;
-           if(wasLinkClick) {
-               window.scroll(0, 0);
-               if(window.isWebkitMobileNotIOS) {
-                   window.justClosedMenu = true;
-                   $wrap.css('top', 0);
-               }
-           }
+           //window.requestAnimationFrame(function () {
+              $window.trigger('filter', [window.currentTag = filterTag]);
+              window.tiles.arrange({filter: '.' + filterTag});
+              tileScrollTop = 0;
+              //if(wasLinkClick) {
+                //window.scroll(0, 0);
+              //} else {
+                //window.requestAnimationFrame(function () {
+                //  window.scroll(0, 0);
+               // });
+              //}
+              if(window.isWebkitMobileNotIOS) {
+                window.justClosedMenu = true;
+                $wrap.css('top', 0);
+              }
+           //  }
+         // });
        }
+       chromePopStateScrollTop = null;
+       chromePopStateTimeout = null;
+       chromeUsedBackLink = false;
    }
 
     function cleanupTransition() {
@@ -428,7 +452,6 @@
         }
         cancelTransition = false;
     }
-
     function finishTransition() {
         if((window.isTileView && doTileAjax) || (!window.isTileView && doArticleAjax)) {
             window.setTimeout(function () {
@@ -439,7 +462,7 @@
                 window.requestAnimationFrame(loadViaAjax);
             }, 0);
         } else {
-            window.setTimeout(window.requestAnimationFrame.bind(null, function () {
+            //window.setTimeout(window.requestAnimationFrame.bind(null, function () {
                 cleanupTransition();
                 window.isBusy = false;
                 if (!window.isTileView && !doArticleAjax) {
@@ -447,7 +470,7 @@
                         $back.addClass('reveal');
                     }, 0);
                 }
-            }), 0);
+          // }), 0);
         }
     }
 
@@ -477,13 +500,15 @@
                 if(cancelTransition) {
                     return cleanupTransition();
                 }
-                window.scroll(0, articleScrollTop + (window.isIOS ? 0 : (window.pageYOffset - window.curScrollTop)));
-                window.setTimeout(function () {
-                    //window.requestAnimationFrame(function () {
+                window.scroll(0, window.curScrollTop = articleScrollTop);
+                window.setTimeout(window.requestAnimationFrame.bind(null, function () {
                         if(cancelTransition) {
                             return cleanupTransition();
                         }
                         $loadgiftiles.hide();
+                        if(!doArticleAjax) {
+                          $back.addClass('reveal');
+                        }
                         $article.css({
                             transition: '',
                             position: 'static',
@@ -492,34 +517,33 @@
                         $main.css({
                             position: 'absolute'
                         });
+
                         finishTransition();
-                //  });
-                }, 0);
+                }), window.isIOS ? 50 : 0);
             };
         } else {
             endTransition = function () {
                 if(cancelTransition) {
                     return cleanupTransition();
                 }
-                window.scroll(0, tileScrollTop + (window.isIOS ? 0 : (window.pageYOffset - window.curScrollTop)));
-                window.setTimeout(function () {
-                    //window.requestAnimationFrame(function () {
-                        if(cancelTransition) {
-                            return cleanupTransition();
-                        }
-                        //$loadgif.hide();
-                        $main.css({
-                            transition: '',
-                            position: ''
-                        });
-                        $article.css({
-                            position: 'absolute',
-                            left: '100%',
-                            marginLeft: ''
-                        });
-                        finishTransition();
-                    //});
-                }, 0);
+               window.scroll(0, window.curScrollTop = tileScrollTop);
+
+               window.setTimeout(window.requestAnimationFrame.bind(null, function () {
+                      if(cancelTransition) {
+                          return cleanupTransition();
+                      }
+                      //$loadgif.hide();
+                      $main.css({
+                          transition: '',
+                          position: ''
+                      });
+                      $article.css({
+                          position: 'absolute',
+                          left: '100%',
+                          marginLeft: ''
+                      });
+                      finishTransition();
+                }), window.isIOS ? 50 : 0);
             };
         }
 
@@ -542,11 +566,10 @@
             endTransition();
         };
         if(window.isIOS){
-            return window.setTimeout(window.requestAnimationFrame.bind(null, startTransitionEnd), 0);
+            return window.setTimeout(window.requestAnimationFrame.bind(null, startTransitionEnd), 50);
         }
         startTransitionEnd();
     }
-
     //init capabiliites
     setResponsiveState();
     $window.smartresize(setResponsiveState);
@@ -586,11 +609,14 @@
     $body.on('click', 'a', function(e) {
         var url = $(this).attr('href');
 
-
         if(!isExternalUrl(url)) {
             if(e.currentTarget.getAttribute('data-attr') === 'contact-link') {
                 $window.trigger('scroll-to', [window.isTileView ? $footer.offset().top - FOOTER_SCROLLTO_OFFSET : $articleFooter.offset().top - FOOTER_SCROLLTO_OFFSET]);
             } else if (e.currentTarget.getAttribute('data-attr') === 'back' && fromTiles) {
+                if(IS_CHROME) {
+                  $body.css('height', Math.max(articleScrollTop + tileScrollTop) + window.pageHeight);
+                  chromeUsedBackLink = true;
+                }
                 History.back();
             } else if(url === pageUrl) {
                 $window.trigger('same-page');
@@ -610,7 +636,11 @@
                         pageTitle = (linkTag !== 'home')? linkTag.charAt(0).toUpperCase() + linkTag.slice(1) + ' | Myplanet Digital' : 'Myplanet Digital';
                     }
                 }
-                History.pushState({}, pageTitle, pageUrl);
+
+               // window.requestAnimationFrame(function () {
+                  //chromePopStateTimeout = IS_CHROME;
+                  History.pushState({}, pageTitle, pageUrl);
+                //});
             }
             return false;
         }
@@ -618,7 +648,25 @@
 
     //$article.append($articleFooter = $footer.clone());
     window.currentTag = $('#menu').find('li.active').attr('class').split(' ')[0];
-    $window.on('page-change', handlePageChange);
+    $window.on('page-change', function () {
+      if(IS_CHROME && chromeUsedBackLink) {
+        $body.css('height', Math.max(articleScrollTop + tileScrollTop) + window.pageHeight);
+      }
+      if(!isTransitioning && !isTransitionEnding && $ajaxer === null) {
+        if(window.isTileView) {
+          tileScrollTop = window.isIOS ? window.pageYOffset : window.curScrollTop;
+        } else {
+          articleScrollTop = window.isIOS ? window.pageYOffset : window.curScrollTop;
+        }
+      }
+      if(!IS_CHROME || !chromeUsedBackLink) {
+          handlePageChange();
+      } else {
+        chromePopStateTimeout = window.setTimeout(handlePageChange, 0);
+      }
+
+    });
+    //$window.on('page-change', handlePageChange);
     $article.on('transitionend webkitTransitionEnd', handleTransitionEnd);
 
     //global scroll handler
@@ -626,6 +674,14 @@
         if(window.isIOS) {
             return;
         }
+
+        if(chromePopStateTimeout) {
+          window.clearTimeout(chromePopStateTimeout);
+          chromePopStateScrollTop = window.pageYOffset;
+
+          return handlePageChange();
+        }
+
         window.curScrollTop = window.pageYOffset;
         if(isTransitioning || isLoading || isTransitionEnding) {
             return;
@@ -662,14 +718,15 @@
             // set link to return to primary tag on landing on article
             $backlink.attr('href', window.currentTag === 'home'? window.baseUrl : '/tags/' + window.currentTag);
             articleScrollTop = window.curScrollTop;
+            isFirstArticleLoad = false;
         } else {
             tileScrollTop = window.curScrollTop;
         }
     }, 350);
 
-    window.requestAnimationFrame(function () {
+   window.requestAnimationFrame(function () {
         if(!window.isTileView) {
-            lastArticleUrl = document.location.href;
+            lastArticleUrl = pageUrl;
         }
         $body.addClass('loaded');
     });

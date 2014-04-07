@@ -45,12 +45,15 @@ body {
 
 	@media only screen and (max-width: 767px) {
 	  [data-role="menu-ghost"] {
+	  	width: auto;
+	  	left: 0;
+	  	right: 105px;
 	    height: 62px;
 	  }
 	}
 	@media screen and (min-width: 1140px) {
 	  [data-role="menu-ghost"] {
-	    height: 155px;
+	    height: 145px;
 	    z-index:1;
 	  }
 	  #menu {
@@ -190,8 +193,8 @@ body {
 		top:33px;
 		right: 50%;
 		margin-right:-(@max-width/2 + @logo-width + @logo-gutter-width);
-		display: none;
 		opacity: 0;
+		pointer-events: none;
 		.transition(none);
 		&.reveal {
 			opacity: 0.99;
@@ -228,8 +231,11 @@ body {
 	}
 	&.article {
 		#back {
-			display: block;
+			pointer-events: auto;
 		}
+	}
+	&.article.menu {
+		pointer-events: none;
 	}
 }
 
