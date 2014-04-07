@@ -17,7 +17,7 @@ banner: "IE6 and IE7 Redirect"
 		<img src="<%= @getUrl('associated-files/ie7/top.jpg') %>"  usemap="#topmap" hidefocus="true" />
 
 		<map name="topmap">
-			<area shape="rect" coords="352,537,665,568" title="Welcome to Myplanet - Upgrade your Browser" alt="Welcome to Myplanet - Upgrade your browser" href="http://windows.microsoft.com/en-us/internet-explorer/download-ie" target="_blank">
+			<area shape="rect" coords="379,522,636,550" title="Welcome to Myplanet - Upgrade your Browser" alt="Welcome to Myplanet - Upgrade your browser" href="http://windows.microsoft.com/en-us/internet-explorer/download-ie" target="_blank">
 		</map>
 		</center>
 	</div>
