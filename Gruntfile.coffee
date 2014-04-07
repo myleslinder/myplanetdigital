@@ -16,7 +16,7 @@ module.exports = (grunt) ->
 		gitclone:
 			content:
 				options:
-					repository: 'https://github.com/myplanetdigital/myplanetdigital-content.git'
+					repository: 'git@github.com:myplanetdigital/myplanetdigital-content.git'
 					directory: 'build/content'
 
 		# Copy the content into th source directory.
