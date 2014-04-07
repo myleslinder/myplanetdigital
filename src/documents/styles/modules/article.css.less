@@ -890,3 +890,19 @@ body.article, body.animating {
 	position: absolute;
 }
 
+.desktop-only {
+	display: block;
+
+	@media screen and (max-width: 680px) {
+		display: none;
+	}
+}
+
+.mobile-only {
+	display: none;
+
+	@media screen and (max-width: 680px) {
+		display: block;
+	}
+}
+
