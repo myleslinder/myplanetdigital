@@ -26,7 +26,7 @@ banner: "IE6 and IE7 Redirect"
 			<img src="<%= @getUrl('associated-files/ie7/footer.jpg') %>"  alt="Contact Us" usemap="#footermap" hidefocus="true" />
 
 			<map name="footermap">
-			  <area shape="rect" coords="183,29,515,120" alt="Contact Us" title="Contact Us" href="mailto://hello@myplanet.io">
+			  <area shape="rect" coords="183,29,515,120" alt="Contact Us" title="Contact Us" href="mailto:hello@myplanet.io">
 
 			  <area shape="rect" coords="30,278,50,298" href="http://twitter.com/myplanetHQ" target="_blank">
 			  <area shape="rect" coords="65,278,85,298" href="http://www.facebook.com/myplanetHQ" target="_blank">
