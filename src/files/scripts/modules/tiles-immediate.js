@@ -21,7 +21,3 @@ loadingGif.onload = function () {
       }
   }
 };
-
-window.currentTag = function() {
-  return $('#menu').find('li.active').attr('class').split(' ')[0];
-};
