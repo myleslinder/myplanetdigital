@@ -324,8 +324,13 @@
            fromTiles = false;
            articleScrollTop = 0;
            lastArticleUrl = pageUrl;
-
+           if(overridePopstateScrollmove) {
+               window.scroll(0, window.curScrollTop = articleScrollTop);
+           }
            window.setTimeout(function () {
+               if(overridePopstateScrollmove && IS_CHROME && !chromeUsedBackLink) {
+                  window.scroll(0, window.curScrollTop = articleScrollTop);
+               }
                window.requestAnimationFrame(function () {
                    if(doArticleAjax) {
                        $articlein.html('');
