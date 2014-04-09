@@ -178,10 +178,10 @@
 			$wrap.on('transitionend webkitTransitionEnd', transitionEnd);
 			$window.on('article menu', removeAllLayers);
 			scrollData = data;
-			
+
 			firstEventTimeout = window.setTimeout(initializePage, 350);
 		}
-		
+
 	});
 
 	$window.on('filter', function(e, tag, immediate, scroll) {
@@ -190,7 +190,7 @@
 			if(window.responsiveState === 'mobile' && window.mobileMenuIsOpen) {
 				return window.scroll(0, window.curScrollTop = 0);
 			}
-			window.requestAnimationFrame(function () {
+			//window.requestAnimationFrame(function () {
 				window.tiles.items.map(function (tile) {
 					var $tile = $(tile.element).removeClass('reveal revealed show hidden').css({
 						opacity: immediate ? 1 : 0.01,
@@ -201,20 +201,24 @@
 					}
 				});
 				if(toAnimate.length) {
-					window.setTimeout(window.requestAnimationFrame.bind(null, function () {
-						var len = toAnimate.length;
-						while(len--) {
-							toAnimate[len].css({
-								opacity: '0.99',
-								transition: ''
-							});
-						}
+					window.requestAnimationFrame(function () {
 						window.scroll(0, window.curScrollTop = 0);
-					}), 0)
-				} else {
+						window.setTimeout(function () {
+							window.requestAnimationFrame(function () {
+								var len = toAnimate.length;
+								while(len--) {
+									toAnimate[len].css({
+										opacity: '0.99',
+										transition: ''
+									});
+								}
+							});
+						}, 0);
+					});
+				} else if(!window.isIOS) {
 					window.scroll(0, window.curScrollTop = 0);
 				}
-			});
+			//});
 		//}, 0);
 	});
 
