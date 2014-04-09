@@ -175,7 +175,6 @@
             $ajaxer = $.get(removeTrailingSlash(window.location.href) + '-content/index.html', function(data) {
                 $ajaxer = null;
                 window.setTimeout(function () {
-                    debugger;
                     var image = new Image(),
                         $loadedData = $(data).eq(0),
                         bgImg;
