@@ -26,7 +26,7 @@
 		}
 
 		$hiddenTiles = window.tiles.items.filter(function (tile) {
-			if(tile.position.y + topOffset < (window.pageYOffset + window.pageHeight)) {
+			if(!IS_CHROME || (tile.position.y + topOffset < (window.pageYOffset + window.pageHeight))) {
 				tile.element.style.opacity = '1';
 				return false;
 			} else {
