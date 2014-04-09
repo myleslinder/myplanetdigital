@@ -188,7 +188,7 @@
 		//window.setTimeout(function() {
 			var toAnimate = [];
 			if(window.responsiveState === 'mobile' && window.mobileMenuIsOpen) {
-				return;
+				return window.scroll(0, window.curScrollTop = 0);
 			}
 			window.requestAnimationFrame(function () {
 				window.tiles.items.map(function (tile) {
@@ -209,10 +209,10 @@
 								transition: ''
 							});
 						}
-						window.scroll(0, 0);
+						window.scroll(0, window.curScrollTop = 0);
 					}), 0)
 				} else {
-					window.scroll(0, 0);
+					window.scroll(0, window.curScrollTop = 0);
 				}
 			});
 		//}, 0);
