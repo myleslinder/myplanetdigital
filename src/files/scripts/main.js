@@ -324,24 +324,19 @@
            fromTiles = false;
            articleScrollTop = 0;
            lastArticleUrl = pageUrl;
-           if(overridePopstateScrollmove) {
-               window.scroll(0, window.curScrollTop = articleScrollTop);
-           }
-           window.setTimeout(function () {
-               if(overridePopstateScrollmove && IS_CHROME && !chromeUsedBackLink) {
-                  window.scroll(0, window.curScrollTop = articleScrollTop);
-               }
-               window.requestAnimationFrame(function () {
-                   if(doArticleAjax) {
+          // window.setTimeout(function () {
+            //   window.requestAnimationFrame(function () {
+                   //if(doArticleAjax) {
                        $articlein.html('');
                        $article.css('height', window.pageHeight + (window.isIOS ? IOS_CHROME_HEIGHT : 1));
                        $back.removeClass('reveal');
                        $loadgif.find('.loading-spinner').css('top', window.pageHeight / 2 - SPINNER_HEIGHT);
                        $loadgif.show();
+                       window.scroll(0, window.curScrollTop = articleScrollTop);
                        window.requestAnimationFrame(loadViaAjax);
-                   }
-               });
-           }, timeoutLen);
+                   //}
+              // });
+          // }, timeoutLen);
 
        } else if(!isArticleUrl && !window.isTileView) { // Article view back to tile view
            window.isTileView = true;
