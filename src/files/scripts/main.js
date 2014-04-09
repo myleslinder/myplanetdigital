@@ -612,7 +612,7 @@
         if(!isExternalUrl(url)) {
             if(e.currentTarget.getAttribute('data-attr') === 'contact-link') {
                 $window.trigger('scroll-to', [window.isTileView ? $footer.offset().top - FOOTER_SCROLLTO_OFFSET : $articleFooter.offset().top - FOOTER_SCROLLTO_OFFSET]);
-            } else if (e.currentTarget.getAttribute('data-attr') === 'back') {
+            } else if (e.currentTarget.getAttribute('data-attr') === 'back' && hasLoadedTiles) {
                 if(IS_CHROME) {
                   $body.css('height', Math.max(articleScrollTop + tileScrollTop) + window.pageHeight);
                   chromeUsedBackLink = true;
