@@ -175,6 +175,7 @@
             $ajaxer = $.get(removeTrailingSlash(window.location.href) + '-content/index.html', function(data) {
                 $ajaxer = null;
                 window.setTimeout(function () {
+                    debugger;
                     var image = new Image(),
                         $loadedData = $(data).eq(0),
                         bgImg;
@@ -365,7 +366,6 @@
             if(overridePopstateScrollmove) {
                window.scroll(0, window.curScrollTop = tileScrollTop);
            }
-
            window.setTimeout(function () {
               if(overridePopstateScrollmove && IS_CHROME && !chromeUsedBackLink) {
                  window.scroll(0, window.curScrollTop = tileScrollTop);
@@ -404,6 +404,8 @@
 
            if(window.responsiveState === 'mobile' && window.mobileMenuIsOpen) {
                noTransition = true;
+           } else if(!hasLoadedTiles) {
+            noTransition = false;
            }
 
            if (filterTag && hasLoadedTiles && window.currentTag !== filterTag) { //article to tile view on different tag
@@ -613,7 +615,7 @@
         if(!isExternalUrl(url)) {
             if(e.currentTarget.getAttribute('data-attr') === 'contact-link') {
                 $window.trigger('scroll-to', [window.isTileView ? $footer.offset().top - FOOTER_SCROLLTO_OFFSET : $articleFooter.offset().top - FOOTER_SCROLLTO_OFFSET]);
-            } else if (e.currentTarget.getAttribute('data-attr') === 'back' && hasLoadedTiles) {
+            } else if (e.currentTarget.getAttribute('data-attr') === 'back' && (hasLoadedTiles || doArticleAjax)) {
                 if(IS_CHROME) {
                   $body.css('height', Math.max(articleScrollTop + tileScrollTop) + window.pageHeight);
                   chromeUsedBackLink = true;
@@ -650,8 +652,10 @@
     //$article.append($articleFooter = $footer.clone());
     window.currentTag = $('#menu').find('li.active').attr('class').split(' ')[0];
     $window.on('page-change', function () {
+      debugger;
       if(!pageLoaded) {
-          return;
+        debugger;
+        return;
       }
       if(IS_CHROME && chromeUsedBackLink) {
         $body.css('height', Math.max(articleScrollTop + tileScrollTop) + window.pageHeight);
@@ -727,7 +731,7 @@
             tileScrollTop = window.curScrollTop;
         }
         pageLoaded = true;
-    }, 750);
+    }, 500);
 
    window.requestAnimationFrame(function () {
         if(!window.isTileView) {
