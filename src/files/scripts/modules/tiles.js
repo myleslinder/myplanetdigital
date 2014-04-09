@@ -21,7 +21,7 @@
 		IS_CHROME = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
 
 	function initializePage() {
-		if(!window.isTileView || !IS_CHROME || window.hasTouchEvents) {
+		if(!window.isTileView || window.hasTouchEvents) {
 			return;
 		}
 
