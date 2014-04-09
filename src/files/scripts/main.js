@@ -651,9 +651,7 @@
     //$article.append($articleFooter = $footer.clone());
     window.currentTag = $('#menu').find('li.active').attr('class').split(' ')[0];
     $window.on('page-change', function () {
-      debugger;
       if(!pageLoaded) {
-        debugger;
         return;
       }
       if(IS_CHROME && chromeUsedBackLink) {
