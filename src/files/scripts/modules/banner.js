@@ -21,21 +21,20 @@
     if(window.responsiveState === 'mobile' && window.mobileMenuIsOpen) {
       immediate = true;
     }
-     $bannerText.html(bannerText).css({opacity: 0.01, transition: 'none'});
-     $banner.attr('class', '').css('transition', immediate ? 'none' : '');
+     $bannerText.css({opacity: 0.01, transition: 'none'});
+     $banner.css('transition', immediate ? 'none' : '');
     if(immediate) {
 
-     //
        return window.requestAnimationFrame(function () {
           $banner.attr('class', tag);
-          $bannerText.css({'opacity': 1, 'transition' : 'none'});
+          $bannerText.html(bannerText).css({'opacity': 1, 'transition' : 'none'});
         });
       //});
     }
 
     window.setTimeout(window.requestAnimationFrame.bind(null, function() {
       $banner.attr('class', tag);
-      $bannerText.css({'opacity': 1, 'transition' : ''});
+      $bannerText.html(bannerText).css({'opacity': 1, 'transition' : ''});
     }), 0);
   }
 
