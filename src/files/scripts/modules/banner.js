@@ -35,7 +35,7 @@
 
     window.setTimeout(window.requestAnimationFrame.bind(null, function() {
       $banner.attr('class', tag);
-      $bannerText.css({'opacity': 0.99, 'transition' : ''});
+      $bannerText.css({'opacity': 1, 'transition' : ''});
     }), 0);
   }
 
