@@ -1,6 +1,6 @@
 # Myplanet.io
 
-This bage may not represent reality because docpad cli tools don't return with correct exit codes on errors therefore the build does not break when it should.
+This badge may not represent reality because docpad cli tools don't return with correct exit codes on errors therefore the build does not break when it should.
 [![Build Status](https://magnum.travis-ci.com/myplanetdigital/swat.png?token=PfDoSbUzTy6wJdrqu2LE&branch=master)](https://magnum.travis-ci.com/myplanetdigital/swat)
 
 ## Development
