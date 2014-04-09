@@ -42,6 +42,7 @@
         isTransitioning = false,
         isTransitionEnding = false,
         cancelTransition = false,
+        pageLoaded = false,
         linkClickedTime = new Date(),
         wasLinkClick,
         aborted = false,
@@ -649,6 +650,9 @@
     //$article.append($articleFooter = $footer.clone());
     window.currentTag = $('#menu').find('li.active').attr('class').split(' ')[0];
     $window.on('page-change', function () {
+      if(!pageLoaded) {
+          return;
+      }
       if(IS_CHROME && chromeUsedBackLink) {
         $body.css('height', Math.max(articleScrollTop + tileScrollTop) + window.pageHeight);
       }
@@ -722,7 +726,8 @@
         } else {
             tileScrollTop = window.curScrollTop;
         }
-    }, 350);
+        pageLoaded = true;
+    }, 750);
 
    window.requestAnimationFrame(function () {
         if(!window.isTileView) {
