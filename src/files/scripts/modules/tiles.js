@@ -20,7 +20,7 @@
 		$hiddenTiles;
 
 	function initializePage() {
-		if(!window.isTileView) {
+		if(!window.isTileView || window.hasTouchEvents) {
 			return;
 		}
 
