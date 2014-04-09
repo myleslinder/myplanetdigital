@@ -22,7 +22,7 @@
       immediate = true;
     }
      $bannerText.html(bannerText).css({opacity: 0.01, transition: 'none'});
-     $banner.attr('class', '');
+     $banner.attr('class', '').css('transition', immediate ? 'none' : '');
     if(immediate) {
 
      //
