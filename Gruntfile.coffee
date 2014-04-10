@@ -48,6 +48,8 @@ module.exports = (grunt) ->
 					src: 'src'
 				]
 
+		# @todo Add S3 deploy
+
 	grunt.loadNpmTasks 'grunt-git'
 	grunt.loadNpmTasks 'grunt-contrib-copy'
 	grunt.loadNpmTasks 'grunt-contrib-clean'
