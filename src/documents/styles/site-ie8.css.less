@@ -438,9 +438,12 @@ body.width-mobile #menu ul > li {
 
         img {
           height: auto;
-          min-width: 100%;
-          min-height: 100%;
           width: 100%;
+
+          &.inverse {
+            height: 100%;
+            width: auto;
+          }
         }
 
         &[data-focus="left"] {

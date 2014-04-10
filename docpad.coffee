@@ -39,6 +39,9 @@ module.exports =
 			'html5shiv': [
 				'/scripts/vendor/html5shiv.js'
 			]
+			'main-ie8' : [
+				'/scripts/main-ie8.js'
+			]
 			'menu-ie8' : [
 				'/scripts/menu-ie8.js'
 			]

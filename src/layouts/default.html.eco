@@ -104,11 +104,13 @@
 		</div>
 		<!--[if (IE 8) | (IE 9)]>
 		<script src="<%- @getUrl(@site.jquery1[0]) %>"></script>
+		<script src="<%- @getUrl(@site['main-ie8'][0]) %>"></script>
 		<script src="<%- @getUrl(@site['menu-ie8'][0]) %>"></script>
 		<![endif]-->
 		<!--[if !IE]> -->
 		<script src="<%- @getUrl(@site.jquery2[0]) %>"></script>
 		<!-- <![endif]-->
+
 		<%- @getBlock('scripts').add(@getUrl(@site.scripts)).toHTML() %>
 	</body>
 </html>
