@@ -8,7 +8,7 @@
   <% end %>
 <% end %>
 
-<% cover = if cover? then @partial('cover', true, {'cover': cover}) else @partial('cover', true) %>
+<% if @cover?: %><% cover = @getUrl(@cover) %><% else: %><% files = @getFilesAtPath('images/default-covers') %><% num = Math.floor(Math.random() * (files.length - 2)) + 1 %><% cover = @getUrl('/images/default-covers/' + num + '.jpg') %><% end %>
 
 <div class="profile-banner" style="background-image:url('<%= cover %>');">
   <img src="<%= cover %>" style="display:none; visibility:hidden;" />
