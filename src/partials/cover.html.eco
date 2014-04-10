@@ -1,1 +1,1 @@
-<% if @cover?: %><%= @getUrl(@cover) %><% else: %><% files = @getFilesAtPath('images/default-covers') %><% num = Math.floor(Math.random() * files.length - 1) + 1 %><%= @getUrl('/images/default-covers/' + num + '.jpg') %><% end %>
+<% if @cover?: %><%= @getUrl(@cover) %><% else: %><% files = @getFilesAtPath('images/default-covers') %><% num = Math.floor(Math.random() * (files.length - 2)) + 1 %><%= @getUrl('/images/default-covers/' + num + '.jpg') %><% end %>
