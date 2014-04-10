@@ -60,7 +60,11 @@
 			</a>
 		</div>
 		<% if @document.size != 'small' && @document.imagePosition == 'bottom': %>
-			<a class="tile-image" <% if tile: %>style="background-image: url('<%= @getUrl(tile) %>')" <% end %>href="<%= @getUrl(@document.url) %>"></a>
+			<a class="tile-image" <% if tile: %>style="background-image: url('<%= @getUrl(tile) %>')" <% end %>href="<%= @getUrl(@document.url) %>">
+				<!--[if (IE 8) | (IE 9)]>
+					<img src="<%= @getUrl(tile) %>" />
+				<![endif]-->
+			</a>
 		<% end %>
 	</div>
 </div>
