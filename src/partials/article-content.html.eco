@@ -10,7 +10,7 @@
 <% end %>
 
 <% # Clean up any variables %>
-<% if @cover?: %><% cover = @getUrl(@cover) %><% else: %><% files = @getFilesAtPath('images/default-covers') %><% num = Math.floor(Math.random() * (files.length - 2)) + 1 %><% cover = @getUrl('/images/default-covers/' + num + '.jpg') %><% end %>
+<% if @cover?: %><% cover = @getUrl(@cover) %><% else: %><% files = @getFilesAtPath('images/default-covers') %><% num = Math.floor(Math.random() * (files.length - 3)) + 1 %><% cover = @getUrl('/images/default-covers/' + num + '.jpg') %><% end %>
 
 <% # Get the author information %>
 
