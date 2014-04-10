@@ -7,7 +7,7 @@ banner: "IE6 and IE7 Redirect"
 	"http://www.w3.org/TR/html4/strict.dtd">
 <html>
 	<head>
-		<title>Myplanet Digital</title>
+		<title>Myplanet</title>
 
 		<link rel="stylesheet" href="<%- @getUrl(@site.ie7styles[0]) %>">
 	</head>

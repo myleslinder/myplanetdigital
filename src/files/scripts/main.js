@@ -622,10 +622,10 @@
                 $window.trigger('same-page');
             } else {
                 pageUrl = url;
-                pageTitle = 'Myplanet Digital';
+                pageTitle = 'Myplanet';
                 linkClickedTime = new Date();
                 if (url.match(ARTICLE_REGEX)) {
-                    pageTitle = $('a[href="' + url + '"].tile-title').find('h2').text() + ' | Myplanet Digital';
+                    pageTitle = $('a[href="' + url + '"].tile-title').find('h2').text() + ' | Myplanet';
                 }
                 else if (url.match(TAG_REGEX)) {
                     // Add an active class to the menu earlier.
@@ -633,7 +633,7 @@
 
                     if(linkTag) {
                         $(this).addClass('active');
-                        pageTitle = (linkTag !== 'home')? linkTag.charAt(0).toUpperCase() + linkTag.slice(1) + ' | Myplanet Digital' : 'Myplanet Digital';
+                        pageTitle = (linkTag !== 'home')? linkTag.charAt(0).toUpperCase() + linkTag.slice(1) + ' | Myplanet' : 'Myplanet';
                     }
                 }
 
