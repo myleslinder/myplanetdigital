@@ -502,7 +502,7 @@
                 if(cancelTransition) {
                     return cleanupTransition();
                 }
-                window.scroll(0, window.curScrollTop = articleScrollTop);
+                window.scroll(0, window.curScrollTop = articleScrollTop + (window.isIOS ? 0 : (window.pageYOffset - window.curScrollTop)));
                 window.setTimeout(window.requestAnimationFrame.bind(null, function () {
                         if(cancelTransition) {
                             return cleanupTransition();
@@ -528,7 +528,7 @@
                 if(cancelTransition) {
                     return cleanupTransition();
                 }
-               window.scroll(0, window.curScrollTop = tileScrollTop);
+                window.scroll(0, window.curScrollTop = tileScrollTop + (window.isIOS ? 0 : (window.pageYOffset - window.curScrollTop)));
 
                window.setTimeout(window.requestAnimationFrame.bind(null, function () {
                       if(cancelTransition) {
