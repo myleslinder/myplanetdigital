@@ -42,6 +42,7 @@
         isTransitioning = false,
         isTransitionEnding = false,
         cancelTransition = false,
+        pageLoaded = false,
         linkClickedTime = new Date(),
         wasLinkClick,
         aborted = false,
@@ -364,7 +365,6 @@
             if(overridePopstateScrollmove) {
                window.scroll(0, window.curScrollTop = tileScrollTop);
            }
-
            window.setTimeout(function () {
               if(overridePopstateScrollmove && IS_CHROME && !chromeUsedBackLink) {
                  window.scroll(0, window.curScrollTop = tileScrollTop);
@@ -403,6 +403,8 @@
 
            if(window.responsiveState === 'mobile' && window.mobileMenuIsOpen) {
                noTransition = true;
+           } else if(!hasLoadedTiles) {
+            noTransition = false;
            }
 
            if (filterTag && hasLoadedTiles && window.currentTag !== filterTag) { //article to tile view on different tag
@@ -500,7 +502,7 @@
                 if(cancelTransition) {
                     return cleanupTransition();
                 }
-                window.scroll(0, window.curScrollTop = articleScrollTop);
+                window.scroll(0, window.curScrollTop = articleScrollTop + (window.isIOS ? 0 : (window.pageYOffset - window.curScrollTop)));
                 window.setTimeout(window.requestAnimationFrame.bind(null, function () {
                         if(cancelTransition) {
                             return cleanupTransition();
@@ -526,7 +528,7 @@
                 if(cancelTransition) {
                     return cleanupTransition();
                 }
-               window.scroll(0, window.curScrollTop = tileScrollTop);
+                window.scroll(0, window.curScrollTop = tileScrollTop + (window.isIOS ? 0 : (window.pageYOffset - window.curScrollTop)));
 
                window.setTimeout(window.requestAnimationFrame.bind(null, function () {
                       if(cancelTransition) {
@@ -612,12 +614,12 @@
         if(!isExternalUrl(url)) {
             if(e.currentTarget.getAttribute('data-attr') === 'contact-link') {
                 $window.trigger('scroll-to', [window.isTileView ? $footer.offset().top - FOOTER_SCROLLTO_OFFSET : $articleFooter.offset().top - FOOTER_SCROLLTO_OFFSET]);
-            } else if (e.currentTarget.getAttribute('data-attr') === 'back') {
+            } else if (e.currentTarget.getAttribute('data-attr') === 'back' && (hasLoadedTiles || fromTiles || doArticleAjax)) {
                 if(IS_CHROME) {
                   $body.css('height', Math.max(articleScrollTop + tileScrollTop) + window.pageHeight);
                   chromeUsedBackLink = true;
                 }
-                History.back();
+                window.setTimeout(window.requestAnimationFrame.bind(null, History.back), 0);
             } else if(url === pageUrl) {
                 $window.trigger('same-page');
             } else {
@@ -649,6 +651,9 @@
     //$article.append($articleFooter = $footer.clone());
     window.currentTag = $('#menu').find('li.active').attr('class').split(' ')[0];
     $window.on('page-change', function () {
+      if(!pageLoaded) {
+        return;
+      }
       if(IS_CHROME && chromeUsedBackLink) {
         $body.css('height', Math.max(articleScrollTop + tileScrollTop) + window.pageHeight);
       }
@@ -722,7 +727,8 @@
         } else {
             tileScrollTop = window.curScrollTop;
         }
-    }, 350);
+        pageLoaded = true;
+    }, 500);
 
    window.requestAnimationFrame(function () {
         if(!window.isTileView) {
