@@ -614,12 +614,12 @@
         if(!isExternalUrl(url)) {
             if(e.currentTarget.getAttribute('data-attr') === 'contact-link') {
                 $window.trigger('scroll-to', [window.isTileView ? $footer.offset().top - FOOTER_SCROLLTO_OFFSET : $articleFooter.offset().top - FOOTER_SCROLLTO_OFFSET]);
-            } else if (e.currentTarget.getAttribute('data-attr') === 'back' && (hasLoadedTiles || doArticleAjax)) {
+            } else if (e.currentTarget.getAttribute('data-attr') === 'back' && (hasLoadedTiles || fromTiles || doArticleAjax)) {
                 if(IS_CHROME) {
                   $body.css('height', Math.max(articleScrollTop + tileScrollTop) + window.pageHeight);
                   chromeUsedBackLink = true;
                 }
-                History.back();
+                window.setTimeout(window.requestAnimationFrame.bind(null, History.back), 0);
             } else if(url === pageUrl) {
                 $window.trigger('same-page');
             } else {
