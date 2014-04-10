@@ -431,9 +431,17 @@ body.width-mobile #menu ul > li {
         display: block;
         width: 100%;
         height: 50%;
-        background-repeat: no-repeat;
-        background-position: center center;
-        .background-cover();
+        //background-repeat: no-repeat;
+        //background-position: center center;
+        //.background-cover();
+        background: none !important;
+
+        img {
+          height: auto;
+          min-width: 100%;
+          min-height: 100%;
+          width: 100%;
+        }
 
         &[data-focus="left"] {
           background-position: center left;
