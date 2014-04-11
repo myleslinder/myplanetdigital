@@ -16,19 +16,19 @@
   });
 
   function bannerUpdate(tag, immediate) {
-    var bannerText = bannerInfo[tag]['bannerText'];
+      var bannerText = bannerInfo[tag]['bannerText'];
 
-    if(window.responsiveState === 'mobile' && window.mobileMenuIsOpen) {
-      immediate = true;
-    }
+     if(window.responsiveState === 'mobile' && window.mobileMenuIsOpen) {
+        immediate = true;
+     }
      $bannerText.css({opacity: 0.01, transition: 'none'});
      $banner.css('transition', immediate ? 'none' : '');
-    if(immediate) {
+     if(immediate) {
 
-       return window.requestAnimationFrame(function () {
+       //return window.requestAnimationFrame(function () {
           $banner.attr('class', tag);
-          $bannerText.html(bannerText).css({'opacity': 1, 'transition' : 'none'});
-        });
+          return $bannerText.html(bannerText).css({'opacity': 1, 'transition' : 'none'});
+        //});
       //});
     }
 
