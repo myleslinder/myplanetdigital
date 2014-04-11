@@ -386,9 +386,7 @@
                    });
                    $article.css({
                        transform: overridePopstateScrollmove  ? 'translate3d(0, ' + -(top - tileScrollTop) + 'px, 0)' : (wasCancelled ? 'translate3d(0, ' + (top - articleScrollTop) + 'px, 0)' : ''),
-                       transition:  noTransition ? 'none' : '',
-                       position: '',
-                       left: ''
+                       transition:  noTransition ? 'none' : ''
                    });
                    $window.trigger('tiles-transition', [{
                        top: tileScrollTop
