@@ -402,7 +402,7 @@
            }, timeoutLen);
 
            if(window.responsiveState === 'mobile' && window.mobileMenuIsOpen) {
-               noTransition = true;
+              noTransition = true;
            } else if(!hasLoadedTiles) {
             noTransition = false;
            }
@@ -413,6 +413,7 @@
            } else if(hasLoadedTiles) {
                $window.trigger('same-filter');
            }
+
            if(wasLinkClick && window.isWebkitMobileNotIOS) {
                window.justClosedMenu = true;
                window.scroll(0, 0);
@@ -521,14 +522,14 @@
                         });
 
                         finishTransition();
-                }), window.isIOS ? 50 : 0);
+                }), 0);
             };
         } else {
             endTransition = function () {
                 if(cancelTransition) {
                     return cleanupTransition();
                 }
-                window.scroll(0, window.curScrollTop = tileScrollTop + (window.isIOS ? 0 : (window.pageYOffset - window.curScrollTop)));
+               window.scroll(0, window.curScrollTop = tileScrollTop + (window.isIOS ? 0 : (window.pageYOffset - window.curScrollTop)));
 
                window.setTimeout(window.requestAnimationFrame.bind(null, function () {
                       if(cancelTransition) {
@@ -545,7 +546,7 @@
                           marginLeft: ''
                       });
                       finishTransition();
-                }), window.isIOS ? 50 : 0);
+                }), 0);
             };
         }
 
@@ -568,7 +569,7 @@
             endTransition();
         };
         if(window.isIOS){
-            return window.setTimeout(window.requestAnimationFrame.bind(null, startTransitionEnd), 50);
+            return window.setTimeout(window.requestAnimationFrame.bind(null, startTransitionEnd), 0);
         }
         startTransitionEnd();
     }
@@ -609,40 +610,58 @@
 
     //handle push/pop state
     $body.on('click', 'a', function(e) {
-        var url = $(this).attr('href');
+        var url = $(this).attr('href'),
+          $link;
 
         if(!isExternalUrl(url)) {
             if(e.currentTarget.getAttribute('data-attr') === 'contact-link') {
-                $window.trigger('scroll-to', [window.isTileView ? $footer.offset().top - FOOTER_SCROLLTO_OFFSET : $articleFooter.offset().top - FOOTER_SCROLLTO_OFFSET]);
-            } else if (e.currentTarget.getAttribute('data-attr') === 'back' && (hasLoadedTiles || fromTiles || doArticleAjax)) {
+                if(window.responsiveState === 'mobile' && window.isWebkitMobileNotIOS) {
+                    $wrap.css({
+                      position: 'absolute'
+                    });
+                   // FOOTER_SCROLLTO_OFFSET = $('.menu-ghost').height();
+                }
+                $window.trigger('scroll-to', [window.mobileMenuYOffset = (window.isTileView ? $footer.offset().top - FOOTER_SCROLLTO_OFFSET : $articleFooter.offset().top - FOOTER_SCROLLTO_OFFSET)]);
+            } else if (e.currentTarget.getAttribute('data-attr') === 'back' && (hasLoadedTiles || doTileAjax || doArticleAjax)) {
                 if(IS_CHROME) {
                   $body.css('height', Math.max(articleScrollTop + tileScrollTop) + window.pageHeight);
                   chromeUsedBackLink = true;
                 }
-                window.setTimeout(window.requestAnimationFrame.bind(null, History.back), 0);
+                if(!window.isTileView) {
+                  if(window.isWebkitMobileNotIOS) {
+                      History.back();
+                  } else {
+                    window.setTimeout(window.requestAnimationFrame.bind(null, History.back), 0);
+                  }
+                }
             } else if(url === pageUrl) {
                 $window.trigger('same-page');
             } else {
                 pageUrl = url;
-                pageTitle = 'Myplanet';
+                pageTitle = 'Myplanet Digital';
                 linkClickedTime = new Date();
                 if (url.match(ARTICLE_REGEX)) {
-                    pageTitle = $('a[href="' + url + '"].tile-title').find('h2').text() + ' | Myplanet';
+                    pageTitle = $('a[href="' + url + '"].tile-title').find('h2').text() + ' | Myplanet Digital';
                 }
                 else if (url.match(TAG_REGEX)) {
                     // Add an active class to the menu earlier.
-                    linkTag = $(this).attr('data-tag');
-
+                    $link = $(this);
+                    linkTag = $link.attr('data-tag');
+                    $link.closest('ul').find('li.active').removeClass('active');
+                    $link.closest('li').addClass('active');
                     if(linkTag) {
-                        $(this).addClass('active');
-                        pageTitle = (linkTag !== 'home')? linkTag.charAt(0).toUpperCase() + linkTag.slice(1) + ' | Myplanet' : 'Myplanet';
+                        pageTitle = (linkTag !== 'home')? linkTag.charAt(0).toUpperCase() + linkTag.slice(1) + ' | Myplanet Digital' : 'Myplanet Digital';
                     }
                 }
 
-               // window.requestAnimationFrame(function () {
-                  //chromePopStateTimeout = IS_CHROME;
-                  History.pushState({}, pageTitle, pageUrl);
-                //});
+                if(!window.isWebkitMobileNotIOS || window.mobileMenuIsOpen) {
+                    History.pushState({}, pageTitle, pageUrl);
+                } else {
+                  window.setTimeout(window.requestAnimationFrame.bind(null, function() {
+                    //chromePopStateTimeout = IS_CHROME;
+                    History.pushState({}, pageTitle, pageUrl);
+                  }), 0);
+                }
             }
             return false;
         }
