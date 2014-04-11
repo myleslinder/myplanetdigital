@@ -688,7 +688,7 @@
       if(!IS_CHROME || !chromeUsedBackLink) {
           handlePageChange();
       } else {
-        chromePopStateTimeout = window.setTimeout(hange, 0);
+        chromePopStateTimeout = window.setTimeout(handlePageChange, 0);
       }
 
     });
