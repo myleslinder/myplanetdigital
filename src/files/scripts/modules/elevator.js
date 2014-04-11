@@ -75,11 +75,9 @@
 			transform: '',
 			transition: ''
 		});
-		//window.requestAnimationFrame(function () {
-			$body.removeClass('animating');
-			$window.trigger('elevator-done');
-			window.isElevating = false;
-		//});
+		$body.removeClass('animating');
+		$window.trigger('elevator-done');
+		window.isElevating = false;
 	}
 
 	$viewport.on('transitionend webkitTransitionEnd', function(e) {
@@ -99,7 +97,7 @@
 			}
 			window.setTimeout(function() {
 				window.scroll(0, window.curScrollTop = curOffset);
-				window.setTimeout(finishTransitionEnd, 0);
+				window.setTimeout(window.requestAnimationFrame.bind(null, finishTransitionEnd), 0);
 			}, 0);
 		}), 0);
 	});
