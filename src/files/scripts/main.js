@@ -654,7 +654,7 @@
                     }
                 }
 
-                if(!window.isWebkitMobileNotIOS || window.mobileMenuIsOpen) {
+                if(!window.isWebkitMobileNotIOS || !window.mobileMenuIsOpen) {
                     History.pushState({}, pageTitle, pageUrl);
                 } else {
                   window.setTimeout(window.requestAnimationFrame.bind(null, function() {
