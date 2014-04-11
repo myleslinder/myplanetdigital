@@ -386,7 +386,9 @@
                    });
                    $article.css({
                        transform: overridePopstateScrollmove  ? 'translate3d(0, ' + -(top - tileScrollTop) + 'px, 0)' : (wasCancelled ? 'translate3d(0, ' + (top - articleScrollTop) + 'px, 0)' : ''),
-                       transition:  noTransition ? 'none' : ''
+                       transition:  noTransition ? 'none' : '',
+                       position: '',
+                       left: ''
                    });
                    $window.trigger('tiles-transition', [{
                        top: tileScrollTop
@@ -686,7 +688,7 @@
       if(!IS_CHROME || !chromeUsedBackLink) {
           handlePageChange();
       } else {
-        chromePopStateTimeout = window.setTimeout(handlePageChange, 0);
+        chromePopStateTimeout = window.setTimeout(hange, 0);
       }
 
     });
