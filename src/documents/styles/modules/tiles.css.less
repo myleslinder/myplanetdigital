@@ -90,6 +90,11 @@
 				opacity: 0.99;
 				.transform(scale(1));
 				.transition-transform(0.3s, opacity 0.5s ease-out);
+				
+				@media screen and (min-width: 1140px) {
+					.transform(none);
+					.showBack();
+				}
 			}
 			&.team {
 				h2 {
