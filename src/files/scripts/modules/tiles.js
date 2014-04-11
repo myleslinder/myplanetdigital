@@ -21,13 +21,14 @@
 		IS_CHROME = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
 
 	function initializePage() {
-		if(!window.isTileView || window.hasTouchEvents) {
+		if(!window.isTileView) {
 			return;
 		}
 
 		$hiddenTiles = window.tiles.items.filter(function (tile) {
-			if(!IS_CHROME || (tile.position.y + topOffset < (window.pageYOffset + window.pageHeight))) {
+			if(!IS_CHROME || window.isWebkitMobileNotIOS || (tile.position.y + topOffset < (window.pageYOffset + window.pageHeight))) {
 				tile.element.style.opacity = '1';
+				$(tile.element).addClass('revealed');
 				return false;
 			} else {
 				$(tile.element).addClass('hidden');
@@ -178,10 +179,9 @@
 			$wrap.on('transitionend webkitTransitionEnd', transitionEnd);
 			$window.on('article menu', removeAllLayers);
 			scrollData = data;
-
-			firstEventTimeout = window.setTimeout(initializePage, 350);
 		}
 
+		firstEventTimeout = window.setTimeout(initializePage, 350);
 	});
 
 	$window.on('filter', function(e, tag, immediate, scroll) {
