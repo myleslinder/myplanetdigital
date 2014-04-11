@@ -24,7 +24,6 @@
 		indicatorOffset,
 		desktopMenuState,
 		desktopMenuOffset = 0,
-		mobileMenuYOffset = 0,
 		mouseMoveDelta = 0,
 		scrollDelta = 0,
 		pageHasLoaded = false,
@@ -57,7 +56,7 @@
 			if(window.responsiveState !== 'mobile') {
 				setIndicator($item[0]);
 			} else if(window.mobileMenuIsOpen) {
-				window.setTimeout(closeMenu, 50);
+				window.setTimeout(closeMenu, window.isIOS ? 50 : 0);
 			}
 			$active.removeClass('active');
 			$active = $item.addClass('active');
@@ -181,23 +180,20 @@
 			}
 			mobileMenuIsTransitioning = true;
 			window.mobileMenuIsOpen = true;
-			mobileMenuYOffset = window.curScrollTop = window.pageYOffset;
+			window.mobileMenuYOffset = window.curScrollTop = window.pageYOffset;
 
 			$window.trigger('menu');
 
 			window.setTimeout(window.requestAnimationFrame.bind(null, function () {
-				if(window.isTileView) {
-					return $body.addClass('menu');
-				}
-
 				$viewport.css({
 					transform:'translateZ(0)',
-					transition: ''
+					transition: 'none'
 				});
 				window.setTimeout(function() {
 					window.requestAnimationFrame(function() {
 						$viewport.css({
-							transform:''
+							transform:'',
+							transition: ''
 						});
 						$body.addClass('menu');
 					});
@@ -251,7 +247,7 @@
 					});
 					if(!window.justClosedMenu) {
 						if(!window.mobileMenuIsOpen) {
-							window.scroll(0, mobileMenuYOffset);
+							window.scroll(0, window.mobileMenuYOffset);
 						}
 					}
 					window.justClosedMenu = false;
@@ -351,7 +347,11 @@
 		scrollDelta = 0;
 	});
 
-	$window.on('same-page same-filter elevator-done', closeMenu);
+	$window.on('same-page same-filter elevator-done',  function () {
+		//mobileMenuYOffset = window.curScrollTop;
+		closeMenu();
+	});
+
 	$window.on('filter',function (e, tag) {
 		activateLink($menu.find('li.' + tag));
 	});
