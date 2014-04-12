@@ -289,7 +289,7 @@
                window.scroll(0, window.curScrollTop = articleScrollTop);
            }
 
-           window.setTimeout(function () {
+          window.setTimeout(function () {
              if(overridePopstateScrollmove && IS_CHROME && !chromeUsedBackLink) {
                  window.scroll(0, window.curScrollTop = articleScrollTop);
              }
@@ -302,20 +302,23 @@
                        $loadgif.show();
                    } else if(window.responsiveState === 'mobile') {
                         $back.addClass('reveal');
-                     }
-                   $main.css({
-                       transform: overridePopstateScrollmove ? 'translate3d(-100%, ' + -(top - articleScrollTop) + 'px, 0)' : (wasCancelled ? 'translate3d(-100%, ' + (top - tileScrollTop) + 'px, 0)' : ''),
-                       transition: ''
-                   });
-                   $article.css({
-                       transform:  !overridePopstateScrollmove ?'translate3d(-100%, ' + (top - articleScrollTop) + 'px, 0)' : '',
-                       transition: ''
-                   });
-
+                   }
                    $window.trigger('article-transition', [{
                        top: articleScrollTop
                    }]);
-                   $body.addClass('article');
+                   window.requestAnimationFrame(function () {
+                     $main.css({
+                         transform: overridePopstateScrollmove ? 'translate3d(-100%, ' + -(top - articleScrollTop) + 'px, 0)' : (wasCancelled ? 'translate3d(-100%, ' + (top - tileScrollTop) + 'px, 0)' : ''),
+                         transition: ''
+                     });
+                     $article.css({
+                         transform:  !overridePopstateScrollmove ?'translate3d(-100%, ' + (top - articleScrollTop) + 'px, 0)' : '',
+                         transition: ''
+                     });
+
+
+                     $body.addClass('article');
+                  });
                });
            }, timeoutLen);
 
@@ -333,8 +336,11 @@
                        $back.removeClass('reveal');
                        $loadgif.find('.loading-spinner').css('top', window.pageHeight / 2 - SPINNER_HEIGHT);
                        $loadgif.show();
-                       window.scroll(0, window.curScrollTop = articleScrollTop);
-                       window.requestAnimationFrame(loadViaAjax);
+                       window.setTimeout(function () {
+                         window.scroll(0, window.curScrollTop = articleScrollTop);
+                         window.requestAnimationFrame(loadViaAjax);
+                         $window.trigger('article-transition');
+                       }, 0);
                    //}
               // });
           // }, timeoutLen);
@@ -379,25 +385,26 @@
                         $window.trigger('filter', [filterTag, !noTransition]);
                    }
                    $back.removeClass('reveal');
-
-                   $main.css({
-                       transform:  !overridePopstateScrollmove ? 'translate3d(0, ' + (top - tileScrollTop) + 'px, 0)' : '',
-                       transition: noTransition ? 'none' : ''
-                   });
-                   $article.css({
-                       transform: overridePopstateScrollmove  ? 'translate3d(0, ' + -(top - tileScrollTop) + 'px, 0)' : (wasCancelled ? 'translate3d(0, ' + (top - articleScrollTop) + 'px, 0)' : ''),
-                       transition:  noTransition ? 'none' : ''
-                   });
                    $window.trigger('tiles-transition', [{
                        top: tileScrollTop
                    }]);
-                   $body.removeClass('article');
+                   window.requestAnimationFrame(function () {
+                     $main.css({
+                         transform:  !overridePopstateScrollmove ? 'translate3d(0, ' + (top - tileScrollTop) + 'px, 0)' : '',
+                         transition: noTransition ? 'none' : ''
+                     });
+                     $article.css({
+                         transform: overridePopstateScrollmove  ? 'translate3d(0, ' + -(top - tileScrollTop) + 'px, 0)' : (wasCancelled ? 'translate3d(0, ' + (top - articleScrollTop) + 'px, 0)' : ''),
+                         transition:  noTransition ? 'none' : ''
+                     });
 
-                   if(noTransition){
+                     $body.removeClass('article');
+                     if(noTransition){
                        window.setTimeout(window.requestAnimationFrame.bind(null, function() {
                            handleTransitionEnd();
                        }), 0);
-                   }
+                     }
+                   });
                });
            }, timeoutLen);
 
