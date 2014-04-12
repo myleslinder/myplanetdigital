@@ -229,6 +229,7 @@
            timeoutLen = 0,
            noTransition = false,
            doFilter = false,
+           finishTransition,
            wasCancelled,
            top;
 
@@ -306,7 +307,7 @@
                    $window.trigger('article-transition', [{
                        top: articleScrollTop
                    }]);
-                   window.requestAnimationFrame(function () {
+                   finishTransition = function () {
                      $main.css({
                          transform: overridePopstateScrollmove ? 'translate3d(-100%, ' + -(top - articleScrollTop) + 'px, 0)' : (wasCancelled ? 'translate3d(-100%, ' + (top - tileScrollTop) + 'px, 0)' : ''),
                          transition: ''
@@ -318,7 +319,11 @@
 
 
                      $body.addClass('article');
-                  });
+                    };
+                    if(IS_CHROME) {
+                      return window.requestAnimationFrame(finishTransition);
+                    }
+                    finishTransition();
                });
            }, timeoutLen);
 
@@ -388,7 +393,7 @@
                    $window.trigger('tiles-transition', [{
                        top: tileScrollTop
                    }]);
-                   window.requestAnimationFrame(function () {
+                   finishTransition = function () {
                      $main.css({
                          transform:  !overridePopstateScrollmove ? 'translate3d(0, ' + (top - tileScrollTop) + 'px, 0)' : '',
                          transition: noTransition ? 'none' : ''
@@ -404,7 +409,11 @@
                            handleTransitionEnd();
                        }), 0);
                      }
-                   });
+                   };
+                   if(IS_CHROME) {
+                     return window.requestAnimationFrame(finishTransition);
+                   }
+                   finishTransition();
                });
            }, timeoutLen);
 
