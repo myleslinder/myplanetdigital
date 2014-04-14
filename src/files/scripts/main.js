@@ -229,6 +229,7 @@
            timeoutLen = 0,
            noTransition = false,
            doFilter = false,
+           startTransition,
            finishTransition,
            wasCancelled,
            top;
@@ -294,7 +295,7 @@
              if(overridePopstateScrollmove && IS_CHROME && !chromeUsedBackLink) {
                  window.scroll(0, window.curScrollTop = articleScrollTop);
              }
-             window.requestAnimationFrame(function () {
+             startTransition = function () {
                    if(doArticleAjax) {
                        $articleFooter.hide();
                        $articlein.html('');
@@ -324,7 +325,11 @@
                       return window.requestAnimationFrame(finishTransition);
                     }
                     finishTransition();
-               });
+             };
+             if(!IS_CHROME) {
+              return window.requestAnimationFrame(startTransition);
+             }
+             startTransition();
            }, timeoutLen);
 
        }  else if(isArticleUrl && !window.isTileView) { // article view to article view transition
@@ -380,7 +385,7 @@
               if(overridePopstateScrollmove && IS_CHROME && !chromeUsedBackLink) {
                  window.scroll(0, window.curScrollTop = tileScrollTop);
               }
-               window.requestAnimationFrame(function () {
+              startTransition = function () {
                    if (doTileAjax) {
                        $main.css('height', window.pageHeight + (window.isIOS ? IOS_CHROME_HEIGHT : 0));
                        $loadgiftiles.find('.loading-spinner').css('top', window.pageHeight / 2 - SPINNER_HEIGHT);
@@ -414,7 +419,11 @@
                      return window.requestAnimationFrame(finishTransition);
                    }
                    finishTransition();
-               });
+               };
+               if(!IS_CHROME) {
+                return window.requestAnimationFrame(startTransition);
+               }
+               startTransition();
            }, timeoutLen);
 
            if(window.responsiveState === 'mobile' && window.mobileMenuIsOpen) {
