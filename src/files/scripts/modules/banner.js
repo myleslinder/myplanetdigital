@@ -32,10 +32,10 @@
       //});
     }
 
-    window.setTimeout(window.requestAnimationFrame.bind(null, function() {
+    window.setTimeout(function() {
       $banner.attr('class', tag);
       $bannerText.html(bannerText).css({'opacity': 1, 'transition' : ''});
-    }), 0);
+    }, 0);
   }
 
   $(window).on('filter', function(e, tag, immediate){
