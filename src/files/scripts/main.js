@@ -31,6 +31,7 @@
         preScrollTimeout,
         articleScrollTop = 0,
         tileScrollTop = 0,
+        initialHistoryState = window.history.state,
         RELATIVE_URL_REGEX = /^(?:\/\/|[^\/]+)*\//,
         pageUrl = '/' + document.location.href.replace(RELATIVE_URL_REGEX, ''),
         pageTitle,
@@ -621,6 +622,9 @@
 
     if(window.desktopCapable) {
         $body.addClass('desktop-capable');
+        if(IS_SAFARI) {
+          $body.addClass('safari');
+        }
     }
 
     //handle geo urls
@@ -636,6 +640,7 @@
     //handle push/pop state
     $body.on('click', 'a', function(e) {
         var url = $(this).attr('href'),
+          backFn,
           $link;
 
         if(!isExternalUrl(url)) {
@@ -653,10 +658,11 @@
                   chromeUsedBackLink = true;
                 }
                 if(!window.isTileView) {
+                  backFn = !wasLinkClick && window.history.state === initialHistoryState ? History.forward : History.back;
                   if(window.isWebkitMobileNotIOS) {
-                      History.back();
+                      backFn();
                   } else {
-                    window.setTimeout(window.requestAnimationFrame.bind(null, History.back), 0);
+                    window.setTimeout(window.requestAnimationFrame.bind(null, backFn), 0);
                   }
                 }
             } else if(url === pageUrl) {
@@ -664,7 +670,9 @@
             } else {
                 pageUrl = url;
                 pageTitle = 'Myplanet Digital';
-                linkClickedTime = new Date();
+                if (e.currentTarget.getAttribute('data-attr') !== 'back') {
+                  linkClickedTime = new Date();
+                }
                 if (url.match(ARTICLE_REGEX)) {
                     pageTitle = $('a[href="' + url + '"].tile-title').find('h2').text() + ' | Myplanet Digital';
                 }
@@ -688,6 +696,7 @@
                   }), 0);
                 }
             }
+
             return false;
         }
     });
@@ -698,6 +707,7 @@
       if(!pageLoaded) {
         return;
       }
+
       if(IS_CHROME && chromeUsedBackLink) {
         $body.css('height', Math.max(articleScrollTop + tileScrollTop) + window.pageHeight);
       }
