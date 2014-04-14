@@ -8,7 +8,7 @@
 	var $window = $(window),
 		$wrap = $('#main .main-wrap'),
 		$menu = $('#menu'),
-		topOffset = parseInt($wrap.css('margin-top').replace(/px/, ''), 10),
+		topOffset = 0,//parseInt($wrap.css('margin-top').replace(/px/, ''), 10),
 		scrollData,
 		firstEventTimeout = null,
 		throttleTimeout = null,
@@ -38,7 +38,7 @@
 			if(b.position.y === a.position.y) {
 				return a.position.x - b.position.x;
 			}
-			return a.position.y - b.position.y;
+			return b.position.y - a.position.y;
 		});
 
 		hasHiddenTiles = $hiddenTiles.length;
@@ -116,13 +116,13 @@
 		while(len--) {
 			tile = $hiddenTiles[len];
 			if(tile.position.y + topOffset < scrollData.bottom) {
-				if (tile.position.y + tile.size.height > scrollData.top) {
+				if (tile.position.y > scrollData.top) {
 					if(!firstEventTimeout) {
-						queue.push({tile: tile.element, klass: 'reveal'});
+						queue.unshift({tile: tile.element, klass: 'reveal'});
 						added = true;
 					}
 				} else {
-					queue.push({tile: tile.element, klass: 'show'});
+					queue.unshift({tile: tile.element, klass: 'show'});
 					added = true;
 				}
 				$hiddenTiles.splice(len, 1);
