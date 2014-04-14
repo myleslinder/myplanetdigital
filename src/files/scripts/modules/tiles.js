@@ -93,11 +93,11 @@
 			item.tile.classList.add(queue[len].klass);
 			queue.splice(len, 1);
 			if(++count === 2 && queue.length) {
-				return flushingTimeout = window.setTimeout(finishFlush, 60);
+				return flushingTimeout = window.setTimeout(finishFlush, 50);
 			}
 		}
 		if(queue.length) {
-			return flushingTimeout = window.setTimeout(finishFlush, 60);
+			return flushingTimeout = window.setTimeout(finishFlush, 50);
 		}
 		flushingTimeout = null;
 	}
