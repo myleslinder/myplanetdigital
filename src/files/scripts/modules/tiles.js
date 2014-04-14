@@ -93,11 +93,11 @@
 			item.tile.classList.add(queue[len].klass);
 			queue.splice(len, 1);
 			if(++count === 2 && queue.length) {
-				return flushingTimeout = window.setTimeout(finishFlush, 30);
+				return flushingTimeout = window.setTimeout(finishFlush, 60);
 			}
 		}
 		if(queue.length) {
-			return flushingTimeout = window.setTimeout(finishFlush, 30);
+			return flushingTimeout = window.setTimeout(finishFlush, 60);
 		}
 		flushingTimeout = null;
 	}
@@ -208,7 +208,7 @@
 								var len = toAnimate.length;
 								while(len--) {
 									toAnimate[len].css({
-										opacity: '0.99',
+										opacity: toAnimate[len][0].style.display === 'none' ? '1' : '0.99',
 										transition: ''
 									});
 								}
