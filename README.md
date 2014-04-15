@@ -5,7 +5,7 @@ This badge may not represent reality because docpad cli tools don't return with 
 
 ## Development
 	   
-	npm install docpad -g
+	npm install docpad -g  
 	npm install
 	docpad run --env development [-p 9997]
 
