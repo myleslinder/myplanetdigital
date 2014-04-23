@@ -3,5 +3,5 @@ uglify: true
 ---
 <%-@include @site.jquery2[0]%>
  <% for script in @site.scripts: %>
- 	<%-@include script%>
+ 	<%-@include script%>;
 <% end %>
