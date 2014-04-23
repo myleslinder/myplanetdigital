@@ -107,15 +107,13 @@
 		<script src="<%- @getUrl(@site['main-ie8'][0]) %>"></script>
 		<script src="<%- @getUrl(@site['menu-ie8'][0]) %>"></script>
 		<![endif]-->
+		<!--[if !IE]> -->
 		<% if @getEnvironment() == 'development': %>
-			<!--[if !IE]> -->
 			<script src="<%- @getUrl(@site.jquery2[0]) %>"></script>
-			<!-- <![endif]-->
 			<%- @getBlock('scripts').add(@getUrl(@site.scripts)).toHTML() %>
 		<% else: %>
 			<script src="scripts/all.js"></script>
 		<% end %>
-
-		<%- @getBlock('scripts').add(@getUrl(@site.scripts)).toHTML() %>
+		<!-- <![endif]-->
 	</body>
 </html>
