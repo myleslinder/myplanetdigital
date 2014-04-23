@@ -1,4 +1,4 @@
-;(function init () {
+(function init () {
   'use strict';
 
   if(!window.isSinglePageApp) {
