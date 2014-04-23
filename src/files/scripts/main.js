@@ -5,6 +5,7 @@
     if(!window.isSinglePageApp) {
         return;
     }
+    
 
     var $window = $(window),
         $body = $('body'),
@@ -64,7 +65,7 @@
         SPINNER_HEIGHT = 61,
         IOS_CHROME_HEIGHT = 70,
         PRE_SCROLL_THRESHOLD = 100,
-        FOUROHFOUR_HTML = '<div class="article-404"><div class="article-404-text"><h1>This page does not exist</h1><h2><em><a href="' + window.baseUrl  + '">Go home</a></em></h2></div></div>',
+        FOUROHFOUR_HTML = '<div class="article-404"><div class="article-404-text"><h1>This page does not exist</h1><h2><em><a href="/">Go home</a></em></h2></div></div>',
         FOOTER_SCROLLTO_OFFSET = 110;
 
     function setResponsiveState() {
@@ -144,7 +145,7 @@
         if (isTileView) {
             if ($mainWrap.find('.tile').length === 0) {
                 isLoading = true;
-                $ajaxer = $.get(window.baseUrl + 'index-content-tiles/index.html', function(data){
+                $ajaxer = $.get('/index-content-tiles/index.html', function(data){
                     $ajaxer = null;
                     window.setTimeout(function () {
                         window.requestAnimationFrame(function () {
@@ -189,7 +190,7 @@
                 }, 0);
                 if (!fromTiles) {
                     var tag = $(data).closest('.article-body').attr('data-tag') || $(data).closest('.profile-body').attr('data-tag'),
-                        href = tag === 'home'? window.baseUrl : '/tags/' + tag;
+                        href = tag === 'home'? '/' : '/tags/' + tag;
                     $backlink.attr('href', href);
                     $window.trigger('article-to-article', [tag]);
                 }
@@ -256,7 +257,7 @@
            filterTag = isTagUrl[1];
            filterTag = removeTrailingSlash(filterTag);
        }
-       if (pageUrl === window.baseUrl) {
+       if (pageUrl === '/') {
            filterTag = 'home';
        }
 
@@ -618,7 +619,7 @@
 
 
     SPINNER_HEIGHT = window.isIOS ? 25 : SPINNER_HEIGHT;
-    pageUrl = pageUrl || window.baseUrl;
+    pageUrl = pageUrl || '/';
 
     if(window.desktopCapable) {
         $body.addClass('desktop-capable');
@@ -775,7 +776,7 @@
             //$articlein.addClass('reveal');
             $back.addClass('reveal');
             // set link to return to primary tag on landing on article
-            $backlink.attr('href', window.currentTag === 'home'? window.baseUrl : '/tags/' + window.currentTag);
+            $backlink.attr('href', window.currentTag === 'home'? '/' : '/tags/' + window.currentTag);
             articleScrollTop = window.curScrollTop;
             isFirstArticleLoad = false;
         } else {
