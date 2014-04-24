@@ -113,6 +113,7 @@
 			<%- @getBlock('scripts').add(@getUrl(@site.scripts)).toHTML() %>
 		<% else: %>
 			<script src="/scripts/all.js"></script>
+			<%- @getBlock('scripts').toHTML() %>
 		<% end %>
 		<!-- <![endif]-->
 	</body>
