@@ -20,7 +20,7 @@ This downloads the external content, so be sure to be selective with your `git a
 
 ## Deploying to GitHub Pages (dev.myplanet.io)
 
-Any check into this branch or to the [seperate content repository](https://github.com/myplanetdigital/myplanetdigital-content) will trigger a build in [Travis](https://travis-ci.org/myplanetdigital) which will then automagically be deployed to http://dev.myplanet.io
+Any check into this branch or to the [seperate content repository](https://github.com/myplanetdigital/myplanetdigital-content) will trigger a build in [Travis](https://travis-ci.org/) which will then automagically be deployed to http://dev.myplanet.io
 
 ## License
 
