@@ -1,7 +1,7 @@
 env: 
   global: 
   - GH_REPO="myplanetdigital/swat"
-  - secure: JlqokOuz2JPPe9dwUzvhkN+qQbHdamtIMloCyzBKr3k1Nqw16Z3Qm9Pwgr9XE9cU6SyCTU/KEEu4pYHEEJP0AaXXPU/yQzd1Zix8L9bqTF22MoD2qdBQ4ttjXMKS9E17+QpVmEYjAjwIGNyTQch7q/rs2ZXzt6dGv3pgJu/rH9M=
+  - secure: "PAJJfmT893CYTzIEc32juO5Etd28lJy/pE0BATqQRtRvRBN3Y+I3VmQssqfbpArZ+FeZrMTrYY6a7nwg4n/P2rFiQFmF7EPq3DyBE+SfGxh5KneJxLQjh1pDHNqW6j+XMblC/OMwCllhGnPQhqf6ANcFgRJupVHEmGVW4qNROA4="
 node_js: "0.10"
 language: node_js
 script: 
