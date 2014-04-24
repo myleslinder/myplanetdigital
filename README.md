@@ -20,7 +20,7 @@ This downloads the external content, so be sure to be selective with your `git a
 
 ## Deploying to GitHub Pages
 
-Any check into this branch or to the content branch https://github.com/myplanetdigital/myplanetdigital-content will trigger a build in Travis (https://magnum.travis-ci.com/myplanetdigital/swat) which will then automagically be deployed to http://dev.myplanet.io
+Any check into this branch or to the [content branch](https://github.com/myplanetdigital/myplanetdigital-content) will trigger a build in [Travis](https://magnum.travis-ci.com/myplanetdigital/swat) which will then automagically be deployed to http://dev.myplanet.io
 
 ## License
 
