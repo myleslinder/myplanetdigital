@@ -1,5 +1,8 @@
 (function tilesImmediate () {
   'use strict';
+
+  var loadingGif;
+
   window.tiles = new Isotope( '.main-wrap', {
     itemSelector: '.tile',
     filter: '.visible',
@@ -11,8 +14,7 @@
     hiddenStyle: {}
   });
 
-  var loadingGif = new Image();
-
+  loadingGif = new Image();
   loadingGif.src = "/images/loading.gif";
   loadingGif.onload = function () {
     if('ontouchstart' in window) {
