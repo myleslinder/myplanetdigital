@@ -29,7 +29,7 @@
 
 		&.people {
 			.content, .content:hover {
-				h2 {
+				.main-title {
 					position: static;
 					opacity: 0.99;
 					.transform(none);
@@ -47,7 +47,7 @@
 
 			@media screen and (min-width: 1176px) {
 				&:hover {
-					h2 {
+					.main-title {
 						opacity: 0.001;
 						.transform(scale(0.9));
 						.transition-transform(0.3s, opacity 0.3s);
@@ -76,7 +76,7 @@
 				padding: 75px 40px 0 70px;
 				.border-box();
 			}
-			h2 {
+			.main-title {
 				position: absolute;
 				top: 75px;
 				font-family: 'Plantin';
@@ -90,14 +90,14 @@
 				opacity: 0.99;
 				.transform(scale(1));
 				.transition-transform(0.3s, opacity 0.5s ease-out);
-				
+
 				@media screen and (max-width: 1175px) {
 					.transform(none);
 					.showBack();
 				}
 			}
 			&.team {
-				h2 {
+				.main-title {
 					position: static;
 				}
 			}
@@ -252,7 +252,7 @@
 				padding: 72px 40px 0 90px;
 				.border-box();
 			}
-			h2 {
+			.main-title {
 				font-size: 3.8em;
 			}
 			ul.tags {
@@ -278,7 +278,7 @@
 			a.tile-title {
 				padding: 72px 83px 0 90px;
 			}
-			h2 {
+			.main-title {
 				font-size: 5.2em;
 			}
 		}
@@ -296,7 +296,7 @@
 			a.tile-title {
 				background-color: black;
 			}
-			h2, p.description {
+			.main-title, p.description {
 				color: white;
 			}
 			a.tile-doodle {
@@ -323,7 +323,7 @@
 			width: 50%;
 			&.large, &.featured, &.hero {
 				width: 100%;
-				h2 {
+				.main-title {
 					font-size: 5em;
 					line-height: 1em;
 				}
@@ -339,7 +339,7 @@
 			padding: 10px 20px;
 
 			&.large, &.featured, &.hero {
-				h2 {
+				.main-title {
 					font-size: 4em;
 				}
 			}
@@ -351,7 +351,7 @@
 	@media only screen and (max-width: 549px) { /* Mobile */
 		.tile {
 			&.large, &.featured, &.hero {
-				h2 {
+				.main-title {
 					font-size: 3em;
 				}
 			}
@@ -366,7 +366,7 @@
 					position: absolute;
 					bottom:0px;
 				}
-				h2 {
+				.main-title {
 					font-size: 2.5em;
 				}
 				a.tile-title {
