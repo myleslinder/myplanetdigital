@@ -1,7 +1,7 @@
 env: 
   global: 
   - GH_REPO="myplanetdigital/swat"
-  - secure: Y1HekF8paIZtQe60URspgM8R2mOmYzOHEuR2G7Mjkm1CzuAYNNHq8EusTq3TjtxDD0zlQNf795red+yljCDavZSbmSUFEvP5gqXZuoPRL/h+ohpsyxJavEOmiyCD7liWX7An8rWswDJqiXUA7+HRKfXJQETaZdVxEzCQGM5gAX8=
+  - secure: "v42vSQyuFRo7PahjTPshutzXRgtT/zLtXdW3epX5k7tjL4CsK5jGkabm99SbWJ0DWPfBC+isfgBJXUJ7u/FMxp8ieaaouGFFWxQxpB8ttE60juvpWEe6kiXoVhw4XOQOFrfzhPmNp1v7brELge9YPxDk5vvkoGlOsZQEn1XtB7M="
 language: node_js
 script: 
   - if [[ $TRAVIS_PULL_REQUEST == 'false' ]]; then docpad deploy-ghpages --env static; fi
