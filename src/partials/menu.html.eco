@@ -20,7 +20,7 @@
 
 				<li class="<%= liClass %><%= if liClass == active then ' active' %>">
 					<a  <%= if item.slug == 'contact' then 'data-attr=contact-link' %>
-						href="<%= if item.meta.link? then item.meta.link else @getUrl(item.url) %>"
+						href="<%= if item.meta.link? then item.meta.link else @getUrl(item.url) %>/"
 						<% if item.meta.banner?: %>
 							data-banner="<%= item.meta.banner %>"
 						<% end %>
