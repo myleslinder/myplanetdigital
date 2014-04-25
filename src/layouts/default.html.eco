@@ -47,7 +47,7 @@
 	<body class="<% if @document.layout != 'articles': %>article <% end %>">
 		<div id="wrap">
 			<h1 id="logo">
-				<a href="<%= @getUrl('/') %>"><%= @site.title %> <% if @document.title?: %><%= @document.title %><% end %></a>
+				<a href="<%= @getUrl('/') %>"><%= @site.title %> <% if @document.title?: %> | <%= @document.title %><% end %></a>
 			</h1>
 			<div id="back">
 				<a href="<%= @getUrl('/') %>" data-attr="back">Back</a>
