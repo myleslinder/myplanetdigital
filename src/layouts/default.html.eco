@@ -116,6 +116,8 @@
 			<script src="/scripts/all.js"></script>
 		<% end %>
 		<!-- <![endif]-->
+		<% if @getEnvironment() != 'development': %>
 		<%- @getBlock('scripts').toHTML() %>
+		<% end %>
 	</body>
 </html>
