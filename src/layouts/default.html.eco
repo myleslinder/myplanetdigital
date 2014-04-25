@@ -49,14 +49,9 @@
 			<h1 id="logo">
 				<a href="<%= @getUrl('/') %>"><%= @site.title %> <% if @document.title?: %> | <%= @document.title %><% end %></a>
 			</h1>
-			<div id="back">
-				<a href="<%= @getUrl('/') %>" data-attr="back">Back</a>
-			</div>
+			<%- @partial('menu', {menuItems: @generateMenu(@document.url, 'menu')}) %>
 			<div id="viewport">
-
-
 				<section id="main" <% if @document.layout != 'articles': %>style="transition: none; -webkit-transition: none; position: absolute;"<% end %>>
-
 					<div id="banner" class="<% if @document.meta.tagName?: %><%- @document.meta.tagName %><% end %>">
 						<div class="banner-text">
 						<% if @document.meta.menuBanner?: %>
@@ -64,7 +59,6 @@
 						<% end %>
 						</div>
 					</div>
-
 					<div class="main-wrap" style="position: relative;">
 						<% if @document.layout is 'articles': %>
 						<div class="grid-size"></div>
@@ -86,7 +80,6 @@
 					</div>
 					<%- @partial('footer') %>
 				</section>
-
 				<article id="article" style="<% if @document.layout != 'articles': %>position: static; margin-left: 100%;<% else: %>left: 100%;<% end %>">
 					<div id="article-inner"  <% if @document.layout != 'content' && @document.layout != 'articles': %>class="reveal"<% end %>>
 						<% if @document.layout != 'articles': %>
@@ -99,9 +92,9 @@
                     <%- @partial('footer') %>
 				</article>
 			</div>
-
-			<!-- MENU GOES HERE -->
-			<%- @partial('menu', {menuItems: @generateMenu(@document.url, 'menu')}) %>
+		</div>
+		<div id="back">
+			<a href="<%= @getUrl('/') %>" data-attr="back">Back</a>
 		</div>
 		<!--[if (IE 8) | (IE 9)]>
 		<script src="<%- @getUrl(@site.jquery1[0]) %>"></script>

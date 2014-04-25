@@ -10,7 +10,7 @@
 	<% end %>
 <% end %>
 
-<div id="menu">
+<nav id="menu">
 	<ul class="nav navbar-nav">
 		<% for item in @menuItems: %>
 			<% if item.slug.indexOf('.') == -1: %>
@@ -39,7 +39,7 @@
 			<% end %>
 		<% end %>
 	</ul>
-</div>
+</nav>
 
 <!--[if (!IE) | (gte IE 10)]> -->
 <div id="menu-toggle"><div id="menu-button">Show Menu</div></div>
