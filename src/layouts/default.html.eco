@@ -17,7 +17,7 @@
 			<title><%= @site.title %></title>
 		<% end %>
 		<% if @document.summary? or @document.menuBanner?: %>
-			<meta name="description" content="<%= @document.summary || @document.menuBanner.replace(/<(.|\n)*?>/ig, '') %>">
+			<meta name="description" content="<%- @document.summary || @document.menuBanner.replace(/<(.|\n)*?>/ig, '') %>">
 		<% end %>
 		<%- @getBlock("meta").toHTML() %>
 		<!--[if !IE]> -->
