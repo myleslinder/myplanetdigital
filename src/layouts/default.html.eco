@@ -41,7 +41,11 @@
 		</script>
 		<![endif]-->
 		<link rel="icon" type="image/png" href="<%= @getUrl('/favicon.png') %>">
-		<link rel="canonical" href="http://myplanet.io<%= @document.url %>/">
+		<% url = @document.url %>
+		<% if url == '/': %>
+			<% url = '' %>
+		<% end %>
+		<link rel="canonical" href="http://myplanet.io<%= url %>/">
 	</head>
 
 	<body class="<% if @document.layout != 'articles': %>article <% end %>">
