@@ -1,4 +1,4 @@
-(function tiles () {
+(function tilesImmediate () {
   'use strict';
   window.tiles = new Isotope( '.main-wrap', {
     itemSelector: '.tile',
