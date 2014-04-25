@@ -1,9 +1,9 @@
 env: 
   global: 
-  - GH_REPO="myplanetdigital/swat"
-  - GIT_EMAIL="neil.t@myplanetdigital.com"
-  - GIT_NAME="neilbaylorrulez"
-  - secure: "kOeh5Kcfm3Rs3LK13Fl0VNT++xpKkE3bcAOOeGlGQl2lp6kVWx/pBjiw8AVdCJm5Pl5KwQldfcgJ0KXShPckjtceos1sux2rH9oI0uvoaeGrO1NpsthUApLsWI7F3bp+x0vCiaO8FGIN6oyIjQIe5dbepGdt/mN8l4KbjH4ePwY="
+  - $GH_REPO="myplanetdigital/swat"
+  - $GIT_EMAIL="neil.t@myplanetdigital.com"
+  - $GIT_NAME="neilbaylorrulez"
+  - secure: "msi236Lzc2Xq0rN8agX6e33j4fQpVtLd+3LoHuUXJwGrTIWvGJgboUkNcBV0RgJbSL94lB0XtEBHH0Sk2eC2Z/8GmmSMqdJF8wxfs2Qmpgi8fuvfYLosh0Phm1kVvZYCNQMl+00Ylu6KtvcKuOmbVyQiLCORUog4wDf5yLVyLrs="
 language: node_js
 script: 
   - if [[ $TRAVIS_PULL_REQUEST == 'false' ]]; then docpad deploy-ghpages --env static; fi
