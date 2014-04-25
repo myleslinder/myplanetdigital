@@ -11,4 +11,4 @@ branches:
 before_script: 
 - npm install -g grunt-cli
 - grunt
-- ./prebuild.sh
+- ./prebuild.sh 
