@@ -22,7 +22,7 @@ This downloads the external content, so be sure to be selective with your `git a
 
 Any check into this branch or to the [seperate content repository](https://github.com/myplanetdigital/myplanetdigital-content) will trigger a build in [Travis](https://travis-ci.org/) which will then automagically be deployed to http://dev.myplanet.io
 
-## License
+## License 
 
 Copyright © 2014 Myplanet Digital. All rights reserved.
  
