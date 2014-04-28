@@ -44,7 +44,7 @@
 		<% url = @document.url %>
 		<% if url == '/': %>
 			<% url = '' %>
-		<% else %>
+		<% else: %>
 			<% url = url + '/' %>
 		<% end %>
 		<link rel="canonical" href="http://myplanet.io<%= url %>">
