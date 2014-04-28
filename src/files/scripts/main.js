@@ -675,7 +675,7 @@
                   linkClickedTime = new Date();
                 }
                 if (url.match(ARTICLE_REGEX)) {
-                    pageTitle = $('a[href="' + url + '"].tile-title').text() + ' | Myplanet Digital';
+                    pageTitle = $('a[href="' + url + '"].tile-title .main-title').text() + ' | Myplanet Digital';
                 }
                 else if (url.match(TAG_REGEX)) {
                     // Add an active class to the menu earlier.
