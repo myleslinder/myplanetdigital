@@ -25,6 +25,7 @@
 
     <% if @document.title: %>
       <h1 class="fn"><%= @document.title %></h1>
+      <a href="http://myplanet.io/<%=@document.url %>/" class="url">www.example.com</a>
     <% end %>
 
     <% if @document.summary?: %>
