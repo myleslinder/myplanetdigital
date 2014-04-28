@@ -57,7 +57,7 @@
 		<% if authorImage?: %>
 			<div class="author-picture">
 				<% if authorUrl?: %>
-					<a href="<%= authorUrl %>">
+					<a href="<%= authorUrl %>/">
 						<img src="<%= authorImage %>" alt="Author Picture" />
 					</a>
 				<% else: %>
@@ -76,7 +76,7 @@
 
 				<% if @document.author?: %>
 					<% if authorUrl?: %>
-						<a class="author-name" href="<%= authorUrl %>"><%= @document.author %></a>
+						<a class="author-name" href="<%= authorUrl %>/"><%= @document.author %></a>
 					<% else: %>
 						<span class="author-name"><%= @document.author %></span>
 					<% end %>
@@ -95,7 +95,7 @@
 		<% if @document.tags?: %>
 			<ul class="article-tags">
 				<% for tag in @document.tags or [] when tag isnt 'home': %>
-					<li><a href="<%= @getUrl("/tags/" + tag) %>"><%= tag %></a></li>
+					<li><a href="<%= @getUrl("/tags/" + tag) %>/"><%= tag %></a></li>
 				<% end %>
 			</ul>
 		<% end %>

@@ -44,8 +44,10 @@
 		<% url = @document.url %>
 		<% if url == '/': %>
 			<% url = '' %>
+		<% else %>
+			<% url = url + '/' %>
 		<% end %>
-		<link rel="canonical" href="http://myplanet.io<%= url %>/">
+		<link rel="canonical" href="http://myplanet.io<%= url %>">
 	</head>
 
 	<body class="<% if @document.layout != 'articles': %>article <% end %>">
