@@ -1,4 +1,3 @@
-
 <% filePath = ('associated-files/' + @document.relativeBase).replace('-content', '') %>
 <% files = @getFilesAtPath(filePath) %>
 <% if files: %>
@@ -26,6 +25,7 @@
     <% if @document.title: %>
       <h1 class="fn"><%= @document.title %></h1>
       <a href="http://myplanet.io<%=@document.url %>/" class="url"><%= @document.title %>'s Profile</a>
+      <span class="org">Myplanet</span>
     <% end %>
 
     <% if @document.summary?: %>
