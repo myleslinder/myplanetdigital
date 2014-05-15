@@ -52,7 +52,7 @@
         chromePopStateScrollTop = null,
         chromeUsedBackLink,
         EXTERNAL_URL_REGEX = /^([^:\/?#]+:)?(?:\/\/([^\/?#]*))?([^?#]+)?(\?[^#]*)?(#.*)?/,
-        ARTICLE_REGEX = /^((?!tags).)*\/(article|people|careers)\//,
+        ARTICLE_REGEX = /^((?!tags).)*\/(article|people|careers|privacy)\//,
         TAG_REGEX = /\/tags\/(.*)?/,
         MAPS_REGEX = /http:\/\/maps\.google\.com/,
         COVER_SRC_REGEX = /url\(['"]?(.*\.\w+)['"]?\)/,
