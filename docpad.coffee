@@ -79,7 +79,7 @@ module.exports =
 		# Rendered content into individual segmented HTML pages.
 		content: (database) ->
 			database.findAllLive(
-				relativeOutDirPath: $in: ['people', 'article', 'careers']
+				relativeOutDirPath: $in: ['people', 'article', 'careers', 'privacy']
 				ignored: $ne: true
 			).on "add", (model) ->
 				model.setMetaDefaults({additionalLayouts: ['content']})
