@@ -4,7 +4,7 @@ This badge may not represent reality because docpad cli tools don't return with 
 [![Build Status](https://travis-ci.org/myplanetdigital/swat.svg?branch=master)](https://travis-ci.org/myplanetdigital/swat)
 
 ## Development with Dummy Content 
-	    
+	     
 	npm install docpad -g  
 	npm install
 	docpad run --env development [-p 9997]
