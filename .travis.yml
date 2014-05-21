@@ -11,6 +11,6 @@ branches:
   only: 
     - master
 before_script: 
-- npm install -g grunt-cli
+- npm install -g grunt-cli docpad
 - grunt
 - ./prebuild.sh 
