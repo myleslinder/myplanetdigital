@@ -30,7 +30,7 @@
   "main": "node_modules/docpad/bin/docpad-server",
   "scripts": {},
   "devDependencies": {
-    "docpad": "~6",
+    "docpad": "~6.59",
     "docpad-plugin-marked": "~2.2.0",
     "grunt": "~0.4.2",
     "grunt-git": "~0.2.6",

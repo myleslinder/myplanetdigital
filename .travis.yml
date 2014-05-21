@@ -1,16 +1,16 @@
-env: 
-  global: 
+env:
+  global:
   - $GH_REPO="myplanetdigital/swat"
   - $GIT_EMAIL="neil.t@myplanetdigital.com"
   - $GIT_NAME="neilbaylorrulez"
   - secure: "LmiKmoQL/QkPtn+uk3kw9KOyCYAxQieYhWmQXiTSKjRzfXiSe4hpQR8EN2c4Sc0I6ua8v4z6eS8zTt25uEhw5R3Eh6IaTSY/dXkJqb60jPhpT6EHNdMsle3GF7wymPJ1Nzf9VZ2IqxU+ertDUl78Wf90JuRHkZBvy7jiBvCpQvU="
 language: node_js
-script: 
-  - if [[ $TRAVIS_PULL_REQUEST == 'false' ]]; then docpad deploy-ghpages --env static; fi
-branches: 
-  only: 
+script:
+  - if [[ $TRAVIS_PULL_REQUEST == 'false' ]]; then node_modules/.bin/docpad deploy-ghpages --env static; fi
+branches:
+  only:
     - master
-before_script: 
-- npm install -g grunt-cli docpad
+before_script:
+- npm install -g grunt-cli
 - grunt
-- ./prebuild.sh 
+- ./prebuild.sh
