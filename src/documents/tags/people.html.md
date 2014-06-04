@@ -5,8 +5,9 @@ pagedCollection: 'homepage'
 menu: 2
 menuOrder: 2
 menuTitle: People
-menuBanner: "<h2>Tired of herding wild cats, we let them organize themselves. It worked pretty well. Meet our team.</h2>"
+menuBanner: "<h2>Some companies have employees. We have family members. Meet our tightly-knit team.</h2>"
 tagName: people
-menuColour: '#6fe8e1'
-menuDoodle: "bannerdoodle.png"
+menuColour: '#f05a28'
+menuDoodle: "banner-doodle-what-we-do.png"
 ---
+

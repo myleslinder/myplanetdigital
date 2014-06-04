@@ -2,11 +2,12 @@
 title: Community
 layout: 'articles'
 pagedCollection: 'homepage'
-menu: 7
-menuOrder: 7
+menu: 8
+menuOrder: 8
 menuTitle: Community
-menuBanner: "<h2>More than just software, open source is a philosophy - one of openness and community.</h2>"
+menuBanner: "<h2>Meetups, hack nights, conferences, block parties. We’re socialites in geeks’ clothing.</h2>"
 tagName: community
-menuColour: '#84c600'
-menuDoodle: "bannerdoodle-test-3.png"
+menuColour: '#ea3d67'
+menuDoodle: "banner-doodle-design.png"
 ---
+

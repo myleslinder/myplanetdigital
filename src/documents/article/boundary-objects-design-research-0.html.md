@@ -10,16 +10,16 @@ size: "small"
 colour: "white"
 sticky: false
 imagePosition: "top"
-ignored: true
+
 ---
 
-## While the name may be unfamiliar, most of us working in the digital space are well-acquainted with the concept and use of boundary objects. Examples are all around us; objects that act as a bridge between two different groups, building mutual understanding. 
+## While the name may be unfamiliar, most of us working in the digital space are well-acquainted with the concept and use of boundary objects. Examples are all around us: objects that act as a bridge between two different groups, building mutual understanding. 
 
 They help us bridge the gap between designers and developers (photoshop compositions), and developers and business people (user stories).
 
->"Boundary objects are objects which are both plastic enough to adapt to local needs and constraints of the several parties employing them, yet robust enough to maintain a common identity across sites."
+>“Boundary objects are objects which are both plastic enough to adapt to local needs and constraints of the several parties employing them, yet robust enough to maintain a common identity across sites.”
 
-Design research is one area with huge opportunity to experiment with the creation of new boundary objects, helping improve understanding of the field and positively impact its influence. [Todd Cherkasky’s excellent presentation](http://vimeo.com/33620080#) from the 2011 Design Research Conference captures many great thoughts on this that I will delve into.
+Design research is one area with huge opportunity to experiment with the creation of new boundary objects, helping improve understanding of the field and positively impact its influence. <a href="http://vimeo.com/33620080#" target="_blank"> Todd Cherkasky’s excellent presentation</a> from the 2011 Design Research Conference captures many great thoughts on this that I will delve into.
 
 His most salient point was the idea of creating a “plate” for collaboration between disciplines. In other words not just a boundary object, but boundary frameworks that could elicit deeper collaboration between groups.
 This has deep implications on design research, helping facilitate an understanding of research that extends beyond documentation and deliverables, and moves into collaborative processes. While boundary objects are key to this approach, they can be thought of as the output of frameworks, gaining more traction thanks to the added context of collaboration.

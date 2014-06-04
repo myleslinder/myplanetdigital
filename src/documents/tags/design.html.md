@@ -5,8 +5,9 @@ pagedCollection: 'homepage'
 menu: 5
 menuOrder: 5
 menuTitle: Design
-menuBanner: "<h2>And now, our thoughts on design.</h2>"
+menuBanner: "<h2>From pixels to process, here’s what we’ve been pondering in well-coordinated socks & shoes.</h2>"
 tagName: design
-menuColour: '#e146fc'
-menuDoodle: "bannerdoodle-test-2.png"
+menuColour: '#5f5ca9'
+menuDoodle: "banner-doodle-design.png"
 ---
+

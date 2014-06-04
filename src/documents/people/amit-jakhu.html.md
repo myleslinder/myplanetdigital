@@ -1,7 +1,7 @@
 ---
 title: "Amit Jakhu"
 role: "Designer"
-tags: ["people", "home"]
+tags: ["people"]
 skill: "Interaction, Visual, Design, Front-End Dev, Marketing"
 summary: "Solve real problems that people have."
 coverImageUrl: ""
