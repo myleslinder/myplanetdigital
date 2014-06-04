@@ -1,5 +1,5 @@
 module.exports =
-	# Experimaentally figured out that 4 is warnings and more severe
+	# Experimentally figured out that 4 is warnings and more severe
 	# logLevel: (if ('-d' in process.argv) then 7 else 4)
 
 	templateData:
