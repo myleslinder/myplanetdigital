@@ -1,6 +1,6 @@
 env:
   global:
-  - $GH_REPO="myplanetdigital/swat"
+  - $GH_REPO="myplanetdigital/myplanetdigital"
   - $GIT_EMAIL="neil.t@myplanetdigital.com"
   - $GIT_NAME="neilbaylorrulez"
   - secure: "LmiKmoQL/QkPtn+uk3kw9KOyCYAxQieYhWmQXiTSKjRzfXiSe4hpQR8EN2c4Sc0I6ua8v4z6eS8zTt25uEhw5R3Eh6IaTSY/dXkJqb60jPhpT6EHNdMsle3GF7wymPJ1Nzf9VZ2IqxU+ertDUl78Wf90JuRHkZBvy7jiBvCpQvU="
