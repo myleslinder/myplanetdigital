@@ -1,7 +1,7 @@
 # Myplanet.io   
 
 This badge may not represent reality because docpad cli tools don't return with correct exit codes on errors therefore the build does not break when it should.
-[![Build Status](https://travis-ci.org/myplanetdigital/swat.svg?branch=master)](https://travis-ci.org/myplanetdigital/swat)
+[![Build Status](https://travis-ci.org/myplanetdigital/myplanetdigital.svg?branch=develop)](https://travis-ci.org/myplanetdigital/myplanetdigital)
 
 ## Development with Dummy Content 
 	     
