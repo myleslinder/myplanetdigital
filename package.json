@@ -1,7 +1,7 @@
 {
-  "name": "myplanetdigital-swat",
+  "name": "myplanetdigital",
   "version": "0.1.0",
-  "description": "Myplanet Digital: SWAT",
+  "description": "Myplanet.io",
   "engines": {
     "node": "0.10",
     "npm": "1.3"
