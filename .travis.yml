@@ -9,7 +9,7 @@ script:
   - if [[ $TRAVIS_PULL_REQUEST == 'false' ]]; then node_modules/.bin/docpad deploy-ghpages --env static; fi
 branches:
   only:
-    - master
+    - develop
 before_script:
 - npm install -g grunt-cli
 - grunt
