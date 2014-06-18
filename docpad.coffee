@@ -2,6 +2,12 @@ module.exports =
 	# Experimentally figured out that 4 is warnings and more severe
 	# logLevel: (if ('-d' in process.argv) then 7 else 4)
 
+	port: 8080
+
+	env: 'static'
+
+	renderPasses: 4
+
 	templateData:
 		site:
 			title: 'Myplanet'
