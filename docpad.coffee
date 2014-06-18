@@ -96,10 +96,10 @@ module.exports =
 	plugins:
 
 		# Navlinks plugin:
- 		# https://github.com/lucor/docpad-plugin-navlinks
- 		navlinks:
- 			collections:
- 				homepage: 1
+		# https://github.com/lucor/docpad-plugin-navlinks
+		navlinks:
+			collections:
+				homepage: 1
 
 		# Formatting for the dates
 		moment:
