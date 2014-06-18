@@ -69,6 +69,7 @@ module.exports =
 						'article'
 						'careers'
 						'people'
+						'privacy'
 					]
 				ignored: $ne: true
 				layout:
