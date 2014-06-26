@@ -56,3 +56,8 @@ src/files/images/default-covers/*
 !src/files/images/default-covers/1*
 !src/files/images/default-covers/2*
 
+# =====================================
+# WINDOWS GARBAGE
+
+# Windows image file caches
+Thumbs.db
