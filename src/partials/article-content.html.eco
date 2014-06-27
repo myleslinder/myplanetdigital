@@ -27,10 +27,6 @@
 <% tags = '' %>
 <% tags = @document.tags[0] if @document.tags? %>
 
-<%if tags is 'careers': %>
-    <script>window.open('http://www.google.com');</script>
-<% end %>
-
 <% # Output the article header %>
 
 <div class="article-banner" style="background-image: url(<%- cover if cover? %>);" >
