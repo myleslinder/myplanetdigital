@@ -1,13 +1,15 @@
-<%- tileCounter = 0 %>
+<% tileCounter = 0 %>
 <% for document in @getCollection('homepage').findAll({tags: $in: @document.meta.tagName}).toJSON(): %>
 	<% if not document.unpublished: %>
 		<%- @partial('tile', true, {'document': document, 'getUrl': @getUrl, 'tagName': @document.meta.tagName, 'tileCounter': tileCounter}) %>
+	    <% tileCounter++ %>
 	<% end %>
-	<%- tileCounter++ %>
 <% end %>
 
+<% tileCounter = 0 %>
 <% for document in @getCollection('homepage').findAll({tags: $nin: @document.meta.tagName}).toJSON(): %>
 	<% if not document.unpublished: %>
-		<%- @partial('tile', true, {'document': document, 'getUrl': @getUrl, 'tagName': @document.meta.tagName}) %>
+		<%- @partial('tile', true, {'document': document, 'getUrl': @getUrl, 'tagName': @document.meta.tagName, 'tileCounter': tileCounter}) %>
+	    <% tileCounter++ %>
 	<% end %>
 <% end %>
