@@ -50,7 +50,7 @@
 		<link rel="canonical" href="http://myplanet.io<%= url %>">
 	</head>
 
-	<body class="<% if @document.layout != 'articles': %>article <% end %>">
+	<body class="<% if @document.layout != 'articles': %>article<% end %><% if typeof @document.slug == 'string' && @document.slug.length > 0 : %> <%= @document.slug %><% end %>">
 		<div id="wrap">
 			<h1 id="logo">
 				<a href="<%= @getUrl('/') %>"><%= @site.title %> <% if @document.title?: %> | <%= @document.title %><% end %></a>
