@@ -20,44 +20,48 @@ src/raw/vendor
 
 # =====================================
 # Ignore select content from the external repository.
-# Keeping only a few files in version control as dummy content.
 # =====================================
 # Files that need to be versioned in the myplanetdigital-content repo.
 src/README.md
 src/build.sh
 
 
-# Retain only article pages and associated files with file name starting
-# with "a" or "b".
+# Ignore specific content that is version controlled in the
+# myplanetdigital-content repo.
+src/documents/index.html.md
+src/documents/tags*
+
+# Ignore all Privacy page related content and layout files
+# as they are version controlled by the myplanetdigital-content repo.
+src/documents/privacy*
+src/documents/privacy*
+src/partials/privacy*
+
+# Ignore all "draft" articles and their associated-files.
+src/documents/drafts/*
+src/files/associated-files/drafts/*
+
+# Ignore article content that is version controlled in
+# the myplanetdigital-content repo.
 src/documents/article/*
-src/files/associated-files/article/*
-!src/documents/article/a*
-!src/documents/article/b*
-!src/files/associated-files/article/b*
-!src/files/associated-files/article/b*
-
-# Retain only career pages and associated files with file name starting
-# with "a" or "b".
 src/documents/careers/*
-src/files/associated-files/careers/*
-!src/documents/careers/a*
-!src/documents/careers/b*
-!src/files/associated-files/careers/a*
-!src/files/associated-files/careers/b*
-
-# Retain only people pages and associated files with file name starting with "a".
 src/documents/people/*
-src/files/associated-files/people/*
-!src/documents/people/a*
-!src/files/associated-files/people/a*
 
-# Retain only cover images with file names starting with either "1" or "2".
-src/files/images/default-covers/*
-!src/files/images/default-covers/1*
-!src/files/images/default-covers/2*
+# Ignore all files in the associated-files which is version
+# controlled in the myplanetdigital-content repo.
+src/files/associated-files/*
+
+# Ignore all files in the associated-files which is
+# version controlled in the myplanetdigital-content repo.
+src/files/images/*
+
 
 # =====================================
-# WINDOWS GARBAGE
+# GARBAGE Files
+# =====================================
 
 # Windows image file caches
 Thumbs.db
+
+# Mac multimedia files
+.DS_Store
