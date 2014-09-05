@@ -709,7 +709,7 @@
         return;
       }
       
-      window.ga('send', 'pageview', '/' + window.document.location.href.replace(/https?:\/\//, '').split('/').slice(1).join('/'));
+      window.ga('send', 'pageview', window.document.location.pathname);
       
       if(IS_CHROME && chromeUsedBackLink) {
         $body.css('height', Math.max(articleScrollTop + tileScrollTop) + window.pageHeight);
