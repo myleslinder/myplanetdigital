@@ -708,7 +708,9 @@
       if(!pageLoaded) {
         return;
       }
-
+      
+      window.ga('send', 'pageview');
+      
       if(IS_CHROME && chromeUsedBackLink) {
         $body.css('height', Math.max(articleScrollTop + tileScrollTop) + window.pageHeight);
       }
