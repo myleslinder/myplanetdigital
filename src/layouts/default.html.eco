@@ -118,5 +118,17 @@
 		<% if @getEnvironment() != 'development': %>
 		<%- @getBlock('scripts').toHTML() %>
 		<% end %>
+		<script>
+		(function (tos) {
+		  window.setInterval(function () {
+		    tos = (function (t) {
+		      return t[0] == 50 ? (parseInt(t[1]) + 1) + ':00' : (t[1] || '0') + ':' + (parseInt(t[0]) + 10);
+		    })(tos.split(':').reverse());
+		    debugger;
+		    ga('send', 'event', 'Time', 'Log', tos);
+		  }, 8000);
+		})('00');
+		</script>
+		
 	</body>
 </html>
