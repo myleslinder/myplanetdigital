@@ -1,5 +1,5 @@
 <div class="landing-content" style="display:<% if @document.layout == 'landing' : %>block<% else: %>none<% end %>">
-    <section class="portfolio">
+    <section id="portfolio">
         <div class="flexslider">
             <ul class="slides">
                 <li>
@@ -38,7 +38,7 @@
             </ul>
         </div>
     </section>
-    <section class="clients">
+    <section id="clients">
         <div class="clients-block">
             <div class="clients-content">
                 <h2>Our Clients</h2>
@@ -60,7 +60,7 @@
             </ul>
         </div>
     </section>
-    <section class="testimonial">
+    <section id="testimonial">
         <div class="flexslider">
             <ul class="slides">
                 <li class="client-quote">
@@ -78,7 +78,7 @@
             </ul>
         </div>
     </section>
-    <section class="learn-more">
+    <section id="learn-more">
         <div class="info">
             <h2>About Myplanet</h2>
             <p>Myplanet empowers organizations with UX design & technology solutions to support the delivery of great web-based products.</p>

@@ -23,6 +23,7 @@
         $footer = $('#main .footer'),
         $articleFooter = $('#article .footer'),
         $landing = $('.landing-content'),
+        $portfolio = $('#portfolio'),
         $ajaxer = null,
         popped = false,
         fromTiles = false,
@@ -67,7 +68,8 @@
         IOS_CHROME_HEIGHT = 70,
         PRE_SCROLL_THRESHOLD = 100,
         FOUROHFOUR_HTML = '<div class="article-404"><div class="article-404-text"><h1>This page does not exist</h1><h2><em><a href="/">Go home</a></em></h2></div></div>',
-        FOOTER_SCROLLTO_OFFSET = 110;
+        FOOTER_SCROLLTO_OFFSET = 110,
+        PORTFOLIO_SCROLLTO_OFFSET = 137;
 
     function setResponsiveState() {
         var width = $window.width(),
@@ -678,6 +680,14 @@
                     // FOOTER_SCROLLTO_OFFSET = $('.menu-ghost').height();
                 }
                 $window.trigger('scroll-to', [window.mobileMenuYOffset = (window.isTileView ? $footer.offset().top - FOOTER_SCROLLTO_OFFSET : $articleFooter.offset().top - FOOTER_SCROLLTO_OFFSET)]);
+            } else if (e.currentTarget.getAttribute('data-attr') === 'portfolio') {
+                if (window.responsiveState === 'mobile' && window.isWebkitMobileNotIOS) {
+                    $wrap.css({
+                        position: 'absolute'
+                    });
+                }
+                PORTFOLIO_SCROLLTO_OFFSET = window.responsiveState === 'mobile' ? $('.menu-ghost').height() : 137;
+                $window.trigger('scroll-to', [window.mobileMenuYOffset = ($portfolio.offset().top - PORTFOLIO_SCROLLTO_OFFSET - window.curScrollTop)]);
             } else if (e.currentTarget.getAttribute('data-attr') === 'back' && (hasLoadedTiles || doTileAjax || doArticleAjax)) {
                 if (IS_CHROME) {
                     $body.css('height', Math.max(articleScrollTop + tileScrollTop) + window.pageHeight);
