@@ -142,17 +142,56 @@
     &.home {
         .banner-text {
             max-width: 1140px;
-            padding-left: 18px;
+
+            @media screen and (min-width: 1175px) {
+                padding-top: 190px;
+            }
 
             h2 {
                 font-size: 72px;
                 max-width: 800px;
                 line-height: 75px;
                 letter-spacing: -1px;
+                padding: 0 0 30px;
 
                 @media screen and (max-width: 1174px) {
                     font-size: 1em;
                     line-height: inherit;
+                }
+            }
+        }
+        .banner-button {
+            text-align: left;
+
+            .button {
+                color: white;
+                background: none;
+                border: 1px solid white;
+                padding: 13px 24px;
+                text-decoration: none;
+                border-radius: 4px;
+                -webkit-font-smoothing: antialiased;
+                font-family: "TradeGothic", sans-serif;
+                font-weight: normal;
+                font-size: 16px;
+                letter-spacing: 0;
+                cursor: pointer;
+
+                &:hover {
+                    background: white;
+                    color: @mpd-orange;
+                }
+            }
+            @media screen and (max-width: 720px) {
+                width: 100%;
+                text-align: center;
+
+                .button {
+                    display: block;
+                    width: 100%;
+                    line-height: 1;
+                    text-align: center;
+                    box-sizing: border-box;
                 }
             }
         }
