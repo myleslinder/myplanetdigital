@@ -50,14 +50,14 @@
 		<link rel="canonical" href="http://myplanet.io<%= url %>">
 	</head>
 
-	<body class="<% if @document.layout != 'articles': %>article<% end %><% if typeof @document.slug == 'string' && @document.slug.length > 0 : %> <%= @document.slug %><% end %>">
+	<body class="<% if @document.layout != 'articles' && @document.layout != 'landing': %>article<% end %><% if typeof @document.slug == 'string' && @document.slug.length > 0 : %> <%= @document.slug %><% end %>">
 		<div id="wrap">
 			<h1 id="logo">
 				<a href="<%= @getUrl('/') %>"><%= @site.title %> <% if @document.title?: %> | <%= @document.title %><% end %></a>
 			</h1>
 			<%- @partial('menu', {menuItems: @generateMenu(@document.url, 'menu')}) %>
 			<div id="viewport">
-				<section id="main" <% if @document.layout != 'articles': %>style="transition: none; -webkit-transition: none; position: absolute;"<% end %>>
+				<section id="main" <% if @document.layout != 'articles' && @document.layout != 'landing': %>style="transition: none; -webkit-transition: none; position: absolute;"<% end %>>
 					<div id="banner" class="<% if @document.meta.tagName?: %><%- @document.meta.tagName %><% end %>">
 						<div class="banner-text">
 						<% if @document.meta.menuBanner?: %>
@@ -65,34 +65,37 @@
 						<% end %>
 						</div>
 					</div>
-					<div class="main-wrap" style="position: relative;">
-						<% if @document.layout is 'articles': %>
-						<div class="grid-size"></div>
-						<%- @content %>
+
+					<%- @partial('index-content') %>
+
+					<div class="main-wrap" style="position: relative; <% if @document.layout == 'landing': %>display: none;<% end %>">
+						<% if @document.layout == 'articles' || @document.layout == 'landing': %>
+							<div class="grid-size"></div>
+							<%- @partial('tiles', true) %>
 						<% end %>
 						<script src="<%- @getUrl(@site.isotope[0]) %>"></script>
 						<script>
-						<% if @document.layout != 'articles': %>
+						<% if @document.layout != 'articles' && @document.layout != 'landing': %>
 							window.initializeTiles = function(){
 						<% end %>
 						    <%- @include(@site['tiles-immediate'][0]) %>
-						<% if @document.layout != 'articles': %>
+						<% if @document.layout != 'articles' && @document.layout != 'landing': %>
 							};
 						<% end %>
 						</script>
 					</div>
-					<div class="loading-overlay-tiles" <% if @document.layout == 'articles': %>style="display:none;"<% end %>>
+					<div class="loading-overlay-tiles" <% if @document.layout == 'articles' || @document.layout == 'landing': %>style="display:none;"<% end %>>
 						<div class="loading-spinner"></div>
 					</div>
 					<%- @partial('footer') %>
 				</section>
-				<article id="article" style="<% if @document.layout != 'articles': %>position: static; margin-left: 100%;<% else: %>left: 100%;<% end %>">
-					<div id="article-inner"  <% if @document.layout != 'content' && @document.layout != 'articles': %>class="reveal"<% end %>>
-						<% if @document.layout != 'articles': %>
+				<article id="article" style="<% if @document.layout != 'articles' && @document.layout != 'landing': %>position: static; margin-left: 100%;<% else: %>left: 100%;<% end %>">
+					<div id="article-inner"  <% if @document.layout != 'content' && @document.layout != 'articles' && @document.layout != 'landing': %>class="reveal"<% end %>>
+						<% if @document.layout != 'articles' && @document.layout != 'landing': %>
 						<%- @content %>
 						<% end %>
 					</div>
-					<div class="loading-overlay" <% if @document.layout != 'articles': %>style="display:none;"<% end %>>
+					<div class="loading-overlay" <% if @document.layout != 'articles' && @document.layout != 'landing': %>style="display:none;"<% end %>>
 						<div class="loading-spinner"></div>
 					</div>
                     <%- @partial('footer') %>
@@ -128,6 +131,6 @@
 		  }, 10000);
 		})('00');
 		</script>
-		
+
 	</body>
 </html>

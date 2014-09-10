@@ -138,4 +138,23 @@
             font-size: 1.5em;
         }
     }
+
+    &.home {
+        .banner-text {
+            max-width: 1140px;
+            padding-left: 18px;
+
+            h2 {
+                font-size: 72px;
+                max-width: 800px;
+                line-height: 75px;
+                letter-spacing: -1px;
+
+                @media screen and (max-width: 1174px) {
+                    font-size: 1em;
+                    line-height: inherit;
+                }
+            }
+        }
+    }
 }

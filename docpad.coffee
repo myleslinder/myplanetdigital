@@ -28,6 +28,8 @@ module.exports =
 				'/scripts/vendor/history.min.js'
 				'/scripts/init.js'
 				'/scripts/vendor/prism.js'
+				'/scripts/vendor/jquery.flexslider-min.js'
+				'/scripts/modules/slider.js'
 			]
 			'ie8styles': [
 				'/styles/site-ie8.css'
