@@ -37,7 +37,9 @@
 	font-size:0;
 
 	> ul {
-		margin:0;
+		width: 100%;
+		max-width: 1140px;
+		margin: 0 auto;
 		padding:0;
 		list-style: none;
 	}
@@ -78,7 +80,25 @@
 			background:transparent;
 
 			&.home {
-				display:none;
+				float: left;
+
+				a {
+					height: 81px;
+					width: 81px;
+					font-size: 0;
+					background: url('../images/spritempd.png') no-repeat 0 -120px;
+					background-size: 434px auto;
+					display: block;
+					.transform(translateY(35px));
+				}
+				&:before {
+					display: none;
+				}
+				&.hover, &.active {
+					a {
+						.transform(translateY(35px));
+					}
+				}
 			}
 			a {
 				color: black;
@@ -250,13 +270,5 @@
 				color: inherit;
 			}
 		}
-	}
-}
-
-@media only screen and (min-width : 1175px) and (max-width:1324px) {
-	#menu {
-		border:1px solid #fff;
-		border-width:0 0 0 (@logo-width + (@logo-gutter-width * 2));
-		text-align:left !important;
 	}
 }

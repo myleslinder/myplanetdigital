@@ -12,7 +12,7 @@
 		$menu = $('#menu'),
 		$banner = $('#banner'),
 		$menuGhost,
-		$logo = $('#logo'),
+		$logo = $('#menu .home'),
 		$viewport = $('#viewport'),
 		$indicator = $('<span data-role="menu-indicator"></span>'),
 		$active = $menu.find('.active'),
