@@ -34,6 +34,10 @@
 		  		overflow: hidden;
 		  		height: 680px;
 
+		  		@media screen and (max-width: 520px) {
+		  			height: 580px;
+		  		}
+
 		  		&.case-1 {
 		  			background:  #363232;
 		  			.case-button a:hover {
@@ -97,6 +101,11 @@
 				&.slide-1 {
 					max-width: 884px;
 				}
+
+				@media screen and (max-width: 520px) {
+					max-height: 230px;
+					width: auto;
+				}
 			}
 		  .case-studies {
 		    max-width: 1140px;
@@ -121,6 +130,15 @@
 		        	font-size: 30px;
 		        	line-height: 1.1;
 		        }
+
+		        @media screen and (max-width: 520px) {
+		        	font-size: 24px;
+		        }
+
+		        @media screen and (max-width: 400px) {
+		        	font-size: 18px;
+		        }
+
 		      }
 		      p {
 		        font-family: "Plantin", serif;
@@ -344,6 +362,10 @@
 		      }
 		      padding-bottom: 50px;
 		    }
+		  }
+
+		  .flexslider {
+		  	margin-bottom: 60px;
 		  }
 
 		  @media screen and (max-width: 720px) {
