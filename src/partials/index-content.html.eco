@@ -48,18 +48,18 @@
         <div class="clients-block">
             <h2>Our Clients</h2>
             <ul class="clients-list">
-                <li><img src="/images/clients/centurylink-bw.png" width="145" style="margin: -15px;" alt="CenturyLink"></li>
-                <li><img src="/images/clients/esri-bw.png" width="145" style="margin: -16px;" alt="Esri Canada"></li>
-                <li><img src="/images/clients/telx-bw.png" width="140" style="margin: -15px;" alt="TelX"></li>
-                <li><img src="/images/clients/lassonde-bw.png" width="65px" style="margin: -32px;" alt="Lassonde"></li>
-                <li><img src="/images/clients/rcm-bw.png" width="115px" style="margin: -30px;" alt="The Royal Conservatory"></li>
-                <li><img src="/images/clients/spartannash-bw.png" width="145px" style="margin: -17px;" alt="SpartanNash"></li>
-                <li><img src="/images/clients/hcoc-bw.png" width="170px" style="margin: -14px;" alt="Health Council of Canada"></li>
-                <li><img src="/images/clients/mitel-bw.png" width="115px" style="margin: -17px;" alt="Mitel"></li>
-                <li><img src="/images/clients/savvis-bw.png" width="120px" style="margin: -10px;" alt="Savvis"></li>
-                <li><img src="/images/clients/solarwinds-bw.png" width="140px" style="margin: -16px;" alt="Solarwinds"></li>
-                <li><img src="/images/clients/smartcentres-bw.png" width="89px" style="margin: -25px;" alt="SmartCentres"></li>
-                <li><img src="/images/clients/wyndham-bw.png" width="130px" style="margin: -11px;" alt="Wyndham"></li>
+                <li><img src="/images/clients/centurylink-bw.png" width="145" style="margin-top: -15px;" alt="CenturyLink"></li>
+                <li><img src="/images/clients/esri-bw.png" width="145" style="margin-top: -16px;" alt="Esri Canada"></li>
+                <li><img src="/images/clients/telx-bw.png" width="140" style="margin-top: -15px;" alt="TelX"></li>
+                <li><img src="/images/clients/lassonde-bw.png" width="65px" style="margin-top: -32px;" alt="Lassonde"></li>
+                <li><img src="/images/clients/rcm-bw.png" width="115px" style="margin-top: -30px;" alt="The Royal Conservatory"></li>
+                <li><img src="/images/clients/spartannash-bw.png" width="145px" style="margin-top: -17px;" alt="SpartanNash"></li>
+                <li><img src="/images/clients/hcoc-bw.png" width="170px" style="margin-top: -14px;" alt="Health Council of Canada"></li>
+                <li><img src="/images/clients/mitel-bw.png" width="115px" style="margin-top: -17px;" alt="Mitel"></li>
+                <li><img src="/images/clients/savvis-bw.png" width="120px" style="margin-top: -10px;" alt="Savvis"></li>
+                <li><img src="/images/clients/solarwinds-bw.png" width="140px" style="margin-top: -16px;" alt="Solarwinds"></li>
+                <li><img src="/images/clients/smartcentres-bw.png" width="89px" style="margin-top: -25px;" alt="SmartCentres"></li>
+                <li><img src="/images/clients/wyndham-bw.png" width="130px" style="margin-top: -11px;" alt="Wyndham"></li>
             </ul>
         </div>
     </section>
