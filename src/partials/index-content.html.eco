@@ -2,7 +2,7 @@
     <section id="portfolio">
         <div class="flexslider">
             <ul class="slides">
-                <li>
+                <li class="case-1">
                     <div class="case-studies">
                         <div class="case">
                             <h2>Our Expertise</h2>
@@ -15,7 +15,7 @@
                         <a href="/article/savvis-topology/" class="button">View <strong>Case Study</strong></a>
                     </div>
                 </li>
-                <li>
+                <li class="case-2">
                     <div class="case-studies">
                         <div class="case">
                             <h2>Our Expertise</h2>
@@ -28,7 +28,7 @@
                         <a href="/article/mitel/" class="button">View <strong>Case Study</strong></a>
                     </div>
                 </li>
-                <li>
+                <li class="case-3">
                     <div class="case-studies">
                         <div class="case">
                             <h2>Our Expertise</h2>
