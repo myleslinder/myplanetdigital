@@ -346,12 +346,19 @@
 		    }
 		  }
 
+		  @media screen and (max-width: 720px) {
+		  	.flex-control-nav {
+		  		top: 30px;
+		  		bottom: auto;
+		  	}
+		  }
+
 			@media screen and (max-width: 657px) {
-				padding: 40px 0;
+				padding: 30px 0 0;
 				.client-quote {
 					p {
 						font-size: 20px;
-						padding: 50px 8% 20px;
+						padding: 40px 8% 20px;
 						&:before {
 							display: none;
 						}
@@ -360,6 +367,13 @@
 				.client-title {
 					padding-bottom: 30px;
 				}
+				.flex-control-nav {
+					top: 0;
+					bottom: auto;
+				}
+			}
+			.flexslider {
+				margin: 0;
 			}
 		}
 
@@ -386,6 +400,10 @@
 
   	    &:nth-child(2) {
       		background: #E24F1E;
+  	    }
+
+  	    @media screen and (max-width: 1250px) {
+		    	padding: 115px 3.5%;
   	    }
 
 		    @media screen and (max-width: 800px) {
