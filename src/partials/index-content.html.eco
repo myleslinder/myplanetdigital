@@ -5,45 +5,47 @@
                 <li>
                     <div class="case-studies">
                         <div class="case">
-                            <h2>Things We Make</h2>
-                            <h3>We are passionate about great user experience</h3>
-                            <p>We believe user experience can be simple and beautiful. We develop products by understanding what people really want.</p>
+                            <h2>Our Expertise</h2>
+                            <h3>Building great web and mobile applications requires uncovering user truth</h3>
+                            <p>We practice user-centered design to uncover user truth and help businesses better connect with their customers. With over 60 million customers worldwide, Mitel and Myplanet worked together to build a local experience for their global customer base.</p>
                         </div>
                     </div>
                     <img src="/images/case-studies/slide-1.png" alt="" class="case-image slide-1">
+                    <div class="case-button">
+                        <a href="/article/savvis-topology/" class="button">View <strong>Case Study</strong></a>
+                    </div>
                 </li>
                 <li>
                     <div class="case-studies">
                         <div class="case">
-                            <h2>Things We Make</h2>
-                            <h3>Even data visualization doesn't have to be complex</h3>
-                            <p>We helped CenturyLink improve their customer experience by 40% by enabling network administrators with better topology tools.</p>
+                            <h2>Our Expertise</h2>
+                            <h3>We are passionate about creating great user experiences</h3>
+                            <p>By enabling network administrators to easily create network topology diagrams, the application significantly improved user satisfaction, task completion times and customer experience.</p>
                         </div>
                     </div>
                     <img src="/images/case-studies/slide-2.png" alt="" class="case-image">
                     <div class="case-button">
-                        <a href="/article/savvis-topology/" class="button">View <strong>case study</strong></a>
+                        <a href="/article/mitel/" class="button">View <strong>Case Study</strong></a>
                     </div>
                 </li>
                 <li>
                     <div class="case-studies">
                         <div class="case">
-                            <h2>Things We Make</h2>
-                            <h3>Building great web and mobile applications is our passion</h3>
-                            <p>Developing products using a validated approach is how we build the "right" thing, fast.</p>
+                            <h2>Our Expertise</h2>
+                            <h3>We’re solving customer problems by building beautiful enterprise level software</h3>
+                            <p>Our videoconferencing-as-a-service solution, RelayRobin, provides a white labeled portal that customers will love. We empower organizations to stay competitive by helping them get-to-market faster.</p>
                         </div>
                     </div>
                     <img src="/images/case-studies/slide-3.png" alt="" class="case-image">
+                    <div class="case-button">
+                        <a href="mailto:hello@myplanet.io" class="button">Contact <strong>For Demo</strong></a>
+                    </div>
                 </li>
             </ul>
         </div>
     </section>
     <section id="clients">
         <div class="clients-block">
-            <div class="clients-content">
-                <h2>Our Clients</h2>
-                <p>We work closely with enterprise orgs to reduce time to market, mitigate risk, and deliver great web & mobile products.</p>
-            </div>
             <ul class="clients-list">
                 <li style="background-image:url('/images/clients/centurylink-bw.png'); background-size: 145px;">CenturyLink</li>
                 <li style="background-image:url('/images/clients/esri-bw.png'); background-size: 145px;">Esri Canada</li>
@@ -51,7 +53,7 @@
                 <li style="background-image:url('/images/clients/lassonde-bw.png'); background-size: 65px;">Lassonde</li>
                 <li style="background-image:url('/images/clients/rcm-bw.png'); background-size: 115px;">The Royal Conservatory</li>
                 <li style="background-image:url('/images/clients/spartannash-bw.png'); background-size: 145px;">SpartanNash</li>
-                <li style="background-image:url('/images/clients/hcoc-bw.png'); background-size: 190px;">Health Council of Canada</li>
+                <li style="background-image:url('/images/clients/hcoc-bw.png'); background-size: 170px;">Health Council of Canada</li>
                 <li style="background-image:url('/images/clients/mitel-bw.png'); background-size: 115px;">Mitel</li>
                 <li style="background-image:url('/images/clients/savvis-bw.png'); background-size: 120px;">Savvis</li>
                 <li style="background-image:url('/images/clients/solarwinds-bw.png'); background-size: 140px;">Solarwinds</li>
@@ -64,7 +66,7 @@
         <div class="flexslider">
             <ul class="slides">
                 <li class="client-quote">
-                    <p>The Myplanet team helped us refine and update the front-end of our web application. Their research and user testing allowed us to craft a design that not only looks great but that meets the needs of our discerning application users. Myplanet spins their engagements up quickly and are very focused on delivering value. Thanks for all the help from your team!</p>
+                    <p>The Myplanet team helped us refine and update the front-end of our web application. Their research and user testing allowed us to craft a design that not only looks great but that meets the needs of our discerning application users.</p>
                     <div class="client-title">Annie Welch, <strong>UX Manager, SolarWinds</strong></div>
                 </li>
                 <li class="client-quote">
@@ -72,7 +74,7 @@
                     <div class="client-title">Kiel Jared, <strong>Creative Director, Mitel</strong></div>
                 </li>
                 <li class="client-quote">
-                    <p>Myplanet has been my go-to resource for new product development. I consider them my “microwave” – their combination of user experience, design and development help us identify and validate product concepts, then quickly bring those new offerings to market.</p>
+                    <p>Myplanet has been my go-to resource for new product development – their combination of user experience, design and development help us identify and validate product concepts, then quickly bring those new offerings to market.</p>
                     <div class="client-title">Manager of User Experience Design, <strong>CenturyLink</strong></div>
                 </li>
             </ul>
@@ -80,22 +82,17 @@
     </section>
     <section id="learn-more">
         <div class="info">
-            <h2>About Myplanet</h2>
-            <p>Myplanet empowers organizations with UX design & technology solutions to support the delivery of great web-based products.</p>
-            <a href="">Learn <strong>more</strong></a>
-        </div>
-        <div class="info">
             <h2>Our Approach</h2>
-            <p>We combine elements of user-centered design, Lean Startup, and Agile methodologies.</p>
+            <p>Our unique process combines elements of user-centered design, Lean Startup, and Agile methodologies.</p>
             <a href="/article/our-approach/">Learn <strong>more</strong></a>
         </div>
         <div class="info">
             <h2>Our Offerings & Services</h2>
-            <p>We specialize in cross-device applications, product portals, and web experience management.</p>
+            <p>By focusing on user centered design and organization empowerment, we create a unique relationship with our clients that drives results</p>
             <a href="/article/our-offerings/">Learn <strong>more</strong></a>
         </div>
         <div class="info">
-            <h2>Why We’re Different</h2>
+            <h2>We’re Different</h2>
             <p>We’re well-versed in the intricacies, constraints, and opportunities of enterprise product development.</p>
             <a href="/article/what-we-do/">Learn <strong>more</strong></a>
         </div>
