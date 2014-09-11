@@ -5,7 +5,9 @@
   $('.flexslider').flexslider({
       animation: "slide",
       directionNav: false,
-      animationLoop: false
+      animationLoop: true,
+      slideshowSpeed: 8500,
+      pauseOnHover: true
   });
 
 })();
