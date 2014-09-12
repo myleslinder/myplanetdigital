@@ -22,6 +22,10 @@ body {
   }
 }
 
+#back {
+  display: none;
+}
+
 body.article {
   #viewport {
     #main {
@@ -1542,6 +1546,9 @@ body.article #main {
   &.home {
     .banner-text {
       max-width: 1140px;
+      width: 100%;
+      padding-left: 30px;
+      padding-right: 30px;
 
       h2 {
         max-width: 800px;
@@ -1549,8 +1556,8 @@ body.article #main {
         padding: 0 0 50px;
 
         @media screen and (max-width: 1174px) {
-            font-size: 1em;
-            line-height: inherit;
+          font-size: 3.6em;
+          line-height: inherit;
         }
       }
     }
@@ -1572,8 +1579,8 @@ body.article #main {
         cursor: pointer;
 
         &:hover {
-            background: white;
-            color: @mpd-orange;
+          background: white;
+          color: @mpd-orange;
         }
       }
       @media screen and (max-width: 720px) {
@@ -1581,11 +1588,11 @@ body.article #main {
         text-align: center;
 
         .button {
-            display: block;
-            width: 100%;
-            line-height: 1;
-            text-align: center;
-            box-sizing: border-box;
+          display: block;
+          width: 100%;
+          line-height: 1;
+          text-align: center;
+          box-sizing: border-box;
         }
       }
     }
