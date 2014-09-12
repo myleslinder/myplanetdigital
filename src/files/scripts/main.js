@@ -26,6 +26,7 @@
         $portfolio = $('#portfolio'),
         $ajaxer = null,
         popped = false,
+        sliderInit = false,
         fromTiles = false,
         hasLoadedTiles,
         filterTag,
@@ -223,6 +224,16 @@
             lastArticleUrl = '';
             $article.css('height', '');
         }
+    }
+
+    function flexsliderStart() {
+      $('.flexslider').flexslider({
+          animation: "slide",
+          directionNav: false,
+          animationLoop: true,
+          slideshowSpeed: 8500,
+          pauseOnHover: true
+      });
     }
 
     function handlePageChange() {
@@ -454,6 +465,10 @@
             }
             if (filterTag === 'home') {
                 $landing.show();
+                if (!sliderInit) {
+                    flexsliderStart();
+                    sliderInit = true;
+                }
                 $mainWrap.hide();
             } else {
                 $landing.hide();
@@ -464,6 +479,10 @@
             //window.requestAnimationFrame(function () {
             if (filterTag === 'home') {
                 $landing.show();
+                if (!sliderInit) {
+                    flexsliderStart();
+                    sliderInit = true;
+                }
                 $mainWrap.hide();
             } else {
                 $landing.hide();
@@ -738,6 +757,11 @@
 
     //$article.append($articleFooter = $footer.clone());
     window.currentTag = $('#menu').find('li.active').attr('class').split(' ')[0];
+
+    if (window.currentTag === 'home') {
+        flexsliderStart();
+        sliderInit = true;
+    }
     $window.on('page-change', function() {
         if (!pageLoaded) {
             return;
