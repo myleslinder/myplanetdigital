@@ -40,6 +40,14 @@
 		  			height: 580px;
 		  		}
 
+		  		@media screen and (max-width: 400px) {
+		  			height: 540px;
+		  		}
+
+		  		@media screen and (max-width: 320px) {
+		  			height: 500px;
+		  		}
+
 		  		&.case-1 {
 		  			background:  #363232;
 		  			.case-button a:hover {
@@ -107,6 +115,13 @@
 				left: 50%;
 				&.slide-1 {
 					max-width: 884px;
+
+					@media screen and (max-width: 720px) {
+						max-width: 550px;
+					}
+					@media screen and (max-width: 430px) {
+						max-width: 350px;
+					}
 				}
 
 				@media screen and (max-width: 520px) {
@@ -216,10 +231,6 @@
 					max-width: 550px;
 					margin: 0 auto;
 					.border-box();
-
-					&.slide-1 {
-						max-width: 550px;
-					}
 				}
 				.case-studies {
 					padding: 0 30px 20px;
