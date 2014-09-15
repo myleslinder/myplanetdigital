@@ -398,6 +398,30 @@
 
 		  .flexslider {
 		  	margin-bottom: 60px;
+
+  	  	.flex-control-paging li {
+  	  		vertical-align: middle;
+
+  				a {
+  					width: 8px;
+  					height: 8px;
+  					background: #bdbdbd;
+  					border: 2px solid transparent;
+
+  					&:hover {
+  					  background: #999;
+  					  border: 2px solid transparent;
+  					}
+
+  					&.flex-active, &.flex-active:hover {
+  						width: 12px;
+  						height: 12px;
+  					  background: none;
+  					  border: 1px solid #bdbdbd;
+  					  cursor: default;
+  					}
+  				}
+  			}
 		  }
 
 			@media screen and (max-width: 720px) {
