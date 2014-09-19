@@ -6,7 +6,6 @@
         return;
     }
 
-
     var $window = $(window),
         $body = $('body'),
         $article = $('#article'),
@@ -24,6 +23,7 @@
         $articleFooter = $('#article .footer'),
         $landing = $('.landing-content'),
         $portfolio = $('#portfolio'),
+        $sliders = $('.flexslider'),
         $ajaxer = null,
         popped = false,
         sliderInit = false,
@@ -209,6 +209,24 @@
         $body.removeClass('animating');
     }
 
+    function hideLanding() {
+        $landing.hide();
+        if(sliderInit) {
+            $sliders.flexslider('pause');
+        }
+    }
+
+    function showLanding() {
+        $landing.show();
+        if(sliderInit) {
+            $sliders.each(function(){
+                var $me = $(this).data('flexslider');
+                $me.resize();
+                $me.play();
+            });
+        }
+    }
+
     function abortAjax() {
         $ajaxer.abort();
         $body.removeClass('animating');
@@ -227,13 +245,18 @@
     }
 
     function flexsliderStart() {
-      $('.flexslider').flexslider({
-          animation: "slide",
-          directionNav: false,
-          animationLoop: true,
-          slideshowSpeed: 8500,
-          pauseOnHover: true
-      });
+        if(!sliderInit) {
+          $sliders = $('.flexslider').flexslider({
+              animation: "slide",
+              directionNav: false,
+              animationLoop: true,
+              slideshowSpeed: 8500,
+              animationSpeed: window.desktopCapable ? 500 : 350,
+              pauseOnHover: true
+          });
+        }
+        showLanding();
+        sliderInit = true;
     }
 
     function handlePageChange() {
@@ -335,7 +358,6 @@
                             transform: !overridePopstateScrollmove ? 'translate3d(-100%, ' + (top - articleScrollTop) + 'px, 0)' : '',
                             transition: ''
                         });
-
 
                         $body.addClass('article');
                     };
@@ -464,28 +486,20 @@
                 $wrap.css('top', 0);
             }
             if (filterTag === 'home') {
-                $landing.show();
-                if (!sliderInit) {
-                    flexsliderStart();
-                    sliderInit = true;
-                }
+                flexsliderStart();
                 $mainWrap.hide();
             } else {
-                $landing.hide();
+                hideLanding();
                 $mainWrap.show();
             }
 
         } else if (filterTag && window.isTileView && window.currentTag !== filterTag) { //change tag on tile view
             //window.requestAnimationFrame(function () {
             if (filterTag === 'home') {
-                $landing.show();
-                if (!sliderInit) {
-                    flexsliderStart();
-                    sliderInit = true;
-                }
+                flexsliderStart();
                 $mainWrap.hide();
             } else {
-                $landing.hide();
+                hideLanding();
                 $mainWrap.show();
             }
             $window.trigger('filter', [window.currentTag = filterTag]);
@@ -576,6 +590,7 @@
                 if (cancelTransition) {
                     return cleanupTransition();
                 }
+                hideLanding();
                 window.scroll(0, window.curScrollTop = articleScrollTop + (window.isIOS ? 0 : (window.pageYOffset - window.curScrollTop)));
                 window.setTimeout(window.requestAnimationFrame.bind(null, function() {
                     if (cancelTransition) {
@@ -672,6 +687,8 @@
         if (IS_SAFARI) {
             $body.addClass('safari');
         }
+    } else if(window.isIOS) {
+        $body.addClass('ios');
     }
 
     //handle geo urls
@@ -689,6 +706,9 @@
         var url = $(this).attr('href'),
             backFn,
             $link;
+        if(!url) {
+            return false;
+        }
 
         if (!isExternalUrl(url)) {
             if (e.currentTarget.getAttribute('data-attr') === 'contact-link') {
@@ -708,10 +728,14 @@
                 PORTFOLIO_SCROLLTO_OFFSET = window.responsiveState === 'mobile' ? $('.menu-ghost').height() : 137;
                 $window.trigger('scroll-to', [window.mobileMenuYOffset = ($portfolio.offset().top - PORTFOLIO_SCROLLTO_OFFSET - window.curScrollTop)]);
             } else if (e.currentTarget.getAttribute('data-attr') === 'back' && (hasLoadedTiles || doTileAjax || doArticleAjax)) {
+                if(isTileView) {
+                    return false;
+                }
                 if (IS_CHROME) {
                     $body.css('height', Math.max(articleScrollTop + tileScrollTop) + window.pageHeight);
                     chromeUsedBackLink = true;
                 }
+                debugger;
                 if (!window.isTileView) {
                     backFn = !wasLinkClick && window.history.state === initialHistoryState ? History.forward : History.back;
                     if (window.isWebkitMobileNotIOS) {
@@ -760,14 +784,14 @@
 
     if (window.currentTag === 'home') {
         flexsliderStart();
-        sliderInit = true;
     }
     $window.on('page-change', function() {
         if (!pageLoaded) {
             return;
         }
-
-        window.ga('send', 'pageview', window.document.location.pathname);
+        if(window.ga) {
+         window.ga('send', 'pageview', window.document.location.pathname);
+        }
 
         if (IS_CHROME && chromeUsedBackLink) {
             $body.css('height', Math.max(articleScrollTop + tileScrollTop) + window.pageHeight);
