@@ -6,8 +6,6 @@ module.exports =
 
 	env: 'static'
 
-	renderPasses: 4
-
 	templateData:
 		site:
 			title: 'Myplanet'
