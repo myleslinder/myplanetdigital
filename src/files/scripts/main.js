@@ -306,7 +306,7 @@
             fromTiles = true;
 
             if (!wasCancelled) {
-                //    tileScrollTop = top;
+                    tileScrollTop = top;
             }
             isTransitioning = true;
 
@@ -399,7 +399,7 @@
             window.isTileView = true;
             window.isBusy = true;
             if (!wasCancelled) {
-                // articleScrollTop = top;
+                 articleScrollTop = top;
             }
             isTransitioning = true;
             doTileAjax = !hasLoadedTiles;
