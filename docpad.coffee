@@ -6,7 +6,6 @@ module.exports =
 
 	env: 'static'
 
-
 	templateData:
 		site:
 			title: 'Myplanet'
