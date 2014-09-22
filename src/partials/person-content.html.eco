@@ -1,0 +1,63 @@
+<% filePath = ('associated-files/' + @document.relativeBase).replace('-content', '') %>
+<% files = @getFilesAtPath(filePath) %>
+<% if files: %>
+  <% for image in files.toJSON(): %>
+    <% avatar = image.url if image.basename is 'avatar' %>
+    <% cover = image.url if image.basename is 'cover' %>
+  <% end %>
+<% end %>
+
+<% if @cover?: %><% cover = @getUrl(@cover) %><% else: %><% files = @getFilesAtPath('images/default-covers') %><% num = Math.floor(Math.random() * (files.length - 3)) + 1 %><% cover = @getUrl('/images/default-covers/' + num + '.jpg') %><% end %>
+
+<div class="profile-banner" style="background-image:url('<%= cover %>');">
+  <img src="<%= cover %>" style="display:none; visibility:hidden;" />
+</div>
+
+<div class="profile-body vcard" data-tag="people">
+  <div class="profile-content">
+
+    <% if avatar?: %>
+      <div class="profile-picture">
+        <img src="<%= @getUrl(avatar) %>" title="<%= @document.title %>'s Avatar" title="<%= @document.title %>" />
+      </div>
+    <% end %>
+
+    <% if @document.title: %>
+      <h1 class="fn"><%= @document.title %></h1>
+      <a href="http://myplanet.io<%=@document.url %>/" class="url"><%= @document.title %>'s Profile</a>
+      <span class="role">Employee</span>
+      <span class="org">Myplanet</span>
+    <% end %>
+
+    <% if @document.summary?: %>
+      <div class="profile-quote"><%= @document.summary %></div>
+    <% end %>
+
+    <% if @document.twitter or @document.dribbble or @document.linkedin or @document.github or @document.stackoverflow: %>
+      <ul class="social-media">
+        <% if @document.twitter: %>
+          <li><a href="<%= @document.twitter %>" class="twitter" target="_blank">Twitter</a></li>
+        <% end %>
+        <% if @document.dribbble: %>
+          <li><a href="<%= @document.dribbble %>" class="dribbble" target="_blank">Dribbble</a></li>
+        <% end %>
+        <% if @document.linkedin: %>
+          <li><a href="<%= @document.linkedin %>" class="linkedin" target="_blank">LinkedIn</a></li>
+        <% end %>
+        <% if @document.github: %>
+          <li><a href="<%= @document.github %>" class="github" target="_blank">Github</a></li>
+        <% end %>
+        <% if @document.stackoverflow: %>
+          <li><a href="<%= @document.stackoverflow %>" class="stackoverflow" target="_blank">Stack Overflow</a></li>
+        <% end %>
+      </ul>
+    <% end %>
+
+    <%- @content %>
+
+    <div class="article-footer">
+      <div class="footer-doodle people"></div>
+    </div>
+
+  </div>
+</div>

@@ -45,7 +45,7 @@ src/files/associated-files/drafts/*
 # the myplanetdigital-content repo.
 src/documents/article/*
 src/documents/careers/*
-src/documents/people/*
+src/documents/work/*
 
 # Ignore all files in the associated-files which is version
 # controlled in the myplanetdigital-content repo.
