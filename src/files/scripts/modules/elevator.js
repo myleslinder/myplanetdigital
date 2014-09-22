@@ -91,7 +91,7 @@
 				transform: 'translate3d(' + (isMobileMenuOpen ? MOBILE_MENU_WIDTH : '0') + ',0,0)',
 				transition: 'none'
 			});
-			if (!window.isIOS) {
+			if (!window.isIOS || window.isIOS8) {
 				window.scroll(0, window.curScrollTop = curOffset);
 				return finishTransitionEnd();
 			}

@@ -286,7 +286,7 @@
         cancelTransition = isTransitionEnding;
         isTransitionEnding = false;
 
-        overridePopstateScrollmove = !window.isIOS; //ios doesn't mess with the scrollbar during popstate
+        overridePopstateScrollmove = !window.isIOS || window.isIOS8; //ios doesn't mess with the scrollbar during popstate
         top = window.curScrollTop;
         wasCancelled = cancelTransition || isTransitioning || aborted;
 
@@ -651,12 +651,12 @@
                 transition: 'none'
             });
 
-            if (window.isIOS) {
+            if (window.isIOS && !window.isIOS8) {
                 return window.setTimeout(endTransition, 0);
             }
             endTransition();
         };
-        if (window.isIOS) {
+        if (window.isIOS  && !window.isIOS8) {
             return window.setTimeout(window.requestAnimationFrame.bind(null, startTransitionEnd), 0);
         }
         startTransitionEnd();
@@ -673,6 +673,7 @@
         desktopCapable: window.desktopCapable = Math.max(screen.width, screen.height) >= DESKTOP_WIDTH,
         hasTouchEvents: window.hasTouchEvents = 'ontouchstart' in window,
         isIOS: window.isIOS = !!navigator.userAgent.match(/(iPad|iPhone|iPod)/g),
+        isIOS8: window.isIOS8 = !!navigator.userAgent.match(/(iPhone|iPad|iPod)\sOS\s8/g),
         top: window.pageYOffset,
         bottom: window.pageYOffset + window.pageHeight
     }]);
@@ -735,7 +736,6 @@
                     $body.css('height', Math.max(articleScrollTop + tileScrollTop) + window.pageHeight);
                     chromeUsedBackLink = true;
                 }
-                debugger;
                 if (!window.isTileView) {
                     backFn = !wasLinkClick && window.history.state === initialHistoryState ? History.forward : History.back;
                     if (window.isWebkitMobileNotIOS) {
