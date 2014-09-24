@@ -174,10 +174,10 @@
 	//only attach events if the device is capable of showing desktop
 	$window.on('deviceCapabilities', function (e, data) {
 		if(data.desktopCapable || !data.hasTouchEvents) {
-			$window.on('pageScroll', handleScroll);
-			$window.on('after-scrolling', window.requestAnimationFrame.bind(null, removeLayers));
+			//$window.on('pageScroll', handleScroll);
+			//$window.on('after-scrolling', window.requestAnimationFrame.bind(null, removeLayers));
 			$wrap.on('transitionend webkitTransitionEnd', transitionEnd);
-			$window.on('article menu', removeAllLayers);
+			//$window.on('article menu', removeAllLayers);
 			scrollData = data;
 		}
 

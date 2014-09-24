@@ -72,7 +72,6 @@ body {
 	height:100%;
 	font-size:0;
 	white-space:nowrap;
-	.transition-transform();
 
 	#main, #article {
 		.border-box();
@@ -379,8 +378,13 @@ a[href^=tel]{
 		pointer-events:none;
 		.user-select();
 
-		#logo, #viewport, #menu, #menu-toggle, #back {
+		#logo, #viewport #main, #menu, #menu-toggle, #back {
 			.translate3d(-249px,0,0);
+		}
+		&.article {
+			#viewport #article {
+				.translate3d( ~"calc(-100% - 249px)",0,0);
+			}
 		}
 		#back {
 			opacity: 0.01;

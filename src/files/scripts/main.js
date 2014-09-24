@@ -118,7 +118,7 @@
     function finishArticleLoad(data) {
         window.setTimeout(function() {
             if (!isFirstArticleLoad) {
-                $articlein.removeClass('reveal');
+                $articlein.removeClass('reveal revealed');
             }
             window.requestAnimationFrame(function() {
                 $articleFooter.show();
@@ -135,6 +135,9 @@
                         if (isTransitioning || isTransitionEnding) {
                             return;
                         }
+                        window.setTimeout(function () {
+                            $articlein.addClass('revealed');
+                        }, 550);
                         window.isBusy = false;
                     }, 100);
                 });
@@ -678,8 +681,6 @@
         bottom: window.pageYOffset + window.pageHeight
     }]);
     window.isWebkitMobileNotIOS = window.hasTouchEvents && !window.isIOS;
-
-
     SPINNER_HEIGHT = window.isIOS ? 25 : SPINNER_HEIGHT;
     pageUrl = pageUrl || '/';
 
@@ -729,7 +730,7 @@
                 PORTFOLIO_SCROLLTO_OFFSET = window.responsiveState === 'mobile' ? $('.menu-ghost').height() : 137;
                 $window.trigger('scroll-to', [window.mobileMenuYOffset = ($portfolio.offset().top - PORTFOLIO_SCROLLTO_OFFSET - window.curScrollTop)]);
             } else if (e.currentTarget.getAttribute('data-attr') === 'back' && (hasLoadedTiles || doTileAjax || doArticleAjax)) {
-                if(isTileView) {
+                if(isTileView || window.mobileMenuIsOpen) {
                     return false;
                 }
                 if (IS_CHROME) {

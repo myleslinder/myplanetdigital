@@ -183,21 +183,8 @@
 			window.mobileMenuYOffset = window.curScrollTop = window.pageYOffset;
 
 			$window.trigger('menu');
-
 			window.setTimeout(window.requestAnimationFrame.bind(null, function () {
-				$viewport.css({
-					transform:'translateZ(0)',
-					transition: 'none'
-				});
-				window.setTimeout(function() {
-					window.requestAnimationFrame(function() {
-						$viewport.css({
-							transform:'',
-							transition: ''
-						});
-						$body.addClass('menu');
-					});
-				}, 0);
+				$body.addClass('menu');
 			}), 0);
 		} else if(window.desktopCapable) {
 			closeMenu();
