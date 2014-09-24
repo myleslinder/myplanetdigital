@@ -231,7 +231,7 @@ body.article #viewport {
       }
     }
   }
-  &.people {
+  &.work {
     a > .menu-doodle {
       width: 62px;
       left: 6px;
@@ -509,7 +509,7 @@ body.width-mobile #menu ul > li {
         &.company {
           background-position: -450px -7px;
         }
-        &.people {
+        &.work {
           background-position: -319px -7px;
         }
         &.careers {
@@ -604,79 +604,68 @@ body.article #main {
 }
 
 .footer {
-  background-color: black;
+  background-color: #232323;
   color: white;
-  padding-top: 44px;
+  padding: 50px 0;
 
-  .contact-info {
-    position: relative;
-    width: 650px;
-    margin: 0 auto;
-    background-color: #232323;
-    .email-us,
-    .call-us {
-      display: inline-block;
-      padding-top: 16px;
-      padding-bottom: 16px;
-      text-align: center;
-      width: 50%;
-      &:first-child {
-        width: 49%;
-        border-right: 1px solid #484848;
-      }
-      h3 {
-        font-family: 'TradeGothic', Arial, Sans-serif;
-        font-size: 16px;
-        color: #b0b0b0;
-        margin-bottom: 0;
-        margin-top: 0;
-      }
-      p {
-        font-family: 'PlantinBold', Georgia, serif;
-        font-size: 30px;
-        margin-bottom: 0;
-        margin-top: 0;
-        .antialias();
+  .inner {
+    white-space:nowrap;
+    font-size:0;
+    .block {
+      display:inline-block;
+      vertical-align:top;
+      white-space:normal;
+      &.addresses {
+        margin-left:50px;
       }
     }
-  }
-  .additional-info {
-    margin: 125px 0 0;
-    padding-bottom: 20px;
-    text-align: center;
 
-    font-family: 'TradeGothic', Arial, Sans-serif;
-    h3 {
-      font-size: 15px;
-      margin-top: 0;
-    }
+    margin:0 auto;
+    max-width:1024px;
+    padding:0 0 0 200px;
 
-    & > div {
-      text-align: left;
+
+    .vcard {
+      display: none;
     }
-  }
-  .contact {
-    display: inline-block;
-    position: relative;
-    height: 75px;
-    padding: 0 30px 10px 20px;
-    border-right: 1px solid #555;
-    width: 170px;
-    margin-bottom: 50px;
-    h3 {
-      display: block;
-      font-size: 15px;
-      font-weight: normal;
-      color: white;
+    .contact-info {
+      font-family: "Plantin";
+      font-size:0;
+      font-weight:bold;
+      > span {
+        font-size:30px;
+        display:block;
+      }
+      .email-us, .call-us {
+
+        span {
+          font-family:"TradeGothic";
+          font-size:16px;
+          display:block;
+          padding-top:20px;
+          &:first-of-type {
+            padding-top:30px;
+          }
+        }
+        a {
+          color:#fff;
+          text-decoration:none;
+        }
+        p {
+          margin:0;
+          font-size:24px;
+        }
+      }
     }
     ul.social-media-footer {
-      padding: 0;
-      margin: 0;
+      padding: 20px 0 0;
+      margin: 14px 0;
       font-size: 0;
       list-style: none;
+
       li {
         display: inline-block;
-        margin-right: 7px;
+        margin-right: 10px;
         a {
           display: inline-block;
           position: relative;
@@ -730,71 +719,80 @@ body.article #main {
         }
       }
     }
-  }
-  .address {
-    display: inline-block;
-    position: relative;
-    vertical-align: top;
-    padding-left: 20px;
-    padding-right: 0;
-    margin-bottom: 100px;
-    width: 187px;
+    .privacy {
+      font-size:12px;
+      a {
+        color:#fff;
+        text-decoration: none;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+    .address {
+      display: inline-block;
+      position: relative;
+      vertical-align: top;
+      margin:80px 0 100px;
+      width: 50%;
+      .border-box();
 
-    &:last-of-type {
-      padding-right: 0;
-    }
-    &:before {
-      content: '';
-      display: block;
-      position: absolute;
-      width: 62px;
-      height: 64px;
-      background: url(../images/sprite-ie.png) -462px -1px no-repeat;
-    }
-    &.toronto {
-      width: 125px;
+      a {
+        text-decoration: none;
+      }
+
+      &:last-of-type {
+        padding-right: 0;
+      }
       &:before {
-        top: -74px;
-        width: 62px;
+        content: '';
+        display: block;
+        position: absolute;
+        width: 64px;
         height: 64px;
-        background-position: -514px -1px;
+        background: url(../images/spritempd-ie.png) -120px -102px no-repeat;
+        background-size: 495px;
       }
-    }
-    &.vancouver {
-      width: 160px;
-      &:before {
-        height: 44px;
-        top: -54px;
-        left: 23px;
-        background-position: -514px -74px;
+      &.toronto {
+        &:before {
+          top: -74px;
+          width: 62px;
+          height: 64px;
+        }
       }
-    }
-    &.chernihiv {
-      width: 140px;
-      &:before {
-        top: -64px;
-        left: 21px;
-        height: 56px;
-        background-position: -516px -129px;
+      &.vancouver {
+        &:before {
+          height: 44px;
+          top: -54px;
+          background-position: -189px -119px;
+        }
       }
-    }
-    &.chicago {
-      width: 150px;
-      &:before {
-        top: -64px;
-        left: 13px;
-        height: 56px;
-        background-position: -510px -193px;
+      &.chernihiv {
+        &:before {
+          top: -64px;
+          height: 56px;
+          background-position: -254px -107px;
+        }
       }
-    }
-    h3 {
-      font-weight: normal;
-      font-size: 15px;
-    }
-    span {
-      display: block;
-      color: #5b5b5b;
-      font-size: 15px;
+      &.chicago {
+        &:before {
+          top: -63px;
+          height: 56px;
+          background-position: -310px -106px;
+        }
+      }
+
+      span {
+        display: block;
+        color: #5b5b5b;
+        font-size: 15px;
+
+      }
+      > span {
+        color:#fff;
+        margin: 0 0 1em;
+        display:inline-block;
+      }
     }
   }
 }
@@ -1486,7 +1484,7 @@ body.article #main {
   &.company {
     background: @mpd-orange;
   }
-  &.people {
+  &.work {
     background: @mpd-orange;
   }
   &.careers {
