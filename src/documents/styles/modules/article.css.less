@@ -31,6 +31,13 @@
 		.transition-transform(0.3s ease 0.22s, opacity 0.4s ease 0.22s);
 		}
 	}
+
+	&.revealed {
+		.article-banner, .article-title, .article-body {
+			.showBack();
+			.transform(none);
+		}
+	}
 }
 
 body.article, body.animating {

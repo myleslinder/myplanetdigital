@@ -90,7 +90,7 @@
 					<%- @partial('footer') %>
 				</section>
 				<article id="article" style="<% if @document.layout != 'articles' && @document.layout != 'landing': %>position: static; margin-left: 100%;<% else: %>left: 100%;<% end %>">
-					<div id="article-inner"  <% if @document.layout != 'content' && @document.layout != 'articles' && @document.layout != 'landing': %>class="reveal"<% end %>>
+					<div id="article-inner"  <% if @document.layout != 'content' && @document.layout != 'articles' && @document.layout != 'landing': %>class="reveal revealed"<% end %>>
 						<% if @document.layout != 'articles' && @document.layout != 'landing': %>
 						<%- @content %>
 						<% end %>
