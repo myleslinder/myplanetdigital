@@ -2,6 +2,7 @@
 
 .footer {
 	background-color: #232323;
+	font-family:"TradeGothic";
 	color: white;
 	padding: 45px 0 35px;
 
@@ -15,18 +16,6 @@
 		margin:0 auto;
 		max-width:1024px;
 		padding:0 0 0 200px;
-
-		.vcard {
-			display: none;
-		}
-		.block {
-			display:inline-block;
-			vertical-align:top;
-			white-space:normal;
-			&.addresses {
-				margin-left:50px;
-			}
-		}
 
 		@media screen and (max-width: 1200px) {
 			white-space:normal;
@@ -44,6 +33,19 @@
 		@media screen and (max-width: 600px) {
 			padding:0 20px;
 		}
+
+		.vcard {
+			display: none;
+		}
+		.block {
+			display:inline-block;
+			vertical-align:top;
+			white-space:normal;
+			&.addresses {
+				margin-left:50px;
+			}
+		}
+
 
 		&:before {
 			content:'';
@@ -73,7 +75,6 @@
 					width:100%;
 				}
 				span {
-					font-family:"TradeGothic";
 					font-size:16px;
 					display:block;
 					padding-top:20px;
