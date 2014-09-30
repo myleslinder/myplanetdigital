@@ -100,6 +100,11 @@ module.exports =
 				, {menuOrder: 1}
 
 	plugins:
+		#Feedr, for job postings
+	    feedr:
+	        feeds:
+	            jobs:
+	                url: 'http://hire.jobvite.com/CompanyJobs/Xml.aspx?k=JobListing&c=qYT9VfwF&v=1'
 
 		# Navlinks plugin:
 		# https://github.com/lucor/docpad-plugin-navlinks
