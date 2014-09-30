@@ -4,7 +4,11 @@
 	background-color: #232323;
 	font-family:"TradeGothic";
 	color: white;
-	padding: 45px 0 35px;
+	padding: 100px 0 35px;
+
+	@media screen and (max-width: 1200px) {
+		padding: 45px 0 35px;
+	}
 
 	@media screen and (max-width: 600px) {
 		padding:35px 0 20px;
@@ -17,12 +21,30 @@
 		max-width:1024px;
 		padding:0 0 0 200px;
 
+		.vcard {
+			display: none;
+		}
+		.block {
+			display:inline-block;
+			vertical-align:top;
+			white-space:normal;
+			&.addresses {
+				margin:0 120px;
+			}
+			&:first-of-type {
+				padding-left:50px;
+			}
+		}
+
 		@media screen and (max-width: 1200px) {
 			white-space:normal;
 			.block {
 				display:block;
 				&.addresses {
-					margin-left:0;
+					margin:0;
+				}
+				&:first-of-type {
+					padding-left:0;
 				}
 			}
 			&:before {
@@ -34,18 +56,6 @@
 			padding:0 20px;
 		}
 
-		.vcard {
-			display: none;
-		}
-		.block {
-			display:inline-block;
-			vertical-align:top;
-			white-space:normal;
-			&.addresses {
-				margin-left:50px;
-			}
-		}
-
 
 		&:before {
 			content:'';
@@ -55,6 +65,7 @@
 			background-size: 434px auto;
 			position:absolute;
 			margin-left:-134px;
+			margin-top:-22px;
 		}
 
 		.contact-info {
@@ -62,16 +73,20 @@
 			font-size:0;
 			font-weight:bold;
 			> span {
-				font-size:30px;
-				margin-left:-2px;
+				font-size:42px;
+				margin-left:-5px;
 				display:block;
+				@media screen and (max-width: 750px) {
+					font-size:36px;
+					margin-left:-3px;
+				}
 			}
 			.email-us, .call-us {
 				@media screen and (max-width: 1200px) {
 					display:inline-block;
-					width:50%;
+					width:38%;
 				}
-				@media screen and (max-width: 600px) {
+				@media screen and (max-width: 750px) {
 					width:100%;
 				}
 				span {
@@ -122,10 +137,11 @@
 						background: url(../images/spritempd.png) 0 0 no-repeat;
 						background-size: 533px;
 						opacity: 0.01;
+						.translateZ();
 						.transition(opacity 0.3s);
 					}
 					&:hover:after {
-						opacity: 1;
+						opacity: 0.99;
 						.transition(opacity 0.3s);
 					}
 					&.twitter {
@@ -181,7 +197,7 @@
 			position: relative;
 			vertical-align: top;
 			margin:80px 0 100px;
-			width: 50%;
+			width: 38%;
 			.border-box();
 
 			@media screen and (max-width: 1200px) {
@@ -191,6 +207,7 @@
 			@media screen and (max-width: 600px) {
 				margin-bottom:30px;
 				margin-top:30px;
+				width:50%;
 			}
 
 			a {
