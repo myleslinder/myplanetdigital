@@ -19,10 +19,11 @@
 	<% visibility = 'visible' %>
 <% end %>
 
-<div class="tile <%= 'tile-' + @tileCounter %><%= if @document.size then ' ' + @document.size %><%= if @document.colour then ' ' + @document.colour %><%= ' ' + visibility %><%= ' ' + @document.tags.join(' ') if @document.tags? %><% if typeof @document.slug == 'string' && @document.slug.length > 0 : %> <%= @document.slug %><% end %>">
+<div class="tile <%= 'tile-' + @tileCounter %><%= if @document.size then ' ' + @document.size %><%= if @document.colour then ' ' + @document.colour %><%= ' ' + visibility %><%= ' ' + @document.tags.join(' ') if @document.tags? %>">
 	<div class="content">
 		<% if @document.size != 'small' && @document.imagePosition != 'bottom' : %>
-			<a class="tile-image" <% if tile: %>style="background-image: url('<%= @getUrl(tile) %>')" <% end %>href="<%= @getUrl(@document.url) %>/">
+			<a class="tile-image" <% if tile: %>style="background-image: url('<%= @getUrl(tile) %>')" <% end %>
+			<%if @document.externalUrl:%> target="_blank" <%end%> href="<%=if @document.externalUrl then @document.externalUrl else @getUrl(@document.url) + '/'%>">
 				<!--[if (IE 8) | (IE 9)]>
 					<img src="<%= @getUrl(tile) %>" />
 				<![endif]-->
@@ -45,7 +46,8 @@
 					<% end %>
 				</ul>
 			<% end %>
-			<a class="tile-title" href="<%= @getUrl(@document.url) %>/">
+			<a class="tile-title"
+				<%if @document.externalUrl:%> target="_blank" <%end%> href="<%=if @document.externalUrl then @document.externalUrl else @getUrl(@document.url) + '/'%>">
 				<% tileTag = 'span' %>
 				<% if visibility: %>
 					<% tileTag = 'h4' %>
@@ -53,13 +55,13 @@
 				<<%=tileTag%> class="main-title"><%= @document.title %></<%=tileTag%>>
 
 				<% if @document.layout != 'person' && @document.summary?: %>
-					<% truncatelength = if @document.size is 'large' or @document.size is 'hero' or @document.size is 'featured' then 250 else 120 %>
+					<% truncatelength = if @document.size is 'large' or @document.size is 'hero' or @document.size is 'featured' then 250 else 125 %>
 					<% quote = if @document.summary.length > truncatelength then @document.summary.substring(0, truncatelength) + '...' else @document.summary %>
-					<p class="description"><%= quote %></p>
+					<p class="description"><%- quote %></p>
 				<% end %>
 				<% if @document.layout is 'person' and @document.summary?: %>
 					<% quote = if @document.summary.length > 70 then @document.summary.substring(0, 70) + '...' else @document.summary %>
-					<p class="quote"><%= quote %></p>
+					<p class="quote"><%- quote %></p>
 				<% end %>
 			</a>
 		</div>
