@@ -5,7 +5,7 @@ module.exports =
 	port: 8080
 
 	env: 'static'
-
+ 
 	templateData:
 		site:
 			title: 'Myplanet'
