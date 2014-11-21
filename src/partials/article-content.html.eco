@@ -114,4 +114,6 @@
 		</div>
 	<% end %>
 
+	<%- @getDisqus() %>
+
 </div>

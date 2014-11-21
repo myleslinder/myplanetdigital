@@ -59,6 +59,7 @@ module.exports =
 			# Social Media Services
 			services:
 				googleAnalytics: 'UA-16401713-2'
+				disqus: 'myplanetsite'
 
 			# Override getUrl to fetch relevant url for environment
 			getUrl: (document) ->
